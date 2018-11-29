@@ -37,8 +37,6 @@ A mod for stardew valley, that randomizes many aspects of the game, uses SMAPI.
 ## BUGS
 
 * Rings as bundle rewards
-* need to remove Jodi caroline swap
-* gunther swap with bouncer needs new spritesheet
 * Npc swap doesnt swap before intro cutscene
 
 ## Stardew Valley Randomizer Ideas
