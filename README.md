@@ -1,6 +1,8 @@
 # Stardew Valley Randomizer
 
-A mod for stardew valley, that randomizes many aspects of the game, uses SMAPI. https://goo.gl/vRH2nt
+A mod for stardew valley, that randomizes many aspects of the game, uses SMAPI. 
+
+Google Document: https://goo.gl/vRH2nt
 
 ## Additions
 
