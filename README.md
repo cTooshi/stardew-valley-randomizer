@@ -1,8 +1,18 @@
 # Stardew Valley Randomizer
 
 A mod for stardew valley, that randomizes many aspects of the game, uses SMAPI. 
-
 Google Document: https://goo.gl/vRH2nt
+
+
+##Installation
+Install the latest version of SMAPI.
+If you want to use steam (for mulitplayer or achivements) you need to set launch options to SMAPI executable 
+https://stardewvalleywiki.com/Modding:Installing_SMAPI_on_Windows
+Download this mod and unzip it into Stardew Valley/Mods.
+Run the game using SMAPI.
+
+
+
 
 ## Additions
 
