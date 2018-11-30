@@ -6,11 +6,11 @@ using StardewModdingAPI;
 using StardewValley;
 
 namespace Randomizer {
-    public class AssetLoader : IAssetLoader {
+    public class AssetLoader : IAssetLoader
+    {
         private readonly ModEntry _mod;
         private readonly Dictionary<string, string> _replacements = new Dictionary<string, string>();
-
-
+        public Dictionary<string, string> musicSwap = new Dictionary<string, string>();
 
         public AssetLoader(ModEntry mod) {
             this._mod = mod;
@@ -65,7 +65,7 @@ namespace Randomizer {
             // Replace title screen
             this.AddReplacement("Minigames/TitleButtons", "Assets/Minigames/TitleButtons");
         }
-
+        
         public void CalculateReplacementsOnCreation(Random rng2)
         {
             /* Add palm trees to farm
@@ -78,11 +78,47 @@ namespace Randomizer {
            */
         }
 
+
+        private void ReplaceMusic(Random rng)
+        {
+            var replacements = new Dictionary<string, List<string>>()
+            {
+                { "spring_night_ambient", new List<string>{"spaceMusic", "moonlightJellies", "junimoStarSong", "shaneTheme" } },
+                { "summer_night_ambient", new List<string>{ "moonlightJellies" ,"spaceMusic", "junimoStarSong","shaneTheme" } },
+                { "fall1",new List<string>{ "starshoot", "sweet", "breezy" } },
+                { "fall2", new List<string>{ "sappypiano", "event2", "woodsTheme","kindadumbautumn" }},
+                { "libraryTheme", new List<string>{ "50s", "MarlonsTheme", "playful" } },
+                { "fallFest", new List<string>{ "honkytonky" } },
+                { "FrostMine", new List<string>{ "shaneTheme", "sappypiano", "starshoot", "echoes", "junimoStarSong" } },
+                { "EarthMine", new List<string>{ "shaneTheme", "sappypiano", "starshoot", "echoes", "junimoStarSong" } },
+                { "clubloop", new List<string>{ "shimmeringbastion","Cowboy_OVERWORLD","cowboy_outlawsong" }},
+                { "marnieShop", new List<string>{ "CloudCountry", "playful"}},
+                { "springtown", new List<string>{"SettlingIn","CloudCountry","breezy","kindadumbautumn" }},
+                { "summer1", new List<string>{"EmilyTheme", "junimoStarSong", "MainTheme"}},
+                { "LavaMine", new List<string>{"submarine_song", "echoes", "WizardSong"}},
+                { "spring1", new List<string>{"sweet","breezy"}},
+                { "spring2", new List<string>{"event2", "kindadumbautumn"}},
+                { "communityCenter", new List<string>{"AbigailFluteDuet", "EmilyDream"}},
+                { "winter1", new List<string>{"christmasTheme","starshoot", "sweet"}},
+                { "distantBanjo", new List<string>{ "CloudCountry", "MarlonsTheme", "50s","honkytonky"}},
+
+            };
+
+            foreach (var pair in replacements)
+            {
+                int valuechoosen = rng.Next(0, pair.Value.Count);
+                if (rng.Next(100) < 65) {
+                    musicSwap[pair.Key.ToLower()] = pair.Value[valuechoosen];
+                    //this._mod.Monitor.Log($"{pair.Key} changed to {pair.Value[valuechoosen]}");
+                }
+            }
+
+        }
+
         public void CalculateReplacements(Random rng)
         {
             // Clear any previous replacements
             this._replacements.Clear();
-
             if (ModEntry.configDict.ContainsKey("animal skins") ? ModEntry.configDict["animal skins"] : true)
             {
                 // Replace critters
@@ -111,19 +147,19 @@ namespace Randomizer {
                 {
                     int petRng = rng.Next(0, 2);
                     this.AddReplacement($"Animals/{Pet[petRng]}", "Assets/Characters/BearDog");
-                    this._mod.Monitor.Log($"Bear is {Pet[petRng]}");
+                    //this._mod.Monitor.Log($"Bear is {Pet[petRng]}");
                 }
                 if (isPet == 2)
                 {
                     this.AddReplacement($"Animals/horse", "Assets/Characters/BearHorse");
-                    this._mod.Monitor.Log($"Bear is Horse");
+                    //this._mod.Monitor.Log($"Bear is Horse");
                 }
                 else
                 {
                     int animalRng = rng.Next(0, 5);
                     this.AddReplacement($"Animals/{Animal[animalRng]}", "Assets/Characters/Bear");
                     this.AddReplacement($"Animals/Baby{Animal[animalRng]}", "Assets/Characters/BabyBear");
-                    this._mod.Monitor.Log($"Bear is {Animal[animalRng]}");
+                    //this._mod.Monitor.Log($"Bear is {Animal[animalRng]}");
 
                 }
 
@@ -131,7 +167,7 @@ namespace Randomizer {
 
 
 
-            //Randomize Schedules
+            //Randomize Schedules needs work
             this.AddReplacement("Characters/schedules/Linus", "Assets/Characters/schedules/LinusToSaloonSpring");
             this.AddReplacement("Characters/schedules/Caroline", "Assets/Characters/schedules/CarolineToEastTown");
             this.AddReplacement("Characters/schedules/George", "Assets/Characters/schedules/GeorgeToSaloon");
@@ -193,10 +229,17 @@ namespace Randomizer {
             //Replace mail
 
 
+            //Replace music
+            if (ModEntry.configDict.ContainsKey("music") ? ModEntry.configDict["music"] : true)
+            {
+                ReplaceMusic(rng);
+            }
+
+
             // Replace rain
             if (ModEntry.configDict.ContainsKey("rain") ? ModEntry.configDict["rain"] : true)
             {
-                switch (rng.Next(0, 3))
+                switch (rng.Next(0, 6))
                 {
                     case 0:
                         this.AddReplacement("TileSheets/rain", "Assets/TileSheets/PotatoRain");
@@ -207,10 +250,19 @@ namespace Randomizer {
                     case 2:
                         this.AddReplacement("TileSheets/rain", "Assets/TileSheets/CatsAndDogsRain");
                         break;
+                    case 3:
+                        this.AddReplacement("TileSheets/rain", "Assets/TileSheets/JunimoRain");
+                        break;
+                    case 4:
+                        this.AddReplacement("TileSheets/rain", "Assets/TileSheets/SkullRain");
+                        break;
+                    case 5:
+                        break;
                 }
             }
 
             //Music Randomization
+
             /*
             GameLocation location = Game1.getLocationFromName("Town");
             if (Game1.musicCategory.Name == "ocean")
@@ -219,7 +271,6 @@ namespace Randomizer {
                 this._mod.Monitor.Log($"{Game1.musicCategory.Name} changed to 00000090.wav");
             }
             */
-
 
             // Character swaps
             if (ModEntry.configDict.ContainsKey("npc skins") ? ModEntry.configDict["npc skins"] : true)
@@ -231,7 +282,7 @@ namespace Randomizer {
                 List<PossibleSwap> possibleSwaps = this._mod.PossibleSwaps.ToList();
 
                 // Make swaps until either a random number of swaps are made or we run out of possible swaps to make
-                int swapsRemaining = rng.Next(4, 10);
+                int swapsRemaining = rng.Next(5, 11);
                 while (swapsRemaining > 0 && possibleSwaps.Any())
                 {
                     // Get a random possible swap
@@ -250,7 +301,7 @@ namespace Randomizer {
                     // Add the swap to the dictionary
                     currentSwaps[swap.FirstCharacter] = swap.SecondCharacter;
                     currentSwaps[swap.SecondCharacter] = swap.FirstCharacter;
-                    this._mod.Monitor.Log($"Swapping {swap.FirstCharacter} and {swap.SecondCharacter}");
+                    //this._mod.Monitor.Log($"Swapping {swap.FirstCharacter} and {swap.SecondCharacter}");
 
                     // Add the replacements
                     this.AddReplacement($"Characters/{swap.FirstCharacter}", $"Assets/Characters/{swap.SecondCharacter}");

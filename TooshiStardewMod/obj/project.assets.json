@@ -65,11 +65,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cloak\\Desktop\\StardewRandomizer\\TooshiStardewMod\\TooshiStardewMod\\Randomizer.csproj",
+      "projectUniqueName": "C:\\Users\\cloak\\source\\repos\\cTooshi\\stardew-valley-randomizer\\TooshiStardewMod\\Randomizer.csproj",
       "projectName": "Randomizer",
-      "projectPath": "C:\\Users\\cloak\\Desktop\\StardewRandomizer\\TooshiStardewMod\\TooshiStardewMod\\Randomizer.csproj",
+      "projectPath": "C:\\Users\\cloak\\source\\repos\\cTooshi\\stardew-valley-randomizer\\TooshiStardewMod\\Randomizer.csproj",
       "packagesPath": "C:\\Users\\cloak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cloak\\Desktop\\StardewRandomizer\\TooshiStardewMod\\TooshiStardewMod\\obj\\",
+      "outputPath": "C:\\Users\\cloak\\source\\repos\\cTooshi\\stardew-valley-randomizer\\TooshiStardewMod\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

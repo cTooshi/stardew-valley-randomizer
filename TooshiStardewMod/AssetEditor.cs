@@ -224,385 +224,385 @@ namespace Randomizer {
             this._recipeReplacements.Clear();
 
             string[] chestValues = new string[14];
-            chestValues[0] = $"{ObjectIndexes.Wood:D} 50";
-            chestValues[1] = $"{ObjectIndexes.Stone:D} 50";
-            chestValues[2] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.CopperOre:D} 4";
-            chestValues[3] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.Slime:D} 10";
-            chestValues[4] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.Oil:D} 1";
+            chestValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 90)}";
+            chestValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(20, 90)}";
+            chestValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 35)} {ObjectIndexes.CopperOre:D} {rng.Next(2, 12)}";
+            chestValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(5, 25)} {ObjectIndexes.Slime:D} {rng.Next(2, 20)}";
+            chestValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(10, 45)} {ObjectIndexes.Oil:D} 1";
             chestValues[5] = $"{ObjectIndexes.Wood:D} 69";
-            chestValues[6] = $"{ObjectIndexes.Stone:D} 75";
+            chestValues[6] = $"{ObjectIndexes.Stone:D} {rng.Next(40, 120)}";
             chestValues[7] = $"{ObjectIndexes.AnyFish:D} 1";
-            chestValues[8] = $"{ObjectIndexes.Stone:D} 25 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.Fiber:D} 5";
-            chestValues[9] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.BugMeat:D} 2 {ObjectIndexes.Fiber:D} 5";
+            chestValues[8] = $"{ObjectIndexes.Stone:D} {rng.Next(10, 45)} {ObjectIndexes.Sap:D} {rng.Next(2, 12)} {ObjectIndexes.Fiber:D} {rng.Next(5, 10)}";
+            chestValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.BugMeat:D} {rng.Next(1, 4)} {ObjectIndexes.Fiber:D} 5";
             chestValues[10] = $"{ObjectIndexes.MixedSeeds:D} 5 {ObjectIndexes.Slime:D} 5";
             chestValues[11] = $"{ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Sap:D} 5";
             chestValues[12] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.Fiber:D} 10";
             chestValues[13] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Oil:D} 1";
 
             string[] GateValues = new string[8];
-            GateValues[0] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.CopperBar:D} 1";
+            GateValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15)} {ObjectIndexes.CopperBar:D} 1";
             GateValues[1] = $"{ObjectIndexes.Wood:D} 5 {ObjectIndexes.CopperOre:D} 4";
-            GateValues[2] = $"{ObjectIndexes.Wood:D} 15 {ObjectIndexes.Slime:D} 2";
+            GateValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 25)} {ObjectIndexes.Slime:D} {rng.Next(1, 4)}";
             GateValues[3] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.CopperBar:D} 1";
-            GateValues[4] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Stone:D} 5 {ObjectIndexes.CopperOre:D} 4";
-            GateValues[5] = $"{ObjectIndexes.Wood:D} 5 {ObjectIndexes.Slime:D} 10 {ObjectIndexes.CopperBar:D} 1";
-            GateValues[6] = $"{ObjectIndexes.Wood:D} 15 {ObjectIndexes.Stone:D} 5 {ObjectIndexes.CopperBar:D} 2";
+            GateValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15)} {ObjectIndexes.Stone:D} 5 {ObjectIndexes.CopperOre:D} 4";
+            GateValues[5] = $"{ObjectIndexes.Wood:D} 5 {ObjectIndexes.Slime:D} {rng.Next(5, 15)} {ObjectIndexes.CopperBar:D} 1";
+            GateValues[6] = $"{ObjectIndexes.Wood:D} 15 {ObjectIndexes.Stone:D} 5 {ObjectIndexes.CopperBar:D} {rng.Next(1, 4)}";
             GateValues[7] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Stone:D} 5 {ObjectIndexes.CopperOre:D} 8";
 
             string[] TorchValues = new string[7];
-            TorchValues[0] = $"{ObjectIndexes.Wood:D} 1 {ObjectIndexes.Sap:D} 2";
-            TorchValues[1] = $"{ObjectIndexes.Wood:D} 2 {ObjectIndexes.Sap:D} 1";
+            TorchValues[0] = $"{ObjectIndexes.Wood:D} 1 {ObjectIndexes.Sap:D} {rng.Next(1, 4)}";
+            TorchValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4)} {ObjectIndexes.Sap:D} 1";
             TorchValues[2] = $"{ObjectIndexes.Geode:D} 1";
-            TorchValues[3] = $"{ObjectIndexes.Stone:D} 3";
+            TorchValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(2, 6)}";
             TorchValues[4] = $"{ObjectIndexes.Wood:D} 1 {ObjectIndexes.Coal:D} 1";
             TorchValues[5] = $"{ObjectIndexes.CherryBomb:D} 1";
-            TorchValues[6] = $"{ObjectIndexes.BugMeat:D} 1 {ObjectIndexes.Coal:D} 3";
+            TorchValues[6] = $"{ObjectIndexes.BugMeat:D} 1 {ObjectIndexes.Coal:D} {rng.Next(1, 3)}";
 
             string[] ScarecrowValues = new string[14];
-            ScarecrowValues[0] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Coal:D} 1";
-            ScarecrowValues[1] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.Stone:D} 10 {ObjectIndexes.CherryBomb:D} 1";
-            ScarecrowValues[2] = $"{ObjectIndexes.Stone:D} 75 {ObjectIndexes.Fiber:D} 30 {ObjectIndexes.Coal:D} 2";
-            ScarecrowValues[3] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.CherryBomb:D} 1 {ObjectIndexes.Coal:D} 1";
-            ScarecrowValues[4] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.Fiber:D} 20 {ObjectIndexes.Sap:D} 5";
-            ScarecrowValues[5] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.MixedSeeds:D} 2";
-            ScarecrowValues[6] = $"{ObjectIndexes.Wood:D} 75 {ObjectIndexes.BugMeat:D} 2";
-            ScarecrowValues[7] = $"{ObjectIndexes.Wood:D} 100";
-            ScarecrowValues[8] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.CherryBomb:D} 1";
-            ScarecrowValues[9] = $"{ObjectIndexes.Wood:D} 75 {ObjectIndexes.Coal:D} 5";
-            ScarecrowValues[10] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.Coal:D} 2";
-            ScarecrowValues[11] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.BugMeat:D} 4";
-            ScarecrowValues[12] = $"{ObjectIndexes.Stone:D} 25 {ObjectIndexes.Fiber:D} 10";
-            ScarecrowValues[13] = $"{ObjectIndexes.Stone:D} 100 {ObjectIndexes.Coal:D} 2";
+            ScarecrowValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 80)} {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Coal:D} 1";
+            ScarecrowValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} 10 {ObjectIndexes.CherryBomb:D} 1";
+            ScarecrowValues[2] = $"{ObjectIndexes.Stone:D} {rng.Next(50, 100)} {ObjectIndexes.Fiber:D} {rng.Next(5, 40)} {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
+            ScarecrowValues[3] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 80)} {ObjectIndexes.CherryBomb:D} 1 {ObjectIndexes.Coal:D} 1";
+            ScarecrowValues[4] = $"{ObjectIndexes.Stone:D} {rng.Next(20, 80)} {ObjectIndexes.Fiber:D} 20 {ObjectIndexes.Sap:D} 5";
+            ScarecrowValues[5] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 80)} {ObjectIndexes.MixedSeeds:D} {rng.Next(1, 4)}";
+            ScarecrowValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(50, 100)} {ObjectIndexes.BugMeat:D} {rng.Next(1, 4)}";
+            ScarecrowValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(50, 150)}";
+            ScarecrowValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 80)} {ObjectIndexes.CherryBomb:D} 1";
+            ScarecrowValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(50, 100)} {ObjectIndexes.Coal:D} 5";
+            ScarecrowValues[10] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 80)} {ObjectIndexes.Sap:D} 5 {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
+            ScarecrowValues[11] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 80)} {ObjectIndexes.Sap:D} 5 {ObjectIndexes.BugMeat:D} 4";
+            ScarecrowValues[12] = $"{ObjectIndexes.Stone:D} {rng.Next(15, 50)} {ObjectIndexes.Fiber:D} {rng.Next(5, 15)}";
+            ScarecrowValues[13] = $"{ObjectIndexes.Stone:D} {rng.Next(50, 100)} {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
 
             string[] BeeHouseValues = new string[14];
-            BeeHouseValues[0] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.Coal:D} 8 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.JojaCola:D} 1";
-            BeeHouseValues[1] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sugar:D} 2 {ObjectIndexes.Fiber:D} 10 {ObjectIndexes.Jade:D} 1";
-            BeeHouseValues[2] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.Coal:D} 4 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.MapleSyrup:D} 1";
-            BeeHouseValues[3] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Aquamarine:D} 1";
-            BeeHouseValues[4] = $"{ObjectIndexes.Wood:D} 60 {ObjectIndexes.Sugar:D} 1 {ObjectIndexes.SoggyNewspaper:D} 1 {ObjectIndexes.Geode:D} 1";
-            BeeHouseValues[5] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.Coal:D} 8 {ObjectIndexes.Fiber:D} 20 {ObjectIndexes.JojaCola:D} 1";
-            BeeHouseValues[6] = $"{ObjectIndexes.Wood:D} 60 {ObjectIndexes.BugMeat:D} 2 {ObjectIndexes.MapleSyrup:D} 1";
-            BeeHouseValues[7] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Geode:D} 1";
-            BeeHouseValues[8] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.Coal:D} 8 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Aquamarine:D} 1 {ObjectIndexes.JojaCola:D} 1";
-            BeeHouseValues[9] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sugar:D} 2 {ObjectIndexes.Hay:D} 10 {ObjectIndexes.Jade:D} 1";
-            BeeHouseValues[10] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.Coal:D} 8 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Topaz:D} 1";
-            BeeHouseValues[11] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sap:D} 12 {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Aquamarine:D} 1";
-            BeeHouseValues[12] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Coal:D} 8 {ObjectIndexes.JojaCola:D} 1 {ObjectIndexes.Topaz:D} 1";
-            BeeHouseValues[13] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sugar:D} 1 {ObjectIndexes.IceCream:D} 1";
+            BeeHouseValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15) * 5} {ObjectIndexes.Coal:D} {rng.Next(2, 12)} {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.JojaCola:D} 1";
+            BeeHouseValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(2, 8) * 5} {ObjectIndexes.Sugar:D} {rng.Next(1, 4)} {ObjectIndexes.Fiber:D} {rng.Next(2, 20)} {ObjectIndexes.Jade:D} 1";
+            BeeHouseValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(2, 10) * 5} {ObjectIndexes.Coal:D} {rng.Next(2, 7)} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.MapleSyrup:D} 1";
+            BeeHouseValues[3] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Aquamarine:D} 1";
+            BeeHouseValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 20) * 5} {ObjectIndexes.Sugar:D} 1 {ObjectIndexes.SoggyNewspaper:D} 1 {ObjectIndexes.Geode:D} 1";
+            BeeHouseValues[5] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15) * 5} {ObjectIndexes.Coal:D} {rng.Next(2, 12)} {ObjectIndexes.Fiber:D} 20 {ObjectIndexes.JojaCola:D} 1";
+            BeeHouseValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 20) * 5} {ObjectIndexes.BugMeat:D} {rng.Next(1, 4)} {ObjectIndexes.MapleSyrup:D} 1";
+            BeeHouseValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15) * 5} {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Geode:D} 1";
+            BeeHouseValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15) * 5} {ObjectIndexes.Coal:D} {rng.Next(2, 12)} {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Aquamarine:D} 1 {ObjectIndexes.JojaCola:D} 1";
+            BeeHouseValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(2, 8) * 5} {ObjectIndexes.Sugar:D} {rng.Next(1, 4)} {ObjectIndexes.Hay:D} 10 {ObjectIndexes.Jade:D} 1";
+            BeeHouseValues[10] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15) * 5} {ObjectIndexes.Coal:D} {rng.Next(2, 12)} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Topaz:D} 1";
+            BeeHouseValues[11] = $"{ObjectIndexes.Wood:D} {rng.Next(2, 8) * 5} {ObjectIndexes.Sap:D} {rng.Next(2, 20)} {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Aquamarine:D} 1";
+            BeeHouseValues[12] = $"{ObjectIndexes.Wood:D} {rng.Next(2, 8) * 5} {ObjectIndexes.Coal:D} {rng.Next(2, 12)} {ObjectIndexes.JojaCola:D} 1 {ObjectIndexes.Topaz:D} 1";
+            BeeHouseValues[13] = $"{ObjectIndexes.Wood:D} {rng.Next(2, 8) * 5} {ObjectIndexes.Sugar:D} 1 {ObjectIndexes.IceCream:D} 1";
 
             string[] KegValues = new string[14];
-            KegValues[0] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Slime:D} 10";
-            KegValues[1] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Stone:D} 20 {ObjectIndexes.JojaCola:D} 2";
-            KegValues[2] = $"{ObjectIndexes.Wood:D} 60 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.OakResin:D} 1";
-            KegValues[3] = $"{ObjectIndexes.Wood:D} 60 {ObjectIndexes.OakResin:D} 1";
-            KegValues[4] = $"{ObjectIndexes.Wood:D} 60 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1";
-            KegValues[5] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.Stone:D} 30 {ObjectIndexes.JojaCola:D} 1";
-            KegValues[6] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.AnyFish:D} 1";
-            KegValues[7] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.MapleSyrup:D} 1";
-            KegValues[8] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.CopperBar:D} 2 {ObjectIndexes.Slime:D} 10 {ObjectIndexes.MapleSyrup:D} 1";
-            KegValues[9] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.JojaCola:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.MapleSyrup:D} 1";
-            KegValues[10] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.OakResin:D} 1";
-            KegValues[11] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Slime:D} 5 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.OakResin:D} 1";
-            KegValues[12] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sap:D} 10 {ObjectIndexes.OakResin:D} 1";
-            KegValues[13] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.Sap:D} 10 {ObjectIndexes.AnyFish:D} 1";
+            KegValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 15) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Slime:D} {rng.Next(1, 5) * 5}";
+            KegValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 5) * 5} {ObjectIndexes.Stone:D} {rng.Next(3, 12) * 5} {ObjectIndexes.JojaCola:D} {rng.Next(1, 4)}";
+            KegValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 20) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.OakResin:D} 1";
+            KegValues[3] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 20) * 5} {ObjectIndexes.OakResin:D} 1";
+            KegValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 20) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1";
+            KegValues[5] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Stone:D} {rng.Next(3, 12) * 5} {ObjectIndexes.JojaCola:D} 1";
+            KegValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 5) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.AnyFish:D} 1";
+            KegValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.MapleSyrup:D} 1";
+            KegValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.CopperBar:D} {rng.Next(1, 4)} {ObjectIndexes.Slime:D} 10 {ObjectIndexes.MapleSyrup:D} 1";
+            KegValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 20) * 5} {ObjectIndexes.JojaCola:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.MapleSyrup:D} 1";
+            KegValues[10] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)} {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.OakResin:D} 1";
+            KegValues[11] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 5) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 11)} {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.OakResin:D} 1";
+            KegValues[12] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 5) * 5} {ObjectIndexes.OakResin:D} 1";
+            KegValues[13] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 5) * 5} {ObjectIndexes.AnyFish:D} 1";
 
             string[] CaskValues = new string[14];
-            CaskValues[0] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Hardwood:D} 1";
-            CaskValues[1] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.Slime:D} 10";
-            CaskValues[2] = $"{ObjectIndexes.Wood:D} 40";
-            CaskValues[3] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Hardwood:D} 2";
-            CaskValues[4] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Stone:D} 30 {ObjectIndexes.Hardwood:D} 1";
-            CaskValues[5] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sap:D} 20 {ObjectIndexes.IronBar:D} 1";
-            CaskValues[6] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1";
-            CaskValues[7] = $"{ObjectIndexes.Hardwood:D} 5 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Sap:D} 5";
-            CaskValues[8] = $"{ObjectIndexes.Hardwood:D} 5 {ObjectIndexes.CopperBar:D} 2 {ObjectIndexes.IronBar:D} 2 {ObjectIndexes.MapleSyrup:D} 1";
-            CaskValues[9] = $"{ObjectIndexes.Hardwood:D} 2 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.MapleSyrup:D} 1";
-            CaskValues[10] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.Stone:D} 10 {ObjectIndexes.IronBar:D} 1";
-            CaskValues[11] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.OakResin:D} 1";
-            CaskValues[12] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sap:D} 10 {ObjectIndexes.OakResin:D} 1";
-            CaskValues[13] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.IronBar:D} 1";
+            CaskValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hardwood:D} 1";
+            CaskValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 18) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5}";
+            CaskValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 18) * 5}";
+            CaskValues[3] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hardwood:D} {rng.Next(1, 4)}";
+            CaskValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Hardwood:D} 1";
+            CaskValues[5] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 9) * 5} {ObjectIndexes.IronBar:D} 1";
+            CaskValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1";
+            CaskValues[7] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 11)} {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            CaskValues[8] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 11)} {ObjectIndexes.CopperBar:D} {rng.Next(1, 4)} {ObjectIndexes.IronBar:D} {rng.Next(1, 4)} {ObjectIndexes.MapleSyrup:D} 1";
+            CaskValues[9] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4)} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.MapleSyrup:D} 1";
+            CaskValues[10] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.IronBar:D} 1";
+            CaskValues[11] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.OakResin:D} 1";
+            CaskValues[12] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 4) * 5} {ObjectIndexes.OakResin:D} 1";
+            CaskValues[13] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 20) * 5} {ObjectIndexes.IronBar:D} 1";
 
             string[] FurnaceValues = new string[16];
-            FurnaceValues[0] = $"{ObjectIndexes.CopperOre:D} 20 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Sap:D} 5";
-            FurnaceValues[1] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.Fiber:D} 20 {ObjectIndexes.Coal:D} 5";
-            FurnaceValues[2] = $"{ObjectIndexes.Fiber:D} 20 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.CaveCarrot:D} 1";
-            FurnaceValues[3] = $"{ObjectIndexes.CopperOre:D} 20 {ObjectIndexes.Clay:D} 10 {ObjectIndexes.EarthCrystal:D} 1";
-            FurnaceValues[4] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.CaveCarrot:D} 1 {ObjectIndexes.Sap:D} 10";
+            FurnaceValues[0] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            FurnaceValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Fiber:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Coal:D} {rng.Next(1, 11)}";
+            FurnaceValues[2] = $"{ObjectIndexes.Fiber:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.CaveCarrot:D} 1";
+            FurnaceValues[3] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Clay:D} {rng.Next(1, 4) * 5} {ObjectIndexes.EarthCrystal:D} 1";
+            FurnaceValues[4] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.CaveCarrot:D} 1 {ObjectIndexes.Sap:D} {rng.Next(1, 4) * 5}";
             FurnaceValues[5] = $"{ObjectIndexes.Topaz:D} 1";
-            FurnaceValues[6] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.Coal:D} 3";
-            FurnaceValues[7] = $"{ObjectIndexes.Clay:D} 5 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sap:D} 5";
-            FurnaceValues[8] = $"{ObjectIndexes.Clay:D} 5 {ObjectIndexes.Sap:D} 25";
-            FurnaceValues[9] = $"{ObjectIndexes.CopperOre:D} 5 {ObjectIndexes.Clay:D} 10 {ObjectIndexes.Wood:D} 20";
-            FurnaceValues[10] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.Coal:D} 4";
-            FurnaceValues[11] = $"{ObjectIndexes.IronOre:D} 5 {ObjectIndexes.Stone:D} 75";
+            FurnaceValues[6] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.Coal:D} 3";
+            FurnaceValues[7] = $"{ObjectIndexes.Clay:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            FurnaceValues[8] = $"{ObjectIndexes.Clay:D} {rng.Next(1, 11)} {ObjectIndexes.Sap:D} 25";
+            FurnaceValues[9] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 11)} {ObjectIndexes.Clay:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Wood:D} 20";
+            FurnaceValues[10] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.Coal:D} 4";
+            FurnaceValues[11] = $"{ObjectIndexes.IronOre:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} 75";
             FurnaceValues[12] = $"{ObjectIndexes.Stone:D} 100";
-            FurnaceValues[13] = $"{ObjectIndexes.CopperOre:D} 5 {ObjectIndexes.CaveCarrot:D} 2 {ObjectIndexes.Coal:D} 2";
-            FurnaceValues[14] = $"{ObjectIndexes.IronOre:D} 20 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Sap:D} 5";
+            FurnaceValues[13] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 11)} {ObjectIndexes.CaveCarrot:D} {rng.Next(1, 4)} {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
+            FurnaceValues[14] = $"{ObjectIndexes.IronOre:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
             FurnaceValues[15] = $"{ObjectIndexes.LargemouthBass:D} 1";
 
             string[] GardenPotValues = new string[10];
-            GardenPotValues[0] = $"{ObjectIndexes.Clay:D} 1 {ObjectIndexes.Stone:D} 10 {ObjectIndexes.RefinedQuartz:D} 1";
-            GardenPotValues[1] = $"{ObjectIndexes.Clay:D} 1 {ObjectIndexes.Coal:D} 2 {ObjectIndexes.GoldBar:D} 1";
-            GardenPotValues[2] = $"{ObjectIndexes.Fiber:D} 5 {ObjectIndexes.Stone:D} 20 {ObjectIndexes.IronBar:D} 1";
-            GardenPotValues[3] = $"{ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Wood:D} 10 {ObjectIndexes.RefinedQuartz:D} 1";
-            GardenPotValues[4] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.EarthCrystal:D} 1 {ObjectIndexes.Sap:D} 10";
+            GardenPotValues[0] = $"{ObjectIndexes.Clay:D} 1 {ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.RefinedQuartz:D} 1";
+            GardenPotValues[1] = $"{ObjectIndexes.Clay:D} 1 {ObjectIndexes.Coal:D} {rng.Next(1, 4)} {ObjectIndexes.GoldBar:D} 1";
+            GardenPotValues[2] = $"{ObjectIndexes.Fiber:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.IronBar:D} 1";
+            GardenPotValues[3] = $"{ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.RefinedQuartz:D} 1";
+            GardenPotValues[4] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.EarthCrystal:D} 1 {ObjectIndexes.Sap:D} {rng.Next(1, 4) * 5}";
             GardenPotValues[5] = $"{ObjectIndexes.Emerald:D} 1";
-            GardenPotValues[6] = $"{ObjectIndexes.Stone:D} 25 {ObjectIndexes.Coal:D} 3";
-            GardenPotValues[7] = $"{ObjectIndexes.Clay:D} 1 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sap:D} 5";
-            GardenPotValues[8] = $"{ObjectIndexes.Clay:D} 5 {ObjectIndexes.Sap:D} 25";
-            GardenPotValues[9] = $"{ObjectIndexes.CopperOre:D} 5 {ObjectIndexes.Clay:D} 10 {ObjectIndexes.Wood:D} 20";
+            GardenPotValues[6] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Coal:D} 3";
+            GardenPotValues[7] = $"{ObjectIndexes.Clay:D} 1 {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            GardenPotValues[8] = $"{ObjectIndexes.Clay:D} {rng.Next(1, 11)} {ObjectIndexes.Sap:D} 25";
+            GardenPotValues[9] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 11)} {ObjectIndexes.Clay:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Wood:D} 20";
 
             string[] CheesePressValues = new string[16];
-            CheesePressValues[0] = $"{ObjectIndexes.Wood:D} 45 {ObjectIndexes.Stone:D} 45 {ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.CopperBar:D} 1";
-            CheesePressValues[1] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Stone:D} 60 {ObjectIndexes.BrokenGlasses:D} 1";
-            CheesePressValues[2] = $"{ObjectIndexes.Wood:D} 45 {ObjectIndexes.Sap:D} 10 {ObjectIndexes.Topaz:D} 1";
+            CheesePressValues[0] = $"{ObjectIndexes.Wood:D} 45 {ObjectIndexes.Stone:D} 45 {ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.CopperBar:D} 1";
+            CheesePressValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} 60 {ObjectIndexes.BrokenGlasses:D} 1";
+            CheesePressValues[2] = $"{ObjectIndexes.Wood:D} 45 {ObjectIndexes.Sap:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Topaz:D} 1";
             CheesePressValues[3] = $"{ObjectIndexes.Stone:D} 45 {ObjectIndexes.Sap:D} 40 {ObjectIndexes.Coal:D} 1";
-            CheesePressValues[4] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.Sap:D} 10";
-            CheesePressValues[5] = $"{ObjectIndexes.Stone:D} 30 {ObjectIndexes.Hardwood:D} 20 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.Topaz:D} 2";
-            CheesePressValues[6] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.Slime:D} 10";
-            CheesePressValues[7] = $"{ObjectIndexes.CopperOre:D} 30 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sap:D} 5";
-            CheesePressValues[8] = $"{ObjectIndexes.CopperOre:D} 30 {ObjectIndexes.Stone:D} 25";
-            CheesePressValues[9] = $"{ObjectIndexes.CopperOre:D} 5 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Wood:D} 20";
-            CheesePressValues[10] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.Coal:D} 4 {ObjectIndexes.Slime:D} 10";
-            CheesePressValues[11] = $"{ObjectIndexes.CopperOre:D} 5 {ObjectIndexes.Stone:D} 75 {ObjectIndexes.Slime:D} 10";
-            CheesePressValues[12] = $"{ObjectIndexes.Stone:D} 100 {ObjectIndexes.Slime:D} 10";
-            CheesePressValues[13] = $"{ObjectIndexes.CopperOre:D} 5 {ObjectIndexes.Stone:D} 100 {ObjectIndexes.Coal:D} 2";
-            CheesePressValues[14] = $"{ObjectIndexes.CopperOre:D} 20 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.Slime:D} 10";
+            CheesePressValues[4] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 4) * 5}";
+            CheesePressValues[5] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Hardwood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)} {ObjectIndexes.Topaz:D} {rng.Next(1, 4)}";
+            CheesePressValues[6] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5}";
+            CheesePressValues[7] = $"{ObjectIndexes.CopperOre:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            CheesePressValues[8] = $"{ObjectIndexes.CopperOre:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Stone:D} 25";
+            CheesePressValues[9] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Wood:D} 20";
+            CheesePressValues[10] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.Coal:D} 4 {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5}";
+            CheesePressValues[11] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} 75 {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5}";
+            CheesePressValues[12] = $"{ObjectIndexes.Stone:D} 100 {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5}";
+            CheesePressValues[13] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} 100 {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
+            CheesePressValues[14] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)} {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5}";
             CheesePressValues[15] = $"{ObjectIndexes.Slime:D} 100";
 
             string[] MayonnaiseMachineValues = new string[10];
             MayonnaiseMachineValues[0] = $"{ObjectIndexes.Wood:D} 15 {ObjectIndexes.Stone:D} 15 {ObjectIndexes.EarthCrystal:D} 1 {ObjectIndexes.CopperBar:D} 1";
-            MayonnaiseMachineValues[1] = $"{ObjectIndexes.Stone:D} 30 {ObjectIndexes.Slime:D} 10 {ObjectIndexes.Amethyst:D} 1";
-            MayonnaiseMachineValues[2] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.EarthCrystal:D} 1";
-            MayonnaiseMachineValues[3] = $"{ObjectIndexes.Hardwood:D} 5 {ObjectIndexes.Stone:D} 40 {ObjectIndexes.Topaz:D} 1 {ObjectIndexes.EarthCrystal:D} 1";
-            MayonnaiseMachineValues[4] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Slime:D} 10 {ObjectIndexes.BugMeat:D} 10";
-            MayonnaiseMachineValues[5] = $"{ObjectIndexes.Hardwood:D} 5 {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Sap:D} 5";
-            MayonnaiseMachineValues[6] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.Coal:D} 3";
-            MayonnaiseMachineValues[7] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Sap:D} 20 {ObjectIndexes.Amethyst:D} 1";
-            MayonnaiseMachineValues[8] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.CaveCarrot:D} 1";
-            MayonnaiseMachineValues[9] = $"{ObjectIndexes.BugMeat:D} 10 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Wood:D} 20";
+            MayonnaiseMachineValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Amethyst:D} 1";
+            MayonnaiseMachineValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.EarthCrystal:D} 1";
+            MayonnaiseMachineValues[3] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} 40 {ObjectIndexes.Topaz:D} 1 {ObjectIndexes.EarthCrystal:D} 1";
+            MayonnaiseMachineValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5} {ObjectIndexes.BugMeat:D} {rng.Next(1, 4) * 5}";
+            MayonnaiseMachineValues[5] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 11)} {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            MayonnaiseMachineValues[6] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.Coal:D} 3";
+            MayonnaiseMachineValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Sap:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Amethyst:D} 1";
+            MayonnaiseMachineValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.CaveCarrot:D} 1";
+            MayonnaiseMachineValues[9] = $"{ObjectIndexes.BugMeat:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Wood:D} 20";
 
             string[] SeedMakerValues = new string[10];
-            SeedMakerValues[0] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.Coal:D} 10 {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Acorn:D} 5";
-            SeedMakerValues[1] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.Acorn:D} 4 {ObjectIndexes.PineCone:D} 4 {ObjectIndexes.MapleSeed:D} 4 ";
-            SeedMakerValues[2] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.EarthCrystal:D} 1 {ObjectIndexes.Quartz:D} 2";
-            SeedMakerValues[3] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Slime:D} 40 {ObjectIndexes.Topaz:D} 1 {ObjectIndexes.RefinedQuartz:D} 1";
-            SeedMakerValues[4] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Hay:D} 10 {ObjectIndexes.Slime:D} 25";
-            SeedMakerValues[5] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.MixedSeeds:D} 5";
-            SeedMakerValues[6] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.Coal:D} 5 {ObjectIndexes.PineCone:D} 5";
-            SeedMakerValues[7] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Oil:D} 1 {ObjectIndexes.Amethyst:D} 1";
+            SeedMakerValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Coal:D} {rng.Next(1, 4) * 5} {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Acorn:D} {rng.Next(1, 11)}";
+            SeedMakerValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Acorn:D} 4 {ObjectIndexes.PineCone:D} 4 {ObjectIndexes.MapleSeed:D} 4 ";
+            SeedMakerValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.EarthCrystal:D} 1 {ObjectIndexes.Quartz:D} {rng.Next(1, 4)}";
+            SeedMakerValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} 40 {ObjectIndexes.Topaz:D} 1 {ObjectIndexes.RefinedQuartz:D} 1";
+            SeedMakerValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Slime:D} 25";
+            SeedMakerValues[5] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)} {ObjectIndexes.MixedSeeds:D} {rng.Next(1, 11)}";
+            SeedMakerValues[6] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.Coal:D} {rng.Next(1, 11)} {ObjectIndexes.PineCone:D} {rng.Next(1, 11)}";
+            SeedMakerValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Oil:D} 1 {ObjectIndexes.Amethyst:D} 1";
             SeedMakerValues[8] = $"{ObjectIndexes.RabbitsFoot:D} 1 {ObjectIndexes.Wood:D} 25";
-            SeedMakerValues[9] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Oil:D} 1";
+            SeedMakerValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Oil:D} 1";
 
             string[] LoomValues = new string[11];
-            LoomValues[0] = $"{ObjectIndexes.Wood:D} 60 {ObjectIndexes.Fiber:D} 30 {ObjectIndexes.PineTar:D} 1 {ObjectIndexes.Slime:D} 5";
-            LoomValues[1] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Sap:D} 20 {ObjectIndexes.Hardwood:D} 5 {ObjectIndexes.Fiber:D} 10 ";
-            LoomValues[2] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.Oil:D} 1 {ObjectIndexes.Hay:D} 10";
+            LoomValues[0] = $"{ObjectIndexes.Wood:D} 60 {ObjectIndexes.Fiber:D} {rng.Next(3, 12) * 5} {ObjectIndexes.PineTar:D} 1 {ObjectIndexes.Slime:D} {rng.Next(1, 11)}";
+            LoomValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hardwood:D} {rng.Next(1, 11)} {ObjectIndexes.Fiber:D} {rng.Next(1, 4) * 5} ";
+            LoomValues[2] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Oil:D} 1 {ObjectIndexes.Hay:D} 10";
             LoomValues[3] = $"{ObjectIndexes.Mayonnaise:D} 1";
-            LoomValues[4] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Hay:D} 10 {ObjectIndexes.Geode:D} 2";
-            LoomValues[5] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.BatWing:D} 10 {ObjectIndexes.FrozenGeode:D} 2";
-            LoomValues[6] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.Coal:D} 5 {ObjectIndexes.PineCone:D} 5";
-            LoomValues[7] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Oil:D} 1 {ObjectIndexes.MagmaGeode:D} 1";
-            LoomValues[8] = $"{ObjectIndexes.Hardwood:D} 20 {ObjectIndexes.Slime:D} 25";
-            LoomValues[9] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.OakResin:D} 1";
-            LoomValues[10] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.VoidEssence:D} 10 {ObjectIndexes.Oil:D} 1";
+            LoomValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Geode:D} {rng.Next(1, 4)}";
+            LoomValues[5] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.BatWing:D} {rng.Next(1, 4) * 5} {ObjectIndexes.FrozenGeode:D} {rng.Next(1, 4)}";
+            LoomValues[6] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.Coal:D} {rng.Next(1, 11)} {ObjectIndexes.PineCone:D} {rng.Next(1, 11)}";
+            LoomValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Oil:D} 1 {ObjectIndexes.MagmaGeode:D} 1";
+            LoomValues[8] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} 25";
+            LoomValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.OakResin:D} 1";
+            LoomValues[10] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.VoidEssence:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Oil:D} 1";
 
             string[] OilMakerValues = new string[9];
-            OilMakerValues[0] = $"{ObjectIndexes.Hardwood:D} 1 {ObjectIndexes.IronBar:D} 20 {ObjectIndexes.GoldBar:D} 1";
-            OilMakerValues[1] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.Sap:D} 20 {ObjectIndexes.Slime:D} 40 {ObjectIndexes.Fiber:D} 10 ";
-            OilMakerValues[2] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.Oil:D} 1 {ObjectIndexes.Hay:D} 10";
+            OilMakerValues[0] = $"{ObjectIndexes.Hardwood:D} 1 {ObjectIndexes.IronBar:D} {rng.Next(1, 9) * 5} {ObjectIndexes.GoldBar:D} 1";
+            OilMakerValues[1] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} 40 {ObjectIndexes.Fiber:D} 10 ";
+            OilMakerValues[2] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Oil:D} 1 {ObjectIndexes.Hay:D} 10";
             OilMakerValues[3] = $"{ObjectIndexes.Hardwood:D} 20";
-            OilMakerValues[4] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.BugMeat:D} 2 {ObjectIndexes.Geode:D} 2";
-            OilMakerValues[5] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.BatWing:D} 10 {ObjectIndexes.FrozenGeode:D} 2";
-            OilMakerValues[6] = $"{ObjectIndexes.Wood:D} 30 {ObjectIndexes.Coal:D} 5 {ObjectIndexes.PineCone:D} 5";
-            OilMakerValues[7] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.Oil:D} 1 {ObjectIndexes.MagmaGeode:D} 1";
-            OilMakerValues[8] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Slime:D} 25";
+            OilMakerValues[4] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.BugMeat:D} {rng.Next(1, 4)} {ObjectIndexes.Geode:D} {rng.Next(1, 4)}";
+            OilMakerValues[5] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.BatWing:D} {rng.Next(1, 4) * 5} {ObjectIndexes.FrozenGeode:D} {rng.Next(1, 4)}";
+            OilMakerValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Coal:D} {rng.Next(1, 11)} {ObjectIndexes.PineCone:D} {rng.Next(1, 11)}";
+            OilMakerValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Oil:D} 1 {ObjectIndexes.MagmaGeode:D} 1";
+            OilMakerValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Slime:D} 25";
 
             string[] RecyclingMachineValues = new string[14];
-            RecyclingMachineValues[0] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.Stone:D} 25 {ObjectIndexes.IronBar:D} 1";
-            RecyclingMachineValues[1] = $"{ObjectIndexes.Stone:D} 25 {ObjectIndexes.Fiber:D} 10 {ObjectIndexes.GoldBar:D} 1";
-            RecyclingMachineValues[2] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.EarthCrystal:D} 1 {ObjectIndexes.Coal:D} 5";
-            RecyclingMachineValues[3] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.Slime:D} 10 {ObjectIndexes.Topaz:D} 1";
-            RecyclingMachineValues[4] = $"{ObjectIndexes.Hardwood:D} 20 {ObjectIndexes.Fiber:D} 20";
-            RecyclingMachineValues[5] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.AnyFish:D} 1";
-            RecyclingMachineValues[6] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.JojaCola:D} 1 {ObjectIndexes.SoggyNewspaper:D} 1 {ObjectIndexes.Sap:D} 1";
+            RecyclingMachineValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.IronBar:D} 1";
+            RecyclingMachineValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Fiber:D} {rng.Next(1, 4) * 5} {ObjectIndexes.GoldBar:D} 1";
+            RecyclingMachineValues[2] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.EarthCrystal:D} 1 {ObjectIndexes.Coal:D} {rng.Next(1, 11)}";
+            RecyclingMachineValues[3] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 20) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Topaz:D} 1";
+            RecyclingMachineValues[4] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Fiber:D} 20";
+            RecyclingMachineValues[5] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.AnyFish:D} 1";
+            RecyclingMachineValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.JojaCola:D} 1 {ObjectIndexes.SoggyNewspaper:D} 1 {ObjectIndexes.Sap:D} 1";
             RecyclingMachineValues[7] = $"{ObjectIndexes.Wood:D} 100 {ObjectIndexes.Ruby:D} 1";
-            RecyclingMachineValues[8] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.BugMeat:D} 20 {ObjectIndexes.CherryBomb:D} 1";
-            RecyclingMachineValues[9] = $"{ObjectIndexes.Fiber:D} 25 {ObjectIndexes.Clam:D} 2";
-            RecyclingMachineValues[10] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.NautilusShell:D} 1 {ObjectIndexes.Coal:D} 2";
-            RecyclingMachineValues[11] = $"{ObjectIndexes.Fiber:D} 10 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.Stone:D} 25";
-            RecyclingMachineValues[12] = $"{ObjectIndexes.OakResin:D} 2 {ObjectIndexes.Fiber:D} 25 {ObjectIndexes.SoggyNewspaper:D} 1";
-            RecyclingMachineValues[13] = $"{ObjectIndexes.PineTar:D} 2 {ObjectIndexes.Coal:D} 5";
+            RecyclingMachineValues[8] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.BugMeat:D} {rng.Next(1, 9) * 5} {ObjectIndexes.CherryBomb:D} 1";
+            RecyclingMachineValues[9] = $"{ObjectIndexes.Fiber:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Clam:D} {rng.Next(1, 4)}";
+            RecyclingMachineValues[10] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 20) * 5} {ObjectIndexes.NautilusShell:D} 1 {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
+            RecyclingMachineValues[11] = $"{ObjectIndexes.Fiber:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} 25";
+            RecyclingMachineValues[12] = $"{ObjectIndexes.OakResin:D} {rng.Next(1, 4)} {ObjectIndexes.Fiber:D} {rng.Next(1, 9) * 5} {ObjectIndexes.SoggyNewspaper:D} 1";
+            RecyclingMachineValues[13] = $"{ObjectIndexes.PineTar:D} {rng.Next(1, 4)} {ObjectIndexes.Coal:D} {rng.Next(1, 11)}";
 
             string[] PreservesJarValues = new string[11];
-            PreservesJarValues[0] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.Sap:D} 10 {ObjectIndexes.Oil:D} 1";
-            PreservesJarValues[1] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Hay:D} 10";
+            PreservesJarValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Oil:D} 1";
+            PreservesJarValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} 10";
             PreservesJarValues[2] = $"{ObjectIndexes.Stone:D} 40 {ObjectIndexes.Coral:D} 1 {ObjectIndexes.Quartz:D} 1";
-            PreservesJarValues[3] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.Slime:D} 5";
-            PreservesJarValues[4] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.Fiber:D} 10 {ObjectIndexes.Oil:D} 1";
-            PreservesJarValues[5] = $"{ObjectIndexes.Hardwood:D} 5 {ObjectIndexes.Geode:D} 1 {ObjectIndexes.PineCone:D} 1";
-            PreservesJarValues[6] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Fiber:D} 10 {ObjectIndexes.FrozenTear:D} 1";
-            PreservesJarValues[7] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Hay:D} 5 {ObjectIndexes.Coal:D} 6";
-            PreservesJarValues[8] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.BugMeat:D} 2";
+            PreservesJarValues[3] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 11)}";
+            PreservesJarValues[4] = $"{ObjectIndexes.Wood:D} 40 {ObjectIndexes.Fiber:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Oil:D} 1";
+            PreservesJarValues[5] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 11)} {ObjectIndexes.Geode:D} 1 {ObjectIndexes.PineCone:D} 1";
+            PreservesJarValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Fiber:D} 10 {ObjectIndexes.FrozenTear:D} 1";
+            PreservesJarValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 11)} {ObjectIndexes.Coal:D} 6";
+            PreservesJarValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.BugMeat:D} {rng.Next(1, 4)}";
             PreservesJarValues[9] = $"{ObjectIndexes.Hardwood:D} 1 {ObjectIndexes.RefinedQuartz:D} 1 {ObjectIndexes.Oil:D} 1";
-            PreservesJarValues[10] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Coal:D} 6 {ObjectIndexes.EarthCrystal:D} 1";
+            PreservesJarValues[10] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Coal:D} 6 {ObjectIndexes.EarthCrystal:D} 1";
 
             string[] CharcoalKilnValues = new string[6];
-            CharcoalKilnValues[0] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Oil:D} 1";
-            CharcoalKilnValues[1] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Hay:D} 5";
-            CharcoalKilnValues[2] = $"{ObjectIndexes.Stone:D} 30 {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Fiber:D} 5";
-            CharcoalKilnValues[3] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Quartz:D} 1 {ObjectIndexes.Sap:D} 5";
-            CharcoalKilnValues[4] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.SoggyNewspaper:D} 1";
-            CharcoalKilnValues[5] = $"{ObjectIndexes.Wood:D} 5 {ObjectIndexes.FrozenGeode:D} 1 {ObjectIndexes.MapleSeed:D} 1";
+            CharcoalKilnValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Oil:D} 1";
+            CharcoalKilnValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 11)}";
+            CharcoalKilnValues[2] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 12) * 5} {ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Fiber:D} {rng.Next(1, 11)}";
+            CharcoalKilnValues[3] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Quartz:D} 1 {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            CharcoalKilnValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.SoggyNewspaper:D} 1";
+            CharcoalKilnValues[5] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 11)} {ObjectIndexes.FrozenGeode:D} 1 {ObjectIndexes.MapleSeed:D} 1";
 
             string[] TapperValues = new string[11];
-            TapperValues[0] = $"{ObjectIndexes.Wood:D} 25 {ObjectIndexes.CopperBar:D} 2 {ObjectIndexes.Sap:D} 5";
-            TapperValues[1] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.IronBar:D} 1";
-            TapperValues[2] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.RefinedQuartz:D} 1";
-            TapperValues[3] = $"{ObjectIndexes.Hardwood:D} 1 {ObjectIndexes.Slime:D} 5";
-            TapperValues[4] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sprinkler:D} 1";
-            TapperValues[5] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.PineCone:D} 1";
-            TapperValues[6] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Quartz:D} 1";
-            TapperValues[7] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Hay:D} 5 {ObjectIndexes.Coal:D} 4";
-            TapperValues[8] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Coal:D} 2";
-            TapperValues[9] = $"{ObjectIndexes.Wood:D} 5 {ObjectIndexes.Sprinkler:D}";
-            TapperValues[10] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.AnyFish:D} 1";
+            TapperValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.CopperBar:D} {rng.Next(1, 4)} {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            TapperValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.IronBar:D} 1";
+            TapperValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.RefinedQuartz:D} 1";
+            TapperValues[3] = $"{ObjectIndexes.Hardwood:D} 1 {ObjectIndexes.Slime:D} {rng.Next(1, 11)}";
+            TapperValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sprinkler:D} 1";
+            TapperValues[5] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 11)} {ObjectIndexes.PineCone:D} 1";
+            TapperValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Quartz:D} 1";
+            TapperValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 11)} {ObjectIndexes.Coal:D} 4";
+            TapperValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
+            TapperValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 11)} {ObjectIndexes.Sprinkler:D}";
+            TapperValues[10] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.AnyFish:D} 1";
 
             string[] LightningRodValues = new string[6];
-            LightningRodValues[0] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.BatWing:D} 5";
+            LightningRodValues[0] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.BatWing:D} {rng.Next(1, 11)}";
             LightningRodValues[1] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.RefinedQuartz:D} 1";
-            LightningRodValues[2] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Clay:D} 5";
-            LightningRodValues[3] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.SolarEssence:D} 5";
-            LightningRodValues[4] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.VoidEssence:D} 5";
+            LightningRodValues[2] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Clay:D} {rng.Next(1, 11)}";
+            LightningRodValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.SolarEssence:D} {rng.Next(1, 11)}";
+            LightningRodValues[4] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.VoidEssence:D} {rng.Next(1, 11)}";
             LightningRodValues[5] = $"{ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.FrozenTear:D} 1";
 
             string[] CrystalariumValues = new string[8];
-            CrystalariumValues[0] = $"{ObjectIndexes.GoldBar:D} 5 {ObjectIndexes.IronBar:D} 5 {ObjectIndexes.Diamond:D} 1 {ObjectIndexes.Battery:D} 1";
-            CrystalariumValues[1] = $"{ObjectIndexes.IronBar:D} 5 {ObjectIndexes.RefinedQuartz:D} 5 {ObjectIndexes.SolarEssence:D} 10 {ObjectIndexes.VoidEssence:D} 10";
-            CrystalariumValues[2] = $"{ObjectIndexes.IridiumBar:D} 10 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Clay:D} 10";
-            CrystalariumValues[3] = $"{ObjectIndexes.IridiumBar:D} 5 {ObjectIndexes.Stone:D} 75 {ObjectIndexes.Battery:D} 1";
-            CrystalariumValues[4] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.VoidEssence:D} 5 {ObjectIndexes.OmniGeode:D} 5";
+            CrystalariumValues[0] = $"{ObjectIndexes.GoldBar:D} {rng.Next(1, 11)} {ObjectIndexes.IronBar:D} {rng.Next(1, 11)} {ObjectIndexes.Diamond:D} 1 {ObjectIndexes.Battery:D} 1";
+            CrystalariumValues[1] = $"{ObjectIndexes.IronBar:D} {rng.Next(1, 11)} {ObjectIndexes.RefinedQuartz:D} {rng.Next(1, 11)} {ObjectIndexes.SolarEssence:D} {rng.Next(1, 4) * 5} {ObjectIndexes.VoidEssence:D} 10";
+            CrystalariumValues[2] = $"{ObjectIndexes.IridiumBar:D} {rng.Next(1, 4) * 5} {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Clay:D} 10";
+            CrystalariumValues[3] = $"{ObjectIndexes.IridiumBar:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} 75 {ObjectIndexes.Battery:D} 1";
+            CrystalariumValues[4] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.VoidEssence:D} {rng.Next(1, 11)} {ObjectIndexes.OmniGeode:D} {rng.Next(1, 11)}";
             CrystalariumValues[5] = $"{ObjectIndexes.IridiumBar:D} 8 {ObjectIndexes.FiddleHeadFern:D} 1 {ObjectIndexes.FrozenTear:D} 1";
-            CrystalariumValues[6] = $"{ObjectIndexes.Stone:D} 150 {ObjectIndexes.Battery:D} 1 {ObjectIndexes.IronBar:D} 5 {ObjectIndexes.FireQuartz:D} 2";
-            CrystalariumValues[7] = $"{ObjectIndexes.Stone:D} 100 {ObjectIndexes.FrozenTear:D} 1 {ObjectIndexes.SolarEssence:D} 10 {ObjectIndexes.NautilusShell:D} 1";
+            CrystalariumValues[6] = $"{ObjectIndexes.Stone:D} 150 {ObjectIndexes.Battery:D} 1 {ObjectIndexes.IronBar:D} {rng.Next(1, 11)} {ObjectIndexes.FireQuartz:D} {rng.Next(1, 4)}";
+            CrystalariumValues[7] = $"{ObjectIndexes.Stone:D} 100 {ObjectIndexes.FrozenTear:D} 1 {ObjectIndexes.SolarEssence:D} {rng.Next(1, 4) * 5} {ObjectIndexes.NautilusShell:D} 1";
 
             string[] SprinklerValues = new string[11];
             SprinklerValues[0] = $"{ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1";
-            SprinklerValues[1] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.IronBar:D} 1";
-            SprinklerValues[2] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.RefinedQuartz:D} 1";
-            SprinklerValues[3] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Oil:D} 1 {ObjectIndexes.CopperBar:D} 1";
-            SprinklerValues[4] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Geode:D} 1 {ObjectIndexes.BatWing:D} 2";
-            SprinklerValues[5] = $"{ObjectIndexes.Stone:D} 15 {ObjectIndexes.Sap:D} 5 {ObjectIndexes.Quartz:D} 1";
-            SprinklerValues[6] = $"{ObjectIndexes.Wood:D} 10 {ObjectIndexes.Slime:D} 10";
+            SprinklerValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.IronBar:D} 1";
+            SprinklerValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.RefinedQuartz:D} 1";
+            SprinklerValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Oil:D} 1 {ObjectIndexes.CopperBar:D} 1";
+            SprinklerValues[4] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.Geode:D} 1 {ObjectIndexes.BatWing:D} {rng.Next(1, 4)}";
+            SprinklerValues[5] = $"{ObjectIndexes.Stone:D} 15 {ObjectIndexes.Sap:D} {rng.Next(1, 11)} {ObjectIndexes.Quartz:D} 1";
+            SprinklerValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Slime:D} 10";
             SprinklerValues[7] = $"{ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.FrozenGeode:D} 1 {ObjectIndexes.Coal:D} 4";
             SprinklerValues[8] = $"{ObjectIndexes.LargemouthBass:D} 1";
-            SprinklerValues[9] = $"{ObjectIndexes.Wood:D} 5 {ObjectIndexes.Stone:D} 5 {ObjectIndexes.BatWing:D} 1";
-            SprinklerValues[10] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Geode:D} 1";
+            SprinklerValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 11)} {ObjectIndexes.Stone:D} {rng.Next(1, 11)} {ObjectIndexes.BatWing:D} 1";
+            SprinklerValues[10] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Geode:D} 1";
 
             string[] QualitySprinklerValues = new string[11];
             QualitySprinklerValues[0] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Sprinkler:D} 1 {ObjectIndexes.Oil:D} 1";
-            QualitySprinklerValues[1] = $"{ObjectIndexes.SolarEssence:D} 5 {ObjectIndexes.MagmaGeode:D} 1 {ObjectIndexes.GoldBar:D} 1";
-            QualitySprinklerValues[2] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.RefinedQuartz:D} 1 {ObjectIndexes.GoldBar:D} 2";
-            QualitySprinklerValues[3] = $"{ObjectIndexes.Sprinkler:D} 1 {ObjectIndexes.RefinedQuartz:D} 2 {ObjectIndexes.VoidEssence:D} 1";
-            QualitySprinklerValues[4] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Sprinkler:D} 1";
-            QualitySprinklerValues[5] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Slime:D} 10 {ObjectIndexes.OmniGeode:D} 2";
-            QualitySprinklerValues[6] = $"{ObjectIndexes.Sprinkler:D} 2 {ObjectIndexes.Sap:D} 10";
-            QualitySprinklerValues[7] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Hay:D} 5 {ObjectIndexes.GoldBar:D} 2";
-            QualitySprinklerValues[8] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Coal:D} 2";
+            QualitySprinklerValues[1] = $"{ObjectIndexes.SolarEssence:D} {rng.Next(1, 11)} {ObjectIndexes.MagmaGeode:D} 1 {ObjectIndexes.GoldBar:D} 1";
+            QualitySprinklerValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.RefinedQuartz:D} 1 {ObjectIndexes.GoldBar:D} {rng.Next(1, 4)}";
+            QualitySprinklerValues[3] = $"{ObjectIndexes.Sprinkler:D} 1 {ObjectIndexes.RefinedQuartz:D} {rng.Next(1, 4)} {ObjectIndexes.VoidEssence:D} 1";
+            QualitySprinklerValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Sprinkler:D} 1";
+            QualitySprinklerValues[5] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 4) * 5} {ObjectIndexes.OmniGeode:D} {rng.Next(1, 4)}";
+            QualitySprinklerValues[6] = $"{ObjectIndexes.Sprinkler:D} {rng.Next(1, 4)} {ObjectIndexes.Sap:D} 10";
+            QualitySprinklerValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 11)} {ObjectIndexes.GoldBar:D} {rng.Next(1, 4)}";
+            QualitySprinklerValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
             QualitySprinklerValues[9] = $"{ObjectIndexes.Sprinkler:D} 1 {ObjectIndexes.FrozenGeode:D} 1";
             QualitySprinklerValues[10] = $"{ObjectIndexes.Sprinkler:D} 1 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.IronBar:D} 1";
 
             string[] IridiumSprinklerValues = new string[11];
-            IridiumSprinklerValues[0] = $"{ObjectIndexes.QualitySprinkler:D} 1 {ObjectIndexes.Battery:D} 1 {ObjectIndexes.IronBar:D} 2";
+            IridiumSprinklerValues[0] = $"{ObjectIndexes.QualitySprinkler:D} 1 {ObjectIndexes.Battery:D} 1 {ObjectIndexes.IronBar:D} {rng.Next(1, 4)}";
             IridiumSprinklerValues[1] = $"{ObjectIndexes.QualitySprinkler:D} 1 {ObjectIndexes.Battery:D} 1 {ObjectIndexes.GoldBar:D} 1";
             IridiumSprinklerValues[2] = $"{ObjectIndexes.QualitySprinkler:D} 1 {ObjectIndexes.RefinedQuartz:D} 1";
             IridiumSprinklerValues[3] = $"{ObjectIndexes.QualitySprinkler:D} 1 {ObjectIndexes.OmniGeode:D} 4";
-            IridiumSprinklerValues[4] = $"{ObjectIndexes.QualitySprinkler:D} 2 {ObjectIndexes.OakResin:D} 1";
-            IridiumSprinklerValues[5] = $"{ObjectIndexes.Sprinkler:D} 1 {ObjectIndexes.GoldBar:D} 2 {ObjectIndexes.AnyFish:D} 1";
-            IridiumSprinklerValues[6] = $"{ObjectIndexes.IridiumBar:D} 1 {ObjectIndexes.GoldBar:D} 2 {ObjectIndexes.FireQuartz:D} 1";
+            IridiumSprinklerValues[4] = $"{ObjectIndexes.QualitySprinkler:D} {rng.Next(1, 4)} {ObjectIndexes.OakResin:D} 1";
+            IridiumSprinklerValues[5] = $"{ObjectIndexes.Sprinkler:D} 1 {ObjectIndexes.GoldBar:D} {rng.Next(1, 4)} {ObjectIndexes.AnyFish:D} 1";
+            IridiumSprinklerValues[6] = $"{ObjectIndexes.IridiumBar:D} 1 {ObjectIndexes.GoldBar:D} {rng.Next(1, 4)} {ObjectIndexes.FireQuartz:D} 1";
             IridiumSprinklerValues[7] = $"{ObjectIndexes.GoldBar:D} 4 {ObjectIndexes.Battery:D} 1 {ObjectIndexes.Stone:D} 30";
-            IridiumSprinklerValues[8] = $"{ObjectIndexes.IridiumBar:D} 1 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.FrozenGeode:D} 2";
-            IridiumSprinklerValues[9] = $"{ObjectIndexes.Hardwood:D} 10 {ObjectIndexes.FrozenTear:D} 1 {ObjectIndexes.GoldBar:D} 2";
+            IridiumSprinklerValues[8] = $"{ObjectIndexes.IridiumBar:D} 1 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.FrozenGeode:D} {rng.Next(1, 4)}";
+            IridiumSprinklerValues[9] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.FrozenTear:D} 1 {ObjectIndexes.GoldBar:D} {rng.Next(1, 4)}";
             IridiumSprinklerValues[10] = $"{ObjectIndexes.Stone:D} 40 {ObjectIndexes.IridiumBar:D} 1 {ObjectIndexes.Battery:D} 1";
 
             string[] StaircaseValues = new string[6];
-            StaircaseValues[0] = $"{ObjectIndexes.Geode:D} 2 {ObjectIndexes.Wood:D} 10";
+            StaircaseValues[0] = $"{ObjectIndexes.Geode:D} {rng.Next(1, 4)} {ObjectIndexes.Wood:D} 10";
             StaircaseValues[1] = $"{ObjectIndexes.Stone:D} 125";
-            StaircaseValues[2] = $"{ObjectIndexes.IronBar:D} 4 {ObjectIndexes.Clay:D} 5";
-            StaircaseValues[3] = $"{ObjectIndexes.Stone:D} 50 {ObjectIndexes.SolarEssence:D} 5";
-            StaircaseValues[4] = $"{ObjectIndexes.OmniGeode:D} 2 {ObjectIndexes.VoidEssence:D} 5";
+            StaircaseValues[2] = $"{ObjectIndexes.IronBar:D} 4 {ObjectIndexes.Clay:D} {rng.Next(1, 11)}";
+            StaircaseValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(3, 20) * 5} {ObjectIndexes.SolarEssence:D} {rng.Next(1, 11)}";
+            StaircaseValues[4] = $"{ObjectIndexes.OmniGeode:D} {rng.Next(1, 4)} {ObjectIndexes.VoidEssence:D} {rng.Next(1, 11)}";
             StaircaseValues[5] = $"{ObjectIndexes.Hardwood:D} {rng.Next(5, 15)}";
 
             string[] BasicFertilizerValues = new string[6];
             BasicFertilizerValues[0] = $"{ObjectIndexes.Sap:D} 3";
             BasicFertilizerValues[1] = $"{ObjectIndexes.Sap:D} 1 {ObjectIndexes.Fiber:D} 1";
-            BasicFertilizerValues[2] = $"{ObjectIndexes.Hay:D} 2";
+            BasicFertilizerValues[2] = $"{ObjectIndexes.Hay:D} {rng.Next(1, 4)}";
             BasicFertilizerValues[3] = $"{ObjectIndexes.Wood:D} 1 {ObjectIndexes.Stone:D} 1";
             BasicFertilizerValues[4] = $"{ObjectIndexes.Sap:D} 1";
             BasicFertilizerValues[5] = $"{ObjectIndexes.Sap:D} 3 {ObjectIndexes.Fiber:D} 1";
 
             string[] QualityFertilizerValues = new string[6];
-            QualityFertilizerValues[0] = $"{ObjectIndexes.Sap:D} 2 {ObjectIndexes.AnyFish:D} 1";
+            QualityFertilizerValues[0] = $"{ObjectIndexes.Sap:D} {rng.Next(1, 4)} {ObjectIndexes.AnyFish:D} 1";
             QualityFertilizerValues[1] = $"{ObjectIndexes.Sap:D} 1 {ObjectIndexes.BugMeat:D} 1";
             QualityFertilizerValues[2] = $"{ObjectIndexes.Clay:D} 1 {ObjectIndexes.AnyFish:D} 1";
-            QualityFertilizerValues[3] = $"{ObjectIndexes.Stone:D} 1 {ObjectIndexes.AnyFish:D} 5";
-            QualityFertilizerValues[4] = $"{ObjectIndexes.Sap:D} 1 {ObjectIndexes.Fiber:D} 5";
+            QualityFertilizerValues[3] = $"{ObjectIndexes.Stone:D} 1 {ObjectIndexes.AnyFish:D} {rng.Next(1, 11)}";
+            QualityFertilizerValues[4] = $"{ObjectIndexes.Sap:D} 1 {ObjectIndexes.Fiber:D} {rng.Next(1, 11)}";
             QualityFertilizerValues[5] = $"{ObjectIndexes.CopperOre:D} 1 {ObjectIndexes.Hay:D} 4";
 
             string[] CherryBombValues = new string[4];
             CherryBombValues[0] = $"{ObjectIndexes.CopperOre:D} 4 {ObjectIndexes.Coal:D} 1";
-            CherryBombValues[1] = $"{ObjectIndexes.Stone:D} 5 {ObjectIndexes.Coal:D} 1";
+            CherryBombValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 11)} {ObjectIndexes.Coal:D} 1";
             CherryBombValues[2] = $"{ObjectIndexes.BatWing:D} 1 {ObjectIndexes.Geode:D} 1";
             CherryBombValues[3] = $"{ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Coal:D} 1";
 
             string[] BombValues = new string[6];
             BombValues[0] = $"{ObjectIndexes.IronOre:D} 4 {ObjectIndexes.BatWing:D} 1 {ObjectIndexes.Coal:D} 1";
-            BombValues[1] = $"{ObjectIndexes.CopperOre:D} 2 {ObjectIndexes.IronOre:D} 2 {ObjectIndexes.Coal:D} 2";
-            BombValues[2] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Coal:D} 1";
-            BombValues[3] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.VoidEssence:D} 2";
-            BombValues[4] = $"{ObjectIndexes.GoldOre:D} 4 {ObjectIndexes.Sap:D} 5";
-            BombValues[5] = $"{ObjectIndexes.IronOre:D} 4 {ObjectIndexes.Sap:D} 5";
+            BombValues[1] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 4)} {ObjectIndexes.IronOre:D} {rng.Next(1, 4)} {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
+            BombValues[2] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Coal:D} 1";
+            BombValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.VoidEssence:D} {rng.Next(1, 4)}";
+            BombValues[4] = $"{ObjectIndexes.GoldOre:D} 4 {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            BombValues[5] = $"{ObjectIndexes.IronOre:D} 4 {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
 
             string[] MegaBombValues = new string[6];
-            MegaBombValues[0] = $"{ObjectIndexes.GoldOre:D} 2 {ObjectIndexes.FireQuartz:D} 1";
-            MegaBombValues[1] = $"{ObjectIndexes.CopperOre:D} 4 {ObjectIndexes.IronOre:D} 4 {ObjectIndexes.Coal:D} 2";
-            MegaBombValues[2] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Quartz:D} 1";
-            MegaBombValues[3] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Slime:D} 20 {ObjectIndexes.Coal:D} 1";
-            MegaBombValues[4] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.SolarEssence:D} 2";
-            MegaBombValues[5] = $"{ObjectIndexes.CopperOre:D} 2 {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Coal:D} 1";
+            MegaBombValues[0] = $"{ObjectIndexes.GoldOre:D} {rng.Next(1, 4)} {ObjectIndexes.FireQuartz:D} 1";
+            MegaBombValues[1] = $"{ObjectIndexes.CopperOre:D} 4 {ObjectIndexes.IronOre:D} 4 {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
+            MegaBombValues[2] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Quartz:D} 1";
+            MegaBombValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Coal:D} 1";
+            MegaBombValues[4] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.SolarEssence:D} {rng.Next(1, 4)}";
+            MegaBombValues[5] = $"{ObjectIndexes.CopperOre:D} {rng.Next(1, 4)} {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Coal:D} 1";
 
             string[] FieldSnackValues = new string[4];
-            FieldSnackValues[0] = $"{ObjectIndexes.Acorn:D} 1 {ObjectIndexes.Fiber:D} 5 {ObjectIndexes.Sap:D} 5";
-            FieldSnackValues[1] = $"{ObjectIndexes.MapleSeed:D} 1 {ObjectIndexes.PineCone:D} 2";
-            FieldSnackValues[2] = $"{ObjectIndexes.Fiber:D} 10 {ObjectIndexes.PineCone:D} 1 {ObjectIndexes.Clay:D} 1";
-            FieldSnackValues[3] = $"{ObjectIndexes.Acorn:D} 2 {ObjectIndexes.Clay:D} 1";
+            FieldSnackValues[0] = $"{ObjectIndexes.Acorn:D} 1 {ObjectIndexes.Fiber:D} {rng.Next(1, 11)} {ObjectIndexes.Sap:D} {rng.Next(1, 11)}";
+            FieldSnackValues[1] = $"{ObjectIndexes.MapleSeed:D} 1 {ObjectIndexes.PineCone:D} {rng.Next(1, 4)}";
+            FieldSnackValues[2] = $"{ObjectIndexes.Fiber:D} {rng.Next(1, 4) * 5} {ObjectIndexes.PineCone:D} 1 {ObjectIndexes.Clay:D} 1";
+            FieldSnackValues[3] = $"{ObjectIndexes.Acorn:D} {rng.Next(1, 4)} {ObjectIndexes.Clay:D} 1";
 
             string[] BaitValues = new string[6];
             BaitValues[0] = $"{ObjectIndexes.BugMeat:D} 1";
-            BaitValues[1] = $"{ObjectIndexes.BugMeat:D} 2";
+            BaitValues[1] = $"{ObjectIndexes.BugMeat:D} {rng.Next(1, 4)}";
             BaitValues[2] = $"{ObjectIndexes.Sap:D} 1";
             BaitValues[3] = $"{ObjectIndexes.BugMeat:D} 1 {ObjectIndexes.Slime:D} 1";
             BaitValues[4] = $"{ObjectIndexes.Slime:D} 1 {ObjectIndexes.Sap:D} 1";
-            BaitValues[5] = $"{ObjectIndexes.Fiber:D} 2";
+            BaitValues[5] = $"{ObjectIndexes.Fiber:D} {rng.Next(1, 4)}";
 
             string[] RainTotemValues = new string[4];
-            RainTotemValues[0] = $"{ObjectIndexes.Hardwood:D} 1 {ObjectIndexes.TruffleOil:D} 1 {ObjectIndexes.PineTar:D} 5";
+            RainTotemValues[0] = $"{ObjectIndexes.Hardwood:D} 1 {ObjectIndexes.TruffleOil:D} 1 {ObjectIndexes.PineTar:D} {rng.Next(1, 11)}";
             RainTotemValues[1] = $"{ObjectIndexes.WarpTotemFarm:D} 1 {ObjectIndexes.IridiumBar:D} 1 {ObjectIndexes.OakResin:D} 1";
-            RainTotemValues[2] = $"{ObjectIndexes.WarpTotemMountains:D} 1 {ObjectIndexes.RainbowShell:D} 1 {ObjectIndexes.Clay:D} 5";
-            RainTotemValues[3] = $"{ObjectIndexes.Hardwood:D} 2 {ObjectIndexes.Oil:D} 5 {ObjectIndexes.PineTar:D} 2 {ObjectIndexes.MapleSyrup:D} 2";
+            RainTotemValues[2] = $"{ObjectIndexes.WarpTotemMountains:D} 1 {ObjectIndexes.RainbowShell:D} 1 {ObjectIndexes.Clay:D} {rng.Next(1, 11)}";
+            RainTotemValues[3] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4)} {ObjectIndexes.Oil:D} {rng.Next(1, 11)} {ObjectIndexes.PineTar:D} {rng.Next(1, 4)} {ObjectIndexes.MapleSyrup:D} {rng.Next(1, 4)}";
 
             string[] TrapBobberValues = new string[4];
-            TrapBobberValues[0] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.BatWing:D} 5";
+            TrapBobberValues[0] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.BatWing:D} {rng.Next(1, 11)}";
             TrapBobberValues[1] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.RefinedQuartz:D} 1";
-            TrapBobberValues[2] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Clay:D} 5";
-            TrapBobberValues[3] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.SolarEssence:D} 5";
+            TrapBobberValues[2] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Clay:D} {rng.Next(1, 11)}";
+            TrapBobberValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.SolarEssence:D} {rng.Next(1, 11)}";
 
             string[] CrabPotValues = new string[6];
-            CrabPotValues[0] = $"{ObjectIndexes.Stone:D} 10 {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.BatWing:D} 5";
+            CrabPotValues[0] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.BatWing:D} {rng.Next(1, 11)}";
             CrabPotValues[1] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.RefinedQuartz:D} 1";
-            CrabPotValues[2] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Clay:D} 5";
-            CrabPotValues[3] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.SolarEssence:D} 5";
-            CrabPotValues[4] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.VoidEssence:D} 5";
+            CrabPotValues[2] = $"{ObjectIndexes.IronBar:D} 1 {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Clay:D} {rng.Next(1, 11)}";
+            CrabPotValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.SolarEssence:D} {rng.Next(1, 11)}";
+            CrabPotValues[4] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.VoidEssence:D} {rng.Next(1, 11)}";
             CrabPotValues[5] = $"{ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.FrozenTear:D} 1";
 
             this._recipeReplacements["Chest"] = $"{chestValues[rng.Next(0, 14)]}/Home/130/true/null";
@@ -711,15 +711,13 @@ namespace Randomizer {
             CraftsRoom14Values[2] = $"Quality Summer Foraging/O {ObjectIndexes.SummerSeeds:D} 40/{ObjectIndexes.Grape:D} 1 2 {ObjectIndexes.SweetPea:D} 1 2 {ObjectIndexes.SpiceBerry:D} 1 2/3";
             CraftsRoom14Values[3] = $"Summer Bulk Foraging/O {ObjectIndexes.OmniGeode:D} {rng.Next(10, 20)}/{ObjectIndexes.Grape:D} {rng.Next(3, 6)} 0 {ObjectIndexes.SpiceBerry:D} {rng.Next(3, 6)} 0 {ObjectIndexes.SweetPea:D} {rng.Next(3, 6)} 0 {ObjectIndexes.FiddleHeadFern:D} {rng.Next(3, 6)} 0/3";
             CraftsRoom14Values[4] = $"Crop Enhancer/O {ObjectIndexes.QualitySprinkler:D} 5/{ObjectIndexes.BasicFertilizer:D} {rng.Next(5, 20)} 0 {ObjectIndexes.SpeedGro:D} {rng.Next(10, 20)} 0 {ObjectIndexes.BasicRetainingSoil:D} {rng.Next(10, 20)} 0/3";
-            CraftsRoom14Values[5] = $"Trinkets/O {ObjectIndexes.GlowRing:D} 1/{ObjectIndexes.CherryBomb:D} {rng.Next(1, 6)} 0 {ObjectIndexes.Spinner:D} 1 0 {ObjectIndexes.FieldSnack:D} {rng.Next(2, 6)} 0/3";
+            CraftsRoom14Values[5] = $"Trinkets/O {ObjectIndexes.OmniGeode:D} {rng.Next(2, 11)}/{ObjectIndexes.CherryBomb:D} {rng.Next(1, 6)} 0 {ObjectIndexes.Spinner:D} 1 0 {ObjectIndexes.FieldSnack:D} {rng.Next(2, 6)} 0/3";
 
-            string[] CraftsRoom15Values = new string[6];
+            string[] CraftsRoom15Values = new string[4];
             CraftsRoom15Values[0] = $"Fall Foraging/O {ObjectIndexes.FallSeeds:D} {rng.Next(20, 40)}/{ObjectIndexes.CommonMushroom:D} {rng.Next(1, 3)} 0 {ObjectIndexes.WildPlum:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Hazelnut:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Blackberry:D} {rng.Next(1, 3)} 0/2";
             CraftsRoom15Values[1] = $"Quality Fall Foraging/BO 15 1/{ObjectIndexes.CommonMushroom:D} 1 2 {ObjectIndexes.WildPlum:D} 1 2 {ObjectIndexes.Hazelnut:D} 1 2 {ObjectIndexes.Blackberry:D} 1 2/2";
             CraftsRoom15Values[2] = $"Fall Bulk Foraging/BO 68 1/{ObjectIndexes.CommonMushroom:D} {rng.Next(3, 6)} 0 {ObjectIndexes.WildPlum:D} {rng.Next(3, 6)} 0 {ObjectIndexes.Hazelnut:D} {rng.Next(3, 6)} 0 {ObjectIndexes.Blackberry:D} {rng.Next(3, 6)} 0/2";
-            CraftsRoom15Values[3] = $"Rings/BO 162 1/{ObjectIndexes.SturdyRing:D} 1 0 {ObjectIndexes.WarriorRing:D} 1 0 {ObjectIndexes.SmallMagnetRing:D} 1 0 {ObjectIndexes.SmallGlowRing:D} 1 0/3";
-            CraftsRoom15Values[4] = $"Rings/R {ObjectIndexes.BurglarsRing:D} 1/{ObjectIndexes.SturdyRing:D} 1 0 {ObjectIndexes.WarriorRing:D} 1 0 {ObjectIndexes.RingofYoba:D} 1 0 {ObjectIndexes.IridiumBand:D} 1 0 {ObjectIndexes.SmallGlowRing:D} 1 0 {ObjectIndexes.SmallMagnetRing:D} 1 0/3";
-            CraftsRoom15Values[5] = $"Wood/R {ObjectIndexes.TopazRing:D} 1/{ObjectIndexes.Wood:D} 99 0 {ObjectIndexes.Hardwood:D} 20 0 {ObjectIndexes.WoodFence:D} 10 0 {ObjectIndexes.WoodFloor:D} 10 0/3";
+            CraftsRoom15Values[3] = $"Wood/BO 15 1/{ObjectIndexes.Wood:D} 99 0 {ObjectIndexes.Hardwood:D} 20 0 {ObjectIndexes.WoodFence:D} 10 0 {ObjectIndexes.WoodFloor:D} 10 0/3";
 
             string[] CraftsRoom16Values = new string[6];
             CraftsRoom16Values[0] = $"Winter Foraging/O {ObjectIndexes.WinterSeeds:D} {rng.Next(20, 40)}/{ObjectIndexes.WinterRoot:D} {rng.Next(1, 3)} 0 {ObjectIndexes.CrystalFruit:D} {rng.Next(1, 3)} 0 {ObjectIndexes.SnowYam:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Crocus:D} {rng.Next(1, 3)} 0/6";
@@ -727,22 +725,22 @@ namespace Randomizer {
             CraftsRoom16Values[2] = $"Quality Winter Foraging/O {ObjectIndexes.WinterSeeds:D} {rng.Next(20, 40)}/{ObjectIndexes.WinterRoot:D} 1 2 {ObjectIndexes.CrystalFruit:D} 1 2 {ObjectIndexes.SnowYam:D} 1 2 {ObjectIndexes.Crocus:D} 1 2/6";
             CraftsRoom16Values[3] = $"Winter Bulk Foraging/BO 19 1/{ObjectIndexes.WinterRoot:D} {rng.Next(3, 5)} 0 {ObjectIndexes.CrystalFruit:D} {rng.Next(3, 5)} 0 {ObjectIndexes.SnowYam:D} {rng.Next(3, 5)} 0 {ObjectIndexes.Crocus:D} {rng.Next(3, 5)} 0/6";
             CraftsRoom16Values[4] = $"Sprinkler/O {ObjectIndexes.AncientSeeds:D} {rng.Next(5, 20)}/{ObjectIndexes.Sprinkler:D} {rng.Next(3, 5)} 0 {ObjectIndexes.QualitySprinkler:D} {rng.Next(2, 5)} 0 {ObjectIndexes.IridiumSprinkler:D} 1 0/6";
-            CraftsRoom16Values[5] = $"Geode/O {ObjectIndexes.GlowRing:D} 1/{ObjectIndexes.Geode:D} {rng.Next(1, 5)} 0 {ObjectIndexes.FrozenGeode:D} {rng.Next(1, 5)} 0 {ObjectIndexes.MagmaGeode:D} {rng.Next(1, 5)} 0 {ObjectIndexes.OmniGeode:D} {rng.Next(1, 5)} 0/3";
+            CraftsRoom16Values[5] = $"Geode/R {ObjectIndexes.GlowRing:D} 1/{ObjectIndexes.Geode:D} {rng.Next(1, 5)} 0 {ObjectIndexes.FrozenGeode:D} {rng.Next(1, 5)} 0 {ObjectIndexes.MagmaGeode:D} {rng.Next(1, 5)} 0 {ObjectIndexes.OmniGeode:D} {rng.Next(1, 5)} 0/3";
 
             string[] CraftsRoom17Values = new string[6];
             CraftsRoom17Values[0] = $"Construction/BO 114 1/{ObjectIndexes.Wood:D} {rng.Next(50, 200)} 0 {ObjectIndexes.Wood:D} {rng.Next(50, 200)} 0 {ObjectIndexes.Stone:D} {rng.Next(50, 200)} 0 {ObjectIndexes.Hardwood:D} {rng.Next(5, 20)} 0/4";
             CraftsRoom17Values[1] = $"Construction/BO 128 1/{ObjectIndexes.Hardwood:D} {rng.Next(10, 20)} 0 {ObjectIndexes.Clay:D} {rng.Next(10, 20)} 0 {ObjectIndexes.WoodFence:D} {rng.Next(20, 50)} 0 {ObjectIndexes.StoneFence:D} {rng.Next(20, 50)} 0/4";
             CraftsRoom17Values[2] = $"Construction/BO 69 1/{ObjectIndexes.HardwoodFence:D} {rng.Next(10, 20)} 0 {ObjectIndexes.Clay:D} {rng.Next(10, 20)} 0 {ObjectIndexes.Wood:D} {rng.Next(50, 150)} 0 {ObjectIndexes.Stone:D} {rng.Next(50, 150)} 0/4"; ;
-            CraftsRoom17Values[3] = $"Trash/O {ObjectIndexes.MagnetRing:D} 1/{ObjectIndexes.Trash:D} {rng.Next(1, 3)} 0 {ObjectIndexes.JojaCola:D} 1 0 {ObjectIndexes.Driftwood:D} {rng.Next(2, 5)} 0/3";
-            CraftsRoom17Values[4] = $"Reclaimer's/O {ObjectIndexes.MagnetRing:D} 1/{ObjectIndexes.BrokenCD:D} {rng.Next(1, 6)} 0 {ObjectIndexes.BrokenGlasses:D} 1 0 {ObjectIndexes.SoggyNewspaper:D} {rng.Next(2, 6)} 0 {ObjectIndexes.Driftwood:D} {rng.Next(2, 6)} 0 {ObjectIndexes.JojaCola:D} {rng.Next(2, 6)} 0/3";
-            CraftsRoom17Values[5] = $"Trash/O {ObjectIndexes.MagnetRing:D} 1/{ObjectIndexes.SoggyNewspaper:D} {rng.Next(2, 5)} 0 {ObjectIndexes.Bait:D} {rng.Next(10, 20)} 0 {ObjectIndexes.BrokenCD:D} 1 0 {ObjectIndexes.BrokenGlasses:D} 1 0/3";
+            CraftsRoom17Values[3] = $"Trash/R {ObjectIndexes.MagnetRing:D} 1/{ObjectIndexes.Trash:D} {rng.Next(1, 3)} 0 {ObjectIndexes.JojaCola:D} 1 0 {ObjectIndexes.Driftwood:D} {rng.Next(2, 5)} 0/3";
+            CraftsRoom17Values[4] = $"Reclaimer's/R {ObjectIndexes.MagnetRing:D} 1/{ObjectIndexes.BrokenCD:D} {rng.Next(1, 6)} 0 {ObjectIndexes.BrokenGlasses:D} 1 0 {ObjectIndexes.SoggyNewspaper:D} {rng.Next(2, 6)} 0 {ObjectIndexes.Driftwood:D} {rng.Next(2, 6)} 0 {ObjectIndexes.JojaCola:D} {rng.Next(2, 6)} 0/3";
+            CraftsRoom17Values[5] = $"Trash/R {ObjectIndexes.MagnetRing:D} 1/{ObjectIndexes.SoggyNewspaper:D} {rng.Next(2, 5)} 0 {ObjectIndexes.Bait:D} {rng.Next(10, 20)} 0 {ObjectIndexes.BrokenCD:D} 1 0 {ObjectIndexes.BrokenGlasses:D} 1 0/3";
 
             string[] CraftsRoom19Values = new string[6];
             CraftsRoom19Values[0] = $"Exotic Foraging/O {ObjectIndexes.AutumnsBounty:D} 5/{ObjectIndexes.Coconut:D} 1 0 {ObjectIndexes.CactusFruit:D} 1 0 {ObjectIndexes.CaveCarrot:D} 1 0 {ObjectIndexes.RedMushroom:D} 1 0 {ObjectIndexes.PurpleMushroom:D} 1 0 {ObjectIndexes.MapleSyrup:D} 1 0 {ObjectIndexes.OakResin:D} 1 0 {ObjectIndexes.PineTar:D} 1 0 {ObjectIndexes.Morel:D} 1 0/1/5";
             CraftsRoom19Values[1] = $"Gem Collection/O {ObjectIndexes.IridiumBand:D} 1/{ObjectIndexes.Emerald:D} 1 0 {ObjectIndexes.Topaz:D} 1 0 {ObjectIndexes.Ruby:D} 1 0 {ObjectIndexes.Jade:D} 1 0 {ObjectIndexes.Aquamarine:D} 1 0 {ObjectIndexes.Amethyst:D} 1 0 {ObjectIndexes.Diamond:D} 1 0/1";
             CraftsRoom19Values[2] = $"FAKE NEWS/BO 20 1/{ObjectIndexes.SoggyNewspaper:D} {rng.Next(10, 20)} 0 {ObjectIndexes.SoggyNewspaper:D} {rng.Next(1, 4)} 0 {ObjectIndexes.SoggyNewspaper:D} {rng.Next(1, 3)} 0/1";
-            CraftsRoom19Values[3] = $"Exotic Foraging/O {ObjectIndexes.AmethystRing:D} 1/{ObjectIndexes.Coconut:D} 1 0 {ObjectIndexes.CactusFruit:D} 1 0 {ObjectIndexes.CaveCarrot:D} 1 0 {ObjectIndexes.FiddleHeadFern:D} 1 0 {ObjectIndexes.Chanterelle:D} 1 0/1";
-            CraftsRoom19Values[4] = $"Gross/O {ObjectIndexes.EmeraldRing:D} 1/{ObjectIndexes.Slime:D} 50 0 {ObjectIndexes.Seaweed:D} 1 0 {ObjectIndexes.GreenAlgae:D} 1 0 {ObjectIndexes.WhiteAlgae:D} 1 0 {ObjectIndexes.BugMeat:D} 10 0/1";
+            CraftsRoom19Values[3] = $"Exotic Foraging/R {ObjectIndexes.AmethystRing:D} 1/{ObjectIndexes.Coconut:D} 1 0 {ObjectIndexes.CactusFruit:D} 1 0 {ObjectIndexes.CaveCarrot:D} 1 0 {ObjectIndexes.FiddleHeadFern:D} 1 0 {ObjectIndexes.Chanterelle:D} 1 0/1";
+            CraftsRoom19Values[4] = $"Gross/R {ObjectIndexes.EmeraldRing:D} 1/{ObjectIndexes.Slime:D} 50 0 {ObjectIndexes.Seaweed:D} 1 0 {ObjectIndexes.GreenAlgae:D} 1 0 {ObjectIndexes.WhiteAlgae:D} 1 0 {ObjectIndexes.BugMeat:D} 10 0/1";
             CraftsRoom19Values[5] = $"Tree/BO 55 1/{ObjectIndexes.MapleSyrup:D} {rng.Next(1, 5)} 0 {ObjectIndexes.PineTar:D} {rng.Next(1, 5)} 0 {ObjectIndexes.OakResin:D} {rng.Next(1, 5)} 0 {ObjectIndexes.MapleSeed:D} {rng.Next(1, 5)} 0 {ObjectIndexes.PineCone:D} {rng.Next(1, 5)} 0 {ObjectIndexes.Acorn:D} {rng.Next(1, 5)} 0/1";
 
 
@@ -894,7 +892,7 @@ namespace Randomizer {
 
             this._bundleReplacements["Crafts Room/13"] = CraftsRoom13Values[rng.Next(0, 6)];
             this._bundleReplacements["Crafts Room/14"] = CraftsRoom14Values[rng.Next(0, 6)];
-            this._bundleReplacements["Crafts Room/15"] = CraftsRoom15Values[rng.Next(0, 6)];
+            this._bundleReplacements["Crafts Room/15"] = CraftsRoom15Values[rng.Next(0, 4)];
             this._bundleReplacements["Crafts Room/16"] = CraftsRoom16Values[rng.Next(0, 6)];
             this._bundleReplacements["Crafts Room/17"] = CraftsRoom17Values[rng.Next(0, 6)];
             this._bundleReplacements["Crafts Room/19"] = CraftsRoom19Values[rng.Next(0, 6)];
@@ -985,8 +983,8 @@ namespace Randomizer {
                 { (int)ObjectIndexes.RhubarbSeeds, $"Rhubarb Seeds/{rng.Next(45, 60)}/-300/Seeds -74/Rhubarb Seeds/Plant these in the spring. Takes 13 days to mature. Normal seed market price is 100g"},
                 { (int)ObjectIndexes.StrawberrySeeds, $"Strawberry Seeds/0/-300/Seeds -74/Strawberry Seeds/Plant these in spring. Takes 8 days to mature, and keeps producing strawberries after that. Normal seed market price is 100g"},
                 { (int)ObjectIndexes.TulipBulb, $"Tulip Bulb/{rng.Next(3, 7)}/-300/Seeds -74/Tulip Bulb/Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors. Normal seed market price is 10g"},
-                { (int)ObjectIndexes.CherrySapling, $"Cherry Sapling/{rng.Next(50, 105) * 10}/-300/Basic -74/Cherry Sapling/Takes 28 days to produce a mature cherry tree. Bears fruit in the spring. Normal market price 3,400g. Only grows if the 8 surrounding \"tiles\" are empty."},
-                { (int)ObjectIndexes.ApricotSapling, $"Apricot Sapling/{rng.Next(30, 65) *10}/-300/Basic -74/Apricot Sapling/Takes 28 days to produce a mature Apricot tree. Bears fruit in the spring. Normal market price 2,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
+                //{ (int)ObjectIndexes.CherrySapling, $"Cherry Sapling/{rng.Next(50, 105) * 10}/-300/Basic -74/Cherry Sapling/Takes 28 days to produce a mature cherry tree. Bears fruit in the spring. Normal market price 3,400g. Only grows if the 8 surrounding \"tiles\" are empty."},
+                //{ (int)ObjectIndexes.ApricotSapling, $"Apricot Sapling/{rng.Next(30, 65) *10}/-300/Basic -74/Apricot Sapling/Takes 28 days to produce a mature Apricot tree. Bears fruit in the spring. Normal market price 2,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
                 
                 //Summer Crops
                 { (int)ObjectIndexes.BlueberrySeeds, $"Blueberry Seeds/{rng.Next(35, 50)}/-300/Seeds -74/Blueberry Seeds/Plant these in the summer. Takes 13 days to mature, and continues to produce after first harvest. Normal seed market price is 80g"},
@@ -1001,8 +999,8 @@ namespace Randomizer {
                 { (int)ObjectIndexes.SunflowerSeeds, $"Sunflower Seeds/{rng.Next(15, 25)}/-300/Seeds -74/Sunflower Seeds/Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest. Normal seed market price is 200g"},
                 { (int)ObjectIndexes.TomatoSeeds, $"Tomato Seeds/{rng.Next(20, 35)}/-300/Seeds -74/Tomato Seeds/Plant these in the summer. Takes 11 days to mature, and continues to produce after first harvest. Normal seed market price is 50g"},
                 { (int)ObjectIndexes.WheatSeeds, $"Wheat Seeds/{rng.Next(3, 11)}/-300/Seeds -74/Wheat Seeds/Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe. Normal seed market price is 10g"},
-                { (int)ObjectIndexes.OrangeSapling, $"Orange Sapling/{rng.Next(65, 125) * 10}/-300/Basic -74/Orange Sapling/Takes 28 days to produce a mature Orange tree. Bears fruit in the summer. Normal seed market price is 4,000g Only grows if the 8 surrounding \"tiles\" are empty."},
-                { (int)ObjectIndexes.PeachSapling, $"Peach Sapling/{rng.Next(110, 175) * 10}/-300/Basic -74/Peach Sapling/Takes 28 days to produce a mature Peach tree. Bears fruit in the summer. Normal seed market price is 6,000g Only grows if the 8 surrounding \"tiles\" are empty."},
+                //{ (int)ObjectIndexes.OrangeSapling, $"Orange Sapling/{rng.Next(65, 125) * 10}/-300/Basic -74/Orange Sapling/Takes 28 days to produce a mature Orange tree. Bears fruit in the summer. Normal seed market price is 4,000g Only grows if the 8 surrounding \"tiles\" are empty."},
+                //{ (int)ObjectIndexes.PeachSapling, $"Peach Sapling/{rng.Next(110, 175) * 10}/-300/Basic -74/Peach Sapling/Takes 28 days to produce a mature Peach tree. Bears fruit in the summer. Normal seed market price is 6,000g Only grows if the 8 surrounding \"tiles\" are empty."},
                 
                 //Fall Crops
                 { (int)ObjectIndexes.AmaranthSeeds, $"Amaranth Seeds/{rng.Next(30, 45)}/-300/Seeds -74/Amaranth Seeds/Plant these in the fall. Takes 7 days to grow. Harvest with the scythe. Normal seed market price is 70g"},
@@ -1015,8 +1013,8 @@ namespace Randomizer {
                 { (int)ObjectIndexes.GrapeStarter, $"Grape Starter/{rng.Next(25, 40)}/-300/Seeds -74/Grape Starter/Plant these in the fall. Takes 10 days to grow, but keeps producing after that. Grows on a trellis. Normal seed market price is 60g"},
                 { (int)ObjectIndexes.PumpkinSeeds, $"Pumpkin Seeds/{rng.Next(40, 70)}/-300/Seeds -74/Pumpkin Seeds/Plant these in the fall. Takes 13 days to mature. Normal seed market price is 100g"},
                 { (int)ObjectIndexes.YamSeeds, $"Yam Seeds/{rng.Next(25, 40)}/-300/Seeds -74/Yam Seeds/Plant these in the fall. Takes 10 days to mature. Normal seed market price is 60g"},
-                { (int)ObjectIndexes.AppleSapling, $"Apple Sapling/{rng.Next(65, 125) * 10}/-300/Basic -74/Apple Sapling/Takes 28 days to produce a mature Apple tree. Bears fruit in the fall. Normal market price is 4,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
-                { (int)ObjectIndexes.PomegranateSapling, $"Pomegranate Sapling/{rng.Next(110, 175) * 10}/-300/Basic -74/Pomegranate Sapling/Takes 28 days to produce a mature Pomegranate tree. Bears fruit in the fall. Normal market price is 6,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
+                //{ (int)ObjectIndexes.AppleSapling, $"Apple Sapling/{rng.Next(65, 125) * 10}/-300/Basic -74/Apple Sapling/Takes 28 days to produce a mature Apple tree. Bears fruit in the fall. Normal market price is 4,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
+                //{ (int)ObjectIndexes.PomegranateSapling, $"Pomegranate Sapling/{rng.Next(110, 175) * 10}/-300/Basic -74/Pomegranate Sapling/Takes 28 days to produce a mature Pomegranate tree. Bears fruit in the fall. Normal market price is 6,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
 
             };
 
@@ -1124,7 +1122,7 @@ namespace Randomizer {
                     this._locationsReplacements["Backwoods"] = "396 .5 398 .8/20 .7 16 .5/404 .4 406 .4 408 .9/414 .25 418 .4 283 .5/136 -1 142 -1 153 -1 702 -1 700 -1 163 -1/136 -1 142 -1 153 -1 138 -1 702 -1 700 -1 698 -1/136 -1 140 -1 142 -1 153 -1 702 -1 700 -1/136 -1 140 -1 141 -1 153 -1 707 -1 702 -1 700 -1 698 -1/382 .06 582 .1 378 .1 102 .15 390 .25 330 1";
                     this._locationsReplacements["Railroad"] = "396 .4 398 .4 402 .7/18 .9 20 .4 22 .7/406 .6 408 .4 410 .6/414 .8 418 .8/-1/-1/-1/-1/580 .1 378 .15 102 .19 390 .25 330 1";
                     this._locationsReplacements["Woods"] = "259 .9 420 .25/257 .5 404 .25 16 .8/281 .5 404 .6 420 .2/283 .9/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/390 .25 330 1";
-                    this._mod.Monitor.Log($"Spring Foragables swapped with Summer");
+                    //this._mod.Monitor.Log($"Spring Foragables swapped with Summer");
                     break;
                 case 1: // Fall/spring/summer/winter
                     this._locationsReplacements["BusStop"] = "406 .6 408 .4/18 .9 20 .4 22 .7/396 .4 398 .4 402 .7/414 .33 418 .6 283 .5/-1/-1/-1/-1/584 .08 378 .15 102 .15 390 .25 330 1";
@@ -1134,7 +1132,7 @@ namespace Randomizer {
                     this._locationsReplacements["Backwoods"] = "404 .4 406 .4 408 .9/20 .7 16 .5/396 .5 398 .8/414 .25 418 .4 283 .5/136 -1 142 -1 153 -1 702 -1 700 -1 163 -1/136 -1 142 -1 153 -1 138 -1 702 -1 700 -1 698 -1/136 -1 140 -1 142 -1 153 -1 702 -1 700 -1/136 -1 140 -1 141 -1 153 -1 707 -1 702 -1 700 -1 698 -1/382 .06 582 .1 378 .1 102 .15 390 .25 330 1";
                     this._locationsReplacements["Railroad"] = "406 .6 408 .4 410 .6/ 18 .9 20 .4 22 .7/396 .4 398 .4 402 .7/414 .8 418 .8/-1/-1/-1/-1/580 .1 378 .15 102 .19 390 .25 330 1";
                     this._locationsReplacements["Woods"] = "281 .5 404 .6 420 .2/257 .5 404 .25 16 .8/259 .9 420 .25/283 .9/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/390 .25 330 1";
-                    this._mod.Monitor.Log($"Foragables swapped Fall/spring/summer/winter");
+                    //this._mod.Monitor.Log($"Foragables swapped Fall/spring/summer/winter");
                     break;
                     
                 case 2: // spring/fall/summer/winter
@@ -1145,7 +1143,7 @@ namespace Randomizer {
                     this._locationsReplacements["Backwoods"] = "20 .7 16 .5/404 .4 406 .4 408 .9/396 .5 398 .8/414 .25 418 .4 283 .5/136 -1 142 -1 153 -1 702 -1 700 -1 163 -1/136 -1 142 -1 153 -1 138 -1 702 -1 700 -1 698 -1/136 -1 140 -1 142 -1 153 -1 702 -1 700 -1/136 -1 140 -1 141 -1 153 -1 707 -1 702 -1 700 -1 698 -1/382 .06 582 .1 378 .1 102 .15 390 .25 330 1";
                     this._locationsReplacements["Railroad"] = "18 .9 20 .4 22 .7/406 .6 408 .4 410 .6/396 .4 398 .4 402 .7/414 .8 418 .8/-1/-1/-1/-1/580 .1 378 .15 102 .19 390 .25 330 1";
                     this._locationsReplacements["Woods"] = "257 .5 404 .25 16 .8/281 .5 404 .6 420 .2/259 .9 420 .25/283 .9/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/390 .25 330 1";
-                    this._mod.Monitor.Log($"Foragables swapped spring/fall/summer/winter");
+                    //this._mod.Monitor.Log($"Foragables swapped spring/fall/summer/winter");
                     break;
                 case 3: //no swap
                     break;
