@@ -38,7 +38,6 @@ Google Document: https://goo.gl/vRH2nt
 
 ## BUGS
 
-* Rings as bundle rewards
 * Npc swap doesnt swap before intro cutscene
 
 ## Stardew Valley Randomizer Ideas
