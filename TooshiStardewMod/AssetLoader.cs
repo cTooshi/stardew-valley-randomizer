@@ -89,13 +89,13 @@ namespace Randomizer {
                 { "fall2", new List<string>{ "sappypiano", "event2", "woodsTheme","kindadumbautumn" }},
                 { "libraryTheme", new List<string>{ "50s", "MarlonsTheme", "playful" } },
                 { "fallFest", new List<string>{ "honkytonky" } },
-                { "FrostMine", new List<string>{ "shaneTheme", "sappypiano", "starshoot", "echoes", "junimoStarSong" } },
-                { "EarthMine", new List<string>{ "shaneTheme", "sappypiano", "starshoot", "echoes", "junimoStarSong" } },
+                { "FrostMine", new List<string>{ "shaneTheme", "sappypiano", "starshoot", "spirits_eve", "junimoStarSong" } },
+                { "EarthMine", new List<string>{ "shaneTheme", "sappypiano", "starshoot", "spirits_eve", "junimoStarSong" } },
                 { "clubloop", new List<string>{ "shimmeringbastion","Cowboy_OVERWORLD","cowboy_outlawsong" }},
                 { "marnieShop", new List<string>{ "CloudCountry", "playful"}},
                 { "springtown", new List<string>{"SettlingIn","CloudCountry","breezy","kindadumbautumn" }},
                 { "summer1", new List<string>{"EmilyTheme", "junimoStarSong", "MainTheme"}},
-                { "LavaMine", new List<string>{"submarine_song", "echoes", "WizardSong"}},
+                { "LavaMine", new List<string>{"submarine_song", "spirits_eve", "WizardSong"}},
                 { "spring1", new List<string>{"sweet","breezy"}},
                 { "spring2", new List<string>{"event2", "kindadumbautumn"}},
                 { "communityCenter", new List<string>{"AbigailFluteDuet", "EmilyDream"}},
@@ -109,7 +109,7 @@ namespace Randomizer {
                 int valuechoosen = rng.Next(0, pair.Value.Count);
                 if (rng.Next(100) < 65) {
                     musicSwap[pair.Key.ToLower()] = pair.Value[valuechoosen];
-                    //this._mod.Monitor.Log($"{pair.Key} changed to {pair.Value[valuechoosen]}");
+                    this._mod.Monitor.Log($"{pair.Key} changed to {pair.Value[valuechoosen]}");
                 }
             }
 
@@ -170,7 +170,6 @@ namespace Randomizer {
             //Randomize Schedules needs work
             this.AddReplacement("Characters/schedules/Linus", "Assets/Characters/schedules/LinusToSaloonSpring");
             this.AddReplacement("Characters/schedules/Caroline", "Assets/Characters/schedules/CarolineToEastTown");
-            this.AddReplacement("Characters/schedules/George", "Assets/Characters/schedules/GeorgeToSaloon");
 
 
             //Randomize Mines
@@ -301,7 +300,7 @@ namespace Randomizer {
                     // Add the swap to the dictionary
                     currentSwaps[swap.FirstCharacter] = swap.SecondCharacter;
                     currentSwaps[swap.SecondCharacter] = swap.FirstCharacter;
-                    //this._mod.Monitor.Log($"Swapping {swap.FirstCharacter} and {swap.SecondCharacter}");
+                    this._mod.Monitor.Log($"Swapping {swap.FirstCharacter} and {swap.SecondCharacter}");
 
                     // Add the replacements
                     this.AddReplacement($"Characters/{swap.FirstCharacter}", $"Assets/Characters/{swap.SecondCharacter}");

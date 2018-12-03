@@ -238,7 +238,6 @@ C:\Users\cloak\source\repos\cTooshi\stardew-valley-randomizer\TooshiStardewMod\b
 C:\Users\cloak\source\repos\cTooshi\stardew-valley-randomizer\TooshiStardewMod\bin\Debug\Assets\Characters\Bouncer.xnb
 C:\Users\cloak\source\repos\cTooshi\stardew-valley-randomizer\TooshiStardewMod\bin\Debug\Randomizer.dll
 C:\Users\cloak\source\repos\cTooshi\stardew-valley-randomizer\TooshiStardewMod\bin\Debug\Randomizer.pdb
-C:\Users\cloak\source\repos\cTooshi\stardew-valley-randomizer\TooshiStardewMod\obj\Debug\Randomizer.csprojAssemblyReference.cache
 C:\Users\cloak\source\repos\cTooshi\stardew-valley-randomizer\TooshiStardewMod\obj\Debug\Randomizer.csproj.CoreCompileInputs.cache
 C:\Users\cloak\source\repos\cTooshi\stardew-valley-randomizer\TooshiStardewMod\obj\Debug\Randomizer.dll
 C:\Users\cloak\source\repos\cTooshi\stardew-valley-randomizer\TooshiStardewMod\obj\Debug\Randomizer.pdb

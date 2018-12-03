@@ -86,7 +86,7 @@ namespace Randomizer {
         }
 
         public void CalculateEdits(Random rng) {
-            // Order matters here because it's using a rng
+            //Order matters here because it's using a rng
             this.CalculateRecipeEdits(rng);
             this.CalculateBundleEdits(rng);
             this.CalculateBlueprintEdits(rng);
@@ -635,7 +635,7 @@ namespace Randomizer {
             this._recipeReplacements["Bomb"] = $"{BombValues[rng.Next(0, 6)]}/Field/287/false/Mining {rng.Next(4, 8)}";
             this._recipeReplacements["Mega Bomb"] = $"{MegaBombValues[rng.Next(0, 6)]}/Field/288/false/Mining {rng.Next(8, 10)}";
             this._recipeReplacements["Field Snack"] = $"{FieldSnackValues[rng.Next(0, 4)]}/Home/403/false/Foraging {rng.Next(1, 4)}";
-            this._recipeReplacements["Bait Values"] = $"{BaitValues[rng.Next(0, 6)]}/Home/685 5/false/Fishing {rng.Next(1, 4)}";
+            this._recipeReplacements["Bait"] = $"{BaitValues[rng.Next(0, 6)]}/Home/685 5/false/Fishing {rng.Next(1, 4)}";
             this._recipeReplacements["Rain Totem"] = $"{RainTotemValues[rng.Next(0, 4)]}/Field/681/false/Foraging {rng.Next(8, 10)}";
             this._recipeReplacements["Trap Bobber"] = $"{TrapBobberValues[rng.Next(0, 4)]}/Home/694/false/Fishing {rng.Next(4, 9)}";
             this._recipeReplacements["Crab Pot"] = $"{CrabPotValues[rng.Next(0, 6)]}/Home/710/false/Fishing {rng.Next(1, 6)}";
@@ -701,8 +701,8 @@ namespace Randomizer {
             CraftsRoom13Values[0] = $"Spring Foraging/O {ObjectIndexes.SpringSeeds:D} {rng.Next(20, 50)}/{ObjectIndexes.WildHorseradish:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Daffodil:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Leek:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Dandelion:D} {rng.Next(1, 3)} 0 {ObjectIndexes.SpringOnion:D} {rng.Next(1, 3)} 0/0";
             CraftsRoom13Values[1] = $"Quality Spring Foraging/BO 25/{ObjectIndexes.WildHorseradish:D} 1 2 {ObjectIndexes.Daffodil:D} 1 2 {ObjectIndexes.Leek:D} 1 2 {ObjectIndexes.Dandelion:D} 1 2 {ObjectIndexes.SpringOnion:D} 1 2/0";
             CraftsRoom13Values[2] = $"Spring Bulk Foraging/O {ObjectIndexes.Diamond:D} {rng.Next(2, 4)}/{ObjectIndexes.WildHorseradish:D} {rng.Next(3, 5)} 0 {ObjectIndexes.Daffodil:D} {rng.Next(3, 5)} 0 {ObjectIndexes.Leek:D} {rng.Next(3, 5)} 0 {ObjectIndexes.Dandelion:D} {rng.Next(3, 5)} 0 {ObjectIndexes.SpringOnion:D} {rng.Next(3, 5)} 0/0";
-            CraftsRoom13Values[3] = $"Pathing/BO 114/{ObjectIndexes.WoodPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.SteppingStonePath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.CrystalPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WoodFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.Cobblestone:D} {rng.Next(10, 30)} 0 {ObjectIndexes.GravelPath:D} {rng.Next(10, 30)} 0/0/{rng.Next(4, 7)}";
-            CraftsRoom13Values[4] = $"Pathing/BO 114/{ObjectIndexes.WoodPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.StoneFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.CrystalFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.StrawFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WeatheredFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WoodFloor:D} {rng.Next(10, 30)} 0/0/{rng.Next(4, 7)}";
+            CraftsRoom13Values[3] = $"Pathing/O {ObjectIndexes.QualityFertilizer:D} 30/{ObjectIndexes.WoodPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.SteppingStonePath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.CrystalPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WoodFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.Cobblestone:D} {rng.Next(10, 30)} 0 {ObjectIndexes.GravelPath:D} {rng.Next(10, 30)} 0/0/{rng.Next(4, 7)}";
+            CraftsRoom13Values[4] = $"Pathing/O {ObjectIndexes.QualitySprinkler:D} 3/{ObjectIndexes.WoodPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.StoneFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.CrystalFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.StrawFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WeatheredFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WoodFloor:D} {rng.Next(10, 30)} 0/0/{rng.Next(4, 7)}";
             CraftsRoom13Values[5] = $"Totem/O {ObjectIndexes.RainTotem:D} {rng.Next(4, 10)}/{ObjectIndexes.WarpTotemFarm:D} 1 0 {ObjectIndexes.WarpTotemBeach:D} 1 0 {ObjectIndexes.WarpTotemMountains:D} 1 0 {ObjectIndexes.RainTotem:D} 1 0/3/3";
 
             string[] CraftsRoom14Values = new string[6];
@@ -803,7 +803,7 @@ namespace Randomizer {
             BoilerRoom21Values[0] = $"Geologist's/O {ObjectIndexes.OmniGeode:D} {rng.Next(2, 15)}/{ObjectIndexes.Quartz:D} {rng.Next(1, 5)} 0 {ObjectIndexes.EarthCrystal:D} {rng.Next(1, 5)} 0 {ObjectIndexes.FrozenTear:D} {rng.Next(1, 3)} 0 {ObjectIndexes.FireQuartz:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Jade:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Amethyst:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Geode:D} {rng.Next(1, 10)} 0/3";
             BoilerRoom21Values[1] = $"Geologist's Gem/O {ObjectIndexes.OmniGeode:D} {rng.Next(2, 15)}/{ObjectIndexes.Ruby:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Topaz:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Jade:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Emerald:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Aquamarine:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Amethyst:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Diamond:D} {rng.Next(1, 3)} 0/3/{rng.Next(5, 8)}";
             BoilerRoom21Values[2] = $"Geologist's Forage/R {ObjectIndexes.GlowRing:D} 1/{ObjectIndexes.RedMushroom:D} {rng.Next(1, 3)} 0 {ObjectIndexes.PurpleMushroom:D} {rng.Next(1, 3)} 0 {ObjectIndexes.EarthCrystal:D} {rng.Next(1, 3)} 0 {ObjectIndexes.FrozenTear:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Quartz:D} {rng.Next(1, 3)} 0 {ObjectIndexes.FireQuartz:D} {rng.Next(1, 3)} 0/3";
-            BoilerRoom21Values[3] = $"Precious Gem/R {ObjectIndexes.MagnetRing:D} 1/{ObjectIndexes.Tigerseye:D} 1 0 {ObjectIndexes.Opal:D} 1 0 {ObjectIndexes.FireOpal:D} 1 0 {ObjectIndexes.LemonStone:D} 1 0 {ObjectIndexes.Malachite:D} 1 0 {ObjectIndexes.Jasper:D} 1 0 {ObjectIndexes.Kyanite:D} 1 0 /3/{rng.Next(4, 7)}";
+            BoilerRoom21Values[3] = $"Precious Gem/R {ObjectIndexes.MagnetRing:D} 1/{ObjectIndexes.Tigerseye:D} 1 0 {ObjectIndexes.Opal:D} 1 0 {ObjectIndexes.FireOpal:D} 1 0 {ObjectIndexes.LemonStone:D} 1 0 {ObjectIndexes.Malachite:D} 1 0 {ObjectIndexes.Jasper:D} 1 0 {ObjectIndexes.Kyanite:D} 1 0/3/{rng.Next(4, 7)}";
             BoilerRoom21Values[4] = $"Precious Mineral/O {ObjectIndexes.IridiumBar:D} {rng.Next(1, 5)}/{ObjectIndexes.Alamite:D} 1 0 {ObjectIndexes.Aerinite:D} 1 0 {ObjectIndexes.Dolomite:D} 1 0 {ObjectIndexes.Geminite:D} 1 0 {ObjectIndexes.OceanStone:D} 1 0 {ObjectIndexes.GhostCrystal:D} 1 0/3/{rng.Next(3, 6)}";
             BoilerRoom21Values[5] = $"Precious Mineral/O {ObjectIndexes.IridiumBar:D} {rng.Next(1, 5)}/{ObjectIndexes.Calcite:D} 1 0 {ObjectIndexes.StarShards:D} 1 0 {ObjectIndexes.FairyStone:D} 1 0 {ObjectIndexes.Neptunite:D} 1 0 {ObjectIndexes.Helvite:D} 1 0 {ObjectIndexes.Fluorapatite:D} 1 0 {ObjectIndexes.Bixite:D} 1 0/3/{rng.Next(4, 7)}";
 
@@ -1025,12 +1025,12 @@ namespace Randomizer {
         }
 
         private void CalculateFarmEventEdits(Random rng) {
-            // TODO: replace this code
+            //TODO: replace this code
             throw new NotImplementedException();
         }
 
         private void CalculateMailEdits(Random rng) {
-            // TODO: replace this code
+            //TODO: replace this code
             throw new NotImplementedException();
         }
 
@@ -1124,18 +1124,18 @@ namespace Randomizer {
                     this._locationsReplacements["Woods"] = "259 .9 420 .25/257 .5 404 .25 16 .8/281 .5 404 .6 420 .2/283 .9/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/390 .25 330 1";
                     //this._mod.Monitor.Log($"Spring Foragables swapped with Summer");
                     break;
-                case 1: // Fall/spring/summer/winter
+                case 1: //Fall/spring/summer/winter
                     this._locationsReplacements["BusStop"] = "406 .6 408 .4/18 .9 20 .4 22 .7/396 .4 398 .4 402 .7/414 .33 418 .6 283 .5/-1/-1/-1/-1/584 .08 378 .15 102 .15 390 .25 330 1";
                     this._locationsReplacements["Forest"] = "404 .9 410 .9/16 .9 22 .9/396 .6 402 .9/418 .9 414 .9 283 .5/153 -1 145 0 143 0 137 1 132 0 706 0 702 0/153 -1 145 0 144 -1 138 0 132 0 706 0 704 0 702 0/143 0 153 -1 140 -1 139 0 137 1 132 0 706 0 702 0 699 0/699 0 143 0 153 -1 144 -1 141 -1 140 -1 132 0 707 0 702 0/378 .08 579 .1 588 .1 102 .15 390 .25 330 1";
                     this._locationsReplacements["Town"] = "410 .6/18 .9/402 .9/418 .7 414 .1 283 .5/137 -1 132 -1 143 -1 145 -1 153 -1 706 -1/138 -1 132 -1 144 -1 145 -1 153 -1 706 -1/139 -1 137 -1 132 -1 140 -1 143 -1 153 -1 706 -1 699 -1/132 -1 140 -1 141 -1 143 -1 144 -1 153 -1 707 -1 699 -1/378 .2 110 .2 583 .1 102 .2 390 .25 330 1";
                     this._locationsReplacements["Mountain"] = "404 .4 406 .4 408 .9/20 .7 16 .5/396 .5 398 .8/414 .85 418 .9 283 .5/136 -1 142 -1 153 -1 702 -1 700 -1 163 -1/136 -1 142 -1 153 -1 138 -1 702 -1 700 -1 698 -1/136 -1 140 -1 142 -1 153 -1 702 -1 700 -1/136 -1 140 -1 141 -1 153 -1 707 -1 702 -1 700 -1 698 -1/382 .06 581 .1 378 .1 102 .15 390 .25 330 1";
                     this._locationsReplacements["Backwoods"] = "404 .4 406 .4 408 .9/20 .7 16 .5/396 .5 398 .8/414 .25 418 .4 283 .5/136 -1 142 -1 153 -1 702 -1 700 -1 163 -1/136 -1 142 -1 153 -1 138 -1 702 -1 700 -1 698 -1/136 -1 140 -1 142 -1 153 -1 702 -1 700 -1/136 -1 140 -1 141 -1 153 -1 707 -1 702 -1 700 -1 698 -1/382 .06 582 .1 378 .1 102 .15 390 .25 330 1";
-                    this._locationsReplacements["Railroad"] = "406 .6 408 .4 410 .6/ 18 .9 20 .4 22 .7/396 .4 398 .4 402 .7/414 .8 418 .8/-1/-1/-1/-1/580 .1 378 .15 102 .19 390 .25 330 1";
+                    this._locationsReplacements["Railroad"] = "406 .6 408 .4 410 .6/18 .9 20 .4 22 .7/396 .4 398 .4 402 .7/414 .8 418 .8/-1/-1/-1/-1/580 .1 378 .15 102 .19 390 .25 330 1";
                     this._locationsReplacements["Woods"] = "281 .5 404 .6 420 .2/257 .5 404 .25 16 .8/259 .9 420 .25/283 .9/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/390 .25 330 1";
                     //this._mod.Monitor.Log($"Foragables swapped Fall/spring/summer/winter");
                     break;
                     
-                case 2: // spring/fall/summer/winter
+                case 2: //spring/fall/summer/winter
                     this._locationsReplacements["BusStop"] = "18 .9 20 .4 22 .7/406 .6 408 .4/396 .4 398 .4 402 .7/414 .33 418 .6 283 .5/-1/-1/-1/-1/584 .08 378 .15 102 .15 390 .25 330 1";
                     this._locationsReplacements["Forest"] = "16 .9 22 .9/404 .9 410 .9/396 .6 402 .9/418 .9 414 .9 283 .5/153 -1 145 0 143 0 137 1 132 0 706 0 702 0/153 -1 145 0 144 -1 138 0 132 0 706 0 704 0 702 0/143 0 153 -1 140 -1 139 0 137 1 132 0 706 0 702 0 699 0/699 0 143 0 153 -1 144 -1 141 -1 140 -1 132 0 707 0 702 0/378 .08 579 .1 588 .1 102 .15 390 .25 330 1";
                     this._locationsReplacements["Town"] = "18 .9/410 .6/402 .9/418 .7 414 .1 283 .5/137 -1 132 -1 143 -1 145 -1 153 -1 706 -1/138 -1 132 -1 144 -1 145 -1 153 -1 706 -1/139 -1 137 -1 132 -1 140 -1 143 -1 153 -1 706 -1 699 -1/132 -1 140 -1 141 -1 143 -1 144 -1 153 -1 707 -1 699 -1/378 .2 110 .2 583 .1 102 .2 390 .25 330 1";
