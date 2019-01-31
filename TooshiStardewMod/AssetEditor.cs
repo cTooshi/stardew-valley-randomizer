@@ -384,7 +384,7 @@ namespace Randomizer {
 
             string[] SeedMakerValues = new string[10];
             SeedMakerValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Coal:D} {rng.Next(1, 4) * 5} {ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.Acorn:D} {rng.Next(1, 11)}";
-            SeedMakerValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Acorn:D} 4 {ObjectIndexes.PineCone:D} 4 {ObjectIndexes.MapleSeed:D} 4 ";
+            SeedMakerValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Acorn:D} 4 {ObjectIndexes.PineCone:D} 4 {ObjectIndexes.MapleSeed:D} 4";
             SeedMakerValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(3, 12) * 5} {ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.EarthCrystal:D} 1 {ObjectIndexes.Quartz:D} {rng.Next(1, 4)}";
             SeedMakerValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} 40 {ObjectIndexes.Topaz:D} 1 {ObjectIndexes.RefinedQuartz:D} 1";
             SeedMakerValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Slime:D} 25";
@@ -396,7 +396,7 @@ namespace Randomizer {
 
             string[] LoomValues = new string[11];
             LoomValues[0] = $"{ObjectIndexes.Wood:D} 60 {ObjectIndexes.Fiber:D} {rng.Next(3, 12) * 5} {ObjectIndexes.PineTar:D} 1 {ObjectIndexes.Slime:D} {rng.Next(1, 11)}";
-            LoomValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hardwood:D} {rng.Next(1, 11)} {ObjectIndexes.Fiber:D} {rng.Next(1, 4) * 5} ";
+            LoomValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hardwood:D} {rng.Next(1, 11)} {ObjectIndexes.Fiber:D} {rng.Next(1, 4) * 5}";
             LoomValues[2] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Oil:D} 1 {ObjectIndexes.Hay:D} 10";
             LoomValues[3] = $"{ObjectIndexes.Mayonnaise:D} 1";
             LoomValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Geode:D} {rng.Next(1, 4)}";
@@ -409,7 +409,7 @@ namespace Randomizer {
 
             string[] OilMakerValues = new string[9];
             OilMakerValues[0] = $"{ObjectIndexes.Hardwood:D} 1 {ObjectIndexes.IronBar:D} {rng.Next(1, 9) * 5} {ObjectIndexes.GoldBar:D} 1";
-            OilMakerValues[1] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} 40 {ObjectIndexes.Fiber:D} 10 ";
+            OilMakerValues[1] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Sap:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Slime:D} 40 {ObjectIndexes.Fiber:D} 10";
             OilMakerValues[2] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Oil:D} 1 {ObjectIndexes.Hay:D} 10";
             OilMakerValues[3] = $"{ObjectIndexes.Hardwood:D} 20";
             OilMakerValues[4] = $"{ObjectIndexes.Hardwood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.BugMeat:D} {rng.Next(1, 4)} {ObjectIndexes.Geode:D} {rng.Next(1, 4)}";
@@ -640,7 +640,12 @@ namespace Randomizer {
             this._recipeReplacements["Trap Bobber"] = $"{TrapBobberValues[rng.Next(0, 4)]}/Home/694/false/Fishing {rng.Next(4, 9)}";
             this._recipeReplacements["Crab Pot"] = $"{CrabPotValues[rng.Next(0, 6)]}/Home/710/false/Fishing {rng.Next(1, 6)}";
 
-
+            _mod.Monitor.Log("============BEGIN RECIPE REPLACEMENTS");
+            foreach (string key in this._recipeReplacements.Keys)
+            {
+                _mod.Monitor.Log($"{key}: {_recipeReplacements[key]}");
+            }
+            _mod.Monitor.Log("============END RECIPE REPLACEMENTS");
         }
 
         private void CalculateBundleEdits(Random rng) {
