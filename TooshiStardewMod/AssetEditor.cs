@@ -251,24 +251,8 @@ namespace Randomizer
 
 		private void CalculateRecipeEdits()
 		{
-			this._recipeReplacements.Clear();
+			_recipeReplacements.Clear();
 			Random rng = Globals.RNG;
-
-			string[] chestValues = new string[14];
-			chestValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 90)}";
-			chestValues[1] = $"{ObjectIndexes.Stone:D} {rng.Next(20, 90)}";
-			chestValues[2] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 35)} {ObjectIndexes.CopperOre:D} {rng.Next(2, 12)}";
-			chestValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(5, 25)} {ObjectIndexes.Slime:D} {rng.Next(2, 20)}";
-			chestValues[4] = $"{ObjectIndexes.Wood:D} {rng.Next(10, 45)} {ObjectIndexes.Oil:D} 1";
-			chestValues[5] = $"{ObjectIndexes.Wood:D} 69";
-			chestValues[6] = $"{ObjectIndexes.Stone:D} {rng.Next(40, 120)}";
-			chestValues[7] = $"{ObjectIndexes.AnyFish:D} 1";
-			chestValues[8] = $"{ObjectIndexes.Stone:D} {rng.Next(10, 45)} {ObjectIndexes.Sap:D} {rng.Next(2, 12)} {ObjectIndexes.Fiber:D} {rng.Next(5, 10)}";
-			chestValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.BugMeat:D} {rng.Next(1, 4)} {ObjectIndexes.Fiber:D} 5";
-			chestValues[10] = $"{ObjectIndexes.MixedSeeds:D} 5 {ObjectIndexes.Slime:D} 5";
-			chestValues[11] = $"{ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.Sap:D} 5";
-			chestValues[12] = $"{ObjectIndexes.Wood:D} 50 {ObjectIndexes.Fiber:D} 10";
-			chestValues[13] = $"{ObjectIndexes.Stone:D} 20 {ObjectIndexes.Oil:D} 1";
 
 			string[] GateValues = new string[8];
 			GateValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(5, 15)} {ObjectIndexes.CopperBar:D} 1";
@@ -636,7 +620,7 @@ namespace Randomizer
 			CrabPotValues[4] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.VoidEssence:D} {rng.Next(1, 11)}";
 			CrabPotValues[5] = $"{ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.FrozenTear:D} 1";
 
-			this._recipeReplacements["Chest"] = $"{chestValues[rng.Next(0, 14)]}/Home/130/true/null";
+			this._recipeReplacements["Chest"] = ((CraftableItem)ItemList.Items[(int)ObjectIndexes.Chest]).GetCraftingString();
 			this._recipeReplacements["Gate"] = $"{GateValues[rng.Next(0, 8)]}/Home/325/false/l 0";
 			this._recipeReplacements["Torch"] = $"{TorchValues[rng.Next(0, 7)]}/Field/93/false/l 0";
 			this._recipeReplacements["Scarecrow"] = $"{ScarecrowValues[rng.Next(0, 14)]}/Home/8/true/Farming {rng.Next(1, 5)}";

@@ -19,5 +19,14 @@ namespace Randomizer
 		{
 			ModRef.Monitor.Log(input);
 		}
+
+		/// <summary>
+		/// Gets a random boolean value
+		/// </summary>
+		/// <returns />
+		public static bool RNGGetNextBoolean()
+		{
+			return RNG.Next(0, 2) == 0;
+		}
 	}
 }

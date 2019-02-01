@@ -4,6 +4,9 @@ namespace Randomizer
 {
 	public class ItemList
 	{
+		//TODO: crab pot stuff
+		//TODO: the rest of the crafting recipes
+		//TODO: cooking recipes
 		public static Dictionary<int, Item> Items = new Dictionary<int, Item>
 		{
 			// Resources - ObtainingDifficulties.NoRequirements
@@ -34,12 +37,11 @@ namespace Randomizer
 			{ (int)ObjectIndexes.AnyFish, new FishItem((int)ObjectIndexes.AnyFish, ObtainingDifficulties.NoRequirements) },
 
 			{ (int)ObjectIndexes.Pufferfish, new FishItem((int)ObjectIndexes.Pufferfish) },
-			{ (int)ObjectIndexes.Anchovy, new FishItem((int)ObjectIndexes.Tuna) },
-			{ (int)ObjectIndexes.Tuna, new FishItem((int)ObjectIndexes.AnyFish) },
+			{ (int)ObjectIndexes.Anchovy, new FishItem((int)ObjectIndexes.Anchovy) },
+			{ (int)ObjectIndexes.Tuna, new FishItem((int)ObjectIndexes.Tuna) },
 			{ (int)ObjectIndexes.Sardine, new FishItem((int)ObjectIndexes.Sardine) },
 			{ (int)ObjectIndexes.Bream, new FishItem((int)ObjectIndexes.Bream) },
 			{ (int)ObjectIndexes.LargemouthBass, new FishItem((int)ObjectIndexes.LargemouthBass) },
-			{ (int)ObjectIndexes.AnyFish, new FishItem((int)ObjectIndexes.AnyFish) },
 			{ (int)ObjectIndexes.SmallmouthBass, new FishItem((int)ObjectIndexes.SmallmouthBass) },
 			{ (int)ObjectIndexes.RainbowTrout, new FishItem((int)ObjectIndexes.RainbowTrout) },
 			{ (int)ObjectIndexes.Salmon, new FishItem((int)ObjectIndexes.Salmon) },
@@ -98,7 +100,7 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Coal, new Item((int)ObjectIndexes.Coal, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.CopperOre, new Item((int)ObjectIndexes.CopperOre, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.IronOre, new Item((int)ObjectIndexes.IronOre, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
-			{ (int)ObjectIndexes.IronOre, new Item((int)ObjectIndexes.IridiumOre, ObtainingDifficulties.EndgameItem) { ItemsRequiredForRecipe = new Range(1, 5) } },
+			{ (int)ObjectIndexes.IridiumOre, new Item((int)ObjectIndexes.IridiumOre, ObtainingDifficulties.EndgameItem) { ItemsRequiredForRecipe = new Range(1, 5) } },
 
 			{ (int)ObjectIndexes.Quartz, new Item((int)ObjectIndexes.Quartz, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.FireQuartz, new Item((int)ObjectIndexes.FireQuartz, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
@@ -179,7 +181,8 @@ namespace Randomizer
 			{ (int)ObjectIndexes.AncientSeed, new ArtifactItem((int)ObjectIndexes.AncientSeed, ObtainingDifficulties.RareItem) },
 
 			// Craftable items
-			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
+			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch, "/Field/93/false/l 0") { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
+			{ (int)ObjectIndexes.Chest, new CraftableItem((int)ObjectIndexes.Chest, "/Home/130/true/null") { DifficultyToObtain = ObtainingDifficulties.Impossible } }, // There's no item ID for this, so you can't exactly require it in a recipe
 			
 			// ------ All Foragables - ObtainingDifficulties.LargeTimeRequirements -------
 			// Spring Foragables - TODO: look into Salmonberries and Spring Onions

@@ -50,6 +50,10 @@
 		Shrimp = 720, Snail = 721, Periwinkle = 722, Oyster = 723, MapleSyrup = 724, OakResin = 725, PineTar = 726, Chowder = 727, FishStew = 728, Escargot = 729, LobsterBisque = 730, MapleBar = 731,
 		CrabCakes = 732, Woodskip = 734, StrawberrySeeds = 745, JackOLantern = 746, OmniGeode = 749, Slime = 766, BatWing = 767, SolarEssence = 768, VoidEssence = 769, MixedSeeds = 770, Fiber = 771,
 		OilOfGarlic = 772, LifeElixir = 773, WildBait = 774, Glacierfish = 775, Battery = 787, LostAxe = 788, LuckyPurpleShorts = 789, BerryBasket = 790, VoidSalmon = 795, Slimejack = 796, Pearl = 797,
-		MidnightSquid = 798, SpookFish = 799, Blobfish = 800, WeddingRing = 801, CactusSeeds = 802, IridiumMilk = 803
+		MidnightSquid = 798, SpookFish = 799, Blobfish = 800, WeddingRing = 801, CactusSeeds = 802, IridiumMilk = 803,
+
+
+		// UNOFFICIAL ITEM IDS, DO NOT USE THESE FOR ANYTHING THAT IS WRITTEN ANYWHERE
+		Chest = -100 // There's no item ID for the craftable chests...
 	};
 }
