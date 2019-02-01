@@ -86,7 +86,7 @@ namespace Randomizer
 				case "Woods":
 					return "734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/734 -1 142 -1 143 -1/390 .25 330 1";
 				default:
-					Globals.mod.Monitor.Log($"ERROR: No location data found for {LocationName}!");
+					Globals.ModRef.Monitor.Log($"ERROR: No location data found for {LocationName}!");
 					return "-1/-1/-1/-1/-1";
 			}
 		}

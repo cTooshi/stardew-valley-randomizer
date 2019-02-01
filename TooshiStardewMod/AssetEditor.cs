@@ -112,23 +112,24 @@ namespace Randomizer
 			this.CalculateStringEdits(placeHolderNumber);
 		}
 
-		public void CalculateEdits(Random rng)
+		public void CalculateEdits()
 		{
 			//Order matters here because it's using a rng
-			this.CalculateRecipeEdits(rng);
-			this.CalculateBundleEdits(rng);
-			this.CalculateBlueprintEdits(rng);
-			this.CalculateObjectInformationEdits(rng);
-			//this.CalculateFarmEventEdits(rng);
-			//this.CalculateMailEdits(rng);
-			this.CalculateFishEdits(rng);
-			this.CalculateQuestEdits(rng);
-			LocationRandomizer.Randomize(_locationsReplacements, rng);
+			this.CalculateRecipeEdits();
+			this.CalculateBundleEdits();
+			this.CalculateBlueprintEdits();
+			this.CalculateObjectInformationEdits();
+			//this.CalculateFarmEventEdits();
+			//this.CalculateMailEdits();
+			this.CalculateFishEdits();
+			this.CalculateQuestEdits();
+			LocationRandomizer.Randomize(_locationsReplacements);
 		}
 
-		private void CalculateBlueprintEdits(Random rng)
+		private void CalculateBlueprintEdits()
 		{
 			this._blueprintReplacements.Clear();
+			Random rng = Globals.RNG;
 
 			string[] siloValues = new string[6];
 			siloValues[0] = $"{ObjectIndexes.Stone:D} {rng.Next(50, 200)} {ObjectIndexes.Clay:D} {rng.Next(5, 20)} {ObjectIndexes.CopperBar:D} {rng.Next(2, 10)}";
@@ -248,10 +249,10 @@ namespace Randomizer
 			this._blueprintReplacements["Well"] = $"{wellValues[rng.Next(0, 4)]}/3/3/-1/-1/-1/-1/null/Well/Provides a place for you to refill your watering can. Market price of 1,000g/Buildings/none/32/32/-1/null/Farm/{rng.Next(2, 18) * 100}/false";
 		}
 
-		private void CalculateRecipeEdits(Random rng)
+		private void CalculateRecipeEdits()
 		{
-
 			this._recipeReplacements.Clear();
+			Random rng = Globals.RNG;
 
 			string[] chestValues = new string[14];
 			chestValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 90)}";
@@ -671,10 +672,10 @@ namespace Randomizer
 			this._recipeReplacements["Crab Pot"] = $"{CrabPotValues[rng.Next(0, 6)]}/Home/710/false/Fishing {rng.Next(1, 6)}";
 		}
 
-		private void CalculateBundleEdits(Random rng)
+		private void CalculateBundleEdits()
 		{
-
 			this._bundleReplacements.Clear();
+			Random rng = Globals.RNG;
 
 			string[] Pantry0Values = new string[6];
 			Pantry0Values[0] = $"Spring Crops/O {ObjectIndexes.SpeedGro:D} {rng.Next(10, 50)}/{ObjectIndexes.Parsnip:D} {rng.Next(1, 6)} 0 {ObjectIndexes.GreenBean:D} {rng.Next(1, 6)} 0 {ObjectIndexes.Cauliflower:D} {rng.Next(1, 6)} 0 {ObjectIndexes.Potato:D} {rng.Next(1, 6)} 0 {ObjectIndexes.Strawberry:D} {rng.Next(1, 4)} 0/0";
@@ -996,10 +997,11 @@ namespace Randomizer
 
 		}
 
-		private void CalculateObjectInformationEdits(Random rng)
+		private void CalculateObjectInformationEdits()
 		{
-
 			this._objectInformationReplacements.Clear();
+			Random rng = Globals.RNG;
+
 			IDictionary<Int32, string> CropPrices;
 			CropPrices = new Dictionary<int, string>()
 			{
@@ -1055,21 +1057,22 @@ namespace Randomizer
 			}
 		}
 
-		private void CalculateFarmEventEdits(Random rng)
+		private void CalculateFarmEventEdits()
 		{
 			//TODO: replace this code
 			throw new NotImplementedException();
 		}
 
-		private void CalculateMailEdits(Random rng)
+		private void CalculateMailEdits()
 		{
 			//TODO: replace this code
 			throw new NotImplementedException();
 		}
 
-		private void CalculateFishEdits(Random rng)
+		private void CalculateFishEdits()
 		{
 			this._fishReplacements.Clear();
+			Random rng = Globals.RNG;
 
 			string[] fishBehavior = new string[5];
 			fishBehavior[0] = $"floater"; fishBehavior[1] = $"dart"; fishBehavior[2] = $"smooth"; fishBehavior[3] = $"mixed"; fishBehavior[4] = $"sinker";
@@ -1127,9 +1130,10 @@ namespace Randomizer
 
 		}
 
-		private void CalculateQuestEdits(Random rng)
+		private void CalculateQuestEdits()
 		{
 			this._questReplacements.Clear();
+			Random rng = Globals.RNG;
 
 			string[] Quest101Values = new string[4];
 			Quest101Values[0] = "ItemDelivery/Jodi's Request/Jodi needs fresh kale for a recipe she's making. She's asking you to bring her one./Bring Jodi kale./Jodi 250/-1/250/-1/true/Oh, that looks so delicious! Thank you, this is just what I wanted. It's going to be perfect for my yellow curry.";

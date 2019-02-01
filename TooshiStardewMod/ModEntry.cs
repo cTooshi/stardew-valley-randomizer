@@ -33,7 +33,7 @@ namespace Randomizer
 		///
 		public override void Entry(IModHelper helper)
 		{
-			Globals.mod = this;
+			Globals.ModRef = this;
 
 			//config file read in
 			string[] config = System.IO.File.ReadAllLines("Mods/Randomizer/RandomizerSettings.txt");
@@ -70,11 +70,11 @@ namespace Randomizer
 			//PlayerEvents.Warped += (sender, args) => this.PlayerChangedLocations();
 
 			GameEvents.UpdateTick += (sender, args) => this.CheckSong();
-
 		}
 
 		//private void OnCreateOrLoad(object sender, EventArgs e)
 		//{}
+
 		public void PreLoadReplacments()
 		{
 			Random placeHolderNum = new Random();
@@ -93,44 +93,32 @@ namespace Randomizer
 
 		public void CalculateAllReplacements()
 		{
-			//Seed is pulled from unique game ID
-			//int seed = ((int) ((uint) ((int) Game1.uniqueIDForThisGame / 2)));
-
 			//Seed is pulled from farm name
 			byte[] seedvar = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(Game1.player.farmName));
 			int seed = BitConverter.ToInt32(seedvar, 0);
 
 			this.Monitor.Log($"Seed Set: {seed}");
 
-			Random rng = new Random(seed);
+			Globals.RNG = new Random(seed);
 
 			// Make replacements and edits
-			this._modAssetLoader.CalculateReplacements(rng);
-			this._modAssetEditor.CalculateEdits(rng);
-
+			this._modAssetLoader.CalculateReplacements();
+			this._modAssetEditor.CalculateEdits();
 
 			// Invalidate all replaced and edited assets so they are reloaded
 			this._modAssetLoader.InvalidateCache();
 			this._modAssetEditor.InvalidateCache();
-
 		}
 
 		public void CheckSong()
 		{
-
 			//Game1.addHUDMessage(new HUDMessage(Game1.currentSong?.Name));
-
-
 
 			if (this._modAssetLoader.musicSwap.TryGetValue(Game1.currentSong?.Name?.ToLower() ?? "", out string value))
 			{
 				Game1.changeMusicTrack(value);
 			}
-
-
 		}
-
-
 
 		/*********
         ** Private methods

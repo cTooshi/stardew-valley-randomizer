@@ -14,11 +14,11 @@ namespace Randomizer
 		/// Constructor
 		/// </summary>
 		/// <param name="itemId">The item Id</param>
-		/// <param name="rng">The Random Object</param>
-		public ForagableData(int itemId, Random rng)
+		public ForagableData(int itemId)
 		{
 			ItemId = itemId;
 
+			Random rng = Globals.RNG;
 			bool useNormalDistribution = rng.Next(0, 2) == 0;
 			ItemRarity = useNormalDistribution ? (double)rng.Next(4, 8) / 10 : (double)rng.Next(1, 10) / 10;
 		}
