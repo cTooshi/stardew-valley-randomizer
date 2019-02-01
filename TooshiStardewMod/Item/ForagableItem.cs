@@ -8,6 +8,8 @@
 		public ForagableItem(int id) : base(id)
 		{
 			ShouldBeForagable = true;
+			DifficultyToObtain = ObtainingDifficulties.LargeTimeRequirements;
+			ItemsRequiredForRecipe = new Range(1, 3);
 		}
 	}
 }

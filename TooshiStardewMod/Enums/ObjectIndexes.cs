@@ -5,11 +5,11 @@
 	{
 		AnyFish = -4, Weeds = 0, Keg = 12, WildHorseradish = 16, Daffodil = 18, Leek = 20, Dandelion = 22, Parsnip = 24, Lumber = 30, Emerald = 60, Aquamarine = 62, Ruby = 64, Amethyst = 66, Topaz = 68,
 		Jade = 70, Diamond = 72, PrismaticShard = 74, CaveCarrot = 78, Quartz = 80, FireQuartz = 82, FrozenTear = 84, EarthCrystal = 86, Coconut = 88, CactusFruit = 90, Sap = 92, Torch = 93, SpiritTorch = 94,
-		DwarfScroll1 = 96, DwarfScroll2 = 97, DwarfScroll3 = 98, DwarfScroll4 = 99, ChippedAmphora = 100, Arrowhead = 101, LostBook = 102, AncientDoll = 103, ElvishJewelry = 104, ChewingStick = 105,
+		DwarfScrollI = 96, DwarfScrollII = 97, DwarfScrollIII = 98, DwarfScrollIV = 99, ChippedAmphora = 100, Arrowhead = 101, LostBook = 102, AncientDoll = 103, ElvishJewelry = 104, ChewingStick = 105,
 		OrnamentalFan = 106, DinosaurEgg = 107, RareDisc = 108, AncientSword = 109, RustySpoon = 110, RustySpur = 111, RustyCog = 112, ChickenStatue = 113, AncientSeed = 114, PrehistoricTool = 115,
 		DriedStarfish = 116, Anchor = 117, GlassShards = 118, BoneFlute = 119, PrehistoricHandaxe = 120, DwarvishHelm = 121, DwarfGadget = 122, AncientDrum = 123, GoldenMask = 124, GoldenRelic = 125,
 		StrangeDoll1 = 126, StrangeDoll2 = 127, Pufferfish = 128, Anchovy = 129, Tuna = 130, Sardine = 131,
-		Bream = 132, LargemouthBass = 136, SmallmouthBass = 137, RainbowTrout = 138, Salmon = 139, Walleye = 140, Perch = 141, Carp = 142, Catfish = 143, Pike = 144, Sunfish = 145, Redmullet = 146,
+		Bream = 132, LargemouthBass = 136, SmallmouthBass = 137, RainbowTrout = 138, Salmon = 139, Walleye = 140, Perch = 141, Carp = 142, Catfish = 143, Pike = 144, Sunfish = 145, RedMullet = 146,
 		Herring = 147, Eel = 148, Octopus = 149, RedSnapper = 150, Squid = 151, Seaweed = 152, GreenAlgae = 153, SeaCucumber = 154, SuperCucumber = 155, Ghostfish = 156, WhiteAlgae = 157, Stonefish = 158,
 		Crimsonfish = 159, Angler = 160, IcePip = 161, LavaEel = 162, Legend = 163, Sandfish = 164, ScorpionCarp = 165, TreasureChest = 166, JojaCola = 167, Trash = 168, Driftwood = 169, BrokenGlasses = 170,
 		BrokenCD = 171, SoggyNewspaper = 172, LargeWhiteEgg = 174, WhiteEgg = 176, Hay = 178, BrownEgg = 180, LargeBrownEgg = 182, Milk = 184, LargeMilk = 186, GreenBean = 188, Cauliflower = 190,
