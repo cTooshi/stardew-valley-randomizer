@@ -26,7 +26,7 @@
 		TeaSet = 341, Pickles = 342, Jelly = 344, Beer = 346, RareSeed = 347, Wine = 348, EnergyTonic = 349, Juice = 350, MuscleRemedy = 351, BasicFertilizer = 368, QualityFertilizer = 369,
 		BasicRetainingSoil = 370, QualityRetainingSoil = 371, Clam = 372, GoldenPumpkin = 373, Poppy = 376, CopperOre = 378, IronOre = 380, Coal = 382, GoldOre = 384, IridiumOre = 386, Wood = 388,
 		Stone = 390, NautilusShell = 392, Coral = 393, RainbowShell = 394, Coffee = 395, SpiceBerry = 396, SeaUrchin = 397, Grape = 398, SpringOnion = 399, Strawberry = 400, StrawFloor = 401, SweetPea = 402,
-		FieldSnack = 403, CommonMushroom = 404, WoodPath = 405, WildPlum = 406, GravelPath = 407, Hazelnut = 408, CrystalPath = 409, Blackberry = 410, Cobblestone = 411, WinterRoot = 412, BlueSlime = 413,
+		FieldSnack = 403, CommonMushroom = 404, WoodPath = 405, WildPlum = 406, GravelPath = 407, Hazelnut = 408, CrystalPath = 409, Blackberry = 410, CobblestonePath = 411, WinterRoot = 412, BlueSlime = 413,
 		CrystalFruit = 414, SteppingStonePath = 415, SnowYam = 416, SweetGemBerry = 417, Crocus = 418, Vinegar = 419, RedMushroom = 420, Sunflower = 421, PurpleMushroom = 422, Rice = 423,
 		Cheese = 424, FairySeeds = 425, GoatCheese = 426, TulipBulb = 427, Cloth = 428, JazzSeeds = 429, Truffle = 430, SunflowerSeeds = 431, TruffleOil = 432, CoffeeBean = 433, Stardrop = 434,
 		GoatMilk = 436, RedSlimeEgg = 437, LargeGoatMilk = 438, PurpleSlimeEgg = 439, Wool = 440, ExplosiveAmmo = 441, DuckEgg = 442, DuckFeather = 444, RabbitsFoot = 446, StoneBase = 449, PoppySeeds = 453,

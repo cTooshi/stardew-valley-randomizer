@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
+    <Compile Include="Enums\CraftableCategories.cs" />
     <Compile Include="Enums\ObtainingDifficulties.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Item\AnimalItem.cs" />

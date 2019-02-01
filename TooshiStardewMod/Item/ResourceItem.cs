@@ -14,6 +14,7 @@
 			IsResource = true;
 			RequiredItemMultiplier = 5; // 5 will be the minimum number of items for resources by default
 			ItemsRequiredForRecipe = new Range(1, 10);
+			DifficultyToObtain = ObtainingDifficulties.NoRequirements;
 		}
 
 		/// <summary>
@@ -27,6 +28,7 @@
 			IsResource = true;
 			RequiredItemMultiplier = requiredItemMultiplier;
 			ItemsRequiredForRecipe = itemsRequiredForRecipe;
+			DifficultyToObtain = ObtainingDifficulties.NoRequirements;
 		}
 	}
 }

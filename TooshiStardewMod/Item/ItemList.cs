@@ -4,15 +4,42 @@ namespace Randomizer
 {
 	public class ItemList
 	{
+		/// <summary>
+		/// Returns the crafting string of the given object index
+		/// Intended to only be passed craftable items, or you'll get an error in the console
+		/// </summary>
+		/// <param name="objectIndex">The object to look up</param>
+		/// <returns />
+		public static string GetCraftingString(ObjectIndexes objectIndex)
+		{
+			Item item = Items[(int)objectIndex];
+			if (item.IsCraftable)
+			{
+				return ((CraftableItem)item).GetCraftingString();
+			}
+
+			Globals.ConsoleWrite($"ERROR: Attempted to create a crafting recipe for a non-craftable item - {item.Name}");
+			return string.Empty;
+		}
+
 		//TODO: crab pot stuff
 		//TODO: the rest of the crafting recipes
 		//TODO: cooking recipes
+		//TODO: geodes
 		public static Dictionary<int, Item> Items = new Dictionary<int, Item>
 		{
+			// Craftable items
+			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch, "/Field/93/false/l 0", CraftableCategories.Cheap) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
+			{ (int)ObjectIndexes.Chest, new CraftableItem((int)ObjectIndexes.Chest, "/Home/130/true/null", CraftableCategories.Cheap) { DifficultyToObtain = ObtainingDifficulties.Impossible } }, // There's no item ID for this, so you can't exactly require it in a recipe
+			{ (int)ObjectIndexes.WoodPath, new CraftableItem((int)ObjectIndexes.WoodPath, "/Field/405/false/l 0", CraftableCategories.CheapAndNeedMany) },
+			{ (int)ObjectIndexes.GravelPath, new CraftableItem((int)ObjectIndexes.GravelPath, "/Field/407/false/l 0", CraftableCategories.CheapAndNeedMany) },
+			{ (int)ObjectIndexes.CobblestonePath, new CraftableItem((int)ObjectIndexes.CobblestonePath, "/Field/411/false/l 0", CraftableCategories.CheapAndNeedMany) },
+			{ (int)ObjectIndexes.SteppingStonePath, new CraftableItem((int)ObjectIndexes.SteppingStonePath, "/Field/415/false/l 0", CraftableCategories.CheapAndNeedMany) },
+
 			// Resources - ObtainingDifficulties.NoRequirements
-			{ (int)ObjectIndexes.Lumber, new ResourceItem((int)ObjectIndexes.Lumber) },
+			{ (int)ObjectIndexes.Wood, new ResourceItem((int)ObjectIndexes.Wood) },
 			{ (int)ObjectIndexes.Stone, new ResourceItem((int)ObjectIndexes.Stone) },
-			{ (int)ObjectIndexes.Weeds, new ResourceItem((int)ObjectIndexes.Weeds, 3, new Range(1, 5)) },
+			{ (int)ObjectIndexes.Fiber, new ResourceItem((int)ObjectIndexes.Fiber, 3, new Range(1, 5)) },
 			{ (int)ObjectIndexes.Clay, new ResourceItem((int)ObjectIndexes.Clay, 1, new Range(1, 15)) },
 
 			// Items you get as a byproduct of collection resources
@@ -179,10 +206,6 @@ namespace Randomizer
 			{ (int)ObjectIndexes.GoldenRelic, new ArtifactItem((int)ObjectIndexes.GoldenRelic, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.GoldenPumpkin, new ArtifactItem((int)ObjectIndexes.GoldenPumpkin, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.AncientSeed, new ArtifactItem((int)ObjectIndexes.AncientSeed, ObtainingDifficulties.RareItem) },
-
-			// Craftable items
-			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch, "/Field/93/false/l 0") { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
-			{ (int)ObjectIndexes.Chest, new CraftableItem((int)ObjectIndexes.Chest, "/Home/130/true/null") { DifficultyToObtain = ObtainingDifficulties.Impossible } }, // There's no item ID for this, so you can't exactly require it in a recipe
 			
 			// ------ All Foragables - ObtainingDifficulties.LargeTimeRequirements -------
 			// Spring Foragables - TODO: look into Salmonberries and Spring Onions

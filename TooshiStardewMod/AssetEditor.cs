@@ -1,6 +1,7 @@
 ﻿using StardewModdingAPI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Randomizer
 {
@@ -263,15 +264,6 @@ namespace Randomizer
 			GateValues[5] = $"{ObjectIndexes.Wood:D} 5 {ObjectIndexes.Slime:D} {rng.Next(5, 15)} {ObjectIndexes.CopperBar:D} 1";
 			GateValues[6] = $"{ObjectIndexes.Wood:D} 15 {ObjectIndexes.Stone:D} 5 {ObjectIndexes.CopperBar:D} {rng.Next(1, 4)}";
 			GateValues[7] = $"{ObjectIndexes.Wood:D} 20 {ObjectIndexes.Stone:D} 5 {ObjectIndexes.CopperOre:D} 8";
-
-			string[] TorchValues = new string[7];
-			TorchValues[0] = $"{ObjectIndexes.Wood:D} 1 {ObjectIndexes.Sap:D} {rng.Next(1, 4)}";
-			TorchValues[1] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4)} {ObjectIndexes.Sap:D} 1";
-			TorchValues[2] = $"{ObjectIndexes.Geode:D} 1";
-			TorchValues[3] = $"{ObjectIndexes.Stone:D} {rng.Next(2, 6)}";
-			TorchValues[4] = $"{ObjectIndexes.Wood:D} 1 {ObjectIndexes.Coal:D} 1";
-			TorchValues[5] = $"{ObjectIndexes.CherryBomb:D} 1";
-			TorchValues[6] = $"{ObjectIndexes.BugMeat:D} 1 {ObjectIndexes.Coal:D} {rng.Next(1, 3)}";
 
 			string[] ScarecrowValues = new string[14];
 			ScarecrowValues[0] = $"{ObjectIndexes.Wood:D} {rng.Next(20, 80)} {ObjectIndexes.AnyFish:D} 1 {ObjectIndexes.Coal:D} 1";
@@ -620,9 +612,14 @@ namespace Randomizer
 			CrabPotValues[4] = $"{ObjectIndexes.GoldBar:D} 1 {ObjectIndexes.VoidEssence:D} {rng.Next(1, 11)}";
 			CrabPotValues[5] = $"{ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.FrozenTear:D} 1";
 
-			this._recipeReplacements["Chest"] = ((CraftableItem)ItemList.Items[(int)ObjectIndexes.Chest]).GetCraftingString();
+
+			foreach (CraftableItem item in ItemList.Items.Values.Where(x => x.IsCraftable))
+			{
+				_recipeReplacements[item.Name] = item.GetCraftingString(); //TODO: keep an eye out for the Name being wrong at some point
+			}
+
+			//TODO: convert the rest of these items to the new way of doing it
 			this._recipeReplacements["Gate"] = $"{GateValues[rng.Next(0, 8)]}/Home/325/false/l 0";
-			this._recipeReplacements["Torch"] = $"{TorchValues[rng.Next(0, 7)]}/Field/93/false/l 0";
 			this._recipeReplacements["Scarecrow"] = $"{ScarecrowValues[rng.Next(0, 14)]}/Home/8/true/Farming {rng.Next(1, 5)}";
 			this._recipeReplacements["Bee House"] = $"{BeeHouseValues[rng.Next(0, 14)]}/Home/10/true/Farming {rng.Next(1, 8)}";
 			this._recipeReplacements["Keg"] = $"{KegValues[rng.Next(0, 14)]}/Home/12/true/Farming {rng.Next(5, 10)}";
@@ -715,7 +712,7 @@ namespace Randomizer
 			CraftsRoom13Values[0] = $"Spring Foraging/O {ObjectIndexes.SpringSeeds:D} {rng.Next(20, 50)}/{ObjectIndexes.WildHorseradish:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Daffodil:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Leek:D} {rng.Next(1, 3)} 0 {ObjectIndexes.Dandelion:D} {rng.Next(1, 3)} 0 {ObjectIndexes.SpringOnion:D} {rng.Next(1, 3)} 0/0";
 			CraftsRoom13Values[1] = $"Quality Spring Foraging/BO 25/{ObjectIndexes.WildHorseradish:D} 1 2 {ObjectIndexes.Daffodil:D} 1 2 {ObjectIndexes.Leek:D} 1 2 {ObjectIndexes.Dandelion:D} 1 2 {ObjectIndexes.SpringOnion:D} 1 2/0";
 			CraftsRoom13Values[2] = $"Spring Bulk Foraging/O {ObjectIndexes.Diamond:D} {rng.Next(2, 4)}/{ObjectIndexes.WildHorseradish:D} {rng.Next(3, 5)} 0 {ObjectIndexes.Daffodil:D} {rng.Next(3, 5)} 0 {ObjectIndexes.Leek:D} {rng.Next(3, 5)} 0 {ObjectIndexes.Dandelion:D} {rng.Next(3, 5)} 0 {ObjectIndexes.SpringOnion:D} {rng.Next(3, 5)} 0/0";
-			CraftsRoom13Values[3] = $"Pathing/O {ObjectIndexes.QualityFertilizer:D} 30/{ObjectIndexes.WoodPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.SteppingStonePath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.CrystalPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WoodFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.Cobblestone:D} {rng.Next(10, 30)} 0 {ObjectIndexes.GravelPath:D} {rng.Next(10, 30)} 0/0/{rng.Next(4, 7)}";
+			CraftsRoom13Values[3] = $"Pathing/O {ObjectIndexes.QualityFertilizer:D} 30/{ObjectIndexes.WoodPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.SteppingStonePath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.CrystalPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WoodFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.CobblestonePath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.GravelPath:D} {rng.Next(10, 30)} 0/0/{rng.Next(4, 7)}";
 			CraftsRoom13Values[4] = $"Pathing/O {ObjectIndexes.QualitySprinkler:D} 3/{ObjectIndexes.WoodPath:D} {rng.Next(10, 30)} 0 {ObjectIndexes.StoneFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.CrystalFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.StrawFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WeatheredFloor:D} {rng.Next(10, 30)} 0 {ObjectIndexes.WoodFloor:D} {rng.Next(10, 30)} 0/0/{rng.Next(4, 7)}";
 			CraftsRoom13Values[5] = $"Totem/O {ObjectIndexes.RainTotem:D} {rng.Next(4, 10)}/{ObjectIndexes.WarpTotemFarm:D} 1 0 {ObjectIndexes.WarpTotemBeach:D} 1 0 {ObjectIndexes.WarpTotemMountains:D} 1 0 {ObjectIndexes.RainTotem:D} 1 0/3/3";
 

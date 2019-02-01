@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Randomizer
 {
@@ -12,6 +13,7 @@ namespace Randomizer
 		{
 			get { return SkillString.Length > 0; }
 		}
+		public CraftableCategories Category { get; set; }
 
 		/// <summary>
 		/// Constructor
@@ -19,10 +21,11 @@ namespace Randomizer
 		/// <param name="id">The id of the item</param>
 		/// <param name="path">The hard-coded path for this craftable item</param>
 		/// <param name="skillString">The name of the skill you need to level up to learn the recipe</param>
-		public CraftableItem(int id, string path, string skillString = "") : base(id)
+		public CraftableItem(int id, string path, CraftableCategories category, string skillString = "") : base(id)
 		{
 			IsCraftable = true;
 			Path = path;
+			Category = category;
 			SkillString = skillString;
 		}
 
@@ -63,12 +66,64 @@ namespace Randomizer
 		/// <returns></returns>
 		public string GetCraftingString()
 		{
-			string itemsRequiredString = "18 9"; //TODO: do this part so that it randomly generates this!
+			string itemsRequiredString = GetItemsRequired();
 			string stringSuffix = IsLearnedOnLevelup ? $"{SkillString} {GetLevelLearnedAt()}" : "";
 			string craftingString = $"{itemsRequiredString}{Path}{stringSuffix}";
 
 			Globals.ConsoleWrite($"{Name} crafting string: {craftingString}");
 			return craftingString;
+		}
+
+		/// <summary>
+		/// Generates a string consisting of the items required to craft this item
+		/// This will NOT return the same value each time it's called!
+		/// </summary>
+		/// <returns>
+		/// A string consisting of the following format:
+		/// itemId numberOfItemsRequired (repeat this x times)
+		/// </returns>
+		private string GetItemsRequired()
+		{
+			switch (Category)
+			{
+				// Uses one of some really easy to get item
+				case CraftableCategories.CheapAndNeedMany:
+					List<int> itemIds = ItemList.Items.Values
+						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements)
+						.Select(x => x.Id)
+						.ToList();
+
+					int itemId = Globals.RNGGetRandomValueFromList(itemIds);
+					return $"{itemId} 1";
+
+				// Uses either two really easy to get items (one being a resource), or one slightly harder to get item
+				case CraftableCategories.Cheap:
+					bool useHarderItem = Globals.RNGGetNextBoolean();
+					if (useHarderItem)
+					{
+						List<Item> possibleHarderItems = ItemList.Items.Values
+							.Where(x => x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements)
+							.ToList();
+
+						return possibleHarderItems[Globals.RNG.Next(possibleHarderItems.Count)].GetStringForCrafting();
+					}
+
+					List<Item> possibleResourceItems = ItemList.Items.Values
+						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements && x.IsResource)
+						.ToList();
+					Item resourceItem = Globals.RNGGetRandomValueFromList(possibleResourceItems);
+
+					List<Item> possibleEasyItems = ItemList.Items.Values
+						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements && x.Id != resourceItem.Id)
+						.ToList();
+					Item otherItem = Globals.RNGGetRandomValueFromList(possibleEasyItems);
+
+					return $"{resourceItem.GetStringForCrafting()} {otherItem.GetStringForCrafting()}";
+
+				default:
+					Globals.ConsoleWrite($"ERROR: invalid category when generating recipe for {Name}!");
+					return "18 9"; // just a random value for now
+			}
 		}
 	}
 }

@@ -76,11 +76,21 @@ namespace Randomizer
 
 
 		/// <summary>
+		/// Returns the string version of this item to use in crafting recipes
+		/// Will NOT return the same value each time this is called!
+		/// </summary>
+		/// <returns></returns>
+		public string GetStringForCrafting()
+		{
+			return $"{Id} {GetAmountRequiredForCrafting()}";
+		}
+
+		/// <summary>
 		/// Gets a randomly generated amount of this item required for a crafting recipe
 		/// Will always return a value of at least 1
 		/// </summary>
 		/// <returns />
-		public int GetAmountRequiredForCrafting()
+		private int GetAmountRequiredForCrafting()
 		{
 			int baseAmount = ItemsRequiredForRecipe.GetRandomValue();
 			return Math.Max((int)(baseAmount * RequiredItemMultiplier), 1);
