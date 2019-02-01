@@ -46,6 +46,13 @@
   <ItemGroup>
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="Item\ForagableData.cs" />
+    <Compile Include="Item\ItemList.cs" />
+    <Compile Include="Item\Seasons.cs" />
+    <Compile Include="Item\ForagableLocationData.cs" />
+    <Compile Include="Item\Item.cs" />
+    <Compile Include="LocationRandomizer.cs" />
     <Compile Include="ModEntry.cs" />
     <Compile Include="ObjectIndexes.cs" />
     <Compile Include="PossibleSwap.cs" />
