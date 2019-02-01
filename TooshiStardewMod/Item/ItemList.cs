@@ -7,46 +7,46 @@ namespace Randomizer
 		public static Dictionary<int, Item> Items = new Dictionary<int, Item>
 		{
 			// Spring Foragables - TODO: look into Salmonberries and Spring Onions
-			{ (int)ObjectIndexes.WildHorseradish, new Item((int)ObjectIndexes.WildHorseradish) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Daffodil, new Item((int)ObjectIndexes.Daffodil) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Leek, new Item((int)ObjectIndexes.Leek) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Dandelion, new Item((int)ObjectIndexes.Dandelion) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Morel, new Item((int)ObjectIndexes.Morel) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.CommonMushroom, new Item((int)ObjectIndexes.CommonMushroom) { ShouldBeForagable = true } }, // Also fall
+			{ (int)ObjectIndexes.WildHorseradish, new ForagableItem((int)ObjectIndexes.WildHorseradish) },
+			{ (int)ObjectIndexes.Daffodil, new ForagableItem((int)ObjectIndexes.Daffodil) },
+			{ (int)ObjectIndexes.Leek, new ForagableItem((int)ObjectIndexes.Leek) },
+			{ (int)ObjectIndexes.Dandelion, new ForagableItem((int)ObjectIndexes.Dandelion) },
+			{ (int)ObjectIndexes.Morel, new ForagableItem((int)ObjectIndexes.Morel) },
+			{ (int)ObjectIndexes.CommonMushroom, new ForagableItem((int)ObjectIndexes.CommonMushroom) }, // Also fall
 
 			// Summer Foragables
-			{ (int)ObjectIndexes.SpiceBerry, new Item((int)ObjectIndexes.SpiceBerry) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Grape, new Item((int)ObjectIndexes.Grape) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.SweetPea, new Item((int)ObjectIndexes.SweetPea) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.RedMushroom, new Item((int)ObjectIndexes.RedMushroom) { ShouldBeForagable = true } }, // Also fall
-			{ (int)ObjectIndexes.FiddleHeadFern, new Item((int)ObjectIndexes.FiddleHeadFern) { ShouldBeForagable = true } },
+			{ (int)ObjectIndexes.SpiceBerry, new ForagableItem((int)ObjectIndexes.SpiceBerry) },
+			{ (int)ObjectIndexes.Grape, new ForagableItem((int)ObjectIndexes.Grape) },
+			{ (int)ObjectIndexes.SweetPea, new ForagableItem((int)ObjectIndexes.SweetPea) },
+			{ (int)ObjectIndexes.RedMushroom, new ForagableItem((int)ObjectIndexes.RedMushroom) }, // Also fall
+			{ (int)ObjectIndexes.FiddleheadFern, new ForagableItem((int)ObjectIndexes.FiddleheadFern) },
 
 			// Fall Foragables
-			{ (int)ObjectIndexes.WildPlum, new Item((int)ObjectIndexes.WildPlum) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Hazelnut, new Item((int)ObjectIndexes.Hazelnut) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Blackberry, new Item((int)ObjectIndexes.Blackberry) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Chanterelle, new Item((int)ObjectIndexes.Chanterelle) { ShouldBeForagable = true } },
+			{ (int)ObjectIndexes.WildPlum, new ForagableItem((int)ObjectIndexes.WildPlum) },
+			{ (int)ObjectIndexes.Hazelnut, new ForagableItem((int)ObjectIndexes.Hazelnut) },
+			{ (int)ObjectIndexes.Blackberry, new ForagableItem((int)ObjectIndexes.Blackberry) },
+			{ (int)ObjectIndexes.Chanterelle, new ForagableItem((int)ObjectIndexes.Chanterelle) },
 
 			// Winter Foragables
-			{ (int)ObjectIndexes.WinterRoot, new Item((int)ObjectIndexes.WinterRoot) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.CrystalFruit, new Item((int)ObjectIndexes.CrystalFruit) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.SnowYam, new Item((int)ObjectIndexes.SnowYam) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Crocus, new Item((int)ObjectIndexes.Crocus) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Holly, new Item((int)ObjectIndexes.Holly) { ShouldBeForagable = true } },
+			{ (int)ObjectIndexes.WinterRoot, new ForagableItem((int)ObjectIndexes.WinterRoot) },
+			{ (int)ObjectIndexes.CrystalFruit, new ForagableItem((int)ObjectIndexes.CrystalFruit) },
+			{ (int)ObjectIndexes.SnowYam, new ForagableItem((int)ObjectIndexes.SnowYam) },
+			{ (int)ObjectIndexes.Crocus, new ForagableItem((int)ObjectIndexes.Crocus) },
+			{ (int)ObjectIndexes.Holly, new ForagableItem((int)ObjectIndexes.Holly) },
 
 			// Beach Foragables
-			{ (int)ObjectIndexes.NautilusShell, new Item((int)ObjectIndexes.NautilusShell) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Coral, new Item((int)ObjectIndexes.Coral) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.SeaUrchin, new Item((int)ObjectIndexes.SeaUrchin) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.RainbowShell, new Item((int)ObjectIndexes.RainbowShell) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Clam, new Item((int)ObjectIndexes.Clam) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Cockle, new Item((int)ObjectIndexes.Cockle) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Mussel, new Item((int)ObjectIndexes.Mussel) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.Oyster, new Item((int)ObjectIndexes.Oyster) { ShouldBeForagable = true } },
+			{ (int)ObjectIndexes.NautilusShell, new ForagableItem((int)ObjectIndexes.NautilusShell) },
+			{ (int)ObjectIndexes.Coral, new ForagableItem((int)ObjectIndexes.Coral) },
+			{ (int)ObjectIndexes.SeaUrchin, new ForagableItem((int)ObjectIndexes.SeaUrchin) },
+			{ (int)ObjectIndexes.RainbowShell, new ForagableItem((int)ObjectIndexes.RainbowShell) },
+			{ (int)ObjectIndexes.Clam, new ForagableItem((int)ObjectIndexes.Clam) },
+			{ (int)ObjectIndexes.Cockle, new ForagableItem((int)ObjectIndexes.Cockle) },
+			{ (int)ObjectIndexes.Mussel, new ForagableItem((int)ObjectIndexes.Mussel) },
+			{ (int)ObjectIndexes.Oyster, new ForagableItem((int)ObjectIndexes.Oyster) },
 
 			// Desert Forabagles
-			{ (int)ObjectIndexes.Coconut, new Item((int)ObjectIndexes.Coconut) { ShouldBeForagable = true } },
-			{ (int)ObjectIndexes.CactusFruit, new Item((int)ObjectIndexes.CactusFruit) { ShouldBeForagable = true } }
+			{ (int)ObjectIndexes.Coconut, new ForagableItem((int)ObjectIndexes.Coconut) },
+			{ (int)ObjectIndexes.CactusFruit, new ForagableItem((int)ObjectIndexes.CactusFruit) }
 		};
 	}
 }

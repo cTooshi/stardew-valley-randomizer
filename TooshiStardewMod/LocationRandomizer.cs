@@ -81,8 +81,7 @@ namespace Randomizer
 			Globals.ConsoleWrite(season.ToString());
 			foreach (ForagableData foragableData in dataToWrite)
 			{
-				string itemName = ((ObjectIndexes)foragableData.ItemId).ToString();
-				Globals.ConsoleWrite($"{foragableData.ItemId}: {itemName} | {foragableData.ItemRarity}");
+				Globals.ConsoleWrite($"{foragableData.ItemId}: {Item.GetNameFromId(foragableData.ItemId)} | {foragableData.ItemRarity}");
 			}
 		}
 

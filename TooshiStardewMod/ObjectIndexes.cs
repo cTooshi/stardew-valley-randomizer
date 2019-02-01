@@ -18,7 +18,7 @@
 		CrispyBass = 214, PepperPoppers = 215, Bread = 216, TomKhaSoup = 218, TroutSoup = 219, ChocolateCake = 220, PinkCake = 221, RhubarbPie = 222, Cookie = 223, Spaghetti = 224, FriedEel = 225,
 		SpicyEel = 226, Sashimi = 227, MakiRoll = 228, Tortilla = 229, RedPlate = 230, EggplantParmesan = 231, RicePudding = 232, IceCream = 233, BlueberryTart = 234, AutumnsBounty = 235, PumpkinSoup = 236,
 		SuperMeal = 237, CranberrySauce = 238, Stuffing = 239, FarmersLunch = 240, SurvivalBurger = 241, DishOTheSea = 242, MinersTreat = 243, RootsPlatter = 244, Sugar = 245, WheatFlour = 246, Oil = 247,
-		Garlic = 248, Kale = 250, Rhubarb = 252, Melon = 254, Tomato = 256, Morel = 257, Blueberry = 258, FiddleHeadFern = 259, HotPepper = 260, Wheat = 262, Radish = 264, RedCabbage = 266, Starfruit = 268,
+		Garlic = 248, Kale = 250, Rhubarb = 252, Melon = 254, Tomato = 256, Morel = 257, Blueberry = 258, FiddleheadFern = 259, HotPepper = 260, Wheat = 262, Radish = 264, RedCabbage = 266, Starfruit = 268,
 		Corn = 270, Eggplant = 272, Artichoke = 274, Pumpkin = 276, BokChoy = 278, Yam = 280, Chanterelle = 281, Cranberries = 282, Holly = 283, Beet = 284, CherryBomb = 286, Bomb = 287, MegaBomb = 288,
 		Salmonberry = 296, GrassStarter = 297, HardwoodFence = 298, AmaranthSeeds = 299, Amaranth = 300, GrapeStarter = 301, HopsStarter = 302, PaleAle = 303, Hops = 304, VoidEgg = 305, Mayonnaise = 306,
 		DuckMayonnaise = 307, VoidMayonnaise = 308, Acorn = 309, MapleSeed = 310, PineCone = 311, WoodFence = 322, StoneFence = 323, IronFence = 324, Gate = 325, DwarvishTranslationGuide = 326,

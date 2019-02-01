@@ -4,7 +4,7 @@ using System;
 namespace Randomizer
 {
 	/// <summary>
-	/// Used for any global access - USE SPARANGLY
+	/// Used for any global access - USE SPARINGLY
 	/// </summary>
 	public class Globals
 	{

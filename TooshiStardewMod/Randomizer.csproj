@@ -48,6 +48,7 @@
     <Compile Include="AssetLoader.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Item\ForagableData.cs" />
+    <Compile Include="Item\ForagableItem.cs" />
     <Compile Include="Item\ItemList.cs" />
     <Compile Include="Item\Seasons.cs" />
     <Compile Include="Item\ForagableLocationData.cs" />
