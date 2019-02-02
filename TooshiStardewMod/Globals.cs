@@ -46,5 +46,18 @@ namespace Randomizer
 
 			return list[RNG.Next(list.Count)];
 		}
-	}
+
+        public static T RNGGetAndRemoveRandomValueFromList<T>(List<T> list)
+        {
+            if (list == null || list.Count == 0)
+            {
+                ConsoleWrite("ERROR: Attempted to get a random value out of an empty list!");
+                return default(T);
+            }
+            int selectedIndex = RNG.Next(list.Count);
+            T selectedValue = list[selectedIndex];
+            list.RemoveAt(selectedIndex);
+            return selectedValue;
+        }
+    }
 }
