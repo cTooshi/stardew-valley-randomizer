@@ -25,16 +25,49 @@ namespace Randomizer
 		//TODO: crab pot stuff
 		//TODO: the rest of the crafting recipes
 		//TODO: cooking recipes
-		//TODO: geodes
+		//TODO: geodes & precious stones
+		//TODO: maple syrup/oak resin/pine tar
 		public static Dictionary<int, Item> Items = new Dictionary<int, Item>
 		{
-			// Craftable items
-			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch, "/Field/93/false/l 0", CraftableCategories.Cheap) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
-			{ (int)ObjectIndexes.Chest, new CraftableItem((int)ObjectIndexes.Chest, "/Home/130/true/null", CraftableCategories.Cheap) { DifficultyToObtain = ObtainingDifficulties.Impossible } }, // There's no item ID for this, so you can't exactly require it in a recipe
-			{ (int)ObjectIndexes.WoodPath, new CraftableItem((int)ObjectIndexes.WoodPath, "/Field/405/false/l 0", CraftableCategories.CheapAndNeedMany) },
-			{ (int)ObjectIndexes.GravelPath, new CraftableItem((int)ObjectIndexes.GravelPath, "/Field/407/false/l 0", CraftableCategories.CheapAndNeedMany) },
-			{ (int)ObjectIndexes.CobblestonePath, new CraftableItem((int)ObjectIndexes.CobblestonePath, "/Field/411/false/l 0", CraftableCategories.CheapAndNeedMany) },
-			{ (int)ObjectIndexes.SteppingStonePath, new CraftableItem((int)ObjectIndexes.SteppingStonePath, "/Field/415/false/l 0", CraftableCategories.CheapAndNeedMany) },
+			// Craftable items - Impossible by default
+			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch, "/Field/93/false/l 0", CraftableCategories.Easy) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
+			{ (int)ObjectIndexes.Chest, new CraftableItem((int)ObjectIndexes.Chest, "/Home/130/true/null", CraftableCategories.Easy) },
+			{ (int)ObjectIndexes.WoodPath, new CraftableItem((int)ObjectIndexes.WoodPath, "/Field/405/false/l 0", CraftableCategories.EasyAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } },
+			{ (int)ObjectIndexes.GravelPath, new CraftableItem((int)ObjectIndexes.GravelPath, "/Field/407/false/l 0", CraftableCategories.EasyAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } },
+			{ (int)ObjectIndexes.CobblestonePath, new CraftableItem((int)ObjectIndexes.CobblestonePath, "/Field/411/false/l 0", CraftableCategories.EasyAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } },
+			//{ (int)ObjectIndexes.SteppingStonePath, new CraftableItem((int)ObjectIndexes.SteppingStonePath, "/Field/415/false/l 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.Gate, new CraftableItem((int)ObjectIndexes.Gate, "/Home/325/false/l 0", CraftableCategories.Easy) },
+			{ (int)ObjectIndexes.Scarecrow, new CraftableItem((int)ObjectIndexes.Scarecrow, "/Home/8/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(1, 3) } },
+			{ (int)ObjectIndexes.BeeHouse, new CraftableItem((int)ObjectIndexes.BeeHouse, "/Home/10/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(1, 4) } },
+			{ (int)ObjectIndexes.Keg, new CraftableItem((int)ObjectIndexes.Keg, "/Home/12/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(6, 10) } },
+			{ (int)ObjectIndexes.Cask, new CraftableItem((int)ObjectIndexes.Cask, "/Home/163/true/null", CraftableCategories.Moderate) },
+			{ (int)ObjectIndexes.Furnace, new CraftableItem((int)ObjectIndexes.Furnace, "/Home/13/true/l 2", CraftableCategories.Moderate) },
+			{ (int)ObjectIndexes.GardenPot, new CraftableItem((int)ObjectIndexes.GardenPot, "/Home/62/true/null", CraftableCategories.Easy) },
+			{ (int)ObjectIndexes.CheesePress, new CraftableItem((int)ObjectIndexes.CheesePress, "/Home/16/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(3, 8) } },
+			{ (int)ObjectIndexes.MayonnaiseMachine, new CraftableItem((int)ObjectIndexes.MayonnaiseMachine, "/Home/24/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(1, 4) } },
+			{ (int)ObjectIndexes.SeedMaker, new CraftableItem((int)ObjectIndexes.SeedMaker, "/Home/25/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(6, 9) } },
+			{ (int)ObjectIndexes.Loom, new CraftableItem((int)ObjectIndexes.Loom, "/Home/17/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(3, 8) } },
+			{ (int)ObjectIndexes.OilMaker, new CraftableItem((int)ObjectIndexes.OilMaker, "/Home/19/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(4, 9) } },
+			{ (int)ObjectIndexes.RecyclingMachine, new CraftableItem((int)ObjectIndexes.RecyclingMachine, "/Home/20/true/", CraftableCategories.Moderate, "Fishing") { LearnableLevels = new Range(1, 6) } },
+			{ (int)ObjectIndexes.PreservesJar, new CraftableItem((int)ObjectIndexes.PreservesJar, "/Home/15/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(2, 7) } },
+			{ (int)ObjectIndexes.CharcoalKiln, new CraftableItem((int)ObjectIndexes.CharcoalKiln, "/Home/114/true/", CraftableCategories.Easy, "Foraging") { LearnableLevels = new Range(1, 6) } },
+			{ (int)ObjectIndexes.Tapper, new CraftableItem((int)ObjectIndexes.Tapper, "/Home/105/true/", CraftableCategories.Moderate, "Foraging") { LearnableLevels = new Range(1, 6) } },
+			{ (int)ObjectIndexes.LightningRod, new CraftableItem((int)ObjectIndexes.LightningRod, "/Home/9/true/", CraftableCategories.Moderate, "Foraging") { LearnableLevels = new Range(3, 8) } },
+			{ (int)ObjectIndexes.Crystalarium, new CraftableItem((int)ObjectIndexes.Crystalarium, "/Home/21/true/", CraftableCategories.Moderate, "Mining") { LearnableLevels = new Range(6, 9) } },
+			{ (int)ObjectIndexes.Sprinkler, new CraftableItem((int)ObjectIndexes.Sprinkler, "/Home/599/false/", CraftableCategories.ModerateAndNeedMany, "Farming") { LearnableLevels = new Range(1, 3) } },
+			{ (int)ObjectIndexes.QualitySprinkler, new CraftableItem((int)ObjectIndexes.QualitySprinkler, "/Home/621/false/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(4, 6) } },
+			{ (int)ObjectIndexes.IridiumSprinkler, new CraftableItem((int)ObjectIndexes.IridiumSprinkler, "/Home/645/false/", CraftableCategories.DifficultAndNeedMany, "Farming") { LearnableLevels = new Range(7, 9) } },
+			{ (int)ObjectIndexes.Staircase, new CraftableItem((int)ObjectIndexes.Staircase, "/Field/71/true/", CraftableCategories.Moderate, "Mining") { LearnableLevels = new Range(1, 4) } },
+			{ (int)ObjectIndexes.BasicFertilizer, new CraftableItem((int)ObjectIndexes.BasicFertilizer, "/Field/368/false/s ", CraftableCategories.EasyAndNeedMany, "Farming") { LearnableLevels = new Range(1, 3) } },
+			{ (int)ObjectIndexes.QualityFertilizer, new CraftableItem((int)ObjectIndexes.QualityFertilizer, "/Field/369/false/s ", CraftableCategories.Easy, "Farming") { LearnableLevels = new Range(6, 9) } },
+			{ (int)ObjectIndexes.CherryBomb, new CraftableItem((int)ObjectIndexes.CherryBomb, "/Field/286/false/", CraftableCategories.Easy, "Mining") { LearnableLevels = new Range(1, 3) } },
+			{ (int)ObjectIndexes.Bomb, new CraftableItem((int)ObjectIndexes.Bomb, "/Field/287/false/", CraftableCategories.Moderate, "Mining") { LearnableLevels = new Range(4, 6) } },
+			{ (int)ObjectIndexes.MegaBomb, new CraftableItem((int)ObjectIndexes.MegaBomb, "/Field/288/false/", CraftableCategories.Difficult, "Mining") { LearnableLevels = new Range(7, 9) } },
+			{ (int)ObjectIndexes.FieldSnack, new CraftableItem((int)ObjectIndexes.FieldSnack, "/Home/403/false/", CraftableCategories.Easy, "Foraging") { LearnableLevels = new Range(1, 3) } },
+			{ (int)ObjectIndexes.Bait, new CraftableItem((int)ObjectIndexes.Bait, "/Home/685 5/false/", CraftableCategories.EasyAndNeedMany, "Fishing") { LearnableLevels = new Range(1, 3) } },
+			{ (int)ObjectIndexes.RainTotem, new CraftableItem((int)ObjectIndexes.RainTotem, "Field/681/false/", CraftableCategories.Difficult, "Foraging") { LearnableLevels = new Range(6, 9) } },
+			{ (int)ObjectIndexes.TrapBobber, new CraftableItem((int)ObjectIndexes.TrapBobber, "/Home/694/false/", CraftableCategories.Moderate, "Fishing") { LearnableLevels = new Range(3, 8) } },
+			{ (int)ObjectIndexes.CrabPot, new CraftableItem((int)ObjectIndexes.CrabPot, "/Home/710/false/", CraftableCategories.Moderate, "Fishing") { LearnableLevels = new Range(1, 4) } },
 
 			// Resources - ObtainingDifficulties.NoRequirements
 			{ (int)ObjectIndexes.Wood, new ResourceItem((int)ObjectIndexes.Wood) },

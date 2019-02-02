@@ -86,44 +86,301 @@ namespace Randomizer
 		{
 			switch (Category)
 			{
-				// Uses one of some really easy to get item
-				case CraftableCategories.CheapAndNeedMany:
-					List<int> itemIds = ItemList.Items.Values
-						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements)
-						.Select(x => x.Id)
-						.ToList();
+				case CraftableCategories.EasyAndNeedMany:
+					return GetStringForEasyAndNeedMany();
 
-					int itemId = Globals.RNGGetRandomValueFromList(itemIds);
-					return $"{itemId} 1";
+				case CraftableCategories.Easy:
+					return GetStringForEasy();
 
-				// Uses either two really easy to get items (one being a resource), or one slightly harder to get item
-				case CraftableCategories.Cheap:
-					bool useHarderItem = Globals.RNGGetNextBoolean();
-					if (useHarderItem)
-					{
-						List<Item> possibleHarderItems = ItemList.Items.Values
-							.Where(x => x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements)
-							.ToList();
+				case CraftableCategories.ModerateAndNeedMany:
+					return GetStringForModerateAndNeedMany();
 
-						return possibleHarderItems[Globals.RNG.Next(possibleHarderItems.Count)].GetStringForCrafting();
-					}
+				case CraftableCategories.Moderate:
+					return GetStringForModerate();
 
-					List<Item> possibleResourceItems = ItemList.Items.Values
-						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements && x.IsResource)
-						.ToList();
-					Item resourceItem = Globals.RNGGetRandomValueFromList(possibleResourceItems);
+				case CraftableCategories.DifficultAndNeedMany:
+					return GetStringForDifficultAndNeedMany();
 
-					List<Item> possibleEasyItems = ItemList.Items.Values
-						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements && x.Id != resourceItem.Id)
-						.ToList();
-					Item otherItem = Globals.RNGGetRandomValueFromList(possibleEasyItems);
+				case CraftableCategories.Difficult:
+					return GetStringForDifficult();
 
-					return $"{resourceItem.GetStringForCrafting()} {otherItem.GetStringForCrafting()}";
+				case CraftableCategories.Endgame:
+					return GetStringForEndgame();
 
 				default:
 					Globals.ConsoleWrite($"ERROR: invalid category when generating recipe for {Name}!");
 					return "18 9"; // just a random value for now
 			}
+		}
+
+		private string GetStringForEasyAndNeedMany()
+		{
+			List<int> itemIds = ItemList.Items.Values
+				.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements && x.IsResource)
+				.Select(x => x.Id)
+				.ToList();
+
+			int itemId = Globals.RNGGetRandomValueFromList(itemIds);
+			return $"{itemId} 1";
+		}
+
+		/// <summary>
+		/// Uses either two really easy to get items (one being a resource), or one slightly harder to get item		
+		/// /// </summary>
+		/// <returns>The item string</returns>
+		private string GetStringForEasy()
+		{
+			bool useHarderItem = Globals.RNGGetNextBoolean();
+			if (useHarderItem)
+			{
+				List<Item> possibleHarderItems = ItemList.Items.Values
+					.Where(x => x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements)
+					.ToList();
+
+				return possibleHarderItems[Globals.RNG.Next(possibleHarderItems.Count)].GetStringForCrafting();
+			}
+
+			List<Item> possibleResourceItems = ItemList.Items.Values
+				.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements && x.IsResource)
+				.ToList();
+			Item resourceItem = Globals.RNGGetRandomValueFromList(possibleResourceItems);
+
+			List<Item> possibleEasyItems = ItemList.Items.Values
+				.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements && x.Id != resourceItem.Id)
+				.ToList();
+			Item otherItem = Globals.RNGGetRandomValueFromList(possibleEasyItems);
+
+			return $"{resourceItem.GetStringForCrafting()} {otherItem.GetStringForCrafting()}";
+		}
+
+		/// <summary>
+		/// One of the following, limited to one item needed
+		/// - Three sets of SmallTime
+		/// - One MediumTime, one SmallTime/No, one No
+		/// - One MediumTime, one SmallTime
+		/// </summary>
+		/// <returns>The item string</returns>
+		private string GetStringForModerateAndNeedMany()
+		{
+			string output = string.Empty;
+			foreach (Item item in GetListOfItemsForModerate())
+			{
+				output += $"{item.Id} 1 ";
+			}
+			return output.Trim();
+		}
+
+		/// <summary>
+		/// One of the following
+		/// - Three sets of SmallTime
+		/// - One MediumTime, one SmallTime/No, one No
+		/// - One MediumTime, one SmallTime
+		/// </summary>
+		/// <returns>The item string</returns>
+		private string GetStringForModerate()
+		{
+			string output = string.Empty;
+			foreach (Item item in GetListOfItemsForModerate())
+			{
+				output += $"{item.GetStringForCrafting()} ";
+			}
+			return output.Trim();
+		}
+
+		/// <summary>
+		/// Gets the list of items for any of the moderate cases
+		/// </summary>
+		/// <returns />
+		private List<Item> GetListOfItemsForModerate()
+		{
+			List<Item> possibleItems = ItemList.Items.Values.ToList();
+			Item item1, item2, item3;
+			switch (Globals.RNG.Next(0, 3))
+			{
+				case 0:
+					possibleItems = ItemList.Items.Values
+						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements)
+						.ToList();
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems);
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1 && x != item2).ToList());
+
+					return new List<Item> { item1, item2, item3 };
+				case 1:
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.MediumTimeRequirements).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						(
+							x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.NoRequirements
+						) &&
+							x.Id != item1.Id
+						).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.NoRequirements &&
+						x.Id != item1.Id &&
+						x.Id != item2.Id
+					).ToList());
+
+					return new List<Item> { item1, item2, item3 };
+				default:
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.MediumTimeRequirements).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements &&
+						x.Id != item1.Id
+					).ToList());
+
+					return new List<Item> { item1, item2 };
+			}
+		}
+
+		/// <summary>
+		/// One of the following
+		/// - Three sets of MediumTime
+		/// - One LongTime, one MediumTime/SmallTime, MediumTime/SmallTime/No
+		/// - Two sets of LongTime
+		/// </summary>
+		/// <returns>The item string</returns>
+		private string GetStringForDifficultAndNeedMany()
+		{
+			string output = string.Empty;
+			foreach (Item item in GetListOfItemsForDifficult())
+			{
+				output += $"{item.Id} 1 ";
+			}
+			return output.Trim();
+		}
+
+		/// <summary>
+		/// One of the following, limited to one item needed
+		/// - Three sets of MediumTime
+		/// - One LongTime, one MediumTime/SmallTime, MediumTime/SmallTime/No
+		/// - Two sets of LongTime
+		/// </summary>
+		/// <returns>The item string</returns>
+		private string GetStringForDifficult()
+		{
+			string output = string.Empty;
+			foreach (Item item in GetListOfItemsForDifficult())
+			{
+				output += $"{item.GetStringForCrafting()} ";
+			}
+			return output.Trim();
+		}
+
+		/// <summary>
+		/// Gets the list of items for any of the moderate cases
+		/// </summary>
+		/// <returns />
+		private List<Item> GetListOfItemsForDifficult()
+		{
+			List<Item> possibleItems = ItemList.Items.Values.ToList();
+			Item item1, item2, item3;
+			switch (Globals.RNG.Next(0, 3))
+			{
+				case 0:
+					possibleItems = ItemList.Items.Values
+						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.MediumTimeRequirements)
+						.ToList();
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems);
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1 && x != item2).ToList());
+
+					return new List<Item> { item1, item2, item3 };
+				case 1:
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						(
+							x.DifficultyToObtain == ObtainingDifficulties.MediumTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements
+						) &&
+							x.Id != item1.Id
+						).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						(
+							x.DifficultyToObtain == ObtainingDifficulties.MediumTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.NoRequirements
+						) &&
+							x.Id != item1.Id &&
+							x.Id != item2.Id
+						).ToList());
+
+					return new List<Item> { item1, item2, item3 };
+				default:
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements &&
+						x.Id != item1.Id
+					).ToList());
+
+					return new List<Item> { item1, item2 };
+			}
+		}
+
+		/// <summary>
+		/// - Three sets of LongTime
+		/// - Two sets of LongTime, one SmallTime or less
+		/// - One set of Longtime, two MediumTime or less
+		/// </summary>
+		/// <returns>The item string</returns>
+		private string GetStringForEndgame()
+		{
+			List<Item> possibleItems = ItemList.Items.Values.ToList();
+			Item item1, item2, item3;
+			switch (Globals.RNG.Next(0, 3))
+			{
+				case 0:
+					possibleItems = ItemList.Items.Values
+						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements)
+						.ToList();
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems);
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1 && x != item2).ToList());
+					break;
+				case 1:
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements &&
+						x.Id != item1.Id)
+						.ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						(
+							x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.NoRequirements
+						) &&
+							x.Id != item1.Id &&
+							x.Id != item2.Id
+						).ToList());
+					break;
+				default:
+					item1 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						(
+							x.DifficultyToObtain == ObtainingDifficulties.MediumTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.NoRequirements
+						) &&
+							x.Id != item1.Id
+						).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
+						(
+							x.DifficultyToObtain == ObtainingDifficulties.MediumTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements ||
+							x.DifficultyToObtain == ObtainingDifficulties.NoRequirements
+						) &&
+							x.Id != item1.Id &&
+							x.Id != item2.Id
+						).ToList());
+					break;
+			}
+
+			return $"{item1.GetStringForCrafting()} {item2.GetStringForCrafting()} {item3.GetStringForCrafting()}";
 		}
 	}
 }
