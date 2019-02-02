@@ -71,6 +71,8 @@
 		Tapper = -114,
 		LightningRod = -115,
 		Crystalarium = -116,
-		Staircase = -117
+		Staircase = -117,
+		TransmuteAu = -118,
+		TransmuteFe = -119
 	};
 }

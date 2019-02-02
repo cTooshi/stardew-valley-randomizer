@@ -11,8 +11,9 @@ namespace Randomizer
 		public int Id { get; }
 		public string Name
 		{
-			get { return GetNameFromId(Id); }
+			get { return GetNameFromId(Id, PutLastWordOfNameInParens); }
 		}
+		public bool PutLastWordOfNameInParens { get; set; }
 		public ForagableLocationData ForagableLocationData { get; } = new ForagableLocationData();
 		public bool ShouldBeForagable { get; set; }
 		public bool IsForagable
@@ -27,6 +28,7 @@ namespace Randomizer
 		public bool IsArtifact { get; set; }
 		public bool IsMayonaisse { get; set; }
 		public bool IsGeodeMineral { get; set; }
+		public bool IsCrabPotItem { get; set; }
 		public bool RequiresOilMaker { get; set; }
 		public bool RequiresBeehouse { get; set; }
 
@@ -99,13 +101,35 @@ namespace Randomizer
 
 		/// <summary>
 		/// Gets the name of an item from
+		/// The putLastWordOfNameInParens parameter won't work if not passed in, no matter the item
 		/// </summary>
 		/// <param name="id">The item id</param>
+		/// <param name="putLastWordOfNameInParens">Whether the put the last part of the string in parens</param>
 		/// <returns>Splits apart the name from the ObjectIndexes name - WildHorseradish -> Wild Horseradish</returns>
-		public static string GetNameFromId(int id)
+		public static string GetNameFromId(int id, bool putLastWordOfNameInParens = false)
 		{
 			string enumName = ((ObjectIndexes)id).ToString();
-			return Regex.Replace(enumName, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
+			string separatedName = Regex.Replace(enumName, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1").Trim();
+			if (!putLastWordOfNameInParens)
+			{
+				return separatedName;
+			}
+
+			string[] splitName = separatedName.Split(' ');
+			string output = "";
+			for (int i = 0; i < splitName.Length; i++)
+			{
+				string namePart = splitName[i];
+				if (i == splitName.Length - 1)
+				{
+					output += $"({namePart})";
+				}
+				else
+				{
+					output += $"{namePart} ";
+				}
+			}
+			return output.Trim();
 		}
 	}
 }

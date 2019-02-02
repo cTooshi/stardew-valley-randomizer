@@ -3,15 +3,16 @@
 	/// <summary>
 	/// Represents a trash item that you can get while fishing, for example
 	/// </summary>
-	public class TrashItem : Item
+	public class CrabPotItem : Item
 	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="id">The item id</param>
-		public TrashItem(int id) : base(id)
+		public CrabPotItem(int id) : base(id)
 		{
-			DifficultyToObtain = ObtainingDifficulties.NoRequirements;
+			IsCrabPotItem = true;
+			DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements;
 		}
 	}
 }

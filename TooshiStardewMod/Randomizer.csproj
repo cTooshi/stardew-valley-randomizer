@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
+    <Compile Include="Item\CrabPotItem.cs" />
     <Compile Include="Item\GeodeMineralItem.cs" />
     <Compile Include="MusicRandomizer.cs" />
     <Compile Include="Enums\CraftableCategories.cs" />

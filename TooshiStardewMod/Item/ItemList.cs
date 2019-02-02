@@ -27,13 +27,27 @@ namespace Randomizer
 		/// Gets a random craftable item out of the list
 		/// </summary>
 		/// <param name="possibleDifficulties">The difficulties that can be in the result</param>
+		/// <param name="itemBeingCrafted">The item being crafted</param>
 		/// <param name="idsToExclude">Any ids to not include in the results</param>
 		/// <param name="onlyResources">Whether to only include resource items</param>
 		/// <returns>The selected item</returns>
-		public static Item GetRandomCraftableItem(List<ObtainingDifficulties> possibleDifficulties, List<int> idsToExclude = null, bool onlyResources = false)
+		public static Item GetRandomCraftableItem(
+			List<ObtainingDifficulties> possibleDifficulties,
+			Item itemBeingCrafted,
+			List<int> idsToExclude = null,
+			bool onlyResources = false)
 		{
 			List<Item> items = Items.Values
 				.Where(x =>
+					// Disallow the item being required to craft itself
+					x.Id != itemBeingCrafted.Id &&
+
+					// Don't allow items to require the items that they're used to obtain
+					(itemBeingCrafted.Id != (int)ObjectIndexes.Furnace || !x.IsSmelted) &&
+					(itemBeingCrafted.Id != (int)ObjectIndexes.MayonnaiseMachine || !x.IsMayonaisse) &&
+					((itemBeingCrafted.Id != (int)ObjectIndexes.BeeHouse) || (x.Id != (int)ObjectIndexes.Honey)) &&
+					(itemBeingCrafted.Id != (int)ObjectIndexes.CrabPot || !x.IsCrabPotItem) &&
+
 					(possibleDifficulties == null || possibleDifficulties.Contains(x.DifficultyToObtain)) &&
 					(idsToExclude == null || !idsToExclude.Contains(x.Id)) &&
 					(!onlyResources || x.IsResource)
@@ -44,15 +58,22 @@ namespace Randomizer
 
 		//TODO: the rest of the crafting recipes
 		//TODO: cooking recipes
+		//TODO: add Transmute (Fe) and Transmute (Au)
 		public static Dictionary<int, Item> Items = new Dictionary<int, Item>
 		{
 			// Craftable items - Impossible by default
 			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch, "/Field/93/false/l 0", CraftableCategories.ModerateAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
+			{ (int)ObjectIndexes.WoodPath, new CraftableItem((int)ObjectIndexes.WoodPath, "/Field/405/false/l 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.GravelPath, new CraftableItem((int)ObjectIndexes.GravelPath, "/Field/407/false/l 0", CraftableCategories.EasyAndNeedMany) },
 			{ (int)ObjectIndexes.Chest, new CraftableItem((int)ObjectIndexes.Chest, "/Home/130/true/null", CraftableCategories.Easy) },
-			{ (int)ObjectIndexes.WoodPath, new CraftableItem((int)ObjectIndexes.WoodPath, "/Field/405/false/l 0", CraftableCategories.EasyAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } },
-			{ (int)ObjectIndexes.GravelPath, new CraftableItem((int)ObjectIndexes.GravelPath, "/Field/407/false/l 0", CraftableCategories.EasyAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } },
-			{ (int)ObjectIndexes.CobblestonePath, new CraftableItem((int)ObjectIndexes.CobblestonePath, "/Field/411/false/l 0", CraftableCategories.EasyAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } },
-			//{ (int)ObjectIndexes.SteppingStonePath, new CraftableItem((int)ObjectIndexes.SteppingStonePath, "/Field/415/false/l 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.CobblestonePath, new CraftableItem((int)ObjectIndexes.CobblestonePath, "/Field/411/false/l 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.SteppingStonePath, new CraftableItem((int)ObjectIndexes.SteppingStonePath, "/Field/415/false/l 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.CrystalPath, new CraftableItem((int)ObjectIndexes.CrystalPath, "/Field/409 5/false/l 0", CraftableCategories.ModerateAndNeedMany) },
+			{ (int)ObjectIndexes.WoodFloor, new CraftableItem((int)ObjectIndexes.WoodFloor, "/Field/328/false/l 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.StrawFloor, new CraftableItem((int)ObjectIndexes.StrawFloor, "/Field/401/false/1 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.StoneFloor, new CraftableItem((int)ObjectIndexes.StoneFloor, "/Field/329/false/l 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.WeatheredFloor, new CraftableItem((int)ObjectIndexes.WeatheredFloor, "/Field/331/false/l 0", CraftableCategories.EasyAndNeedMany) },
+			{ (int)ObjectIndexes.CrystalFloor, new CraftableItem((int)ObjectIndexes.CrystalFloor, "/Field/333 5/false/l 0", CraftableCategories.ModerateAndNeedMany) },
 			{ (int)ObjectIndexes.Gate, new CraftableItem((int)ObjectIndexes.Gate, "/Home/325/false/l 0", CraftableCategories.Easy) },
 			{ (int)ObjectIndexes.Scarecrow, new CraftableItem((int)ObjectIndexes.Scarecrow, "/Home/8/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(1, 3) } },
 			{ (int)ObjectIndexes.BeeHouse, new CraftableItem((int)ObjectIndexes.BeeHouse, "/Home/10/true/", CraftableCategories.Moderate, "Farming") { LearnableLevels = new Range(1, 4) } },
@@ -85,6 +106,8 @@ namespace Randomizer
 			{ (int)ObjectIndexes.RainTotem, new CraftableItem((int)ObjectIndexes.RainTotem, "/Field/681/false/", CraftableCategories.Difficult, "Foraging") { LearnableLevels = new Range(6, 9) } },
 			{ (int)ObjectIndexes.TrapBobber, new CraftableItem((int)ObjectIndexes.TrapBobber, "/Home/694/false/", CraftableCategories.Moderate, "Fishing") { LearnableLevels = new Range(3, 8) } },
 			{ (int)ObjectIndexes.CrabPot, new CraftableItem((int)ObjectIndexes.CrabPot, "/Home/710/false/", CraftableCategories.Moderate, "Fishing") { LearnableLevels = new Range(1, 4) } },
+			{ (int)ObjectIndexes.TransmuteFe, new CraftableItem((int)ObjectIndexes.TransmuteFe, "/Home/335/false/", CraftableCategories.Moderate, "Mining") { LearnableLevels = new Range(2, 6), PutLastWordOfNameInParens = true } },
+			{ (int)ObjectIndexes.TransmuteAu, new CraftableItem((int)ObjectIndexes.TransmuteAu, "/Home/336/false/", CraftableCategories.Moderate, "Mining") { LearnableLevels = new Range(6, 9), PutLastWordOfNameInParens = true } },
 
 			// Resources - ObtainingDifficulties.NoRequirements
 			{ (int)ObjectIndexes.Wood, new ResourceItem((int)ObjectIndexes.Wood) },
@@ -172,17 +195,17 @@ namespace Randomizer
 			{ (int)ObjectIndexes.MutantCarp, new FishItem((int)ObjectIndexes.Blobfish, ObtainingDifficulties.EndgameItem) },
 
 			// Crab pot specific
-			{ (int)ObjectIndexes.Lobster, new Item((int)ObjectIndexes.Lobster, ObtainingDifficulties.MediumTimeRequirements) },
-			{ (int)ObjectIndexes.Crab, new Item((int)ObjectIndexes.Crab, ObtainingDifficulties.MediumTimeRequirements) },
-			{ (int)ObjectIndexes.Shrimp, new Item((int)ObjectIndexes.Shrimp, ObtainingDifficulties.MediumTimeRequirements) },
+			{ (int)ObjectIndexes.Lobster, new CrabPotItem((int)ObjectIndexes.Lobster) },
+			{ (int)ObjectIndexes.Crab, new CrabPotItem((int)ObjectIndexes.Crab) },
+			{ (int)ObjectIndexes.Shrimp, new CrabPotItem((int)ObjectIndexes.Shrimp) },
 
 			// Items you can find in the mines
 			{ (int)ObjectIndexes.CaveCarrot, new Item((int)ObjectIndexes.CaveCarrot, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.BugMeat, new Item((int)ObjectIndexes.BugMeat, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.Slime, new Item((int)ObjectIndexes.BugMeat, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 10) } },
-			{ (int)ObjectIndexes.BatWing, new Item((int)ObjectIndexes.BatWing, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
-			{ (int)ObjectIndexes.VoidEssence, new Item((int)ObjectIndexes.VoidEssence, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
-			{ (int)ObjectIndexes.SolarEssence, new Item((int)ObjectIndexes.SolarEssence, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+			{ (int)ObjectIndexes.BatWing, new Item((int)ObjectIndexes.BatWing, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+			{ (int)ObjectIndexes.VoidEssence, new Item((int)ObjectIndexes.VoidEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+			{ (int)ObjectIndexes.SolarEssence, new Item((int)ObjectIndexes.SolarEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 
 			{ (int)ObjectIndexes.Coal, new Item((int)ObjectIndexes.Coal, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.CopperOre, new Item((int)ObjectIndexes.CopperOre, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
@@ -351,10 +374,10 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Coral, new ForagableItem((int)ObjectIndexes.Coral) },
 			{ (int)ObjectIndexes.SeaUrchin, new ForagableItem((int)ObjectIndexes.SeaUrchin) },
 			{ (int)ObjectIndexes.RainbowShell, new ForagableItem((int)ObjectIndexes.RainbowShell) },
-			{ (int)ObjectIndexes.Clam, new ForagableItem((int)ObjectIndexes.Clam) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
-			{ (int)ObjectIndexes.Cockle, new ForagableItem((int)ObjectIndexes.Cockle) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
-			{ (int)ObjectIndexes.Mussel, new ForagableItem((int)ObjectIndexes.Mussel) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
-			{ (int)ObjectIndexes.Oyster, new ForagableItem((int)ObjectIndexes.Oyster) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
+			{ (int)ObjectIndexes.Clam, new ForagableItem((int)ObjectIndexes.Clam) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements, IsCrabPotItem = true } },
+			{ (int)ObjectIndexes.Cockle, new ForagableItem((int)ObjectIndexes.Cockle) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements, IsCrabPotItem = true } },
+			{ (int)ObjectIndexes.Mussel, new ForagableItem((int)ObjectIndexes.Mussel) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements, IsCrabPotItem = true } },
+			{ (int)ObjectIndexes.Oyster, new ForagableItem((int)ObjectIndexes.Oyster) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements, IsCrabPotItem = true } },
 
 			// Desert Forabagles
 			{ (int)ObjectIndexes.Coconut, new ForagableItem((int)ObjectIndexes.Coconut) },
@@ -365,6 +388,7 @@ namespace Randomizer
 			{ (int)ObjectIndexes.RefinedQuartz, new SmeltedItem((int)ObjectIndexes.RefinedQuartz) },
 			{ (int)ObjectIndexes.CopperBar, new SmeltedItem((int)ObjectIndexes.CopperBar) },
 			{ (int)ObjectIndexes.IronBar, new SmeltedItem((int)ObjectIndexes.IronBar) },
+			{ (int)ObjectIndexes.GoldBar, new SmeltedItem((int)ObjectIndexes.GoldBar) },
 			{ (int)ObjectIndexes.IridiumBar, new SmeltedItem((int)ObjectIndexes.IridiumBar, ObtainingDifficulties.EndgameItem) },
 
 			// Trash items - ObtainingDifficulties.NoRequirements
