@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Randomizer
 {
@@ -20,6 +21,25 @@ namespace Randomizer
 
 			Globals.ConsoleWrite($"ERROR: Attempted to create a crafting recipe for a non-craftable item - {item.Name}");
 			return string.Empty;
+		}
+
+		/// <summary>
+		/// Gets a random craftable item out of the list
+		/// </summary>
+		/// <param name="possibleDifficulties">The difficulties that can be in the result</param>
+		/// <param name="idsToExclude">Any ids to not include in the results</param>
+		/// <param name="onlyResources">Whether to only include resource items</param>
+		/// <returns>The selected item</returns>
+		public static Item GetRandomCraftableItem(List<ObtainingDifficulties> possibleDifficulties, List<int> idsToExclude = null, bool onlyResources = false)
+		{
+			List<Item> items = Items.Values
+				.Where(x =>
+					(possibleDifficulties == null || possibleDifficulties.Contains(x.DifficultyToObtain)) &&
+					(idsToExclude == null || !idsToExclude.Contains(x.Id)) &&
+					(!onlyResources || x.IsResource)
+				).ToList();
+
+			return Globals.RNGGetRandomValueFromList(items);
 		}
 
 		//TODO: crab pot stuff
