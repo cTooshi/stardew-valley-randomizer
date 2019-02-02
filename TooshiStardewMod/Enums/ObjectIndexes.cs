@@ -54,6 +54,23 @@
 
 
 		// UNOFFICIAL ITEM IDS, DO NOT USE THESE FOR ANYTHING THAT IS WRITTEN ANYWHERE
-		Chest = -100 // There's no item ID for the craftable chests...
+		Chest = -100,
+		Scarecrow = -101,
+		BeeHouse = -102,
+		Cask = -103,
+		Furnace = -104,
+		GardenPot = -105,
+		CheesePress = -106,
+		MayonnaiseMachine = -107,
+		SeedMaker = -108,
+		Loom = -109,
+		OilMaker = -110,
+		RecyclingMachine = -111,
+		PreservesJar = -112,
+		CharcoalKiln = -113,
+		Tapper = -114,
+		LightningRod = -115,
+		Crystalarium = -116,
+		Staircase = -117
 	};
 }

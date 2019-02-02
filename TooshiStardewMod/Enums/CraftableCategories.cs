@@ -7,14 +7,14 @@
 	public enum CraftableCategories
 	{
 		/// <summary>
-		/// Use this for things like paths
-		/// </summary>
-		CheapAndNeedMany,
-
-		/// <summary>
 		/// Use this for things like chests, torches, etc. - things you need early game
 		/// </summary>
-		Cheap,
+		Easy,
+
+		/// <summary>
+		/// Use this for things like paths
+		/// </summary>
+		EasyAndNeedMany,
 
 		/// <summary>
 		/// Use this for more useful things like scarecrows, sprinklers, etc.
@@ -34,7 +34,7 @@
 		/// <summary>
 		/// Use this for things like quality fertilizer
 		/// </summary>
-		DifficulteAndNeedMany,
+		DifficultAndNeedMany,
 
 		/// <summary>
 		/// Use this for all endgame things, such as Iridium sprinklers
