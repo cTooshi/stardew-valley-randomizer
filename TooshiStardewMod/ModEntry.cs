@@ -110,27 +110,23 @@ namespace Randomizer
 			this._modAssetEditor.InvalidateCache();
 		}
 
-        private string _lastCurrentSong { get; set; }
-        public void CheckSong()
-        {
-            //Game1.addHUDMessage(new HUDMessage(Game1.currentSong?.Name));
+		public void CheckSong()
+		{
+			//Game1.addHUDMessage(new HUDMessage(Game1.currentSong?.Name));
 
-            string currentSong = Game1.currentSong?.Name;
-            if (this._modAssetEditor.MusicReplacements.TryGetValue(currentSong?.ToLower() ?? "", out string value) && _lastCurrentSong != currentSong)
-            {
-                Globals.ConsoleWrite($"MUSIC SWAP STUFF: {value}");
-                _lastCurrentSong = value;
-                Game1.changeMusicTrack(value);
-            }
-        }
+			if (this._modAssetLoader.musicSwap.TryGetValue(Game1.currentSong?.Name?.ToLower() ?? "", out string value))
+			{
+				Game1.changeMusicTrack(value);
+			}
+		}
 
-        /*********
+		/*********
         ** Private methods
         *********/
-        /// <summary>The method invoked when the player presses a controller, keyboard, or mouse button.</summary>
-        /// <param name="sender">The event sender.</param>
-        /// <param name="e">The event data.</param>
-        private void InputEvents_ButtonPressed(object sender, EventArgsInput e)
+		/// <summary>The method invoked when the player presses a controller, keyboard, or mouse button.</summary>
+		/// <param name="sender">The event sender.</param>
+		/// <param name="e">The event data.</param>
+		private void InputEvents_ButtonPressed(object sender, EventArgsInput e)
 		{
 			if (Context.IsWorldReady) // save is loaded
 			{

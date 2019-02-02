@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,7 +46,6 @@
   <ItemGroup>
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
-    <Compile Include="MusicRandomizer.cs" />
     <Compile Include="Enums\CraftableCategories.cs" />
     <Compile Include="Enums\ObtainingDifficulties.cs" />
     <Compile Include="Globals.cs" />
@@ -418,11 +420,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="manifest.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig">
-      <Version>2.2.0</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

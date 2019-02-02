@@ -18,9 +18,8 @@ namespace Randomizer
 		private readonly Dictionary<int, string> _fishReplacements = new Dictionary<int, string>();
 		private readonly Dictionary<int, string> _questReplacements = new Dictionary<int, string>();
 		private readonly Dictionary<string, string> _locationsReplacements = new Dictionary<string, string>();
-        public Dictionary<string, string> MusicReplacements = new Dictionary<string, string>();
 
-        public AssetEditor(ModEntry mod)
+		public AssetEditor(ModEntry mod)
 		{
 			this._mod = mod;
 		}
@@ -126,9 +125,7 @@ namespace Randomizer
 			this.CalculateFishEdits();
 			this.CalculateQuestEdits();
 			LocationRandomizer.Randomize(_locationsReplacements);
-            MusicReplacements = MusicRandomizer.Randomize();
-
-        }
+		}
 
 		private void CalculateBlueprintEdits()
 		{
