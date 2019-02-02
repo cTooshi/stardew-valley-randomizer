@@ -42,15 +42,12 @@ namespace Randomizer
 			return Globals.RNGGetRandomValueFromList(items);
 		}
 
-		//TODO: crab pot stuff
 		//TODO: the rest of the crafting recipes
 		//TODO: cooking recipes
-		//TODO: geodes & precious stones
-		//TODO: maple syrup/oak resin/pine tar
 		public static Dictionary<int, Item> Items = new Dictionary<int, Item>
 		{
 			// Craftable items - Impossible by default
-			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch, "/Field/93/false/l 0", CraftableCategories.Easy) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
+			{ (int)ObjectIndexes.Torch, new CraftableItem((int)ObjectIndexes.Torch, "/Field/93/false/l 0", CraftableCategories.ModerateAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } }, // You can find it in the mines
 			{ (int)ObjectIndexes.Chest, new CraftableItem((int)ObjectIndexes.Chest, "/Home/130/true/null", CraftableCategories.Easy) },
 			{ (int)ObjectIndexes.WoodPath, new CraftableItem((int)ObjectIndexes.WoodPath, "/Field/405/false/l 0", CraftableCategories.EasyAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } },
 			{ (int)ObjectIndexes.GravelPath, new CraftableItem((int)ObjectIndexes.GravelPath, "/Field/407/false/l 0", CraftableCategories.EasyAndNeedMany) { DifficultyToObtain = ObtainingDifficulties.SmallTimeRequirements } },
@@ -101,6 +98,11 @@ namespace Randomizer
 			{ (int)ObjectIndexes.MapleSeed, new Item((int)ObjectIndexes.MapleSeed, ObtainingDifficulties.NoRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.PineCone, new Item((int)ObjectIndexes.PineCone, ObtainingDifficulties.NoRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.MixedSeeds, new Item((int)ObjectIndexes.MixedSeeds, ObtainingDifficulties.NoRequirements) },
+
+			// Tapper items
+			{ (int)ObjectIndexes.OakResin, new Item((int)ObjectIndexes.OakResin, ObtainingDifficulties.MediumTimeRequirements) },
+			{ (int)ObjectIndexes.MapleSyrup, new Item((int)ObjectIndexes.MapleSyrup, ObtainingDifficulties.MediumTimeRequirements) },
+			{ (int)ObjectIndexes.PineTar, new Item((int)ObjectIndexes.PineTar, ObtainingDifficulties.MediumTimeRequirements) },
 
 			// Items you can buy from the shops easily
 			{ (int)ObjectIndexes.Hay, new Item((int)ObjectIndexes.Hay, ObtainingDifficulties.NoRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
@@ -169,6 +171,11 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Glacierfish, new FishItem((int)ObjectIndexes.Glacierfish, ObtainingDifficulties.EndgameItem) },
 			{ (int)ObjectIndexes.MutantCarp, new FishItem((int)ObjectIndexes.Blobfish, ObtainingDifficulties.EndgameItem) },
 
+			// Crab pot specific
+			{ (int)ObjectIndexes.Lobster, new Item((int)ObjectIndexes.Lobster, ObtainingDifficulties.MediumTimeRequirements) },
+			{ (int)ObjectIndexes.Crab, new Item((int)ObjectIndexes.Crab, ObtainingDifficulties.MediumTimeRequirements) },
+			{ (int)ObjectIndexes.Shrimp, new Item((int)ObjectIndexes.Shrimp, ObtainingDifficulties.MediumTimeRequirements) },
+
 			// Items you can find in the mines
 			{ (int)ObjectIndexes.CaveCarrot, new Item((int)ObjectIndexes.CaveCarrot, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.BugMeat, new Item((int)ObjectIndexes.BugMeat, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
@@ -187,6 +194,11 @@ namespace Randomizer
 			{ (int)ObjectIndexes.EarthCrystal, new Item((int)ObjectIndexes.EarthCrystal, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.FrozenTear, new Item((int)ObjectIndexes.FrozenTear, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 
+			{ (int)ObjectIndexes.Geode, new Item((int)ObjectIndexes.Geode, ObtainingDifficulties.SmallTimeRequirements) },
+			{ (int)ObjectIndexes.FrozenGeode, new Item((int)ObjectIndexes.FrozenGeode, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
+			{ (int)ObjectIndexes.MagmaGeode, new Item((int)ObjectIndexes.MagmaGeode, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 2) } },
+			{ (int)ObjectIndexes.OmniGeode, new Item((int)ObjectIndexes.OmniGeode, ObtainingDifficulties.MediumTimeRequirements) },
+
 			{ (int)ObjectIndexes.Aquamarine, new Item((int)ObjectIndexes.Aquamarine, ObtainingDifficulties.MediumTimeRequirements) },
 			{ (int)ObjectIndexes.Amethyst, new Item((int)ObjectIndexes.Amethyst, ObtainingDifficulties.MediumTimeRequirements) },
 			{ (int)ObjectIndexes.Emerald, new Item((int)ObjectIndexes.Emerald, ObtainingDifficulties.MediumTimeRequirements) },
@@ -194,6 +206,51 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Topaz, new Item((int)ObjectIndexes.Topaz, ObtainingDifficulties.MediumTimeRequirements) },
 			{ (int)ObjectIndexes.Jade, new Item((int)ObjectIndexes.Jade, ObtainingDifficulties.MediumTimeRequirements) },
 			{ (int)ObjectIndexes.Diamond, new Item((int)ObjectIndexes.Diamond, ObtainingDifficulties.MediumTimeRequirements) },
+
+			// Geode mineral items - ObtainingDifficulties.LargeTimeRequirements
+			{ (int)ObjectIndexes.Alamite, new Item((int)ObjectIndexes.Alamite) },
+			{ (int)ObjectIndexes.Calcite, new Item((int)ObjectIndexes.Calcite) },
+			{ (int)ObjectIndexes.Celestine, new Item((int)ObjectIndexes.Celestine) },
+			{ (int)ObjectIndexes.Granite, new Item((int)ObjectIndexes.Granite) },
+			{ (int)ObjectIndexes.Jagoite, new Item((int)ObjectIndexes.Jagoite) },
+			{ (int)ObjectIndexes.Jamborite, new Item((int)ObjectIndexes.Jamborite) },
+			{ (int)ObjectIndexes.Limestone, new Item((int)ObjectIndexes.Limestone) },
+			{ (int)ObjectIndexes.Malachite, new Item((int)ObjectIndexes.Malachite) },
+			{ (int)ObjectIndexes.Mudstone, new Item((int)ObjectIndexes.Mudstone) },
+			{ (int)ObjectIndexes.Nekoite, new Item((int)ObjectIndexes.Nekoite) },
+			{ (int)ObjectIndexes.Orpiment, new Item((int)ObjectIndexes.Orpiment) },
+			{ (int)ObjectIndexes.PetrifiedSlime, new Item((int)ObjectIndexes.PetrifiedSlime) },
+			{ (int)ObjectIndexes.Sandstone, new Item((int)ObjectIndexes.Sandstone) },
+			{ (int)ObjectIndexes.Slate, new Item((int)ObjectIndexes.Slate) },
+			{ (int)ObjectIndexes.ThunderEgg, new Item((int)ObjectIndexes.ThunderEgg) },
+
+			{ (int)ObjectIndexes.Aerinite, new Item((int)ObjectIndexes.Aerinite) },
+			{ (int)ObjectIndexes.Esperite, new Item((int)ObjectIndexes.Esperite) },
+			{ (int)ObjectIndexes.FairyStone, new Item((int)ObjectIndexes.FairyStone) },
+			{ (int)ObjectIndexes.Fluorapatite, new Item((int)ObjectIndexes.Fluorapatite) },
+			{ (int)ObjectIndexes.Geminite, new Item((int)ObjectIndexes.Geminite) },
+			{ (int)ObjectIndexes.GhostCrystal, new Item((int)ObjectIndexes.GhostCrystal) },
+			{ (int)ObjectIndexes.Hematite, new Item((int)ObjectIndexes.Hematite) },
+			{ (int)ObjectIndexes.Kyanite, new Item((int)ObjectIndexes.Kyanite) },
+			{ (int)ObjectIndexes.Lunarite, new Item((int)ObjectIndexes.Lunarite) },
+			{ (int)ObjectIndexes.Marble, new Item((int)ObjectIndexes.Marble) },
+			{ (int)ObjectIndexes.OceanStone, new Item((int)ObjectIndexes.OceanStone) },
+			{ (int)ObjectIndexes.Opal, new Item((int)ObjectIndexes.Opal) },
+			{ (int)ObjectIndexes.Pyrite, new Item((int)ObjectIndexes.Pyrite) },
+			{ (int)ObjectIndexes.Soapstone, new Item((int)ObjectIndexes.Soapstone) },
+
+			{ (int)ObjectIndexes.Baryte, new Item((int)ObjectIndexes.Baryte) },
+			{ (int)ObjectIndexes.Basalt, new Item((int)ObjectIndexes.Basalt) },
+			{ (int)ObjectIndexes.Bixite, new Item((int)ObjectIndexes.Bixite) },
+			{ (int)ObjectIndexes.Dolomite, new Item((int)ObjectIndexes.Dolomite) },
+			{ (int)ObjectIndexes.FireOpal, new Item((int)ObjectIndexes.FireOpal) },
+			{ (int)ObjectIndexes.Helvite, new Item((int)ObjectIndexes.Helvite) },
+			{ (int)ObjectIndexes.Jasper, new Item((int)ObjectIndexes.Jasper) },
+			{ (int)ObjectIndexes.LemonStone, new Item((int)ObjectIndexes.LemonStone) },
+			{ (int)ObjectIndexes.Neptunite, new Item((int)ObjectIndexes.Neptunite) },
+			{ (int)ObjectIndexes.Obsidian, new Item((int)ObjectIndexes.Obsidian) },
+			{ (int)ObjectIndexes.StarShards, new Item((int)ObjectIndexes.StarShards) },
+			{ (int)ObjectIndexes.Tigerseye, new Item((int)ObjectIndexes.Tigerseye) },
 
 			// Animal items - default is ObtainingDifficulties.MediumTimeRequirements, but switches to LargeTimeRequirements if 1 upgrade to the building is required
 			{ (int)ObjectIndexes.Honey, new AnimalItem((int)ObjectIndexes.Honey) { RequiresBeehouse = true } },
@@ -289,15 +346,15 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Crocus, new ForagableItem((int)ObjectIndexes.Crocus) },
 			{ (int)ObjectIndexes.Holly, new ForagableItem((int)ObjectIndexes.Holly) },
 
-			// Beach Foragables
+			// Beach Foragables - the medium ones can also be obtained from crab pots
 			{ (int)ObjectIndexes.NautilusShell, new ForagableItem((int)ObjectIndexes.NautilusShell) },
 			{ (int)ObjectIndexes.Coral, new ForagableItem((int)ObjectIndexes.Coral) },
 			{ (int)ObjectIndexes.SeaUrchin, new ForagableItem((int)ObjectIndexes.SeaUrchin) },
 			{ (int)ObjectIndexes.RainbowShell, new ForagableItem((int)ObjectIndexes.RainbowShell) },
-			{ (int)ObjectIndexes.Clam, new ForagableItem((int)ObjectIndexes.Clam) },
-			{ (int)ObjectIndexes.Cockle, new ForagableItem((int)ObjectIndexes.Cockle) },
-			{ (int)ObjectIndexes.Mussel, new ForagableItem((int)ObjectIndexes.Mussel) },
-			{ (int)ObjectIndexes.Oyster, new ForagableItem((int)ObjectIndexes.Oyster) },
+			{ (int)ObjectIndexes.Clam, new ForagableItem((int)ObjectIndexes.Clam) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
+			{ (int)ObjectIndexes.Cockle, new ForagableItem((int)ObjectIndexes.Cockle) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
+			{ (int)ObjectIndexes.Mussel, new ForagableItem((int)ObjectIndexes.Mussel) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
+			{ (int)ObjectIndexes.Oyster, new ForagableItem((int)ObjectIndexes.Oyster) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
 
 			// Desert Forabagles
 			{ (int)ObjectIndexes.Coconut, new ForagableItem((int)ObjectIndexes.Coconut) },

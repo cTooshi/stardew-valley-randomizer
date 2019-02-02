@@ -115,13 +115,13 @@ namespace Randomizer
 
 		private string GetStringForEasyAndNeedMany()
 		{
-			List<int> itemIds = ItemList.Items.Values
-				.Where(x => x.DifficultyToObtain == ObtainingDifficulties.NoRequirements && x.IsResource)
-				.Select(x => x.Id)
-				.ToList();
+			Item item = ItemList.GetRandomCraftableItem(
+				new List<ObtainingDifficulties> { ObtainingDifficulties.NoRequirements },
+				new List<int> { Id },
+				true
+			);
 
-			int itemId = Globals.RNGGetRandomValueFromList(itemIds);
-			return $"{itemId} 1";
+			return $"{item.Id} 1";
 		}
 
 		/// <summary>
@@ -134,13 +134,19 @@ namespace Randomizer
 			if (useHarderItem)
 			{
 				return ItemList.GetRandomCraftableItem(
-					new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements }).GetStringForCrafting();
+					new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements },
+					new List<int> { Id }
+				).GetStringForCrafting();
 			}
 
-			Item resourceItem = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.NoRequirements }, null, true);
+			Item resourceItem = ItemList.GetRandomCraftableItem(
+				new List<ObtainingDifficulties> { ObtainingDifficulties.NoRequirements },
+				new List<int> { Id },
+				true
+			);
 			Item otherItem = ItemList.GetRandomCraftableItem(
 				new List<ObtainingDifficulties> { ObtainingDifficulties.NoRequirements },
-				new List<int> { resourceItem.Id }
+				new List<int> { Id, resourceItem.Id }
 			);
 
 			return $"{resourceItem.GetStringForCrafting()} {otherItem.GetStringForCrafting()}";
@@ -191,32 +197,41 @@ namespace Randomizer
 			switch (Globals.RNG.Next(0, 3))
 			{
 				case 0:
-					item1 = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements });
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements },
+						new List<int> { Id }
+					);
 					item2 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements },
-						new List<int> { item1.Id }
+						new List<int> { item1.Id, Id }
 					);
 					item3 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements },
-						new List<int> { item1.Id, item2.Id }
+						new List<int> { item1.Id, item2.Id, Id }
 					);
 					return new List<Item> { item1, item2, item3 };
 				case 1:
-					item1 = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements });
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements },
+						new List<int> { Id }
+					);
 					item2 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements, ObtainingDifficulties.NoRequirements },
-						new List<int> { item1.Id }
+						new List<int> { item1.Id, Id }
 					);
 					item3 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.NoRequirements },
-						new List<int> { item1.Id, item2.Id }
+						new List<int> { item1.Id, item2.Id, Id }
 					);
 					return new List<Item> { item1, item2, item3 };
 				default:
-					item1 = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements });
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements },
+						new List<int> { Id }
+					);
 					item2 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements },
-						new List<int> { item1.Id }
+						new List<int> { item1.Id, Id }
 					);
 					return new List<Item> { item1, item2 };
 			}
@@ -267,35 +282,42 @@ namespace Randomizer
 			switch (Globals.RNG.Next(0, 3))
 			{
 				case 0:
-					item1 = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements });
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements },
+						new List<int> { Id }
+					);
 					item2 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements },
-						new List<int> { item1.Id }
+						new List<int> { item1.Id, Id }
 					);
 					item3 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements },
-						new List<int> { item1.Id, item2.Id }
+						new List<int> { item1.Id, item2.Id, Id }
 					);
 					return new List<Item> { item1, item2, item3 };
 				case 1:
-					item1 = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements });
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
+						new List<int> { Id }
+					);
 					item2 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements, ObtainingDifficulties.SmallTimeRequirements },
-						new List<int> { item1.Id }
+						new List<int> { item1.Id, Id }
 					);
 					item3 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.MediumTimeRequirements, ObtainingDifficulties.SmallTimeRequirements, ObtainingDifficulties.NoRequirements },
-						new List<int> { item1.Id, item2.Id }
+						new List<int> { item1.Id, item2.Id, Id }
 					);
 					return new List<Item> { item1, item2, item3 };
 				default:
-					item1 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
-						x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements).ToList());
-					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
-						x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements &&
-						x.Id != item1.Id
-					).ToList());
-
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
+						new List<int> { Id }
+					);
+					item2 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
+						new List<int> { item1.Id, Id }
+					);
 					return new List<Item> { item1, item2 };
 			}
 		}
@@ -313,34 +335,43 @@ namespace Randomizer
 			switch (Globals.RNG.Next(0, 3))
 			{
 				case 0:
-					item1 = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements });
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
+						new List<int> { Id }
+					);
 					item2 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
-						new List<int> { item1.Id }
+						new List<int> { item1.Id, Id }
 					);
 					item3 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
-						new List<int> { item1.Id, item2.Id }
+						new List<int> { item1.Id, item2.Id, Id }
 					);
 					break;
 				case 1:
-					item1 = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements });
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
+						new List<int> { Id }
+					);
 					item2 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
-						new List<int> { item1.Id }
+						new List<int> { item1.Id, Id }
 					);
 					item3 = ItemList.GetRandomCraftableItem(
 						new List<ObtainingDifficulties> { ObtainingDifficulties.SmallTimeRequirements, ObtainingDifficulties.NoRequirements },
-						new List<int> { item1.Id, item2.Id }
+						new List<int> { item1.Id, item2.Id, Id }
 					);
 					break;
 				default:
 					var mediumOrLess = new List<ObtainingDifficulties> {
 						ObtainingDifficulties.MediumTimeRequirements, ObtainingDifficulties.SmallTimeRequirements, ObtainingDifficulties.NoRequirements
 					};
-					item1 = ItemList.GetRandomCraftableItem(new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements });
-					item2 = ItemList.GetRandomCraftableItem(mediumOrLess, new List<int> { item1.Id });
-					item3 = ItemList.GetRandomCraftableItem(mediumOrLess, new List<int> { item1.Id, item2.Id });
+					item1 = ItemList.GetRandomCraftableItem(
+						new List<ObtainingDifficulties> { ObtainingDifficulties.LargeTimeRequirements },
+						new List<int> { Id }
+					);
+					item2 = ItemList.GetRandomCraftableItem(mediumOrLess, new List<int> { item1.Id, Id });
+					item3 = ItemList.GetRandomCraftableItem(mediumOrLess, new List<int> { item1.Id, item2.Id, Id });
 					break;
 			}
 
