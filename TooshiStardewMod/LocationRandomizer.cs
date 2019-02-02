@@ -22,10 +22,10 @@ namespace Randomizer
 		/// <summary>
 		/// Randomizes all foragables to a random season and location - does not yet handle fishing or dirt items
 		/// </summary>
-		/// <param name="locationsReplacements">The dictionary used for the replacements</param>
-		public static void Randomize(Dictionary<string, string> locationsReplacements)
+		/// <returns>A dictionary of locations to replace</returns>
+		public static Dictionary<string, string> Randomize()
 		{
-			locationsReplacements.Clear();
+			var locationsReplacements = new Dictionary<string, string>();
 			GroupForagablesBySeason();
 
 			List<ForagableLocationData> foragableLocationDataList = GetForagableLocationDataList();
@@ -45,6 +45,8 @@ namespace Randomizer
 				WriteResultsForSeason(Seasons.Winter, foragableLocationData);
 			}
 			Globals.ConsoleWrite("======== End Foragable Replacements ========");
+
+			return locationsReplacements;
 		}
 
 		/// <summary>

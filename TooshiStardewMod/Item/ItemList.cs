@@ -65,7 +65,7 @@ namespace Randomizer
 			{ (int)ObjectIndexes.MegaBomb, new CraftableItem((int)ObjectIndexes.MegaBomb, "/Field/288/false/", CraftableCategories.Difficult, "Mining") { LearnableLevels = new Range(7, 9) } },
 			{ (int)ObjectIndexes.FieldSnack, new CraftableItem((int)ObjectIndexes.FieldSnack, "/Home/403/false/", CraftableCategories.Easy, "Foraging") { LearnableLevels = new Range(1, 3) } },
 			{ (int)ObjectIndexes.Bait, new CraftableItem((int)ObjectIndexes.Bait, "/Home/685 5/false/", CraftableCategories.EasyAndNeedMany, "Fishing") { LearnableLevels = new Range(1, 3) } },
-			{ (int)ObjectIndexes.RainTotem, new CraftableItem((int)ObjectIndexes.RainTotem, "Field/681/false/", CraftableCategories.Difficult, "Foraging") { LearnableLevels = new Range(6, 9) } },
+			{ (int)ObjectIndexes.RainTotem, new CraftableItem((int)ObjectIndexes.RainTotem, "/Field/681/false/", CraftableCategories.Difficult, "Foraging") { LearnableLevels = new Range(6, 9) } },
 			{ (int)ObjectIndexes.TrapBobber, new CraftableItem((int)ObjectIndexes.TrapBobber, "/Home/694/false/", CraftableCategories.Moderate, "Fishing") { LearnableLevels = new Range(3, 8) } },
 			{ (int)ObjectIndexes.CrabPot, new CraftableItem((int)ObjectIndexes.CrabPot, "/Home/710/false/", CraftableCategories.Moderate, "Fishing") { LearnableLevels = new Range(1, 4) } },
 

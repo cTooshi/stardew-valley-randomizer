@@ -202,8 +202,8 @@ namespace Randomizer
 						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.SmallTimeRequirements)
 						.ToList();
 					item1 = Globals.RNGGetRandomValueFromList(possibleItems);
-					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1).ToList());
-					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1 && x != item2).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x.Id != item1.Id).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x.Id != item1.Id && x.Id != item2.Id).ToList());
 
 					return new List<Item> { item1, item2, item3 };
 				case 1:
@@ -284,8 +284,8 @@ namespace Randomizer
 						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.MediumTimeRequirements)
 						.ToList();
 					item1 = Globals.RNGGetRandomValueFromList(possibleItems);
-					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1).ToList());
-					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1 && x != item2).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x.Id != item1.Id).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x.Id != item1.Id && x.Id != item2.Id).ToList());
 
 					return new List<Item> { item1, item2, item3 };
 				case 1:
@@ -338,8 +338,8 @@ namespace Randomizer
 						.Where(x => x.DifficultyToObtain == ObtainingDifficulties.LargeTimeRequirements)
 						.ToList();
 					item1 = Globals.RNGGetRandomValueFromList(possibleItems);
-					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1).ToList());
-					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x != item1 && x != item2).ToList());
+					item2 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x.Id != item1.Id).ToList());
+					item3 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x => x.Id != item1.Id && x.Id != item2.Id).ToList());
 					break;
 				case 1:
 					item1 = Globals.RNGGetRandomValueFromList(possibleItems.Where(x =>
