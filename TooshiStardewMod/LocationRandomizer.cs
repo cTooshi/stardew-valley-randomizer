@@ -94,16 +94,17 @@ namespace Randomizer
 		{
 			List<Item> foragableItems = ItemList.Items.Values.Where(x => x.ShouldBeForagable).ToList();
 
-			// Initializes each season with 5 foragables
-			AddMultipleToList(foragableItems, _springForagables, 5);
-			AddMultipleToList(foragableItems, _summerForagables, 5);
-			AddMultipleToList(foragableItems, _fallForagables, 5);
-			AddMultipleToList(foragableItems, _winterForagables, 5);
-
 			// Initializes each unique area with their unique foragables
 			AddMultipleToList(foragableItems, _beachItems, 3);
 			AddMultipleToList(foragableItems, _woodsItems, 1);
 			AddMultipleToList(foragableItems, _desertItems, 2);
+
+			// Initializes each season with an even number of foragables
+			int numberToDistribute = foragableItems.Count / 4;
+			AddMultipleToList(foragableItems, _springForagables, numberToDistribute);
+			AddMultipleToList(foragableItems, _summerForagables, numberToDistribute);
+			AddMultipleToList(foragableItems, _fallForagables, numberToDistribute);
+			AddMultipleToList(foragableItems, _winterForagables, numberToDistribute);
 
 			// Ensure the rest of the foragables get distributed
 			DistributeRemainingForagables(foragableItems);
@@ -170,11 +171,7 @@ namespace Randomizer
 		private static bool AddToList(List<Item> foragableList, List<Item> listToPopulate)
 		{
 			if (foragableList.Count == 0) { return false; }
-
-			int foragableIndex = Globals.RNG.Next(0, foragableList.Count);
-			listToPopulate.Add(foragableList[foragableIndex]);
-			foragableList.RemoveAt(foragableIndex);
-
+			listToPopulate.Add(Globals.RNGGetAndRemoveRandomValueFromList(foragableList));
 			return foragableList.Count > 0;
 		}
 

@@ -379,7 +379,7 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Mussel, new ForagableItem((int)ObjectIndexes.Mussel) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements, IsCrabPotItem = true } },
 			{ (int)ObjectIndexes.Oyster, new ForagableItem((int)ObjectIndexes.Oyster) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements, IsCrabPotItem = true } },
 
-			// Desert Forabagles
+			// Desert Foragables
 			{ (int)ObjectIndexes.Coconut, new ForagableItem((int)ObjectIndexes.Coconut) },
 			{ (int)ObjectIndexes.CactusFruit, new ForagableItem((int)ObjectIndexes.CactusFruit) },
 
