@@ -40,3 +40,4 @@ Right now you have to build it yourself from the source code. You can find instr
 ## Known Issues
 
 * Settings file for choosing what to randomize is not completely implemented
+* Fruit tree prices seem to be hard-coded, so they're vanilla
