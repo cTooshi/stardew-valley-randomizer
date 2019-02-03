@@ -51,12 +51,12 @@ namespace Randomizer
 			// Fruit tree asset replacements
 			var fruitTreeReplacements = new Dictionary<int, string>
 			{
-				{ (int)ObjectIndexes.CherrySapling, $"0/{seasons[0]}/{tree1.Name}/{prices[0]}" },
-				{ (int)ObjectIndexes.ApricotSapling, $"1/{seasons[1]}/{tree2.Name}/{prices[1]}"},
-				{ (int)ObjectIndexes.OrangeSapling, $"2/{seasons[2]}/{tree3.Name}/{prices[2]}"},
-				{ (int)ObjectIndexes.PeachSapling, $"3/{seasons[3]}/{tree4.Name}/{prices[3]}"},
-				{ (int)ObjectIndexes.PomegranateSapling, $"4/{seasons[4]}/{tree5.Name}/{prices[4]}"},
-				{ (int)ObjectIndexes.AppleSapling, $"5/{seasons[5]}/{tree6.Name}/{prices[5]}"},
+				{ (int)ObjectIndexes.CherrySapling, $"0/{seasons[0]}/{tree1.Id}/{prices[0]}" },
+				{ (int)ObjectIndexes.ApricotSapling, $"1/{seasons[1]}/{tree2.Id}/{prices[1]}"},
+				{ (int)ObjectIndexes.OrangeSapling, $"2/{seasons[2]}/{tree3.Id}/{prices[2]}"},
+				{ (int)ObjectIndexes.PeachSapling, $"3/{seasons[3]}/{tree4.Id}/{prices[3]}"},
+				{ (int)ObjectIndexes.PomegranateSapling, $"4/{seasons[4]}/{tree5.Id}/{prices[4]}"},
+				{ (int)ObjectIndexes.AppleSapling, $"5/{seasons[5]}/{tree6.Id}/{prices[5]}"},
 			};
 
 			foreach (KeyValuePair<int, string> pair in fruitTreeReplacements)
