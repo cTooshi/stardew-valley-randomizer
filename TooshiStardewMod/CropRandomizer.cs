@@ -34,15 +34,29 @@ namespace Randomizer
 			Item tree5 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
 			Item tree6 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
 
+			string[] seasons = { "spring", "spring", "summer", "summer", "fall", "fall" };
+			seasons[Globals.RNG.Next(0, 6)] = "winter";
+
+			// TODO: These prices don't actually seem to work for fruit trees
+			int[] prices =
+			{
+				tree1.GetPriceForObtainingDifficulty(0.2),
+				tree2.GetPriceForObtainingDifficulty(0.2),
+				tree3.GetPriceForObtainingDifficulty(0.2),
+				tree4.GetPriceForObtainingDifficulty(0.2),
+				tree5.GetPriceForObtainingDifficulty(0.2),
+				tree6.GetPriceForObtainingDifficulty(0.2)
+			};
+
 			// Fruit tree asset replacements
 			var fruitTreeReplacements = new Dictionary<int, string>
 			{
-				{ (int)ObjectIndexes.CherrySapling, $"0/spring/{tree1.Name}/1700" },
-				{ (int)ObjectIndexes.ApricotSapling, $"1/spring/{tree2.Name}/1000"},
-				{ (int)ObjectIndexes.OrangeSapling, $"2/summer/{tree3.Name}/2000"},
-				{ (int)ObjectIndexes.PeachSapling, $"3/summer/{tree4.Name}/3000"},
-				{ (int)ObjectIndexes.PomegranateSapling, $"4/fall/{tree5.Name}/3000"},
-				{ (int)ObjectIndexes.AppleSapling, $"5/fall/{tree6.Name}/2000"}
+				{ (int)ObjectIndexes.CherrySapling, $"0/{seasons[0]}/{tree1.Name}/{prices[0]}" },
+				{ (int)ObjectIndexes.ApricotSapling, $"1/{seasons[1]}/{tree2.Name}/{prices[1]}"},
+				{ (int)ObjectIndexes.OrangeSapling, $"2/{seasons[2]}/{tree3.Name}/{prices[2]}"},
+				{ (int)ObjectIndexes.PeachSapling, $"3/{seasons[3]}/{tree4.Name}/{prices[3]}"},
+				{ (int)ObjectIndexes.PomegranateSapling, $"4/{seasons[4]}/{tree5.Name}/{prices[4]}"},
+				{ (int)ObjectIndexes.AppleSapling, $"5/{seasons[5]}/{tree6.Name}/{prices[5]}"},
 			};
 
 			foreach (KeyValuePair<int, string> pair in fruitTreeReplacements)
@@ -54,12 +68,12 @@ namespace Randomizer
 			Random rng = Globals.RNG;
 			var objectReplacements = new Dictionary<int, string>
 			{
-				{ (int)ObjectIndexes.CherrySapling, $"{tree1.Name} Sapling/{rng.Next(50, 105) * 10}/-300/Basic -74/{tree1.Name} Sapling/Takes 28 days to produce a mature {tree1.Name} tree. Bears item in the spring. Normal market price 3,400g. Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.ApricotSapling, $"{tree2.Name} Sapling/{rng.Next(30, 65) *10}/-300/Basic -74/{tree2.Name} Sapling/Takes 28 days to produce a mature {tree2.Name} tree. Bears item in the spring. Normal market price 2,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.OrangeSapling, $"{tree3.Name} Sapling/{rng.Next(65, 125) * 10}/-300/Basic -74/{tree3.Name} Sapling/Takes 28 days to produce a mature {tree3.Name} tree. Bears item in the summer. Normal seed market price is 4,000g Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.PeachSapling, $"{tree4.Name} Sapling/{rng.Next(110, 175) * 10}/-300/Basic -74/{tree4.Name} Sapling/Takes 28 days to produce a mature {tree4.Name} tree. Bears item in the summer. Normal seed market price is 6,000g Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.AppleSapling, $"{tree5.Name} Sapling/{rng.Next(65, 125) * 10}/-300/Basic -74/{tree5.Name} Sapling/Takes 28 days to produce a mature {tree5.Name} tree. Bears item in the fall. Normal market price is 4,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.PomegranateSapling, $"{tree6.Name} Sapling/{rng.Next(110, 175) * 10}/-300/Basic -74/{tree6.Name} Sapling/Takes 28 days to produce a mature {tree6.Name} tree. Bears item in the fall. Normal market price is 6,000g. Only grows if the 8 surrounding \"tiles\" are empty."},
+				{ (int)ObjectIndexes.CherrySapling, $"{tree1.Name} Sapling/{prices[0] / 2}/-300/Basic -74/{tree1.Name} Sapling/Takes 28 days to produce a mature {tree1.Name} tree. Bears item in the {seasons[0]}. Only grows if the 8 surrounding \"tiles\" are empty."},
+				{ (int)ObjectIndexes.ApricotSapling, $"{tree2.Name} Sapling/{prices[1] / 2}/-300/Basic -74/{tree2.Name} Sapling/Takes 28 days to produce a mature {tree2.Name} tree. Bears item in the {seasons[1]}. Only grows if the 8 surrounding \"tiles\" are empty."},
+				{ (int)ObjectIndexes.OrangeSapling, $"{tree3.Name} Sapling/{prices[2] / 2}/-300/Basic -74/{tree3.Name} Sapling/Takes 28 days to produce a mature {tree3.Name} tree. Bears item in the {seasons[2]}. Only grows if the 8 surrounding \"tiles\" are empty."},
+				{ (int)ObjectIndexes.PeachSapling, $"{tree4.Name} Sapling/{prices[3] / 2}/-300/Basic -74/{tree4.Name} Sapling/Takes 28 days to produce a mature {tree4.Name} tree. Bears item in the {seasons[3]}. Only grows if the 8 surrounding \"tiles\" are empty."},
+				{ (int)ObjectIndexes.AppleSapling, $"{tree5.Name} Sapling/{prices[4] / 2}/-300/Basic -74/{tree5.Name} Sapling/Takes 28 days to produce a mature {tree5.Name} tree. Bears item in the {seasons[4]}. Only grows if the 8 surrounding \"tiles\" are empty."},
+				{ (int)ObjectIndexes.PomegranateSapling, $"{tree6.Name} Sapling/{prices[5] / 2}/-300/Basic -74/{tree6.Name} Sapling/Takes 28 days to produce a mature {tree6.Name} tree. Bears item in the {seasons[5]}. Only grows if the 8 surrounding \"tiles\" are empty."},
 			};
 
 			foreach (KeyValuePair<int, string> pair in objectReplacements)
