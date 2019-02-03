@@ -34,7 +34,7 @@
 		ParsnipSeeds = 472, BeanStarter = 473, CauliflowerSeeds = 474, PotatoSeeds = 475, GarlicSeeds = 476, KaleSeeds = 477, RhubarbSeeds = 478, MelonSeeds = 479, TomatoSeeds = 480, BlueberrySeeds = 481,
 		PepperSeeds = 482, WheatSeeds = 483, RadishSeeds = 484, RedCabbageSeeds = 485, StarfruitSeeds = 486, CornSeeds = 487, EggplantSeeds = 488, ArtichokeSeeds = 489, PumpkinSeeds = 490, BokChoySeeds = 491,
 		YamSeeds = 492, CranberrySeeds = 493, BeetSeeds = 494, SpringSeeds = 495, SummerSeeds = 496, FallSeeds = 497, WinterSeeds = 498, AncientSeeds = 499, SmallGlowRing = 516, GlowRing = 517,
-		SmallMagnetRing = 518, MagnetRing = 519, SlimeCharmerRing = 520, WarriorRing = 521, VampireRing = 522, SavageRing = 523, RingofYoba = 524, SturdyRing = 525, BurglarsRing = 526, IridiumBand = 527,
+		SmallMagnetRing = 518, MagnetRing = 519, SlimeCharmerRing = 520, WarriorRing = 521, VampireRing = 522, SavageRing = 523, RingOfYoba = 524, SturdyRing = 525, BurglarsRing = 526, IridiumBand = 527,
 		AmethystRing = 529, TopazRing = 530, AquamarineRing = 531, JadeRing = 532, EmeraldRing = 533, RubyRing = 534, Geode = 535, FrozenGeode = 536, MagmaGeode = 537, Alamite = 538, Bixite = 539,
 		Baryte = 540, Aerinite = 541, Calcite = 542, Dolomite = 543, Esperite = 544, Fluorapatite = 545, Geminite = 546, Helvite = 547, Jamborite = 548, Jagoite = 549, Kyanite = 550, Lunarite = 551,
 		Malachite = 552, Neptunite = 553, LemonStone = 554, Nekoite = 555, Orpiment = 556, PetrifiedSlime = 557, ThunderEgg = 558, Pyrite = 559, OceanStone = 560, GhostCrystal = 561, Tigerseye = 562,
@@ -53,7 +53,7 @@
 		MidnightSquid = 798, SpookFish = 799, Blobfish = 800, WeddingRing = 801, CactusSeeds = 802, IridiumMilk = 803,
 
 
-		// UNOFFICIAL ITEM IDS, DO NOT USE THESE FOR ANYTHING THAT IS WRITTEN ANYWHERE
+		// UNOFFICIAL ITEM IDS - A LOT OF THESE ARE THE "BigCraftables"
 		Chest = -100,
 		Scarecrow = -101,
 		BeeHouse = -102,
@@ -73,6 +73,28 @@
 		Crystalarium = -116,
 		Staircase = -117,
 		TransmuteAu = -118,
-		TransmuteFe = -119
+		TransmuteFe = -119,
+		WoodSign = -120,
+		StoneSign = -121,
+		SlimeIncubator = -122,
+		SlimeEggPress = -123,
+		WildSeedsSp = -124,
+		WildSeedsSu = -125,
+		WildSeedsFa = -126,
+		WildSeedsWi = -127,
+		WormBin = -128,
+		TubOFlowers = -129,
+		WoodenBrazier = -130,
+		WickedStatue = -131,
+		StoneBrazier = -132,
+		GoldBrazier = -133,
+		Campfire = -134,
+		StumpBrazier = -135,
+		CarvedBrazier = -136,
+		SkullBrazier = -137,
+		BarrelBrazier = -138,
+		MarbleBrazier = -139,
+		WoodLampPost = -140,
+		IronLampPost = -141
 	};
 }
