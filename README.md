@@ -1,92 +1,42 @@
-# Stardew Valley Randomizer
+# Stardew Valley Randomizer (More Random Edition)
 
-A mod for stardew valley, that randomizes many aspects of the game, uses SMAPI. 
-Google Document: https://goo.gl/vRH2nt
-
+An update for cTooshi's Stardew Valley Randomizer to fix errors, add new features and make the existing features more random.
 
 ## Installation
-Install the latest version of SMAPI.  
-If you want to use steam (for mulitplayer or achivements) you need to set launch options to SMAPI executable   
-https://stardewvalleywiki.com/Modding:Installing_SMAPI_on_Windows  
-Download this mod and unzip it into Stardew Valley/Mods.  
-Run the game using SMAPI.  
 
+Right now you have to build it yourself from the source code. You can find instructions on the Stardew Valley wiki on how to set up Visual Studio to do so: https://stardewvalleywiki.com/Modding:Modder_Guide/Get_Started
 
+## Changes from Original Randomizer
 
+* Crafting recipe randomization
+  * Recipes are now created based on randomly selected items from a pool (not randomly selected premade recipes)
+  * Crafting difficulty is balanced based on necessity of the item and difficulty of crafting the item in vanilla
+* Forageable randomization
+  * Forageables for every season and location are now randomly selected from all forageables + fruit (normally from trees)
+  * Every forageable appears at least once per year, and some may appear more than once
+* Fruit tree randomization
+  * Fruit tree saplings are now item saplings that grow a randomly selected item
+* Music randomization
+  * Most in-game songs and ambience are now randomly swapped 1 to 1 with another in-game song or ambience
 
-## Additions
+## Planned Features
 
-* Crafting Recipes Randomized
-  * Almost all crafting recipes have 10+ new possible recipes
-  * Level at which you learn recipes are randomized (+ or - 3 ish for most recipes)
-* Crop Seed Prices Randomized 
-  * Also fruit tree sapling prices
-* Mine Levels Reworked, more maps + randomized
-* Community Center Bundles Randomized
-  * Hundreds of New Bundles (Each playthrough will have different bundles, but still the same number of bundles as Vanilla per a playthrough)
-  * New Rewards (Some unobtainable in vanilla otherwise)
-  * A Bundle themed towards almost every NPC
-* Farm Buildings 
-  * All buildings Materials required and cost randomized
-* Foragable Season spawns randomized
-* NPC Scheduling Randomization
-  * (Example George goes to saloon on sunny days)
-* Fish Difficulty randomized
-  * Some will be easier/harder/behave different
-* Critter Randomization
-  * Chance for critters to be switched or change colors
-  * Animations created where necessary
-* Chance for a Animal to be a bear cat/dog/chickens/horse/pig/ect...
-* Rain 
-  * Chance for rain to be look… different
-* NPC Skin Swaps
-  * Chance for a few, or many NPC’s to swap spritesheet and Portrait.
-  * Imported sprite sheets and portraits from sivs marriage mod (Credit to @sivolobwho), to allow marrying single NPC’s (Pam, Linus, Gus, Clint, Lewis, Marnie, Sandy, Willy, Wizard)
-  * This is currently only a skin swap, no dialog has been added or changed
-* Intro Grampa Cutscene Madlib
-* Config file for turning off things if you want (its in StardewValley/Mods/Randomizer/RandomizerSettings.txt)
+* Fish randomization
+  * Randomize what fish appear in each season
+* Quest randomization
+  * Randomize what items the quests (in letters) require
+* Crop randomization
+  * Randomize what season crops can grow/be bought in and their planting time
+  * Randomize crop names
+* Bundle randomization
+  * Add more bundles that are semi-random; bundles will be themed and their requirements randomly selected from a pool of items that fit the theme
+  * Add some bundles made of completely random items
+* Villager trait randomization
+  * Randomize villagers' birthdays
+  * Randomize villagers' likes and dislikes
+* Palette randomization (if possible)
+  * Randomly shift the color of the in-game graphics towards a different hue
+  
+## Known Issues
 
-## BUGS
-
-* Npc swap doesnt swap before intro cutscene
-
-## Stardew Valley Randomizer Ideas
-
-`*` = Next planned additions
-
-* Changes from only creation, so I can modify farm
-* NPC scheduling
-* More rain animations / change when sleep
-* Item spawn locations
-
-* mummies/skeletons as towns people ?
-* birthdays?
-* Monster hp/strength
-* Late game buildings randomizing
-* Animal Prices
-* Random letters in the mail*
-* Mail rewards randomized*
-* Traveling Salesman day/ possible items
-* Meteor skin
-* Randomize quest objectives
-* Custom mail intro to randomizer*
-
-* Business hours/ days
-* randomize basic quests/event
-* Weapon skin/ changes
-* Cooking recipes
-* Speech Bubbles
-* Animal skins
-
-### NOT GOOD FOR GAMEPLAY?
-
-* Favorite gifted Items
-* Starting Season
-
-### TOO HARD
-
-* Add more music (on hold, too difficult?)
-* Randomize profession bonuses (on hold, too difficult?)
-* Monster spawn RNG
-* Museum items/rewards
-* Mi Qi challenge
+* Settings file for choosing what to randomize is not completely implemented
