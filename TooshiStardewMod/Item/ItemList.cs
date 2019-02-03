@@ -382,6 +382,14 @@ namespace Randomizer
 			// Desert Forabagles
 			{ (int)ObjectIndexes.Coconut, new ForagableItem((int)ObjectIndexes.Coconut) },
 			{ (int)ObjectIndexes.CactusFruit, new ForagableItem((int)ObjectIndexes.CactusFruit) },
+
+			// Fruit - since trees are randomized, we're making them foragable
+			{ (int)ObjectIndexes.Cherry, new ForagableItem((int)ObjectIndexes.Cherry) },
+			{ (int)ObjectIndexes.Apricot, new ForagableItem((int)ObjectIndexes.Apricot) },
+			{ (int)ObjectIndexes.Orange, new ForagableItem((int)ObjectIndexes.Orange) },
+			{ (int)ObjectIndexes.Peach, new ForagableItem((int)ObjectIndexes.Peach) },
+			{ (int)ObjectIndexes.Pomegranate, new ForagableItem((int)ObjectIndexes.Pomegranate) },
+			{ (int)ObjectIndexes.Apple, new ForagableItem((int)ObjectIndexes.Apple) },
 			// ------ End Foragables -------
 
 			// Smelted Items - ObtainingDifficulties.MediumTimeRequirements
