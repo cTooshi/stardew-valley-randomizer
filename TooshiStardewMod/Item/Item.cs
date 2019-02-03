@@ -29,6 +29,7 @@ namespace Randomizer
 		public bool IsMayonaisse { get; set; }
 		public bool IsGeodeMineral { get; set; }
 		public bool IsCrabPotItem { get; set; }
+		public bool IsCrop { get; set; }
 		public bool RequiresOilMaker { get; set; }
 		public bool RequiresBeehouse { get; set; }
 
