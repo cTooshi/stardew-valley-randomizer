@@ -8,7 +8,7 @@ namespace Randomizer
 		public List<CraftingMaterialItem> RequiredItemsToCraft { get; } = new List<CraftingMaterialItem>();
 		public string Path { get; set; }
 		public string SkillString { get; set; }
-		public Range LearnableLevels { get; set; } = new Range(1, 1);
+		public int BaseLevelLearnedAt { get; set; }
 		public bool IsLearnedOnLevelup
 		{
 			get { return SkillString.Length > 0; }
@@ -21,12 +21,14 @@ namespace Randomizer
 		/// <param name="id">The id of the item</param>
 		/// <param name="path">The hard-coded path for this craftable item</param>
 		/// <param name="skillString">The name of the skill you need to level up to learn the recipe</param>
-		public CraftableItem(int id, string path, CraftableCategories category, string skillString = "") : base(id)
+		/// <param name="baseLevelLearnedAt">The base level you can learn this recipe at</param>
+		public CraftableItem(int id, string path, CraftableCategories category, string skillString = "", int baseLevelLearnedAt = 0) : base(id)
 		{
 			IsCraftable = true;
 			Path = path;
 			Category = category;
 			SkillString = skillString;
+			BaseLevelLearnedAt = baseLevelLearnedAt;
 		}
 
 		/// <summary>
@@ -49,7 +51,8 @@ namespace Randomizer
 		/// </returns>
 		public int GetLevelLearnedAt()
 		{
-			int generatedLevel = LearnableLevels.GetRandomValue();
+			Range levelRange = new Range(BaseLevelLearnedAt - 3, BaseLevelLearnedAt + 3);
+			int generatedLevel = levelRange.GetRandomValue();
 			if (generatedLevel > 8) { return 9; }
 			if (generatedLevel < 1) { return 1; }
 			if (generatedLevel == 5)
@@ -122,7 +125,8 @@ namespace Randomizer
 				true
 			);
 
-			return $"{item.Id} 1";
+			int numberRequired = Globals.RNGGetNextBoolean() ? 1 : 2;
+			return $"{item.Id} {numberRequired}";
 		}
 
 		/// <summary>

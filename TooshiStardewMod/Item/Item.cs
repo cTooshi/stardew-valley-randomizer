@@ -11,9 +11,9 @@ namespace Randomizer
 		public int Id { get; }
 		public string Name
 		{
-			get { return GetNameFromId(Id, PutLastWordOfNameInParens); }
+			get { return GetName(); }
 		}
-		public bool PutLastWordOfNameInParens { get; set; }
+		public string OverrideName { get; set; }
 		public ForagableLocationData ForagableLocationData { get; } = new ForagableLocationData();
 		public bool ShouldBeForagable { get; set; }
 		public bool IsForagable
@@ -30,6 +30,7 @@ namespace Randomizer
 		public bool IsGeodeMineral { get; set; }
 		public bool IsCrabPotItem { get; set; }
 		public bool IsCrop { get; set; }
+		public bool IsCooked { get; set; }
 		public bool RequiresOilMaker { get; set; }
 		public bool RequiresBeehouse { get; set; }
 
@@ -104,35 +105,16 @@ namespace Randomizer
 		/// Gets the name of an item from
 		/// The putLastWordOfNameInParens parameter won't work if not passed in, no matter the item
 		/// </summary>
-		/// <param name="id">The item id</param>
-		/// <param name="putLastWordOfNameInParens">Whether the put the last part of the string in parens</param>
-		/// <returns>Splits apart the name from the ObjectIndexes name - WildHorseradish -> Wild Horseradish</returns>
-		public static string GetNameFromId(int id, bool putLastWordOfNameInParens = false)
+		/// <returns>
+		/// Splits apart the name from the ObjectIndexes name - WildHorseradish -> Wild Horseradish
+		/// Uses the override name if there is one
+		/// </returns>
+		private string GetName()
 		{
-			string enumName = ((ObjectIndexes)id).ToString();
-			if (enumName == "BrokenCD") { return "Broken CD"; }
+			if (!string.IsNullOrEmpty(OverrideName)) { return OverrideName; }
 
-			string separatedName = Regex.Replace(enumName, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1").Trim();
-			if (!putLastWordOfNameInParens)
-			{
-				return separatedName;
-			}
-
-			string[] splitName = separatedName.Split(' ');
-			string output = "";
-			for (int i = 0; i < splitName.Length; i++)
-			{
-				string namePart = splitName[i];
-				if (i == splitName.Length - 1)
-				{
-					output += $"({namePart})";
-				}
-				else
-				{
-					output += $"{namePart} ";
-				}
-			}
-			return output.Trim();
+			string enumName = ((ObjectIndexes)Id).ToString();
+			return Regex.Replace(enumName, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1").Trim();
 		}
 
 		/// <summary>

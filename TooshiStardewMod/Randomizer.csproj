@@ -48,6 +48,7 @@
     <Compile Include="AssetLoader.cs" />
     <Compile Include="CropRandomizer.cs" />
     <Compile Include="EditedObjectInformation.cs" />
+    <Compile Include="Item\CookedItem.cs" />
     <Compile Include="Item\CrabPotItem.cs" />
     <Compile Include="Item\CropItem.cs" />
     <Compile Include="Item\GeodeMineralItem.cs" />
