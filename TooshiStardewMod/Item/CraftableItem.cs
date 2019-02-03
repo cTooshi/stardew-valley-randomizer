@@ -5,7 +5,7 @@ namespace Randomizer
 {
 	public class CraftableItem : Item
 	{
-		public List<CraftingMaterialItem> RequiredItemsToCraft { get; } = new List<CraftingMaterialItem>();
+		public List<RequiredItem> RequiredItemsToCraft { get; } = new List<RequiredItem>();
 		public string Path { get; set; }
 		public string SkillString { get; set; }
 		public int BaseLevelLearnedAt { get; set; }
@@ -29,6 +29,7 @@ namespace Randomizer
 			Category = category;
 			SkillString = skillString;
 			BaseLevelLearnedAt = baseLevelLearnedAt;
+			DifficultyToObtain = ObtainingDifficulties.NonCraftingItem; // By default, craftable items won't be materials for other craftable items
 		}
 
 		/// <summary>
@@ -39,7 +40,7 @@ namespace Randomizer
 		/// <param name="maxValue">The maximum amount required</param>
 		public void AddCraftingMaterial(Item item, int minValue, int maxValue)
 		{
-			RequiredItemsToCraft.Add(new CraftingMaterialItem(item, minValue, maxValue));
+			RequiredItemsToCraft.Add(new RequiredItem(item, minValue, maxValue));
 		}
 
 		/// <summary>

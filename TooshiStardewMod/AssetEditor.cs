@@ -9,7 +9,7 @@ namespace Randomizer
 	{
 		private readonly ModEntry _mod;
 		private readonly Dictionary<string, string> _recipeReplacements = new Dictionary<string, string>();
-		private readonly Dictionary<string, string> _bundleReplacements = new Dictionary<string, string>();
+		private Dictionary<string, string> _bundleReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _blueprintReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _stringReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _farmEventReplacements = new Dictionary<string, string>();
@@ -127,7 +127,9 @@ namespace Randomizer
 			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
 
 			this.CalculateRecipeEdits();
-			this.CalculateBundleEdits();
+
+			_bundleReplacements = BundleRandomizer.Randomize();
+
 			this.CalculateBlueprintEdits();
 			//this.CalculateFarmEventEdits();
 			//this.CalculateMailEdits();

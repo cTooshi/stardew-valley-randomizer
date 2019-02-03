@@ -46,6 +46,11 @@
 		/// <summary>
 		/// Use this for items that you don't want to show up in crafting recipes or bundles
 		/// </summary>
-		Impossible
+		Impossible,
+
+		/// <summary>
+		/// Use this for items that you don't want to be used in crafting recipes, but can appear elsewhere
+		/// </summary>
+		NonCraftingItem
 	}
 }

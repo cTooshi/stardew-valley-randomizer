@@ -46,12 +46,18 @@
   <ItemGroup>
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
+    <Compile Include="BundleRandomizer.cs" />
     <Compile Include="CropRandomizer.cs" />
     <Compile Include="EditedObjectInformation.cs" />
+    <Compile Include="Enums\BundleColors.cs" />
+    <Compile Include="Enums\CommunityCenterRooms.cs" />
+    <Compile Include="Bundle.cs" />
+    <Compile Include="Enums\ItemQualities.cs" />
     <Compile Include="Item\CookedItem.cs" />
     <Compile Include="Item\CrabPotItem.cs" />
     <Compile Include="Item\CropItem.cs" />
     <Compile Include="Item\GeodeMineralItem.cs" />
+    <Compile Include="Item\RingItem.cs" />
     <Compile Include="MusicRandomizer.cs" />
     <Compile Include="Enums\CraftableCategories.cs" />
     <Compile Include="Enums\ObtainingDifficulties.cs" />
@@ -59,7 +65,7 @@
     <Compile Include="Item\AnimalItem.cs" />
     <Compile Include="Item\ArtifactItem.cs" />
     <Compile Include="Item\CraftableItem.cs" />
-    <Compile Include="Item\CraftingMaterialItem.cs" />
+    <Compile Include="Item\RequiredItem.cs" />
     <Compile Include="Item\FishItem.cs" />
     <Compile Include="Item\ForagableData.cs" />
     <Compile Include="Item\ForagableItem.cs" />
