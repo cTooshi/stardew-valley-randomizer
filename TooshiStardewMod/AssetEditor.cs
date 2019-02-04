@@ -19,6 +19,7 @@ namespace Randomizer
 		private Dictionary<string, string> _locationsReplacements = new Dictionary<string, string>();
 		private Dictionary<int, string> _objectInformationReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _fruitTreeReplacements = new Dictionary<int, string>();
+		private Dictionary<int, string> _cropReplacements = new Dictionary<int, string>();
 		public Dictionary<string, string> MusicReplacements = new Dictionary<string, string>();
 
 		public AssetEditor(ModEntry mod)
@@ -39,6 +40,7 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Data/Quests")) { return true; }
 			if (asset.AssetNameEquals("Data/Locations")) { return true; } //TODO: add a setting for this
 			if (asset.AssetNameEquals("Data/fruitTrees")) { return true; } //TODO: add a setting for this
+			if (asset.AssetNameEquals("Data/Crops")) { return true; } //TODO: add a setting for this
 			return false;
 		}
 
@@ -97,6 +99,10 @@ namespace Randomizer
 			{
 				this.ApplyEdits(asset, this._fruitTreeReplacements);
 			}
+			else if (asset.AssetNameEquals("Data/Crops"))
+			{
+				this.ApplyEdits(asset, this._cropReplacements);
+			}
 		}
 
 		public void InvalidateCache()
@@ -112,6 +118,7 @@ namespace Randomizer
 			this._mod.Helper.Content.InvalidateCache("Data/Quest");
 			this._mod.Helper.Content.InvalidateCache("Data/Locations");
 			this._mod.Helper.Content.InvalidateCache("Data/fruitTrees");
+			this._mod.Helper.Content.InvalidateCache("Data/Crops");
 		}
 
 		//Too change before save is loaded/created
@@ -125,6 +132,7 @@ namespace Randomizer
 			EditedObjectInformation editedObjectInfo = CropRandomizer.Randomize();
 			_fruitTreeReplacements = editedObjectInfo.FruitTreeReplacements;
 			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
+			_cropReplacements = editedObjectInfo.CropsReplacements;
 
 			this.CalculateRecipeEdits();
 
