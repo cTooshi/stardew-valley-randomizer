@@ -30,6 +30,12 @@ namespace Randomizer
 			return RNG.Next(0, 2) == 0;
 		}
 
+		public static bool RNGGetNextBoolean(int percentage)
+		{
+			if (percentage < 0 || percentage > 100) Globals.ConsoleWrite("WARNING: Percentage is invalid (less than 0 or greater than 100)");
+			return RNG.Next(0, 100) < percentage;
+		}
+
 		/// <summary>
 		/// Gets a random value out of the given list
 		/// </summary>

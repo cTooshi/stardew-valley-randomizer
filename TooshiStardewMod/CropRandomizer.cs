@@ -86,6 +86,7 @@ namespace Randomizer
 		/// Randomizes the crops - currently only does prices, and only for seasonal crops
 		/// </summary>
 		/// <param name="editedObjectInfo">The edited object information</param>
+        /// crop format: name/price/-300/Seeds -74/name/tooltip
 		private static void RandomizeCrops(EditedObjectInformation editedObjectInfo)
 		{
 			Random rng = Globals.RNG;
