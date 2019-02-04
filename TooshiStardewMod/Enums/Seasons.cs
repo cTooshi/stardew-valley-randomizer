@@ -3,7 +3,7 @@
 	/// <summary>
 	/// An enum for the seasons
 	/// </summary>
-	enum Seasons
+	public enum Seasons
 	{
 		Spring,
 		Summer,

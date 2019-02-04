@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -24,16 +25,30 @@ namespace Randomizer
 		public List<RequiredItem> RequiredItems { get; set; }
 		public BundleColors Color { get; set; }
 		public int? MinimumRequiredItems { get; set; }
+		public BundleTypes BundleType { get; set; } = BundleTypes.None;
+
+		private static List<BundleTypes> _allBundleTypes =
+			Enum.GetValues(typeof(BundleTypes))
+				.Cast<BundleTypes>()
+				.Where(x => x.ToString().StartsWith("All"))
+				.ToList();
+
+		private static List<BundleTypes> _craftingRoomBundleTypes =
+			Enum.GetValues(typeof(BundleTypes))
+				.Cast<BundleTypes>()
+				.Where(x => x.ToString().StartsWith("Crafting"))
+				.ToList();
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="room">The room the bundle is in</param>
 		/// <param name="id">The id of the bundle</param>
-		public Bundle(CommunityCenterRooms room, int id)
+		public Bundle(CommunityCenterRooms room, int id, List<BundleTypes> bundleTypesToExclude)
 		{
 			Room = room;
 			Id = id;
+			Initialize(bundleTypesToExclude);
 		}
 
 		/// <summary>
@@ -111,5 +126,100 @@ namespace Randomizer
 			}
 			return output.Trim();
 		}
+
+		private void Initialize(List<BundleTypes> bundleTypesToExclude)
+		{
+			//NOTE: only the vault can have money requirements
+			switch (Room)
+			{
+				case CommunityCenterRooms.CraftsRoom:
+					PopulateForCraftsRoom(bundleTypesToExclude);
+					break;
+				case CommunityCenterRooms.Pantry:
+					break;
+				case CommunityCenterRooms.FishTank:
+					break;
+				case CommunityCenterRooms.BoilerRoom:
+					break;
+
+				// THe vault CANNOT require items!
+				case CommunityCenterRooms.Vault:
+					break;
+				case CommunityCenterRooms.BulletinBoard:
+					break;
+			}
+		}
+
+		private void PopulateForCraftsRoom(List<BundleTypes> bundleTypesToExclude)
+		{
+			// Force one resource bundle so that there's one possible bundle to complete
+			if (bundleTypesToExclude.Contains(BundleTypes.CraftingResource))
+			{
+				BundleType = Globals.RNGGetRandomValueFromList
+					(_craftingRoomBundleTypes.Where(x => !bundleTypesToExclude.Contains(x)).ToList());
+			}
+			else
+			{
+				BundleType = BundleTypes.CraftingResource;
+			}
+
+			Name = "?"; // temp
+			switch (BundleType)
+			{
+				case BundleTypes.CraftingResource:
+					Name = "Resource";
+					RequiredItems = new List<RequiredItem>
+					{
+						new RequiredItem((int)ObjectIndexes.Wood, 100, 250),
+						new RequiredItem((int)ObjectIndexes.Stone, 100, 250),
+						new RequiredItem((int)ObjectIndexes.Fiber, 10, 50),
+						new RequiredItem((int)ObjectIndexes.Clay, 10, 50)
+					};
+					Color = BundleColors.Orange;
+					Reward = new RequiredItem(ItemList.Items[(int)ObjectIndexes.AlgaeSoup], 1); // Temporary
+					break;
+				case BundleTypes.CraftingSprinklers:
+					Name = "Crop Production";
+					RequiredItems = new List<RequiredItem>
+					{
+						new RequiredItem((int)ObjectIndexes.Sprinkler, 1, 5),
+						new RequiredItem((int)ObjectIndexes.QualitySprinkler, 1, 5),
+						new RequiredItem((int)ObjectIndexes.IridiumSprinkler, 1, 5),
+						new RequiredItem((int)ObjectIndexes.BasicFertilizer, 10, 20),
+						new RequiredItem((int)ObjectIndexes.QualityFertilizer, 5, 20),
+						new RequiredItem((int)ObjectIndexes.BasicRetainingSoil, 10, 20),
+						new RequiredItem((int)ObjectIndexes.QualityRetainingSoil, 5, 20),
+					};
+					Color = BundleColors.Orange;
+					Reward = new RequiredItem(ItemList.Items[(int)ObjectIndexes.AlgaeSoup], 1); // Temporary
+					break;
+				case BundleTypes.CraftingTreeProducts:
+					break;
+				case BundleTypes.CraftingTotems:
+					break;
+				case BundleTypes.CraftingBindle:
+					break;
+			}
+
+			//TEMPORARY
+			if (Name == "?")
+			{
+				Name = "Hello";
+				RequiredItems = new List<RequiredItem>
+						{
+							new RequiredItem((int)ObjectIndexes.Wood, 100, 250),
+							new RequiredItem((int)ObjectIndexes.Stone, 100, 250),
+							new RequiredItem((int)ObjectIndexes.Fiber, 10, 50),
+							new RequiredItem((int)ObjectIndexes.Clay, 10, 50)
+						};
+				Color = BundleColors.Orange;
+				Reward = new RequiredItem(ItemList.Items[(int)ObjectIndexes.AlgaeSoup], 1); // Temporary
+			}
+		}
+
+		//private List<RequiredItem> CreateRequiredItemsList(List<RequiredItem> items, int listLength)
+		//{
+
+		//}
 	}
 }

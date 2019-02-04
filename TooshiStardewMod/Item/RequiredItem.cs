@@ -42,6 +42,31 @@
 		}
 
 		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="itemId">The item id of the item that's required</param>
+		/// <param name="minValue">The max number of items required to craft this</param>
+		/// <param name="maxValue">The minimum number of items required to craft this</param>
+		public RequiredItem(int itemId, int minValue, int maxValue)
+		{
+			Item = ItemList.Items[itemId];
+			_rangeOfItems = new Range(minValue, maxValue);
+			NumberOfItems = _rangeOfItems.GetRandomValue();
+		}
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="itemId">The item id of the item that's required</param>
+		/// <param name="numberOfItems">The number of items required to craft this</param>
+		public RequiredItem(int itemId, int numberOfItems)
+		{
+			Item = ItemList.Items[itemId];
+			_rangeOfItems = new Range(numberOfItems, numberOfItems);
+			NumberOfItems = _rangeOfItems.GetRandomValue();
+		}
+
+		/// <summary>
 		/// Gets the string used for bundles
 		/// </summary>
 		/// <returns />
