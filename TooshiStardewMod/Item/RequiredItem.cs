@@ -51,7 +51,9 @@
 			{
 				return $"-1 {MoneyAmount} {MoneyAmount}";
 			}
-			return $"{Item.Id} {NumberOfItems} {(int)MinimumQuality}";
+
+			int numberOfItems = Item.IsRing ? 1 : NumberOfItems; // Rings cannot stack
+			return $"{Item.Id} {numberOfItems} {(int)MinimumQuality}";
 		}
 	}
 }
