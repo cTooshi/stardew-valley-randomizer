@@ -86,12 +86,14 @@ namespace Randomizer
 		/// Randomizes the crops - currently only does prices, and only for seasonal crops
 		/// </summary>
 		/// <param name="editedObjectInfo">The edited object information</param>
-        /// crop format: name/price/-300/Seeds -74/name/tooltip
+		/// crop format: name/price/-300/Seeds -74/name/tooltip
 		private static void RandomizeCrops(EditedObjectInformation editedObjectInfo)
 		{
 			// this swapped parsnips and amaranth
-			//editedObjectInfo.CropsReplacements[(int)ObjectIndexes.ParsnipSeeds] = "1 2 2 2/spring/39/300/-1/1/false/false/false";
-			//editedObjectInfo.CropsReplacements[(int)ObjectIndexes.AmaranthSeeds] = "1 1 1 1/spring/0/24/-1/0/false/false/false";
+			editedObjectInfo.CropsReplacements[(int)ObjectIndexes.ParsnipSeeds] = "1 2 2 2/spring/39/300/-1/1/false/false/false";
+			editedObjectInfo.CropsReplacements[(int)ObjectIndexes.AmaranthSeeds] = "1 1 1 1/fall/0/24/-1/0/false/false/false";
+			//"299": "1 2 2 2/fall/39/300/-1/1/false/false/false",
+			//"472": "1 1 1 1/spring/0/24/-1/0/false/false/false",
 
 			Random rng = Globals.RNG;
 			var cropPrices = new Dictionary<int, string>()
@@ -107,7 +109,9 @@ namespace Randomizer
 				{ (int)ObjectIndexes.RhubarbSeeds, $"Rhubarb Seeds/{rng.Next(45, 60)}/-300/Seeds -74/Rhubarb Seeds/Plant these in the spring. Takes 13 days to mature. Normal seed market price is 100g"},
 				{ (int)ObjectIndexes.StrawberrySeeds, $"Strawberry Seeds/0/-300/Seeds -74/Strawberry Seeds/Plant these in spring. Takes 8 days to mature, and keeps producing strawberries after that. Normal seed market price is 100g"},
 				{ (int)ObjectIndexes.TulipBulb, $"Tulip Bulb/{rng.Next(3, 7)}/-300/Seeds -74/Tulip Bulb/Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors. Normal seed market price is 10g"},
-				
+
+				{ (int)ObjectIndexes.Amaranth, "TEST CROP/150/20/Basic -75/TEST CROP/YOUR MOTHER." }, //REMOVEME
+
 				//Summer Crops
 				{ (int)ObjectIndexes.BlueberrySeeds, $"Blueberry Seeds/{rng.Next(35, 50)}/-300/Seeds -74/Blueberry Seeds/Plant these in the summer. Takes 13 days to mature, and continues to produce after first harvest. Normal seed market price is 80g"},
 				{ (int)ObjectIndexes.CornSeeds, $"Corn Seeds/{rng.Next(65, 90)}/-300/Seeds -74/Corn Seeds/Plant these in the summer or fall. Takes 14 days to mature, and continues to produce after first harvest. Normal seed market price is 150g"},

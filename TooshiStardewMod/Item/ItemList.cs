@@ -555,6 +555,14 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Driftwood, new TrashItem((int)ObjectIndexes.Driftwood) },
 			{ (int)ObjectIndexes.BrokenGlasses, new TrashItem((int)ObjectIndexes.BrokenGlasses) },
 			{ (int)ObjectIndexes.JojaCola, new TrashItem((int)ObjectIndexes.JojaCola) },
+
+			// Seeds - ObtainingDifficulties.LargeTimeRequirements
+			{ (int)ObjectIndexes.ParsnipSeeds, new SeedItem((int)ObjectIndexes.ParsnipSeeds, "-300/Seeds -74", new List<Seasons> { Seasons.Spring }) },
+			//FINISHME
+
+			// Crops - ObtainingDifficulties.LargeTimeRequirements
+			{ (int)ObjectIndexes.Parsnip, new CropItem((int)ObjectIndexes.Parsnip, "10/Basic -75") },
+			//FINISHME
 		};
 
 		public static Dictionary<int, int> BigCraftableItems = new Dictionary<int, int> {

@@ -47,6 +47,7 @@
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
     <Compile Include="BundleRandomizer.cs" />
+    <Compile Include="CropGrowthInformation.cs" />
     <Compile Include="CropNameRandomizer.cs" />
     <Compile Include="CropRandomizer.cs" />
     <Compile Include="EditedObjectInformation.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Item\CropItem.cs" />
     <Compile Include="Item\GeodeMineralItem.cs" />
     <Compile Include="Item\RingItem.cs" />
+    <Compile Include="Item\SeedItem.cs" />
     <Compile Include="MusicRandomizer.cs" />
     <Compile Include="Enums\CraftableCategories.cs" />
     <Compile Include="Enums\ObtainingDifficulties.cs" />
