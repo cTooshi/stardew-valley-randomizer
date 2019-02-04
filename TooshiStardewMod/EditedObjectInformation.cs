@@ -9,5 +9,6 @@ namespace Randomizer
 	{
 		public Dictionary<int, string> ObjectInformationReplacements = new Dictionary<int, string>();
 		public Dictionary<int, string> FruitTreeReplacements = new Dictionary<int, string>();
+		public Dictionary<int, string> CropsReplacements = new Dictionary<int, string>();
 	}
 }

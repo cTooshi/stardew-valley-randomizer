@@ -88,23 +88,27 @@ namespace Randomizer
 		/// <param name="editedObjectInfo">The edited object information</param>
 		private static void RandomizeCrops(EditedObjectInformation editedObjectInfo)
 		{
+			// this swapped parsnips and amaranth
+			//editedObjectInfo.CropsReplacements[(int)ObjectIndexes.ParsnipSeeds] = "1 2 2 2/spring/39/300/-1/1/false/false/false";
+			//editedObjectInfo.CropsReplacements[(int)ObjectIndexes.AmaranthSeeds] = "1 1 1 1/spring/0/24/-1/0/false/false/false";
+
 			Random rng = Globals.RNG;
 			var cropPrices = new Dictionary<int, string>()
 			{
-                //Spring Crops
-                { (int)ObjectIndexes.JazzSeeds, $"Jazz Seeds/{rng.Next(11, 20)}/-300/Seeds -74/Jazz Seeds/Plant in spring. Takes 7 days to produce a blue puffball flower. Normal seed market price is 30g"},
+				//Spring Crops
+				{ (int)ObjectIndexes.JazzSeeds, $"Jazz Seeds/{rng.Next(11, 20)}/-300/Seeds -74/Jazz Seeds/Plant in spring. Takes 7 days to produce a blue puffball flower. Normal seed market price is 30g"},
 				{ (int)ObjectIndexes.CauliflowerSeeds,$"Cauliflower Seeds/{rng.Next(35, 55)}/-300/Seeds -74/Cauliflower Seeds/Plant these in the spring. Takes 12 days to produce a large cauliflower. Normal seed market price is 80g"},
 				{ (int)ObjectIndexes.GarlicSeeds, $"Garlic Seeds/{rng.Next(15, 30)}/-300/Seeds -74/Garlic Seeds/Plant these in the spring. Takes 4 days to mature. Normal seed market price is 40g"},
 				{ (int)ObjectIndexes.BeanStarter, $"Bean Starter/{rng.Next(25, 40)}/-300/Seeds -74/Bean Starter/Plant these in the spring. Takes 10 days to mature, but keeps producing after that. Yields multiple beans per harvest. Grows on a trellis. Normal seed market price is 60g"},
-				{ (int)ObjectIndexes.ParsnipSeeds, $"Parsnip Seeds/{rng.Next(7, 13)}/-300/Seeds -74/Parsnip Seeds/Plant these in the spring. Takes 4 days to mature. Normal seed market price is 20g"},
-				{ (int)ObjectIndexes.PotatoSeeds, $"Potato Seeds/{rng.Next(20, 35)}/-300/Seeds -74/Potato Seeds/Plant these in the spring. Takes 6 days to mature, and has a chance of yielding multiple potatoes at harvest. Normal seed market price is 50g"},
+				{ (int)ObjectIndexes.ParsnipSeeds, $"Not Parsnip Seeds/{rng.Next(7, 13)}/-300/Seeds -74/Not Parsnip Seeds/Plant these in the spring. Takes 4 days to mature. Normal seed market price is 20g"},
+				{ (int)ObjectIndexes.PotatoSeeds, $"Potato Seeds/{rng.Next(20, 35)}/-300/Seeds -74/Potato Seeds/MODIFIED Plant these in the spring. Takes 6 days to mature, and has a chance of yielding multiple potatoes at harvest. Normal seed market price is 50g"},
 				{ (int)ObjectIndexes.KaleSeeds, $"Kale Seeds/{rng.Next(30, 42)}/-300/Seeds -74/Kale Seeds/Plant these in the spring. Takes 6 days to mature. Harvest with the scythe. Normal seed market price is 70g"},
 				{ (int)ObjectIndexes.RhubarbSeeds, $"Rhubarb Seeds/{rng.Next(45, 60)}/-300/Seeds -74/Rhubarb Seeds/Plant these in the spring. Takes 13 days to mature. Normal seed market price is 100g"},
 				{ (int)ObjectIndexes.StrawberrySeeds, $"Strawberry Seeds/0/-300/Seeds -74/Strawberry Seeds/Plant these in spring. Takes 8 days to mature, and keeps producing strawberries after that. Normal seed market price is 100g"},
 				{ (int)ObjectIndexes.TulipBulb, $"Tulip Bulb/{rng.Next(3, 7)}/-300/Seeds -74/Tulip Bulb/Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors. Normal seed market price is 10g"},
-                
-                //Summer Crops
-                { (int)ObjectIndexes.BlueberrySeeds, $"Blueberry Seeds/{rng.Next(35, 50)}/-300/Seeds -74/Blueberry Seeds/Plant these in the summer. Takes 13 days to mature, and continues to produce after first harvest. Normal seed market price is 80g"},
+				
+				//Summer Crops
+				{ (int)ObjectIndexes.BlueberrySeeds, $"Blueberry Seeds/{rng.Next(35, 50)}/-300/Seeds -74/Blueberry Seeds/Plant these in the summer. Takes 13 days to mature, and continues to produce after first harvest. Normal seed market price is 80g"},
 				{ (int)ObjectIndexes.CornSeeds, $"Corn Seeds/{rng.Next(65, 90)}/-300/Seeds -74/Corn Seeds/Plant these in the summer or fall. Takes 14 days to mature, and continues to produce after first harvest. Normal seed market price is 150g"},
 				{ (int)ObjectIndexes.HopsStarter, $"Hops Starter/{rng.Next(25, 50)}/-300/Seeds -74/Hops Starter/Plant these in the summer. Takes 11 days to grow, but keeps producing after that. Grows on a trellis. Normal seed market price is 60g"},
 				{ (int)ObjectIndexes.PepperSeeds, $"Pepper Seeds/{rng.Next(15, 30)}/-300/Seeds -74/Pepper Seeds/Plant these in the summer. Takes 5 days to mature, and continues to produce after first harvest. Normal seed market price is 40g"},
@@ -116,9 +120,9 @@ namespace Randomizer
 				{ (int)ObjectIndexes.SunflowerSeeds, $"Sunflower Seeds/{rng.Next(15, 25)}/-300/Seeds -74/Sunflower Seeds/Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest. Normal seed market price is 200g"},
 				{ (int)ObjectIndexes.TomatoSeeds, $"Tomato Seeds/{rng.Next(20, 35)}/-300/Seeds -74/Tomato Seeds/Plant these in the summer. Takes 11 days to mature, and continues to produce after first harvest. Normal seed market price is 50g"},
 				{ (int)ObjectIndexes.WheatSeeds, $"Wheat Seeds/{rng.Next(3, 11)}/-300/Seeds -74/Wheat Seeds/Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe. Normal seed market price is 10g"},
-               
+			   
 				//Fall Crops
-                { (int)ObjectIndexes.AmaranthSeeds, $"Amaranth Seeds/{rng.Next(30, 45)}/-300/Seeds -74/Amaranth Seeds/Plant these in the fall. Takes 7 days to grow. Harvest with the scythe. Normal seed market price is 70g"},
+				{ (int)ObjectIndexes.AmaranthSeeds, $"Amaranth Seeds/{rng.Next(30, 45)}/-300/Seeds -74/Amaranth Seeds/Plant these in the fall. Takes 7 days to grow. Harvest with the scythe. Normal seed market price is 70g"},
 				{ (int)ObjectIndexes.ArtichokeSeeds, $"Artichoke Seeds/{rng.Next(12, 20)}/-300/Seeds -74/Artichoke Seeds/Plant these in the fall. Takes 8 days to mature. Normal seed market price is 30g"},
 				{ (int)ObjectIndexes.BeetSeeds, $"Beet Seeds/{rng.Next(8, 15)}/-300/Seeds -74/Beet Seeds/Plant these in the fall. Takes 6 days to mature. Normal seed market price is 20g"},
 				{ (int)ObjectIndexes.BokChoySeeds, $"Bok Choy Seeds/{rng.Next(20, 35)}/-300/Seeds -74/Bok Choy Seeds/Plant these in the fall. Takes 4 days to mature. Normal seed market price is 50g"},
