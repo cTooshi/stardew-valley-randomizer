@@ -25,6 +25,14 @@ namespace Randomizer
 		/// <returns>A dictionary of locations to replace</returns>
 		public static Dictionary<string, string> Randomize()
 		{
+			SpringForagables.Clear();
+			SummerForagables.Clear();
+			FallForagables.Clear();
+			WinterForagables.Clear();
+			BeachForagables.Clear();
+			WoodsForagables.Clear();
+			DesertForagables.Clear();
+
 			var locationsReplacements = new Dictionary<string, string>();
 			GroupForagablesBySeason();
 

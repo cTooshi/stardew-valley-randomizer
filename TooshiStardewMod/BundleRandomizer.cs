@@ -36,9 +36,9 @@ namespace Randomizer
 		/// </summary>
 		public static List<RoomInformation> Rooms = new List<RoomInformation>
 		{
-			//new RoomInformation(CommunityCenterRooms.Pantry, 0, 5),
-			//new RoomInformation(CommunityCenterRooms.FishTank, 6, 11),
 			new RoomInformation(CommunityCenterRooms.CraftsRoom, 13, 19), // skip 18
+			new RoomInformation(CommunityCenterRooms.Pantry, 0, 5),
+			//new RoomInformation(CommunityCenterRooms.FishTank, 6, 11),
 			//new RoomInformation(CommunityCenterRooms.BoilerRoom, 20, 22),
 			//new RoomInformation(CommunityCenterRooms.Vault, 23, 26),
 			//new RoomInformation(CommunityCenterRooms.BulletinBoard, 31, 35),
@@ -54,6 +54,7 @@ namespace Randomizer
 		/// <returns>A dictionary of bundles to their output string</returns>
 		public static Dictionary<string, string> Randomize()
 		{
+			Bundle.Reinitialize();
 			foreach (RoomInformation room in Rooms)
 			{
 				CreateBundlesForRoom(room);
@@ -75,12 +76,10 @@ namespace Randomizer
 			}
 
 			List<Bundle> bundles = new List<Bundle>();
-			List<BundleTypes> bundleTypesUsed = new List<BundleTypes>();
 			for (int i = room.StartingIndex; i < room.EndingIndex + 1; i++)
 			{
 				if (i == 18) { continue; } // That's just how this is set up
-				Bundle bundle = CreateBundleForRoom(room.Room, i, bundleTypesUsed);
-				bundleTypesUsed.Add(bundle.BundleType);
+				Bundle bundle = CreateBundleForRoom(room.Room, i);
 			}
 		}
 
@@ -89,12 +88,12 @@ namespace Randomizer
 		/// </summary>
 		/// <param name="room">The room to create the bundle for</param>
 		/// <param name="roomId">The room id</param>
-		/// <param name="bundleTypesUsed">The bundle types already used</param>
 		/// <returns>The created bundle</returns>
-		private static Bundle CreateBundleForRoom(CommunityCenterRooms room, int roomId, List<BundleTypes> bundleTypesUsed)
+		private static Bundle CreateBundleForRoom(CommunityCenterRooms room, int roomId)
 		{
-			Bundle bundle = new Bundle(room, roomId, bundleTypesUsed);
+			Bundle bundle = new Bundle(room, roomId);
 			_randomizedBundles[bundle.Key] = bundle.ToString();
+			Globals.ConsoleWrite(bundle.ToString());
 			return bundle;
 		}
 	}

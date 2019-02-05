@@ -24,7 +24,7 @@ namespace Randomizer
 		private static void RandomizeFruitTrees(EditedObjectInformation editedObjectInfo)
 		{
 			List<Item> allPotentialTrees = ItemList.Items.Values.Where(x =>
-				x.DifficultyToObtain != ObtainingDifficulties.Impossible
+				x.DifficultyToObtain < ObtainingDifficulties.Impossible
 			).ToList();
 
 			Item tree1 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
