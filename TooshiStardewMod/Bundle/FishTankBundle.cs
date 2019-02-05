@@ -63,6 +63,24 @@ namespace Randomizer
 					MinimumRequiredItems = Range.GetRandomValue(3, 4);
 					Color = BundleColors.Red;
 					break;
+				case BundleTypes.FishTankLocation:
+					List<Locations> locations = new List<Locations>
+					{
+						Locations.Town,
+						Locations.Mountain,
+						Locations.Desert,
+						Locations.Woods,
+						Locations.Forest,
+						Locations.NightMarket,
+						Locations.Beach
+					};
+					Locations location = Globals.RNGGetRandomValueFromList(locations);
+
+					Name = location.ToString();
+					RequiredItems = RequiredItem.CreateList(Globals.RNGGetRandomValuesFromList(FishItem.Get(location), 8));
+					MinimumRequiredItems = Math.Min(RequiredItems.Count, Range.GetRandomValue(2, 4));
+					Color = BundleColors.Blue;
+					break;
 				case BundleTypes.FishTankRainFish:
 					Name = "Rain Fish";
 					RequiredItems = RequiredItem.CreateList(
@@ -74,7 +92,7 @@ namespace Randomizer
 				case BundleTypes.FishTankNightFish:
 					Name = "Night Fish";
 					RequiredItems = RequiredItem.CreateList(
-						Globals.RNGGetRandomValuesFromList(FishItem.GetForTime(800), 8)
+						Globals.RNGGetRandomValuesFromList(FishItem.GetNightFish(), 8)
 					);
 					MinimumRequiredItems = Math.Min(RequiredItems.Count, 4);
 					Color = BundleColors.Purple;
@@ -98,20 +116,38 @@ namespace Randomizer
 					break;
 				case BundleTypes.FishTankFishingTools:
 					Name = "Fishing Tools";
-					potentialItems = RequiredItem.CreateList(new List<int>
+					potentialItems = new List<RequiredItem>
 					{
-						(int)ObjectIndexes.Spinner,
-						(int)ObjectIndexes.DressedSpinner,
-						(int)ObjectIndexes.TrapBobber,
-						(int)ObjectIndexes.CorkBobber,
-						(int)ObjectIndexes.LeadBobber,
-						(int)ObjectIndexes.TreasureHunter,
-						(int)ObjectIndexes.BarbedHook, //TODO:FINISHME
-					});
+						new RequiredItem((int)ObjectIndexes.Spinner, 1),
+						new RequiredItem((int)ObjectIndexes.DressedSpinner, 1),
+						new RequiredItem((int)ObjectIndexes.TrapBobber, 1),
+						new RequiredItem((int)ObjectIndexes.CorkBobber, 1),
+						new RequiredItem((int)ObjectIndexes.LeadBobber, 1),
+						new RequiredItem((int)ObjectIndexes.TreasureHunter, 1),
+						new RequiredItem((int)ObjectIndexes.Bait, 25, 50),
+						new RequiredItem((int)ObjectIndexes.WildBait, 10, 20)
+					};
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 4);
+					Color = BundleColors.Blue;
 					break;
 				case BundleTypes.FishTankUnique:
+					Name = "Unique Fish";
+
+					List<Item> nightFish = FishItem.Get(Locations.NightMarket);
+					List<Item> minesFish = FishItem.Get(Locations.UndergroundMine);
+					List<Item> desertFish = FishItem.Get(Locations.Desert);
+					List<Item> woodsFish = FishItem.Get(Locations.Woods);
+
+					RequiredItems = new List<RequiredItem>
+					{
+						new RequiredItem(Globals.RNGGetRandomValueFromList(nightFish)),
+						new RequiredItem(Globals.RNGGetRandomValueFromList(minesFish)),
+						new RequiredItem(Globals.RNGGetRandomValueFromList(desertFish)),
+						new RequiredItem(Globals.RNGGetRandomValueFromList(woodsFish))
+					};
+					MinimumRequiredItems = Range.GetRandomValue(RequiredItems.Count - 1, RequiredItems.Count);
+					Color = BundleColors.Cyan;
 					break;
-					//TODO: you CAN do location bundle now!@!!
 			}
 		}
 
@@ -133,7 +169,27 @@ namespace Randomizer
 		/// </summary>
 		protected override void GenerateReward()
 		{
-			Reward = new RequiredItem((int)ObjectIndexes.Wood); //TODO: complete this ha
+			var tackles = new List<RequiredItem>
+			{
+				new RequiredItem((int)ObjectIndexes.Spinner, 1),
+				new RequiredItem((int)ObjectIndexes.DressedSpinner),
+				new RequiredItem((int)ObjectIndexes.TrapBobber),
+				new RequiredItem((int)ObjectIndexes.CorkBobber),
+				new RequiredItem((int)ObjectIndexes.LeadBobber),
+				new RequiredItem((int)ObjectIndexes.TreasureHunter)
+			};
+
+			var potentialRewards = new List<RequiredItem>
+			{
+				new RequiredItem((int)ObjectIndexes.RecyclingMachine),
+				new RequiredItem((int)ObjectIndexes.Bait, 500),
+				new RequiredItem((int)ObjectIndexes.WildBait, 500),
+				Globals.RNGGetRandomValueFromList(tackles),
+				Globals.RNGGetRandomValueFromList(RequiredItem.CreateList(FishItem.Get(), 25, 50)),
+				Globals.RNGGetRandomValueFromList(RequiredItem.CreateList(ItemList.GetUniqueBeachForagables(), 25, 50)),
+			};
+
+			Reward = Globals.RNGGetRandomValueFromList(potentialRewards);
 		}
 	}
 }

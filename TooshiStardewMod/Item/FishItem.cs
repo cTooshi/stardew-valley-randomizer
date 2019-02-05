@@ -49,6 +49,20 @@ namespace Randomizer
 		}
 
 		/// <summary>
+		/// Gets all the fish
+		/// </summary>
+		/// <param name="includeLegendaries">Include the legendary fish</param>
+		/// <returns />
+		public static List<FishItem> GetListAsFishItem(bool includeLegendaries = false)
+		{
+			return ItemList.Items.Values.Where(x =>
+				x.IsFish &&
+				x.DifficultyToObtain != ObtainingDifficulties.Impossible &&
+				(includeLegendaries || x.DifficultyToObtain < ObtainingDifficulties.EndgameItem)
+			).Cast<FishItem>().ToList();
+		}
+
+		/// <summary>
 		/// Gets all the fish that can be caught during the given season
 		/// </summary>
 		/// <param name="season">The season</param>
@@ -56,7 +70,7 @@ namespace Randomizer
 		/// <returns />
 		public static List<Item> Get(Seasons season, bool includeLegendaries = false)
 		{
-			List<FishItem> allFish = (List<FishItem>)Get(includeLegendaries).Cast<FishItem>();
+			List<FishItem> allFish = GetListAsFishItem(includeLegendaries);
 			switch (season)
 			{
 				case Seasons.Spring:
@@ -81,7 +95,7 @@ namespace Randomizer
 		/// <returns />
 		public static List<Item> Get(Weather weather, bool includeLegendaries = false)
 		{
-			List<FishItem> allFish = (List<FishItem>)Get(includeLegendaries).Cast<FishItem>();
+			List<FishItem> allFish = GetListAsFishItem(includeLegendaries);
 			switch (weather)
 			{
 				case Weather.Any:
@@ -99,19 +113,30 @@ namespace Randomizer
 		}
 
 		/// <summary>
-		/// Gets the fish that can be caught at the given starting time or later
+		/// Gets all the fish that can be caught at a given location
+		/// </summary>
+		/// <param name="location">The weather type</param>
+		/// <param name="includeLegendaries">Include the legendary fish</param>
+		/// <returns />
+		public static List<Item> Get(Locations location, bool includeLegendaries = false)
+		{
+			List<FishItem> allFish = GetListAsFishItem(includeLegendaries);
+			return allFish.Where(x => x.AvailableLocations.Contains(location)).Cast<Item>().ToList();
+		}
+
+		/// <summary>
+		/// Gets the fish that can be caught at 2am that can't be caught in the morning
+		/// OR that have exclusions and can be caught at night
 		/// </summary>
 		/// <param name="startingTime">The time</param>
 		/// <param name="includeLegendaries">Include the legendary fish</param>
-		/// <returns></returns>
-		public static List<Item> GetForTime(int startingTime, bool includeLegendaries = false)
+		/// <returns />
+		public static List<Item> GetNightFish(bool includeLegendaries = false)
 		{
-			if (startingTime >= 2600) { return new List<Item>(); } // You can't be up that late!
-
-			return Get(includeLegendaries).Cast<FishItem>().Where(x =>
-				x.Times.MaxValue >= startingTime &&
-				(startingTime >= x.Times.MinValue && startingTime <= x.Times.MaxValue) &&
-				(x.ExcludedTimes.MaxValue < 2600 || startingTime < x.ExcludedTimes.MinValue)
+			var test = GetListAsFishItem(includeLegendaries);
+			return GetListAsFishItem(includeLegendaries).Cast<FishItem>().Where(x =>
+				(x.Times.MinValue >= 1200 && x.Times.MaxValue >= 2600) ||
+				(x.ExcludedTimes.MaxValue >= 600 && x.ExcludedTimes.MaxValue < 2600)
 			).Cast<Item>().ToList();
 		}
 

@@ -70,13 +70,13 @@ namespace Randomizer
 			switch (room)
 			{
 				case CommunityCenterRooms.CraftsRoom:
-					createdBundle = new CraftingRoomBundle();
+					createdBundle = new FishTankBundle(); //TODO, move back
 					break;
 				case CommunityCenterRooms.Pantry:
 					createdBundle = new PantryBundle();
 					break;
 				case CommunityCenterRooms.FishTank:
-					createdBundle = new FishTankBundle(); //TODO, move back
+					createdBundle = new CraftingRoomBundle();
 					break;
 				case CommunityCenterRooms.BoilerRoom:
 					createdBundle = new BoilerRoomBundle();

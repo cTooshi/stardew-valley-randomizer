@@ -23,7 +23,7 @@
 		CraftingFallForaging,
 		CraftingWinterForaging,
 
-		//Pantry bundles //TODO - uncomment when possible
+		// Pantry //TODO - uncomment when possible
 		PantryAnimal,
 		//PantryQualityCrops,
 		PantryQualityForagables,
@@ -39,12 +39,14 @@
 		PantryDessert,
 		PantryMexicanFood,
 
+		// Fish tank
 		FishTankSpringFish,
 		FishTankSummerFish,
 		FishTankFallFish,
 		FishTankWinterFish,
 		FishTankOceanFood,
 		FishTankLegendary,
+		FishTankLocation,
 		FishTankRainFish,
 		FishTankNightFish,
 		FishTankQualityFish,
