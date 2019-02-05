@@ -7,13 +7,7 @@ namespace Randomizer
 	/// </summary>
 	public class MusicRandomizer
 	{
-		/// <summary>
-		/// Randomizes all the music to another song
-		/// </summary>
-		/// <returns>A dictionary of song names to their alternatives</returns>
-		public static Dictionary<string, string> Randomize()
-		{
-			List<string> musicToReplace = new List<string>
+		public static List<string> musicList = new List<string>
 			{
 				"CloudCountry",
 				"coin",
@@ -88,6 +82,14 @@ namespace Randomizer
 				"AbigailFlute",
 				"wedding"
 			};
+
+		/// <summary>
+		/// Randomizes all the music to another song
+		/// </summary>
+		/// <returns>A dictionary of song names to their alternatives</returns>
+		public static Dictionary<string, string> Randomize()
+		{
+			List<string> musicToReplace = new List<string>(musicList);
 			List<string> musicReplacementPool = new List<string>(musicToReplace);
 			Dictionary<string, string> musicReplacements = new Dictionary<string, string>();
 

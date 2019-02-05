@@ -79,6 +79,37 @@ namespace Randomizer
 		}
 
 		/// <summary>
+		/// Creates a list of required items based on the given list of items
+		/// </summary>
+		/// <param name="itemList">The item list</param>
+		/// <param name="minValue">The max number of items required to craft this</param>
+		/// <param name="maxValue">The minimum number of items required to craft this</param>
+		public static List<RequiredItem> CreateList(List<Item> itemList, int minValue, int maxValue)
+		{
+			List<RequiredItem> list = new List<RequiredItem>();
+			foreach (Item item in itemList)
+			{
+				list.Add(new RequiredItem(item.Id, minValue, maxValue));
+			}
+			return list;
+		}
+
+		/// <summary>
+		/// Creates a list of required items based on the given list of item ids
+		/// </summary>
+		/// <param name="itemIdList">The item list</param>
+		/// <param name="numberOfItems">The number of items to set each required item to</param>
+		public static List<RequiredItem> CreateList(List<int> itemIdList, int numberOfItems = 1)
+		{
+			List<RequiredItem> list = new List<RequiredItem>();
+			foreach (int id in itemIdList)
+			{
+				list.Add(new RequiredItem(id, numberOfItems));
+			}
+			return list;
+		}
+
+		/// <summary>
 		/// Gets the string used for bundles
 		/// </summary>
 		/// <param name="useMoneyAmount">Whether to use the money amount for the string</param>

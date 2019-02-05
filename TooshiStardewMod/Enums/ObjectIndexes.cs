@@ -91,6 +91,8 @@
 		BarrelBrazier = -138,
 		MarbleBrazier = -139,
 		WoodLampPost = -140,
-		IronLampPost = -141
+		IronLampPost = -141,
+		Heater = -142,
+		AutoGrabber = -143
 	};
 }

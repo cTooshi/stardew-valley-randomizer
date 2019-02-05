@@ -10,6 +10,7 @@
 
 		// Can be used by any room
 		AllRandom,
+		AllLetter,
 
 		// Crafting room
 		CraftingResource,
@@ -20,6 +21,22 @@
 		CraftingSpringForaging,
 		CraftingSummerForaging,
 		CraftingFallForaging,
-		CraftingWinterForaging
+		CraftingWinterForaging,
+
+		//Pantry bundles //TODO - uncomment when possible
+		PantryAnimal,
+		//PantryQualityCrops,
+		PantryQualityForagables,
+		PantryCooked,
+		//PantryFlower,
+		//PantrySpringCrops,
+		//PantrySummerCrops,
+		//PantryFallCrops,
+		//PantryWinterCrops,
+		PantryEgg,
+		//PantryRareFoods,
+		PantryDesert,
+		PantryDessert,
+		PantryMexicanFood
 	}
 }

@@ -190,6 +190,7 @@ namespace Randomizer
 					(itemBeingCrafted.Id != (int)ObjectIndexes.Furnace || !x.IsSmelted) &&
 					(itemBeingCrafted.Id != (int)ObjectIndexes.MayonnaiseMachine || !x.IsMayonaisse) &&
 					(itemBeingCrafted.Id != (int)ObjectIndexes.CrabPot || !x.IsCrabPotItem) &&
+					(itemBeingCrafted.Id != (int)ObjectIndexes.CheesePress || (x.Id != (int)ObjectIndexes.Cheese) && x.Id != (int)ObjectIndexes.GoatCheese) &&
 					((itemBeingCrafted.Id != (int)ObjectIndexes.BeeHouse) || (x.Id != (int)ObjectIndexes.Honey)) &&
 					((itemBeingCrafted.Id != (int)ObjectIndexes.LightningRod) || (x.Id != (int)ObjectIndexes.Battery)) &&
 
@@ -300,6 +301,10 @@ namespace Randomizer
 			{ (int)ObjectIndexes.MarbleBrazier, new CraftableItem((int)ObjectIndexes.MarbleBrazier, "/Home/151/true/null", CraftableCategories.Difficult) },
 			{ (int)ObjectIndexes.WoodLampPost, new CraftableItem((int)ObjectIndexes.WoodLampPost, "/Home/152/true/null", CraftableCategories.Moderate) { OverrideName = "Wood Lamp-post" } },
 			{ (int)ObjectIndexes.IronLampPost, new CraftableItem((int)ObjectIndexes.IronLampPost, "/Home/153/true/null", CraftableCategories.Moderate) { OverrideName = "Iron Lamp-post" } },
+
+			// Non-craftable BigObjects
+			{ (int)ObjectIndexes.Heater, new Item((int)ObjectIndexes.Heater, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.AutoGrabber, new Item((int)ObjectIndexes.AutoGrabber, ObtainingDifficulties.NonCraftingItem) },
 
 			// Resources - ObtainingDifficulties.NoRequirements
 			{ (int)ObjectIndexes.Wood, new ResourceItem((int)ObjectIndexes.Wood) },
@@ -502,10 +507,12 @@ namespace Randomizer
 			{ (int)ObjectIndexes.RabbitsFoot, new AnimalItem((int)ObjectIndexes.RabbitsFoot, 2) },
 			{ (int)ObjectIndexes.Truffle, new AnimalItem((int)ObjectIndexes.Truffle, 2) },
 			{ (int)ObjectIndexes.TruffleOil, new AnimalItem((int)ObjectIndexes.TruffleOil, 2) { RequiresOilMaker = true } },
-			{ (int)ObjectIndexes.Mayonnaise, new AnimalItem((int)ObjectIndexes.Wool) { IsMayonaisse = true } },
-			{ (int)ObjectIndexes.DuckMayonnaise, new AnimalItem((int)ObjectIndexes.Wool, 1) { IsMayonaisse = true } },
-			{ (int)ObjectIndexes.VoidMayonnaise, new AnimalItem((int)ObjectIndexes.Wool) { IsMayonaisse = true, DifficultyToObtain = ObtainingDifficulties.RareItem } },
-			
+			{ (int)ObjectIndexes.Mayonnaise, new AnimalItem((int)ObjectIndexes.Mayonnaise) { IsMayonaisse = true } },
+			{ (int)ObjectIndexes.DuckMayonnaise, new AnimalItem((int)ObjectIndexes.DuckMayonnaise, 1) { IsMayonaisse = true } },
+			{ (int)ObjectIndexes.VoidMayonnaise, new AnimalItem((int)ObjectIndexes.VoidMayonnaise) { IsMayonaisse = true, DifficultyToObtain = ObtainingDifficulties.RareItem } },
+			{ (int)ObjectIndexes.Cheese, new AnimalItem((int)ObjectIndexes.Cheese)},
+			{ (int)ObjectIndexes.GoatCheese, new AnimalItem((int) ObjectIndexes.GoatCheese, ObtainingDifficulties.LargeTimeRequirements)},
+
 			// Artifacts and rare items
 			{ (int)ObjectIndexes.DwarfScrollI, new ArtifactItem((int)ObjectIndexes.DwarfScrollI) },
 			{ (int)ObjectIndexes.DwarfScrollII, new ArtifactItem((int)ObjectIndexes.DwarfScrollII) },
@@ -599,15 +606,15 @@ namespace Randomizer
 			{ (int)ObjectIndexes.IceCream, new CookedItem((int)ObjectIndexes.IceCream) },
 			{ (int)ObjectIndexes.BlueberryTart, new CookedItem((int)ObjectIndexes.BlueberryTart) },
 
-			{ (int)ObjectIndexes.AutumnsBounty, new CookedItem((int)ObjectIndexes.AutumnsBounty) },
+			{ (int)ObjectIndexes.AutumnsBounty, new CookedItem((int)ObjectIndexes.AutumnsBounty) { OverrideName = "Autumn's Bounty" } },
 			{ (int)ObjectIndexes.PumpkinSoup, new CookedItem((int)ObjectIndexes.PumpkinSoup) },
 			{ (int)ObjectIndexes.SuperMeal, new CookedItem((int)ObjectIndexes.SuperMeal) },
 			{ (int)ObjectIndexes.CranberrySauce, new CookedItem((int)ObjectIndexes.CranberrySauce) },
 			{ (int)ObjectIndexes.Stuffing, new CookedItem((int)ObjectIndexes.Stuffing) },
-			{ (int)ObjectIndexes.FarmersLunch, new CookedItem((int)ObjectIndexes.FarmersLunch) },
+			{ (int)ObjectIndexes.FarmersLunch, new CookedItem((int)ObjectIndexes.FarmersLunch) { OverrideName = "Farmer's Lunch" } },
 			{ (int)ObjectIndexes.SurvivalBurger, new CookedItem((int)ObjectIndexes.SurvivalBurger) },
-			{ (int)ObjectIndexes.DishOTheSea, new CookedItem((int)ObjectIndexes.DishOTheSea) },
-			{ (int)ObjectIndexes.MinersTreat, new CookedItem((int)ObjectIndexes.MinersTreat) },
+			{ (int)ObjectIndexes.DishOTheSea, new CookedItem((int)ObjectIndexes.DishOTheSea) { OverrideName = "Dish o' The Sea" } },
+			{ (int)ObjectIndexes.MinersTreat, new CookedItem((int)ObjectIndexes.MinersTreat) { OverrideName = "Miner's Treat" } },
 			{ (int)ObjectIndexes.RootsPlatter, new CookedItem((int)ObjectIndexes.RootsPlatter) },
 
 			{ (int)ObjectIndexes.AlgaeSoup, new CookedItem((int)ObjectIndexes.AlgaeSoup) },
@@ -713,6 +720,7 @@ namespace Randomizer
 			{(int)ObjectIndexes.Chest, 130},
 			{(int)ObjectIndexes.Scarecrow, 8},
 			{(int)ObjectIndexes.BeeHouse, 10},
+			{(int)ObjectIndexes.Cask, 163},
 			{(int)ObjectIndexes.Furnace, 13},
 			{(int)ObjectIndexes.GardenPot, 62},
 			{(int)ObjectIndexes.CheesePress, 16},
@@ -744,7 +752,9 @@ namespace Randomizer
 			{(int)ObjectIndexes.BarrelBrazier, 150},
 			{(int)ObjectIndexes.MarbleBrazier, 151},
 			{(int)ObjectIndexes.WoodLampPost, 152},
-			{(int)ObjectIndexes.IronLampPost, 153}
+			{(int)ObjectIndexes.IronLampPost, 153},
+			{(int)ObjectIndexes.Heater, 104},
+			{(int)ObjectIndexes.AutoGrabber, 165}
 		};
 	}
 }
