@@ -6,6 +6,150 @@ namespace Randomizer
 	public class ItemList
 	{
 		/// <summary>
+		/// Gets all the resources
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetResources()
+		{
+			return Items.Values.Where(x => x.IsResource).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the foragables
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetForagables()
+		{
+			return Items.Values.Where(x => x.IsForagable).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the foragables belonging to the given season
+		/// </summary>
+		/// <param name="season">The season to get the foragables for</param>
+		/// <returns />
+		public static List<Item> GetForagables(Seasons season)
+		{
+			List<Item> foragablesInSeason = new List<Item>();
+			switch (season)
+			{
+				case Seasons.Spring:
+					foragablesInSeason = LocationRandomizer.SpringForagables;
+					break;
+				case Seasons.Summer:
+					foragablesInSeason = LocationRandomizer.SummerForagables;
+					break;
+				case Seasons.Fall:
+					foragablesInSeason = LocationRandomizer.FallForagables;
+					break;
+				case Seasons.Winter:
+					foragablesInSeason = LocationRandomizer.WinterForagables;
+					break;
+			}
+
+			return Items.Values.Where(x => x.IsForagable && foragablesInSeason.Contains(x)).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the unique woods foragables
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetUniqueWoodsForagables()
+		{
+			return Items.Values.Where(x => LocationRandomizer.WoodsForagables.Contains(x)).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the unique beach foragables
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetUniqueBeachForagables()
+		{
+			return Items.Values.Where(x => LocationRandomizer.BeachForagables.Contains(x)).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the unique woods foragables
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetUniqueDesertForagables()
+		{
+			return Items.Values.Where(x => LocationRandomizer.DesertForagables.Contains(x)).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the crops
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetCrops()
+		{
+			return Items.Values.Where(x => x.IsCrop).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the fruit
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetFruit()
+		{
+			return Items.Values.Where(x => x.IsFruit).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the artifacts
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetArtifacts()
+		{
+			return Items.Values.Where(x => x.IsArtifact).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the trash
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetTrash()
+		{
+			return Items.Values.Where(x => x.IsTrash).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the fish
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetFish()
+		{
+			return Items.Values.Where(x => x.IsFish).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the cooked items
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetCookeditems()
+		{
+			return Items.Values.Where(x => x.IsCooked).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the rings
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetRings()
+		{
+			return Items.Values.Where(x => x.IsRing).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the animal products
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetAnimalProducts()
+		{
+			return Items.Values.Where(x => x.IsAnimalProduct).ToList();
+		}
+
+		/// <summary>
 		/// Returns the crafting string of the given object index
 		/// Intended to only be passed craftable items, or you'll get an error in the console
 		/// </summary>
@@ -159,7 +303,7 @@ namespace Randomizer
 
 			// Resources - ObtainingDifficulties.NoRequirements
 			{ (int)ObjectIndexes.Wood, new ResourceItem((int)ObjectIndexes.Wood) },
-			{ (int)ObjectIndexes.Hardwood, new ResourceItem((int)ObjectIndexes.Wood, 1, new Range(1, 15)) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
+			{ (int)ObjectIndexes.Hardwood, new ResourceItem((int)ObjectIndexes.Hardwood, 1, new Range(1, 15)) { DifficultyToObtain = ObtainingDifficulties.MediumTimeRequirements } },
 			{ (int)ObjectIndexes.Stone, new ResourceItem((int)ObjectIndexes.Stone) },
 			{ (int)ObjectIndexes.Fiber, new ResourceItem((int)ObjectIndexes.Fiber, 3, new Range(1, 5)) },
 			{ (int)ObjectIndexes.Clay, new ResourceItem((int)ObjectIndexes.Clay, 1, new Range(1, 15)) },
@@ -534,12 +678,12 @@ namespace Randomizer
 			{ (int)ObjectIndexes.CactusFruit, new ForagableItem((int)ObjectIndexes.CactusFruit) },
 
 			// Fruit - since trees are randomized, we're making them foragable
-			{ (int)ObjectIndexes.Cherry, new ForagableItem((int)ObjectIndexes.Cherry) },
-			{ (int)ObjectIndexes.Apricot, new ForagableItem((int)ObjectIndexes.Apricot) },
-			{ (int)ObjectIndexes.Orange, new ForagableItem((int)ObjectIndexes.Orange) },
-			{ (int)ObjectIndexes.Peach, new ForagableItem((int)ObjectIndexes.Peach) },
-			{ (int)ObjectIndexes.Pomegranate, new ForagableItem((int)ObjectIndexes.Pomegranate) },
-			{ (int)ObjectIndexes.Apple, new ForagableItem((int)ObjectIndexes.Apple) },
+			{ (int)ObjectIndexes.Cherry, new ForagableItem((int)ObjectIndexes.Cherry) { IsFruit = true } },
+			{ (int)ObjectIndexes.Apricot, new ForagableItem((int)ObjectIndexes.Apricot) { IsFruit = true } },
+			{ (int)ObjectIndexes.Orange, new ForagableItem((int)ObjectIndexes.Orange) { IsFruit = true } },
+			{ (int)ObjectIndexes.Peach, new ForagableItem((int)ObjectIndexes.Peach) { IsFruit = true } },
+			{ (int)ObjectIndexes.Pomegranate, new ForagableItem((int)ObjectIndexes.Pomegranate) { IsFruit = true } },
+			{ (int)ObjectIndexes.Apple, new ForagableItem((int)ObjectIndexes.Apple) { IsFruit = true } },
 			// ------ End Foragables -------
 
 			// Smelted Items - ObtainingDifficulties.MediumTimeRequirements

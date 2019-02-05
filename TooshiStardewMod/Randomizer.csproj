@@ -52,6 +52,7 @@
     <Compile Include="CropRandomizer.cs" />
     <Compile Include="EditedObjectInformation.cs" />
     <Compile Include="Enums\BundleColors.cs" />
+    <Compile Include="Enums\BundleTypes.cs" />
     <Compile Include="Enums\CommunityCenterRooms.cs" />
     <Compile Include="Bundle.cs" />
     <Compile Include="Enums\ItemQualities.cs" />

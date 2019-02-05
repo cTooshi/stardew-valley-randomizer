@@ -10,14 +10,14 @@ namespace Randomizer
 	{
 		private static List<Item> _allForagables { get; } = ItemList.Items.Values.Where(x => x.ShouldBeForagable).ToList();
 
-		private static List<Item> _springForagables { get; } = new List<Item>();
-		private static List<Item> _summerForagables { get; } = new List<Item>();
-		private static List<Item> _fallForagables { get; } = new List<Item>();
-		private static List<Item> _winterForagables { get; } = new List<Item>();
+		public static List<Item> SpringForagables { get; } = new List<Item>();
+		public static List<Item> SummerForagables { get; } = new List<Item>();
+		public static List<Item> FallForagables { get; } = new List<Item>();
+		public static List<Item> WinterForagables { get; } = new List<Item>();
 
-		private static List<Item> _beachItems { get; } = new List<Item>();
-		private static List<Item> _woodsItems { get; } = new List<Item>();
-		private static List<Item> _desertItems { get; } = new List<Item>();
+		public static List<Item> BeachForagables { get; } = new List<Item>();
+		public static List<Item> WoodsForagables { get; } = new List<Item>();
+		public static List<Item> DesertForagables { get; } = new List<Item>();
 
 		/// <summary>
 		/// Randomizes all foragables to a random season and location - does not yet handle fishing or dirt items
@@ -95,16 +95,16 @@ namespace Randomizer
 			List<Item> foragableItems = ItemList.Items.Values.Where(x => x.ShouldBeForagable).ToList();
 
 			// Initializes each unique area with their unique foragables
-			AddMultipleToList(foragableItems, _beachItems, 3);
-			AddMultipleToList(foragableItems, _woodsItems, 1);
-			AddMultipleToList(foragableItems, _desertItems, 2);
+			AddMultipleToList(foragableItems, BeachForagables, 3);
+			AddMultipleToList(foragableItems, WoodsForagables, 1);
+			AddMultipleToList(foragableItems, DesertForagables, 2);
 
 			// Initializes each season with an even number of foragables
 			int numberToDistribute = foragableItems.Count / 4;
-			AddMultipleToList(foragableItems, _springForagables, numberToDistribute);
-			AddMultipleToList(foragableItems, _summerForagables, numberToDistribute);
-			AddMultipleToList(foragableItems, _fallForagables, numberToDistribute);
-			AddMultipleToList(foragableItems, _winterForagables, numberToDistribute);
+			AddMultipleToList(foragableItems, SpringForagables, numberToDistribute);
+			AddMultipleToList(foragableItems, SummerForagables, numberToDistribute);
+			AddMultipleToList(foragableItems, FallForagables, numberToDistribute);
+			AddMultipleToList(foragableItems, WinterForagables, numberToDistribute);
 
 			// Ensure the rest of the foragables get distributed
 			DistributeRemainingForagables(foragableItems);
@@ -143,16 +143,16 @@ namespace Randomizer
 				switch (season)
 				{
 					case 0:
-						keepLooping = AddToList(foragableList, _springForagables);
+						keepLooping = AddToList(foragableList, SpringForagables);
 						break;
 					case 1:
-						keepLooping = AddToList(foragableList, _summerForagables);
+						keepLooping = AddToList(foragableList, SummerForagables);
 						break;
 					case 2:
-						keepLooping = AddToList(foragableList, _fallForagables);
+						keepLooping = AddToList(foragableList, FallForagables);
 						break;
 					case 3:
-						keepLooping = AddToList(foragableList, _winterForagables);
+						keepLooping = AddToList(foragableList, WinterForagables);
 						break;
 					default:
 						Globals.ModRef.Monitor.Log("ERROR: Should not have generated a value above 3 for a season check!");
@@ -200,7 +200,7 @@ namespace Randomizer
 				// Add any item to the desert
 				if (locationName == "Desert")
 				{
-					AddUniqueNewForagable(_desertItems);
+					AddUniqueNewForagable(DesertForagables);
 				}
 
 				ForagableLocationData foragableLocationData = new ForagableLocationData()
@@ -233,19 +233,19 @@ namespace Randomizer
 			{
 				case Seasons.Spring:
 					foragableDataList = foragableLocationData.SpringForagables;
-					foragableItemList = _springForagables;
+					foragableItemList = SpringForagables;
 					break;
 				case Seasons.Summer:
 					foragableDataList = foragableLocationData.SummerForagables;
-					foragableItemList = _summerForagables;
+					foragableItemList = SummerForagables;
 					break;
 				case Seasons.Fall:
 					foragableDataList = foragableLocationData.FallForagables;
-					foragableItemList = _fallForagables;
+					foragableItemList = FallForagables;
 					break;
 				case Seasons.Winter:
 					foragableDataList = foragableLocationData.WinterForagables;
-					foragableItemList = _winterForagables;
+					foragableItemList = WinterForagables;
 					break;
 			}
 
@@ -256,7 +256,7 @@ namespace Randomizer
 
 			if (foragableLocationData.LocationName == "Desert")
 			{
-				foragableItemList = _desertItems;
+				foragableItemList = DesertForagables;
 			}
 
 			// Give the beach a random item from the season, then only assign the beach items after that
@@ -264,14 +264,14 @@ namespace Randomizer
 			{
 				Item randomSeasonItem = foragableItemList[Globals.RNG.Next(0, foragableItemList.Count)];
 				foragableDataList.Add(new ForagableData(randomSeasonItem.Id));
-				foragableItemList = _beachItems;
+				foragableItemList = BeachForagables;
 			}
 
 			// Give the woods a random item from ANY season, then only assign the woods items after that
 			if (foragableLocationData.LocationName == "Woods")
 			{
-				AddUniqueNewForagable(_woodsItems);
-				foragableItemList = _woodsItems;
+				AddUniqueNewForagable(WoodsForagables);
+				foragableItemList = WoodsForagables;
 			}
 
 			foreach (Item item in foragableItemList)
@@ -280,9 +280,9 @@ namespace Randomizer
 			}
 
 			// Remove the item that was added to the woods
-			if (foragableLocationData.LocationName == "Woods" && _woodsItems.Count > 1)
+			if (foragableLocationData.LocationName == "Woods" && WoodsForagables.Count > 1)
 			{
-				_woodsItems.RemoveAt(_woodsItems.Count - 1);
+				WoodsForagables.RemoveAt(WoodsForagables.Count - 1);
 			}
 		}
 
