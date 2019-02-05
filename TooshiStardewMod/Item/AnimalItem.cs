@@ -11,6 +11,7 @@
 		/// <param name="id">The id of the item</param>
 		public AnimalItem(int id, ObtainingDifficulties difficultyToObtain = ObtainingDifficulties.MediumTimeRequirements) : base(id)
 		{
+			IsAnimalProduct = true;
 			DifficultyToObtain = difficultyToObtain;
 		}
 

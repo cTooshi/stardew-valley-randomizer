@@ -127,15 +127,13 @@ namespace Randomizer
 			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
 
 			this.CalculateRecipeEdits();
-
-			_bundleReplacements = BundleRandomizer.Randomize();
-
 			this.CalculateBlueprintEdits();
 			//this.CalculateFarmEventEdits();
 			//this.CalculateMailEdits();
 			this.CalculateFishEdits();
 			this.CalculateQuestEdits();
 			_locationsReplacements = LocationRandomizer.Randomize();
+			_bundleReplacements = BundleRandomizer.Randomize(); // This needs to happen after the location AND the crop replacements
 			MusicReplacements = MusicRandomizer.Randomize();
 		}
 

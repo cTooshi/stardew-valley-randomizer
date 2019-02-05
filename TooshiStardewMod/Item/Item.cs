@@ -24,6 +24,7 @@ namespace Randomizer
 		public bool IsTrash { get; set; }
 		public bool IsCraftable { get; set; }
 		public bool IsSmelted { get; set; }
+		public bool IsAnimalProduct { get; set; }
 		public bool IsFish { get; set; }
 		public bool IsArtifact { get; set; }
 		public bool IsMayonaisse { get; set; }
@@ -32,6 +33,7 @@ namespace Randomizer
 		public bool IsCrop { get; set; }
 		public bool IsCooked { get; set; }
 		public bool IsRing { get; set; }
+		public bool IsFruit { get; set; }
 		public bool RequiresOilMaker { get; set; }
 		public bool RequiresBeehouse { get; set; }
 

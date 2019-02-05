@@ -36,5 +36,16 @@
 		{
 			return Globals.RNG.Next(MinValue, MaxValue + 1);
 		}
+
+		/// <summary>
+		/// Gets a random value between the min and max value, inclusive
+		/// </summary>
+		/// <param name="minValue">The min value</param>
+		/// <param name="maxValue">The max value</param>
+		/// <returns />
+		public static int GetRandomValue(int minValue, int maxValue)
+		{
+			return new Range(minValue, maxValue).GetRandomValue();
+		}
 	}
 }

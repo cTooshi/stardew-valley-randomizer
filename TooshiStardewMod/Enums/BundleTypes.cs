@@ -13,9 +13,13 @@
 
 		// Crafting room
 		CraftingResource,
-		CraftingSprinklers,
-		CraftingTreeProducts,
+		CraftingHappyCrops,
+		CraftingTree,
 		CraftingTotems,
-		CraftingBindle
+		CraftingBindle,
+		CraftingSpringForaging,
+		CraftingSummerForaging,
+		CraftingFallForaging,
+		CraftingWinterForaging
 	}
 }

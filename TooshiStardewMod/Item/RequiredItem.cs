@@ -1,4 +1,6 @@
-﻿namespace Randomizer
+﻿using System.Collections.Generic;
+
+namespace Randomizer
 {
 	/// <summary>
 	/// Used to track how many of an item might be required for something
@@ -9,12 +11,7 @@
 		public int NumberOfItems { get; set; }
 		public ItemQualities MinimumQuality { get; set; } = ItemQualities.Normal;
 		private Range _rangeOfItems { get; set; }
-
-		/// <summary>
-		/// The amount of money required - setting this will mean that the item
-		/// will NOT be used in any bundle string!
-		/// </summary>
-		public int MoneyAmount { get; set; } = -1;
+		public int MoneyAmount { get; set; }
 
 		/// <summary>
 		/// Constructor
@@ -34,7 +31,7 @@
 		/// </summary>
 		/// <param name="requiredItem">The item that's required</param>
 		/// <param name="numberOfItems">The number of items required to craft this</param>
-		public RequiredItem(Item requiredItem, int numberOfItems)
+		public RequiredItem(Item requiredItem, int numberOfItems = 1)
 		{
 			Item = requiredItem;
 			_rangeOfItems = new Range(numberOfItems, numberOfItems);
@@ -59,7 +56,7 @@
 		/// </summary>
 		/// <param name="itemId">The item id of the item that's required</param>
 		/// <param name="numberOfItems">The number of items required to craft this</param>
-		public RequiredItem(int itemId, int numberOfItems)
+		public RequiredItem(int itemId, int numberOfItems = 1)
 		{
 			Item = ItemList.Items[itemId];
 			_rangeOfItems = new Range(numberOfItems, numberOfItems);
@@ -67,12 +64,28 @@
 		}
 
 		/// <summary>
+		/// Creates a list of required items based on the given list of items
+		/// </summary>
+		/// <param name="itemList">The item list</param>
+		/// <param name="numberOfItems">The number of items to set each required item to</param>
+		public static List<RequiredItem> CreateList(List<Item> itemList, int numberOfItems = 1)
+		{
+			List<RequiredItem> list = new List<RequiredItem>();
+			foreach (Item item in itemList)
+			{
+				list.Add(new RequiredItem(item.Id, numberOfItems));
+			}
+			return list;
+		}
+
+		/// <summary>
 		/// Gets the string used for bundles
 		/// </summary>
+		/// <param name="useMoneyAmount">Whether to use the money amount for the string</param>
 		/// <returns />
-		public string GetStringForBundles()
+		public string GetStringForBundles(bool useMoneyAmount)
 		{
-			if (MoneyAmount >= 0)
+			if (useMoneyAmount)
 			{
 				return $"-1 {MoneyAmount} {MoneyAmount}";
 			}
