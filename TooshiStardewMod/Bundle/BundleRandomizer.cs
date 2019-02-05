@@ -54,7 +54,7 @@ namespace Randomizer
 		/// <returns>A dictionary of bundles to their output string</returns>
 		public static Dictionary<string, string> Randomize()
 		{
-			Bundle.Reinitialize();
+			Bundle.InitializeAllBundleTypes(); // Must be done so that reloading the game is consistent
 			foreach (RoomInformation room in Rooms)
 			{
 				CreateBundlesForRoom(room);
@@ -91,7 +91,7 @@ namespace Randomizer
 		/// <returns>The created bundle</returns>
 		private static Bundle CreateBundleForRoom(CommunityCenterRooms room, int roomId)
 		{
-			Bundle bundle = new Bundle(room, roomId);
+			Bundle bundle = Bundle.Create(room, roomId);
 			_randomizedBundles[bundle.Key] = bundle.ToString();
 			Globals.ConsoleWrite(bundle.ToString());
 			return bundle;
