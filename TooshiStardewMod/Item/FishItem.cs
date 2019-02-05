@@ -99,16 +99,19 @@ namespace Randomizer
 		}
 
 		/// <summary>
-		/// Gets the fish that can be caught at the given time
+		/// Gets the fish that can be caught at the given starting time or later
 		/// </summary>
-		/// <param name="time">The time</param>
+		/// <param name="startingTime">The time</param>
 		/// <param name="includeLegendaries">Include the legendary fish</param>
 		/// <returns></returns>
-		public static List<Item> GetForTime(int time, bool includeLegendaries = false)
+		public static List<Item> GetForTime(int startingTime, bool includeLegendaries = false)
 		{
+			if (startingTime >= 2600) { return new List<Item>(); } // You can't be up that late!
+
 			return Get(includeLegendaries).Cast<FishItem>().Where(x =>
-				(time >= x.Times.MinValue && time <= x.Times.MaxValue) &&
-				!(time >= x.ExcludedTimes.MinValue && time <= x.ExcludedTimes.MaxValue)
+				x.Times.MaxValue >= startingTime &&
+				(startingTime >= x.Times.MinValue && startingTime <= x.Times.MaxValue) &&
+				(x.ExcludedTimes.MaxValue < 2600 || startingTime < x.ExcludedTimes.MinValue)
 			).Cast<Item>().ToList();
 		}
 

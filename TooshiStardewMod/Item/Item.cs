@@ -37,6 +37,8 @@ namespace Randomizer
 		public bool IsFruit { get; set; }
 		public bool RequiresOilMaker { get; set; }
 		public bool RequiresBeehouse { get; set; }
+		public bool RequiresKeg { get; set; }
+		public bool CanStack { get; set; }
 
 		public bool IsResource { get; set; }
 		public Range ItemsRequiredForRecipe { get; set; } = new Range(1, 1);
@@ -71,6 +73,7 @@ namespace Randomizer
 		public Item(int id)
 		{
 			Id = id;
+			CanStack = id >= -4;
 		}
 
 		/// <summary>

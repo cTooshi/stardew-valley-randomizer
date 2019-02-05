@@ -121,7 +121,7 @@ namespace Randomizer
 				return $"-1 {MoneyAmount} {MoneyAmount}";
 			}
 
-			int numberOfItems = Item.IsRing ? 1 : NumberOfItems; // Rings cannot stack
+			int numberOfItems = !Item.CanStack ? 1 : NumberOfItems;
 			return $"{Item.Id} {numberOfItems} {(int)MinimumQuality}";
 		}
 	}

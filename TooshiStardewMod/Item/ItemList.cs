@@ -182,7 +182,8 @@ namespace Randomizer
 					(itemBeingCrafted.Id != (int)ObjectIndexes.MayonnaiseMachine || !x.IsMayonaisse) &&
 					(itemBeingCrafted.Id != (int)ObjectIndexes.CrabPot || !x.IsCrabPotItem) &&
 					(itemBeingCrafted.Id != (int)ObjectIndexes.CheesePress || (x.Id != (int)ObjectIndexes.Cheese) && x.Id != (int)ObjectIndexes.GoatCheese) &&
-					((itemBeingCrafted.Id != (int)ObjectIndexes.BeeHouse) || (x.Id != (int)ObjectIndexes.Honey)) &&
+					(itemBeingCrafted.Id != (int)ObjectIndexes.BeeHouse || !x.RequiresBeehouse) &&
+					(itemBeingCrafted.Id != (int)ObjectIndexes.Keg || !x.RequiresKeg) &&
 					((itemBeingCrafted.Id != (int)ObjectIndexes.LightningRod) || (x.Id != (int)ObjectIndexes.Battery)) &&
 
 					(possibleDifficulties == null || possibleDifficulties.Contains(x.DifficultyToObtain)) &&
@@ -322,10 +323,11 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Oil, new Item((int)ObjectIndexes.Oil, ObtainingDifficulties.NoRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.WheatFlour, new Item((int)ObjectIndexes.WheatFlour, ObtainingDifficulties.NoRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 
-			// Items you can find while fishing
+			// Misc fishing items
 			{ (int)ObjectIndexes.Seaweed, new Item((int)ObjectIndexes.Seaweed, ObtainingDifficulties.NoRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.GreenAlgae, new Item((int)ObjectIndexes.GreenAlgae, ObtainingDifficulties.NoRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.WhiteAlgae, new Item((int)ObjectIndexes.WhiteAlgae, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
+			{ (int)ObjectIndexes.LeadBobber, new Item((int)ObjectIndexes.LeadBobber, ObtainingDifficulties.MediumTimeRequirements) { CanStack = false } },
 
 			// Fish - defaults to ObtainingDifficulties.LargeTimeRequirements
 			{ (int)ObjectIndexes.AnyFish, new FishItem((int)ObjectIndexes.AnyFish, ObtainingDifficulties.NoRequirements) },
@@ -558,6 +560,9 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Lobster, new CrabPotItem((int)ObjectIndexes.Lobster) },
 			{ (int)ObjectIndexes.Crab, new CrabPotItem((int)ObjectIndexes.Crab) },
 			{ (int)ObjectIndexes.Shrimp, new CrabPotItem((int)ObjectIndexes.Shrimp) },
+			{ (int)ObjectIndexes.Crayfish, new CrabPotItem((int)ObjectIndexes.Crayfish) },
+			{ (int)ObjectIndexes.Snail, new CrabPotItem((int)ObjectIndexes.Snail) },
+			{ (int)ObjectIndexes.Periwinkle, new CrabPotItem((int)ObjectIndexes.Periwinkle) },
 
 			// Items you can find in the mines
 			{ (int)ObjectIndexes.CaveCarrot, new Item((int)ObjectIndexes.CaveCarrot, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
@@ -566,10 +571,15 @@ namespace Randomizer
 			{ (int)ObjectIndexes.BatWing, new Item((int)ObjectIndexes.BatWing, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.VoidEssence, new Item((int)ObjectIndexes.VoidEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.SolarEssence, new Item((int)ObjectIndexes.SolarEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+			{ (int)ObjectIndexes.GreenSlimeEgg, new Item((int)ObjectIndexes.GreenSlimeEgg, ObtainingDifficulties.LargeTimeRequirements) },
+			{ (int)ObjectIndexes.BlueSlimeEgg, new Item((int)ObjectIndexes.BlueSlimeEgg, ObtainingDifficulties.LargeTimeRequirements) },
+			{ (int)ObjectIndexes.RedSlimeEgg, new Item((int)ObjectIndexes.RedSlimeEgg, ObtainingDifficulties.EndgameItem) },
+			{ (int)ObjectIndexes.PurpleSlimeEgg, new Item((int)ObjectIndexes.PurpleSlimeEgg, ObtainingDifficulties.EndgameItem) },
 
 			{ (int)ObjectIndexes.Coal, new Item((int)ObjectIndexes.Coal, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.CopperOre, new Item((int)ObjectIndexes.CopperOre, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.IronOre, new Item((int)ObjectIndexes.IronOre, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+			{ (int)ObjectIndexes.GoldOre, new Item((int)ObjectIndexes.GoldOre, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.IridiumOre, new Item((int)ObjectIndexes.IridiumOre, ObtainingDifficulties.EndgameItem) { ItemsRequiredForRecipe = new Range(1, 5) } },
 
 			{ (int)ObjectIndexes.Quartz, new Item((int)ObjectIndexes.Quartz, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
@@ -712,6 +722,8 @@ namespace Randomizer
 			{ (int)ObjectIndexes.PalmFossil, new ArtifactItem((int)ObjectIndexes.PalmFossil) },
 			{ (int)ObjectIndexes.Trilobite, new ArtifactItem((int)ObjectIndexes.Trilobite) },
 
+			{ (int)ObjectIndexes.StrangeDoll1, new Item((int)ObjectIndexes.StrangeDoll1, ObtainingDifficulties.RareItem) },
+			{ (int)ObjectIndexes.StrangeDoll2, new Item((int)ObjectIndexes.StrangeDoll2, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.PrismaticShard, new Item((int)ObjectIndexes.PrismaticShard, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.DinosaurEgg, new ArtifactItem((int)ObjectIndexes.DinosaurEgg, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.RareDisc, new ArtifactItem((int)ObjectIndexes.RareDisc, ObtainingDifficulties.RareItem) },
@@ -720,8 +732,31 @@ namespace Randomizer
 			{ (int)ObjectIndexes.GoldenPumpkin, new ArtifactItem((int)ObjectIndexes.GoldenPumpkin, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.AncientSeed, new ArtifactItem((int)ObjectIndexes.AncientSeed, ObtainingDifficulties.RareItem) },
 
-			// Misc
+			// Misc - those marked as impossible you can only get a limited amount of
 			{ (int)ObjectIndexes.Battery, new Item((int)ObjectIndexes.Battery, ObtainingDifficulties.LargeTimeRequirements) },
+			{ (int)ObjectIndexes.LuckyPurpleShorts, new Item((int)ObjectIndexes.LuckyPurpleShorts, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.LostAxe, new Item((int)ObjectIndexes.LostAxe, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.BerryBasket, new Item((int)ObjectIndexes.BerryBasket, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.Pearl, new Item((int)ObjectIndexes.Pearl, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.IridiumMilk, new Item((int)ObjectIndexes.IridiumMilk, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.DecorativePot, new Item((int)ObjectIndexes.DecorativePot, ObtainingDifficulties.Impossible) { CanStack = false } },
+			{ (int)ObjectIndexes.DrumBlock, new Item((int)ObjectIndexes.DrumBlock, ObtainingDifficulties.Impossible) { CanStack = false } },
+			{ (int)ObjectIndexes.FluteBlock, new Item((int)ObjectIndexes.FluteBlock, ObtainingDifficulties.Impossible) { CanStack = false } },
+			{ (int)ObjectIndexes.TeaSet, new Item((int)ObjectIndexes.TeaSet, ObtainingDifficulties.Impossible) { CanStack = false } },
+			{ (int)ObjectIndexes.PurpleMushroom, new Item((int)ObjectIndexes.PurpleMushroom, ObtainingDifficulties.MediumTimeRequirements) },
+			{ (int)ObjectIndexes.Mead, new Item((int)ObjectIndexes.Mead, ObtainingDifficulties.MediumTimeRequirements) { RequiresBeehouse = true, RequiresKeg = true } },
+			{ (int)ObjectIndexes.PaleAle, new Item((int)ObjectIndexes.PaleAle, ObtainingDifficulties.LargeTimeRequirements) { RequiresKeg = true } },
+			{ (int)ObjectIndexes.MermaidsPendant, new Item((int)ObjectIndexes.MermaidsPendant, ObtainingDifficulties.EndgameItem) { OverrideName = "Mermaid's Pendant" } },
+			{ (int)ObjectIndexes.TreasureChest, new Item((int)ObjectIndexes.TreasureChest, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.MuscleRemedy, new Item((int)ObjectIndexes.MuscleRemedy, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.EnergyTonic, new Item((int)ObjectIndexes.EnergyTonic, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.Stardrop, new Item((int)ObjectIndexes.Stardrop, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.Bouquet, new Item((int)ObjectIndexes.Bouquet, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.Vinegar, new Item((int)ObjectIndexes.Vinegar, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.Beer, new Item((int)ObjectIndexes.Beer, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.Wine, new Item((int)ObjectIndexes.Wine, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.Juice, new Item((int)ObjectIndexes.Juice, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.Jelly, new Item((int)ObjectIndexes.Jelly, ObtainingDifficulties.Impossible) },
 
 			// All cooking recipes - ObtainingDifficulties.LargeTimeRequirements
 			{ (int)ObjectIndexes.FriedEgg, new CookedItem((int)ObjectIndexes.FriedEgg) },
@@ -868,6 +903,15 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Driftwood, new TrashItem((int)ObjectIndexes.Driftwood) },
 			{ (int)ObjectIndexes.BrokenGlasses, new TrashItem((int)ObjectIndexes.BrokenGlasses) },
 			{ (int)ObjectIndexes.JojaCola, new TrashItem((int)ObjectIndexes.JojaCola) },
+			{ (int)ObjectIndexes.Trash, new TrashItem((int)ObjectIndexes.Trash) },
+
+			// Fruit trees - ObtainingDifficulties.SmallTimeRequirements
+			{ (int)ObjectIndexes.CherrySapling, new Item((int)ObjectIndexes.CherrySapling, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.ApricotSapling, new Item((int)ObjectIndexes.ApricotSapling, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.OrangeSapling, new Item((int)ObjectIndexes.OrangeSapling, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.PeachSapling, new Item((int)ObjectIndexes.PeachSapling, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.PomegranateSapling, new Item((int)ObjectIndexes.PomegranateSapling, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.AppleSapling, new Item((int)ObjectIndexes.AppleSapling, ObtainingDifficulties.NonCraftingItem) },
 
 			// Seeds - ObtainingDifficulties.LargeTimeRequirements
 			{ (int)ObjectIndexes.ParsnipSeeds, new SeedItem((int)ObjectIndexes.ParsnipSeeds, "-300/Seeds -74", new List<Seasons> { Seasons.Spring }) },

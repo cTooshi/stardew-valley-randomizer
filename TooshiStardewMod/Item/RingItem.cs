@@ -9,6 +9,7 @@
 		{
 			DifficultyToObtain = ObtainingDifficulties.NonCraftingItem;
 			IsRing = true;
+			CanStack = false;
 		}
 	}
 }
