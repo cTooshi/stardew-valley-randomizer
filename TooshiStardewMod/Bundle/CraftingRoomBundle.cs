@@ -98,9 +98,7 @@ namespace Randomizer
 						new RequiredItem((int)ObjectIndexes.ChewingStick),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetCookeditems())),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetForagables())),
-						new RequiredItem(Globals.RNGGetRandomValueFromList(
-							ItemList.GetFish().Where(x => x.DifficultyToObtain != ObtainingDifficulties.EndgameItem).ToList()).Id
-						),
+						new RequiredItem(Globals.RNGGetRandomValueFromList(FishItem.Get())),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(
 							ItemList.Items.Values.Where(x => x.Id >= -4 && x.DifficultyToObtain <= ObtainingDifficulties.LargeTimeRequirements).ToList()).Id
 						),

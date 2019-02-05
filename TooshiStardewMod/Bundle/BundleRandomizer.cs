@@ -44,9 +44,7 @@ namespace Randomizer
 			//new RoomInformation(CommunityCenterRooms.BulletinBoard, 31, 35),
 		};
 
-		private static Dictionary<string, string> _randomizedBundles = new Dictionary<string, string>();
-
-		//TODO: list of ids for bundle types used
+		private readonly static Dictionary<string, string> _randomizedBundles = new Dictionary<string, string>();
 
 		/// <summary>
 		/// The randomizing function
@@ -54,6 +52,7 @@ namespace Randomizer
 		/// <returns>A dictionary of bundles to their output string</returns>
 		public static Dictionary<string, string> Randomize()
 		{
+			_randomizedBundles.Clear();
 			Bundle.InitializeAllBundleTypes(); // Must be done so that reloading the game is consistent
 			foreach (RoomInformation room in Rooms)
 			{

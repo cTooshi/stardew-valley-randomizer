@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Randomizer
 {
@@ -12,7 +12,42 @@ namespace Randomizer
 		/// </summary>
 		protected override void Populate()
 		{
-			throw new NotImplementedException();
+			BundleType = Globals.RNGGetAndRemoveRandomValueFromList(RoomBundleTypes);
+			List<RequiredItem> potentialItems = new List<RequiredItem>();
+
+			BundleType = BundleTypes.FishTankLegendary; //TODO: removeme
+			switch (BundleType)
+			{
+				case BundleTypes.FishTankSpringFish:
+					break;
+				case BundleTypes.FishTankSummerFish:
+					break;
+				case BundleTypes.FishTankFallFish:
+					break;
+				case BundleTypes.FishTankWinterFish:
+					break;
+				case BundleTypes.FishTankOceanFood:
+					break;
+				case BundleTypes.FishTankLegendary:
+					Name = "Legendary";
+					RequiredItems = RequiredItem.CreateList(FishItem.GetLegendaries().Cast<Item>().ToList());
+					MinimumRequiredItems = Range.GetRandomValue(3, 4);
+					Color = BundleColors.Red;
+					break;
+				case BundleTypes.FishTankRainFish:
+					break;
+				case BundleTypes.FishTankNightFish:
+					break;
+				case BundleTypes.FishTankQualityFish:
+					break;
+				case BundleTypes.FishTankBeachForagables:
+					break;
+				case BundleTypes.FishTankFishingTools:
+					break;
+				case BundleTypes.FishTankUnique:
+					break;
+					//TODO: you CAN do location bundle now!@!!
+			}
 		}
 
 		/// <summary>
@@ -20,7 +55,7 @@ namespace Randomizer
 		/// </summary>
 		protected override void GenerateReward()
 		{
-			throw new NotImplementedException();
+			Reward = new RequiredItem((int)ObjectIndexes.Wood); //TODO: complete this ha
 		}
 	}
 }

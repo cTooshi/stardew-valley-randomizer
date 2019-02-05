@@ -7,7 +7,8 @@ namespace Randomizer
 	/// </summary>
 	public class ForagableLocationData
 	{
-		public string LocationName { get; set; }
+		public Locations Location { get; set; }
+		public string LocationName { get { return Location.ToString(); } }
 		public List<ForagableData> SpringForagables { get; } = new List<ForagableData>();
 		public List<ForagableData> SummerForagables { get; } = new List<ForagableData>();
 		public List<ForagableData> FallForagables { get; } = new List<ForagableData>();

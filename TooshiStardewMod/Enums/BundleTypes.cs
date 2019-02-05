@@ -37,6 +37,19 @@
 		//PantryRareFoods,
 		PantryDesert,
 		PantryDessert,
-		PantryMexicanFood
+		PantryMexicanFood,
+
+		FishTankSpringFish,
+		FishTankSummerFish,
+		FishTankFallFish,
+		FishTankWinterFish,
+		FishTankOceanFood,
+		FishTankLegendary,
+		FishTankRainFish,
+		FishTankNightFish,
+		FishTankQualityFish,
+		FishTankBeachForagables,
+		FishTankFishingTools,
+		FishTankUnique
 	}
 }

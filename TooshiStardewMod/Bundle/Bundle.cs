@@ -196,7 +196,7 @@ namespace Randomizer
 		/// <returns>True if successful, false otherwise</returns>
 		protected bool TryGenerateRandomBundle()
 		{
-			if (Range.GetRandomValue(1, 100) <= 10) //TODO: use the other API
+			if (Globals.RNGGetNextBoolean(10))
 			{
 				PopulateRandomBundle();
 				return true;
@@ -211,7 +211,7 @@ namespace Randomizer
 		/// /// <returns>True if successful, false otherwise</returns>
 		protected bool TryGenerateRandomReward()
 		{
-			if (Range.GetRandomValue(1, 100) <= 10) //TODO: use the other API
+			if (Globals.RNGGetNextBoolean(10))
 			{
 				GenerateRandomReward();
 				return true;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Randomizer
@@ -189,31 +190,31 @@ namespace Randomizer
 		/// <returns></returns>
 		private static List<ForagableLocationData> GetForagableLocationDataList()
 		{
-			// TODO: do not hard code this list
-			string[] locationNameList = {
-				"Desert",
-				"BusStop",
-				"Forest",
-				"Town",
-				"Mountain",
-				"Backwoods",
-				"Railroad",
-				"Beach",
-				"Woods"
+			var foragableLocations = new List<Locations>
+			{
+				Locations.Desert,
+				Locations.BusStop,
+				Locations.Forest,
+				Locations.Town,
+				Locations.Mountain,
+				Locations.Backwoods,
+				Locations.Railroad,
+				Locations.Beach,
+				Locations.Woods
 			};
 
 			var forgabableLocationDataList = new List<ForagableLocationData>();
-			foreach (string locationName in locationNameList)
+			foreach (Locations location in Enum.GetValues(typeof(Locations)).Cast<Locations>().ToList())
 			{
 				// Add any item to the desert
-				if (locationName == "Desert")
+				if (location == Locations.Desert)
 				{
 					AddUniqueNewForagable(DesertForagables);
 				}
 
 				ForagableLocationData foragableLocationData = new ForagableLocationData()
 				{
-					LocationName = locationName
+					Location = location
 				};
 
 				PopulateLocationBySeason(foragableLocationData, Seasons.Spring);
@@ -262,13 +263,13 @@ namespace Randomizer
 				Globals.ModRef.Monitor.Log($"ERROR: Could not get foragable list for season: {season}");
 			}
 
-			if (foragableLocationData.LocationName == "Desert")
+			if (foragableLocationData.Location == Locations.Desert)
 			{
 				foragableItemList = DesertForagables;
 			}
 
 			// Give the beach a random item from the season, then only assign the beach items after that
-			if (foragableLocationData.LocationName == "Beach")
+			if (foragableLocationData.Location == Locations.Beach)
 			{
 				Item randomSeasonItem = foragableItemList[Globals.RNG.Next(0, foragableItemList.Count)];
 				foragableDataList.Add(new ForagableData(randomSeasonItem.Id));

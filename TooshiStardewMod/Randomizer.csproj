@@ -48,7 +48,7 @@
     <Compile Include="AssetLoader.cs" />
     <Compile Include="CropGrowthInformation.cs" />
     <Compile Include="CropNameRandomizer.cs" />
-	<Compile Include="CropRandomizer.cs" />
+    <Compile Include="CropRandomizer.cs" />
     <Compile Include="Bundle\BoilerRoomBundle.cs" />
     <Compile Include="Bundle\BulletinBoardBundle.cs" />
     <Compile Include="Bundle\BundleRandomizer.cs" />
@@ -56,12 +56,14 @@
     <Compile Include="Bundle\FishTankBundle.cs" />
     <Compile Include="Bundle\PantryBundle.cs" />
     <Compile Include="Bundle\VaultBundle.cs" />
-	<Compile Include="Bundle\Bundle.cs" />
+    <Compile Include="Bundle\Bundle.cs" />
     <Compile Include="EditedObjectInformation.cs" />
     <Compile Include="Enums\BundleColors.cs" />
     <Compile Include="Enums\BundleTypes.cs" />
     <Compile Include="Enums\CommunityCenterRooms.cs" />
     <Compile Include="Enums\ItemQualities.cs" />
+    <Compile Include="Enums\Locations.cs" />
+    <Compile Include="Enums\Weather.cs" />
     <Compile Include="Item\CookedItem.cs" />
     <Compile Include="Item\CrabPotItem.cs" />
     <Compile Include="Item\CropItem.cs" />
