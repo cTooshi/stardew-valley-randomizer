@@ -7,7 +7,13 @@ namespace Randomizer
 	/// </summary>
 	public class MusicRandomizer
 	{
-		public static List<string> musicList = new List<string>
+		/// <summary>
+		/// Randomizes all the music to another song
+		/// </summary>
+		/// <returns>A dictionary of song names to their alternatives</returns>
+		public static Dictionary<string, string> Randomize()
+		{
+			List<string> musicList = new List<string>
 			{
 				"CloudCountry",
 				"coin",
@@ -82,18 +88,10 @@ namespace Randomizer
 				"AbigailFlute",
 				"wedding"
 			};
-
-		/// <summary>
-		/// Randomizes all the music to another song
-		/// </summary>
-		/// <returns>A dictionary of song names to their alternatives</returns>
-		public static Dictionary<string, string> Randomize()
-		{
-			List<string> musicToReplace = new List<string>(musicList);
-			List<string> musicReplacementPool = new List<string>(musicToReplace);
+			List<string> musicReplacementPool = new List<string>(musicList);
 			Dictionary<string, string> musicReplacements = new Dictionary<string, string>();
 
-			foreach (string song in musicToReplace)
+			foreach (string song in musicList)
 			{
 
 				musicReplacements.Add(song.ToLower(), Globals.RNGGetAndRemoveRandomValueFromList(musicReplacementPool));
