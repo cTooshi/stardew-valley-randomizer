@@ -15,15 +15,6 @@ namespace Randomizer
 			BundleType = Globals.RNGGetAndRemoveRandomValueFromList(RoomBundleTypes);
 			List<RequiredItem> potentialItems = new List<RequiredItem>();
 
-			//REMOVEME:
-			Globals.RNG.Next(0, 1);
-			Globals.RNG.Next(0, 1);
-			Globals.RNG.Next(0, 1);
-			Globals.RNG.Next(0, 1);
-			Globals.RNG.Next(0, 1);
-			Globals.RNG.Next(0, 1);
-			Globals.RNG.Next(0, 1);
-
 			switch (BundleType)
 			{
 				case BundleTypes.PantryAnimal:
