@@ -129,6 +129,8 @@ namespace Randomizer
 
 		public void CalculateEdits()
 		{
+			ValidateItemList();
+
 			EditedObjectInformation editedObjectInfo = CropRandomizer.Randomize();
 			_fruitTreeReplacements = editedObjectInfo.FruitTreeReplacements;
 			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
@@ -143,6 +145,20 @@ namespace Randomizer
 			_locationsReplacements = LocationRandomizer.Randomize();
 			_bundleReplacements = BundleRandomizer.Randomize(); // This needs to happen after the location AND the crop replacements
 			MusicReplacements = MusicRandomizer.Randomize();
+		}
+
+		/// <summary>
+		/// Validates that all the items in the ObjectIndexes exist in the main item list
+		/// </summary>
+		private void ValidateItemList()
+		{
+			foreach (ObjectIndexes index in Enum.GetValues(typeof(ObjectIndexes)).Cast<ObjectIndexes>())
+			{
+				if (!ItemList.Items.ContainsKey((int)index))
+				{
+					Globals.ConsoleWrite($"Missing item: {(int)index}: {index.ToString()}");
+				}
+			}
 		}
 
 		private void CalculateBlueprintEdits()
@@ -442,13 +458,13 @@ namespace Randomizer
 			BoilerRoom21Values[4] = $"Precious Mineral/O {ObjectIndexes.IridiumBar:D} {rng.Next(1, 5)}/{ObjectIndexes.Alamite:D} 1 0 {ObjectIndexes.Aerinite:D} 1 0 {ObjectIndexes.Dolomite:D} 1 0 {ObjectIndexes.Geminite:D} 1 0 {ObjectIndexes.OceanStone:D} 1 0 {ObjectIndexes.GhostCrystal:D} 1 0/3/{rng.Next(3, 6)}";
 			BoilerRoom21Values[5] = $"Precious Mineral/O {ObjectIndexes.IridiumBar:D} {rng.Next(1, 5)}/{ObjectIndexes.Calcite:D} 1 0 {ObjectIndexes.StarShards:D} 1 0 {ObjectIndexes.FairyStone:D} 1 0 {ObjectIndexes.Neptunite:D} 1 0 {ObjectIndexes.Helvite:D} 1 0 {ObjectIndexes.Fluorapatite:D} 1 0 {ObjectIndexes.Bixite:D} 1 0/3/{rng.Next(4, 7)}";
 
-			string[] BoilerRoom22Values = new string[6];
+			string[] BoilerRoom22Values = new string[5];
 			BoilerRoom22Values[0] = $"Adventurer's/R {ObjectIndexes.SavageRing:D} 1/{ObjectIndexes.BugMeat:D} {rng.Next(5, 20)} 0 {ObjectIndexes.Slime:D} {rng.Next(50, 99)} 0 {ObjectIndexes.BatWing:D} {rng.Next(5, 20)} 0 {ObjectIndexes.VoidEssence:D} {rng.Next(1, 5)} 0 {ObjectIndexes.SolarEssence:D} {rng.Next(1, 5)} 0/4";
 			BoilerRoom22Values[1] = $"Old Junk/R {ObjectIndexes.RingOfYoba:D} 1/{ObjectIndexes.ChippedAmphora:D} 1 0 {ObjectIndexes.ChickenStatue:D} 1 0 {ObjectIndexes.ChewingStick:D} 1 0 {ObjectIndexes.GlassShards:D} 1 0 {ObjectIndexes.RustySpoon:D} 1 0 {ObjectIndexes.RustyCog:D} 1 0 {ObjectIndexes.RustySpur:D} 1 0/4/{rng.Next(3, 6)}";
-			BoilerRoom22Values[2] = $"Dwarf/O {ObjectIndexes.DwarvishTranslationGuide:D} 1/{ObjectIndexes.DwarfScrollI:D} 1 0 {ObjectIndexes.DwarfScrollII:D} 1 0 {ObjectIndexes.DwarfScrollIII:D} 1 0 {ObjectIndexes.DwarfScrollIV:D} 1 0 {ObjectIndexes.DwarvishHelm:D} 1 0 {ObjectIndexes.DwarfGadget:D} 1 0/4/{rng.Next(2, 5)}";
-			BoilerRoom22Values[3] = $"Fossil/R {ObjectIndexes.WarriorRing:D} 1/{ObjectIndexes.PrehistoricScapula:D} 1 0 {ObjectIndexes.PrehistoricTibia:D} 1 0 {ObjectIndexes.PrehistoricSkull:D} 1 0 {ObjectIndexes.SkeletalHand:D} 1 0 {ObjectIndexes.PrehistoricRib:D} 1 0 {ObjectIndexes.PrehistoricVertebra:D} 1 0 {ObjectIndexes.SkeletalTail:D} 1 0 {ObjectIndexes.AmphibianFossil:D} 1 0 {ObjectIndexes.PalmFossil:D} 1 0 {ObjectIndexes.Trilobite:D} 1 0/1/{rng.Next(4, 7)}";
-			BoilerRoom22Values[4] = $"Stoneworking/O {ObjectIndexes.GoldBar:D} {rng.Next(2, 7)}/{ObjectIndexes.Marble:D} 1 0 {ObjectIndexes.Sandstone:D} 1 0 {ObjectIndexes.Granite:D} 1 0 {ObjectIndexes.Basalt:D} 1 0 {ObjectIndexes.Limestone:D} 1 0 {ObjectIndexes.Soapstone:D} 1 0 {ObjectIndexes.Mudstone:D} 1 0 {ObjectIndexes.Slate:D} 1 0/4/{rng.Next(5, 8)}";
-			BoilerRoom22Values[5] = $"Ancient Artifact/R {ObjectIndexes.TopazRing:D} 1/{ObjectIndexes.AncientDoll:D} 1 0 {ObjectIndexes.AncientDrum:D} 1 0 {ObjectIndexes.Arrowhead:D} 1 0 {ObjectIndexes.AncientSword:D} 1 0 {ObjectIndexes.PrehistoricHandaxe:D} 1 0 {ObjectIndexes.PrehistoricTool:D} 1 0/4/{rng.Next(2, 5)}";
+			//BoilerRoom22Values[2] = $"Dwarf/O {ObjectIndexes.DwarvishTranslationGuide:D} 1/{ObjectIndexes.DwarfScrollI:D} 1 0 {ObjectIndexes.DwarfScrollII:D} 1 0 {ObjectIndexes.DwarfScrollIII:D} 1 0 {ObjectIndexes.DwarfScrollIV:D} 1 0 {ObjectIndexes.DwarvishHelm:D} 1 0 {ObjectIndexes.DwarfGadget:D} 1 0/4/{rng.Next(2, 5)}";
+			BoilerRoom22Values[2] = $"Fossil/R {ObjectIndexes.WarriorRing:D} 1/{ObjectIndexes.PrehistoricScapula:D} 1 0 {ObjectIndexes.PrehistoricTibia:D} 1 0 {ObjectIndexes.PrehistoricSkull:D} 1 0 {ObjectIndexes.SkeletalHand:D} 1 0 {ObjectIndexes.PrehistoricRib:D} 1 0 {ObjectIndexes.PrehistoricVertebra:D} 1 0 {ObjectIndexes.SkeletalTail:D} 1 0 {ObjectIndexes.AmphibianFossil:D} 1 0 {ObjectIndexes.PalmFossil:D} 1 0 {ObjectIndexes.Trilobite:D} 1 0/1/{rng.Next(4, 7)}";
+			BoilerRoom22Values[3] = $"Stoneworking/O {ObjectIndexes.GoldBar:D} {rng.Next(2, 7)}/{ObjectIndexes.Marble:D} 1 0 {ObjectIndexes.Sandstone:D} 1 0 {ObjectIndexes.Granite:D} 1 0 {ObjectIndexes.Basalt:D} 1 0 {ObjectIndexes.Limestone:D} 1 0 {ObjectIndexes.Soapstone:D} 1 0 {ObjectIndexes.Mudstone:D} 1 0 {ObjectIndexes.Slate:D} 1 0/4/{rng.Next(5, 8)}";
+			BoilerRoom22Values[4] = $"Ancient Artifact/R {ObjectIndexes.TopazRing:D} 1/{ObjectIndexes.AncientDoll:D} 1 0 {ObjectIndexes.AncientDrum:D} 1 0 {ObjectIndexes.Arrowhead:D} 1 0 {ObjectIndexes.AncientSword:D} 1 0 {ObjectIndexes.PrehistoricHandaxe:D} 1 0 {ObjectIndexes.PrehistoricTool:D} 1 0/4/{rng.Next(2, 5)}";
 
 			string[] BulletinBoard31Values = new string[14];
 			BulletinBoard31Values[0] = $"Alex's/O {ObjectIndexes.MagmaGeode:D} {rng.Next(3, 15)}/{ObjectIndexes.SalmonDinner:D} 1 0 {ObjectIndexes.CompleteBreakfast:D} 1 0 {ObjectIndexes.BrownEgg:D} 1 0 {ObjectIndexes.WhiteEgg:D} 1 0/4/3";
@@ -541,7 +557,7 @@ namespace Randomizer
 
 			this._bundleReplacements["Boiler Room/20"] = BoilerRoom20Values[rng.Next(0, 6)];
 			this._bundleReplacements["Boiler Room/21"] = BoilerRoom21Values[rng.Next(0, 6)];
-			this._bundleReplacements["Boiler Room/22"] = BoilerRoom22Values[rng.Next(0, 6)];
+			this._bundleReplacements["Boiler Room/22"] = BoilerRoom22Values[rng.Next(0, 5)];
 
 			this._bundleReplacements["Vault/23"] = VaultValues[rng.Next(0, 4)];
 			this._bundleReplacements["Vault/24"] = VaultValues[rng.Next(4, 7)];

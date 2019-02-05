@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Randomizer
@@ -204,7 +203,7 @@ namespace Randomizer
 			};
 
 			var forgabableLocationDataList = new List<ForagableLocationData>();
-			foreach (Locations location in Enum.GetValues(typeof(Locations)).Cast<Locations>().ToList())
+			foreach (Locations location in foragableLocations)
 			{
 				// Add any item to the desert
 				if (location == Locations.Desert)
