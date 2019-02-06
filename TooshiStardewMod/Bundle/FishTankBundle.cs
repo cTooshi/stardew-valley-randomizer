@@ -160,7 +160,8 @@ namespace Randomizer
 		{
 			Name = $"{season.ToString()} Fish";
 			List<RequiredItem> potentialItems = RequiredItem.CreateList(FishItem.Get(season));
-			MinimumRequiredItems = Math.Min(Range.GetRandomValue(6, 8), potentialItems.Count);
+			RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+			MinimumRequiredItems = Math.Min(Range.GetRandomValue(6, 8), RequiredItems.Count);
 			Color = color;
 		}
 

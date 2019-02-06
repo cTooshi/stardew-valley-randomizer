@@ -738,7 +738,6 @@ namespace Randomizer
 			{ (int)ObjectIndexes.RareDisc, new ArtifactItem((int)ObjectIndexes.RareDisc, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.GoldenMask, new ArtifactItem((int)ObjectIndexes.GoldenMask, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.GoldenRelic, new ArtifactItem((int)ObjectIndexes.GoldenRelic, ObtainingDifficulties.RareItem) },
-			{ (int)ObjectIndexes.GoldenPumpkin, new ArtifactItem((int)ObjectIndexes.GoldenPumpkin, ObtainingDifficulties.RareItem) },
 			{ (int)ObjectIndexes.AncientSeed, new ArtifactItem((int)ObjectIndexes.AncientSeed, ObtainingDifficulties.RareItem) },
 
 			// Misc - those marked as impossible you can only get a limited amount of
@@ -766,6 +765,7 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Wine, new Item((int)ObjectIndexes.Wine, ObtainingDifficulties.Impossible) },
 			{ (int)ObjectIndexes.Juice, new Item((int)ObjectIndexes.Juice, ObtainingDifficulties.Impossible) },
 			{ (int)ObjectIndexes.Jelly, new Item((int)ObjectIndexes.Jelly, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.GoldenPumpkin, new Item((int)ObjectIndexes.GoldenPumpkin, ObtainingDifficulties.NonCraftingItem) },
 
 			// All cooking recipes - ObtainingDifficulties.LargeTimeRequirements
 			{ (int)ObjectIndexes.FriedEgg, new CookedItem((int)ObjectIndexes.FriedEgg) },
