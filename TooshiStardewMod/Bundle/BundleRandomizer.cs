@@ -38,8 +38,8 @@ namespace Randomizer
 		{
 			new RoomInformation(CommunityCenterRooms.CraftsRoom, 13, 19), // skip 18
 			new RoomInformation(CommunityCenterRooms.Pantry, 0, 5),
-			//new RoomInformation(CommunityCenterRooms.FishTank, 6, 11),
-			//new RoomInformation(CommunityCenterRooms.BoilerRoom, 20, 22),
+			new RoomInformation(CommunityCenterRooms.FishTank, 6, 11),
+			new RoomInformation(CommunityCenterRooms.BoilerRoom, 20, 22),
 			//new RoomInformation(CommunityCenterRooms.Vault, 23, 26),
 			//new RoomInformation(CommunityCenterRooms.BulletinBoard, 31, 35),
 		};

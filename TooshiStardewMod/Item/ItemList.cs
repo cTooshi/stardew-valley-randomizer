@@ -78,6 +78,15 @@ namespace Randomizer
 		}
 
 		/// <summary>
+		/// Gets all the geode minerals
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetGeodeMinerals()
+		{
+			return Items.Values.Where(x => x.IsGeodeMineral).ToList();
+		}
+
+		/// <summary>
 		/// Gets all the crops
 		/// </summary>
 		/// <returns />
@@ -567,7 +576,7 @@ namespace Randomizer
 			// Items you can find in the mines
 			{ (int)ObjectIndexes.CaveCarrot, new Item((int)ObjectIndexes.CaveCarrot, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
 			{ (int)ObjectIndexes.BugMeat, new Item((int)ObjectIndexes.BugMeat, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
-			{ (int)ObjectIndexes.Slime, new Item((int)ObjectIndexes.BugMeat, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 10) } },
+			{ (int)ObjectIndexes.Slime, new Item((int)ObjectIndexes.Slime, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 10) } },
 			{ (int)ObjectIndexes.BatWing, new Item((int)ObjectIndexes.BatWing, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.VoidEssence, new Item((int)ObjectIndexes.VoidEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 			{ (int)ObjectIndexes.SolarEssence, new Item((int)ObjectIndexes.SolarEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
@@ -601,49 +610,49 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Diamond, new Item((int)ObjectIndexes.Diamond, ObtainingDifficulties.MediumTimeRequirements) },
 
 			// Geode mineral items - ObtainingDifficulties.LargeTimeRequirements
-			{ (int)ObjectIndexes.Alamite, new Item((int)ObjectIndexes.Alamite) },
-			{ (int)ObjectIndexes.Calcite, new Item((int)ObjectIndexes.Calcite) },
-			{ (int)ObjectIndexes.Celestine, new Item((int)ObjectIndexes.Celestine) },
-			{ (int)ObjectIndexes.Granite, new Item((int)ObjectIndexes.Granite) },
-			{ (int)ObjectIndexes.Jagoite, new Item((int)ObjectIndexes.Jagoite) },
-			{ (int)ObjectIndexes.Jamborite, new Item((int)ObjectIndexes.Jamborite) },
-			{ (int)ObjectIndexes.Limestone, new Item((int)ObjectIndexes.Limestone) },
-			{ (int)ObjectIndexes.Malachite, new Item((int)ObjectIndexes.Malachite) },
-			{ (int)ObjectIndexes.Mudstone, new Item((int)ObjectIndexes.Mudstone) },
-			{ (int)ObjectIndexes.Nekoite, new Item((int)ObjectIndexes.Nekoite) },
-			{ (int)ObjectIndexes.Orpiment, new Item((int)ObjectIndexes.Orpiment) },
-			{ (int)ObjectIndexes.PetrifiedSlime, new Item((int)ObjectIndexes.PetrifiedSlime) },
-			{ (int)ObjectIndexes.Sandstone, new Item((int)ObjectIndexes.Sandstone) },
-			{ (int)ObjectIndexes.Slate, new Item((int)ObjectIndexes.Slate) },
-			{ (int)ObjectIndexes.ThunderEgg, new Item((int)ObjectIndexes.ThunderEgg) },
+			{ (int)ObjectIndexes.Alamite, new GeodeMineralItem((int)ObjectIndexes.Alamite) },
+			{ (int)ObjectIndexes.Calcite, new GeodeMineralItem((int)ObjectIndexes.Calcite) },
+			{ (int)ObjectIndexes.Celestine, new GeodeMineralItem((int)ObjectIndexes.Celestine) },
+			{ (int)ObjectIndexes.Granite, new GeodeMineralItem((int)ObjectIndexes.Granite) },
+			{ (int)ObjectIndexes.Jagoite, new GeodeMineralItem((int)ObjectIndexes.Jagoite) },
+			{ (int)ObjectIndexes.Jamborite, new GeodeMineralItem((int)ObjectIndexes.Jamborite) },
+			{ (int)ObjectIndexes.Limestone, new GeodeMineralItem((int)ObjectIndexes.Limestone) },
+			{ (int)ObjectIndexes.Malachite, new GeodeMineralItem((int)ObjectIndexes.Malachite) },
+			{ (int)ObjectIndexes.Mudstone, new GeodeMineralItem((int)ObjectIndexes.Mudstone) },
+			{ (int)ObjectIndexes.Nekoite, new GeodeMineralItem((int)ObjectIndexes.Nekoite) },
+			{ (int)ObjectIndexes.Orpiment, new GeodeMineralItem((int)ObjectIndexes.Orpiment) },
+			{ (int)ObjectIndexes.PetrifiedSlime, new GeodeMineralItem((int)ObjectIndexes.PetrifiedSlime) },
+			{ (int)ObjectIndexes.Sandstone, new GeodeMineralItem((int)ObjectIndexes.Sandstone) },
+			{ (int)ObjectIndexes.Slate, new GeodeMineralItem((int)ObjectIndexes.Slate) },
+			{ (int)ObjectIndexes.ThunderEgg, new GeodeMineralItem((int)ObjectIndexes.ThunderEgg) },
 
-			{ (int)ObjectIndexes.Aerinite, new Item((int)ObjectIndexes.Aerinite) },
-			{ (int)ObjectIndexes.Esperite, new Item((int)ObjectIndexes.Esperite) },
-			{ (int)ObjectIndexes.FairyStone, new Item((int)ObjectIndexes.FairyStone) },
-			{ (int)ObjectIndexes.Fluorapatite, new Item((int)ObjectIndexes.Fluorapatite) },
-			{ (int)ObjectIndexes.Geminite, new Item((int)ObjectIndexes.Geminite) },
-			{ (int)ObjectIndexes.GhostCrystal, new Item((int)ObjectIndexes.GhostCrystal) },
-			{ (int)ObjectIndexes.Hematite, new Item((int)ObjectIndexes.Hematite) },
-			{ (int)ObjectIndexes.Kyanite, new Item((int)ObjectIndexes.Kyanite) },
-			{ (int)ObjectIndexes.Lunarite, new Item((int)ObjectIndexes.Lunarite) },
-			{ (int)ObjectIndexes.Marble, new Item((int)ObjectIndexes.Marble) },
-			{ (int)ObjectIndexes.OceanStone, new Item((int)ObjectIndexes.OceanStone) },
-			{ (int)ObjectIndexes.Opal, new Item((int)ObjectIndexes.Opal) },
-			{ (int)ObjectIndexes.Pyrite, new Item((int)ObjectIndexes.Pyrite) },
-			{ (int)ObjectIndexes.Soapstone, new Item((int)ObjectIndexes.Soapstone) },
+			{ (int)ObjectIndexes.Aerinite, new GeodeMineralItem((int)ObjectIndexes.Aerinite) },
+			{ (int)ObjectIndexes.Esperite, new GeodeMineralItem((int)ObjectIndexes.Esperite) },
+			{ (int)ObjectIndexes.FairyStone, new GeodeMineralItem((int)ObjectIndexes.FairyStone) },
+			{ (int)ObjectIndexes.Fluorapatite, new GeodeMineralItem((int)ObjectIndexes.Fluorapatite) },
+			{ (int)ObjectIndexes.Geminite, new GeodeMineralItem((int)ObjectIndexes.Geminite) },
+			{ (int)ObjectIndexes.GhostCrystal, new GeodeMineralItem((int)ObjectIndexes.GhostCrystal) },
+			{ (int)ObjectIndexes.Hematite, new GeodeMineralItem((int)ObjectIndexes.Hematite) },
+			{ (int)ObjectIndexes.Kyanite, new GeodeMineralItem((int)ObjectIndexes.Kyanite) },
+			{ (int)ObjectIndexes.Lunarite, new GeodeMineralItem((int)ObjectIndexes.Lunarite) },
+			{ (int)ObjectIndexes.Marble, new GeodeMineralItem((int)ObjectIndexes.Marble) },
+			{ (int)ObjectIndexes.OceanStone, new GeodeMineralItem((int)ObjectIndexes.OceanStone) },
+			{ (int)ObjectIndexes.Opal, new GeodeMineralItem((int)ObjectIndexes.Opal) },
+			{ (int)ObjectIndexes.Pyrite, new GeodeMineralItem((int)ObjectIndexes.Pyrite) },
+			{ (int)ObjectIndexes.Soapstone, new GeodeMineralItem((int)ObjectIndexes.Soapstone) },
 
-			{ (int)ObjectIndexes.Baryte, new Item((int)ObjectIndexes.Baryte) },
-			{ (int)ObjectIndexes.Basalt, new Item((int)ObjectIndexes.Basalt) },
-			{ (int)ObjectIndexes.Bixite, new Item((int)ObjectIndexes.Bixite) },
-			{ (int)ObjectIndexes.Dolomite, new Item((int)ObjectIndexes.Dolomite) },
-			{ (int)ObjectIndexes.FireOpal, new Item((int)ObjectIndexes.FireOpal) },
-			{ (int)ObjectIndexes.Helvite, new Item((int)ObjectIndexes.Helvite) },
-			{ (int)ObjectIndexes.Jasper, new Item((int)ObjectIndexes.Jasper) },
-			{ (int)ObjectIndexes.LemonStone, new Item((int)ObjectIndexes.LemonStone) },
-			{ (int)ObjectIndexes.Neptunite, new Item((int)ObjectIndexes.Neptunite) },
-			{ (int)ObjectIndexes.Obsidian, new Item((int)ObjectIndexes.Obsidian) },
-			{ (int)ObjectIndexes.StarShards, new Item((int)ObjectIndexes.StarShards) },
-			{ (int)ObjectIndexes.Tigerseye, new Item((int)ObjectIndexes.Tigerseye) },
+			{ (int)ObjectIndexes.Baryte, new GeodeMineralItem((int)ObjectIndexes.Baryte) },
+			{ (int)ObjectIndexes.Basalt, new GeodeMineralItem((int)ObjectIndexes.Basalt) },
+			{ (int)ObjectIndexes.Bixite, new GeodeMineralItem((int)ObjectIndexes.Bixite) },
+			{ (int)ObjectIndexes.Dolomite, new GeodeMineralItem((int)ObjectIndexes.Dolomite) },
+			{ (int)ObjectIndexes.FireOpal, new GeodeMineralItem((int)ObjectIndexes.FireOpal) },
+			{ (int)ObjectIndexes.Helvite, new GeodeMineralItem((int)ObjectIndexes.Helvite) },
+			{ (int)ObjectIndexes.Jasper, new GeodeMineralItem((int)ObjectIndexes.Jasper) },
+			{ (int)ObjectIndexes.LemonStone, new GeodeMineralItem((int)ObjectIndexes.LemonStone) },
+			{ (int)ObjectIndexes.Neptunite, new GeodeMineralItem((int)ObjectIndexes.Neptunite) },
+			{ (int)ObjectIndexes.Obsidian, new GeodeMineralItem((int)ObjectIndexes.Obsidian) },
+			{ (int)ObjectIndexes.StarShards, new GeodeMineralItem((int)ObjectIndexes.StarShards) },
+			{ (int)ObjectIndexes.Tigerseye, new GeodeMineralItem((int)ObjectIndexes.Tigerseye) },
 
 			// Rings - a few of them are craftable
 			{ (int)ObjectIndexes.SmallGlowRing, new RingItem((int)ObjectIndexes.SmallGlowRing) },

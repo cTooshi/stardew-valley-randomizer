@@ -40,7 +40,7 @@ namespace Randomizer
 			PantryBundle.RoomBundleTypes = GetBundleTypeList("Pantry");
 			FishTankBundle.RoomBundleTypes = GetBundleTypeList("FishTank");
 			BulletinBoardBundle.RoomBundleTypes = GetBundleTypeList("BulletinBoard");
-			BoilerRoomBundle.RoomBundleTypes = GetBundleTypeList("BoilerRoom");
+			BoilerRoomBundle.RoomBundleTypes = GetBundleTypeList("Boiler");
 			VaultBundle.RoomBundleTypes = GetBundleTypeList("Vault");
 		}
 

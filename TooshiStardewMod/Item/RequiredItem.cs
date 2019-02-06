@@ -97,7 +97,7 @@ namespace Randomizer
 		/// <summary>
 		/// Creates a list of required items based on the given list of item ids
 		/// </summary>
-		/// <param name="itemIdList">The item list</param>
+		/// <param name="itemIdList">The item id list</param>
 		/// <param name="numberOfItems">The number of items to set each required item to</param>
 		public static List<RequiredItem> CreateList(List<int> itemIdList, int numberOfItems = 1)
 		{
@@ -105,6 +105,22 @@ namespace Randomizer
 			foreach (int id in itemIdList)
 			{
 				list.Add(new RequiredItem(id, numberOfItems));
+			}
+			return list;
+		}
+
+		/// <summary>
+		/// Creates a list of required items based on the given list of items
+		/// </summary>
+		/// <param name="itemIdList">The item id list</param>
+		/// <param name="minValue">The max number of items required to craft this</param>
+		/// <param name="maxValue">The minimum number of items required to craft this</param>
+		public static List<RequiredItem> CreateList(List<int> itemIdList, int minValue, int maxValue)
+		{
+			List<RequiredItem> list = new List<RequiredItem>();
+			foreach (int id in itemIdList)
+			{
+				list.Add(new RequiredItem(id, minValue, maxValue));
 			}
 			return list;
 		}

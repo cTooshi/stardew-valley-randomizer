@@ -52,6 +52,17 @@
 		FishTankQualityFish,
 		FishTankBeachForagables,
 		FishTankFishingTools,
-		FishTankUnique
+		FishTankUnique,
+
+		// Boiler room
+		BoilerArtifacts,
+		BoilerMinerals,
+		BoilerGeode,
+		BoilerGemstone,
+		BoilerMetal,
+		BoilerExplosive,
+		BoilerRing,
+		BoilerSpoopy,
+		BoilerMonster
 	}
 }

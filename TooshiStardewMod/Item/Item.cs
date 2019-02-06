@@ -38,7 +38,7 @@ namespace Randomizer
 		public bool RequiresOilMaker { get; set; }
 		public bool RequiresBeehouse { get; set; }
 		public bool RequiresKeg { get; set; }
-		public bool CanStack { get; set; }
+		public bool CanStack { get; set; } = true;
 
 		public bool IsResource { get; set; }
 		public Range ItemsRequiredForRecipe { get; set; } = new Range(1, 1);

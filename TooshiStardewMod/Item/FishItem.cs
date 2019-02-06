@@ -13,7 +13,7 @@ namespace Randomizer
 		public List<Seasons> AvailableSeasons { get; set; } =
 			new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Fall, Seasons.Winter };
 		public List<Seasons> WoodsOnlySeasons { get; set; } = new List<Seasons>();
-		public List<Weather> Weathers { get; set; } // Empty means any
+		public List<Weather> Weathers { get; set; } = new List<Weather>(); // Empty means any
 		public List<Locations> AvailableLocations { get; set; } = new List<Locations>();
 		public Range Times { get; set; } = new Range(600, 2600); // That's anytime in the day
 		public Range ExcludedTimes { get; set; } = new Range(0, 0);

@@ -130,7 +130,6 @@ namespace Randomizer
 		/// </summary>
 		protected override void GenerateReward()
 		{
-			//TODO: odds of this pulling from the any random reward pool (and make that pool!)
 			var potentialRewards = new List<RequiredItem>
 			{
 				new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetResources()), 999),
