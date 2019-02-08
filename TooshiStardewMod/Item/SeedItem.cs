@@ -10,7 +10,6 @@ namespace Randomizer
 	{
 		public int Price { get; set; }
 		public List<Seasons> GrowingSeasons { get; set; } = new List<Seasons>();
-		public string CategoryString { get; set; }
 		public string Description { get; set; }
 
 		public List<int> GrowthStages { get; set; } = new List<int>();
@@ -22,11 +21,10 @@ namespace Randomizer
 		}
 		public string CropSuffix { get; set; }
 
-		public SeedItem(int id, string categoryString, List<Seasons> growingSeasons) : base(id)
+		public SeedItem(int id, List<Seasons> growingSeasons) : base(id)
 		{
 			IsSeed = true;
 			DifficultyToObtain = ObtainingDifficulties.LargeTimeRequirements;
-			CategoryString = categoryString;
 			GrowingSeasons = growingSeasons;
 		}
 
@@ -36,7 +34,7 @@ namespace Randomizer
 		/// <returns />
 		public string GetObjectInformationString()
 		{
-			return $"{Name}/{Price}/{CategoryString}/{Name}/{Description}";
+			return $"{Name}/{Price}/-300/Seeds -74/{Name}/{Description}";
 		}
 
 		/// <summary>
