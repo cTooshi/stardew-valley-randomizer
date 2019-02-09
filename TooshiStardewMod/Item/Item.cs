@@ -10,7 +10,7 @@ namespace Randomizer
 	{
 		public int Id { get; }
 		public string Name
-		{
+		{			
 			get { return GetName(); }
 		}
 		public string OverrideName { get; set; }
@@ -178,7 +178,7 @@ namespace Randomizer
 		{
 			if (Id == (int)ObjectIndexes.Coffee)
 			{
-				return $"{Name}/150/1/Crafting/Coffee/It smells delicious. This is sure to give you a boost./drink/0 0 0 0 0 0 0 0 0 1 0/120";
+				return $"{Name}/150/1/Crafting/{Name}/It smells delicious. This is sure to give you a boost./drink/0 0 0 0 0 0 0 0 0 1 0/120";
 			}
 
 			Globals.ConsoleWrite($"ERROR: called the ToString of unexpected item {Id}: {Name}");

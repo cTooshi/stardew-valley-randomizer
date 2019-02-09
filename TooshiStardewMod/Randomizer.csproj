@@ -47,7 +47,7 @@
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
     <Compile Include="CropGrowthInformation.cs" />
-    <Compile Include="CropNameRandomizer.cs" />
+    <Compile Include="NameAndDescriptionRandomizer.cs" />
     <Compile Include="CropRandomizer.cs" />
     <Compile Include="Bundle\BoilerRoomBundle.cs" />
     <Compile Include="Bundle\BulletinBoardBundle.cs" />
