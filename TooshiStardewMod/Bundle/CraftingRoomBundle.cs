@@ -42,6 +42,8 @@ namespace Randomizer
 					break;
 				case BundleTypes.CraftingHappyCrops:
 					Name = "Happy Crops";
+					RequiredItem qualityCrop = new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetCrops()));
+					qualityCrop.MinimumQuality = ItemQualities.Gold;
 					potentialItems = new List<RequiredItem>
 					{
 						new RequiredItem((int)ObjectIndexes.Sprinkler, 1, 5),
@@ -51,7 +53,7 @@ namespace Randomizer
 						new RequiredItem((int)ObjectIndexes.QualityFertilizer, 10, 20),
 						new RequiredItem((int)ObjectIndexes.BasicRetainingSoil, 10, 20),
 						new RequiredItem((int)ObjectIndexes.QualityRetainingSoil, 10, 20),
-						//TODO: add one random quality crop
+						qualityCrop
 					};
 					numberOfChoices = Range.GetRandomValue(6, 8);
 					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, numberOfChoices);

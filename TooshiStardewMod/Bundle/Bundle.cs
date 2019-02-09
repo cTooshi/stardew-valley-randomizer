@@ -225,7 +225,7 @@ namespace Randomizer
 		/// </summary>
 		protected void GenerateRandomBundleFailsafe()
 		{
-			Globals.ConsoleWrite("WARNING: Had to generate random bundle due to lack of bundles!");
+			Globals.ConsoleWrite($"WARNING: Had to generate random bundle for {Room} as a fallback for this bundle: {BundleType.ToString()}");
 			PopulateRandomBundle();
 			GenerateRandomReward();
 		}

@@ -25,8 +25,14 @@ namespace Randomizer
 					MinimumRequiredItems = Range.GetRandomValue(RequiredItems.Count - 2, RequiredItems.Count);
 					Color = BundleColors.Orange;
 					break;
-				//case BundleTypes.PantryQualityCrops: //TODO
-				//	break;
+				case BundleTypes.PantryQualityCrops:
+					Name = "Quality Crops";
+					potentialItems = RequiredItem.CreateList(ItemList.GetCrops());
+					potentialItems.ForEach(x => x.MinimumQuality = ItemQualities.Gold);
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(4, 6);
+					Color = BundleColors.Green;
+					break;
 				case BundleTypes.PantryQualityForagables:
 					Name = "Quality Foragables";
 					potentialItems = RequiredItem.CreateList(ItemList.GetForagables());
@@ -42,16 +48,25 @@ namespace Randomizer
 					MinimumRequiredItems = Range.GetRandomValue(3, 4);
 					Color = BundleColors.Green;
 					break;
-				//case BundleTypes.PantryFlower: //TODO ALL OF THESE
-				//	break;
-				//case BundleTypes.PantrySpringCrops:
-				//	break;
-				//case BundleTypes.PantrySummerCrops:
-				//	break;
-				//case BundleTypes.PantryFallCrops:
-				//	break;
-				//case BundleTypes.PantryWinterCrops:
-				//	break;
+				case BundleTypes.PantryFlower:
+					Name = "Flower";
+					potentialItems = RequiredItem.CreateList(ItemList.GetFlowers());
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, Range.GetRandomValue(6, 8));
+					MinimumRequiredItems = RequiredItems.Count - 2;
+					Color = BundleColors.Green;
+					break;
+				case BundleTypes.PantrySpringCrops:
+					GenerateBundleForSeasonCrops(Seasons.Spring, BundleColors.Green);
+					break;
+				case BundleTypes.PantrySummerCrops:
+					GenerateBundleForSeasonCrops(Seasons.Summer, BundleColors.Red);
+					break;
+				case BundleTypes.PantryFallCrops:
+					GenerateBundleForSeasonCrops(Seasons.Fall, BundleColors.Orange);
+					break;
+				case BundleTypes.PantryWinterCrops:
+					GenerateBundleForSeasonCrops(Seasons.Winter, BundleColors.Cyan);
+					break;
 				case BundleTypes.PantryEgg:
 					Name = "Egg";
 					potentialItems = RequiredItem.CreateList(
@@ -60,16 +75,16 @@ namespace Randomizer
 					MinimumRequiredItems = Range.GetRandomValue(RequiredItems.Count - 3, RequiredItems.Count - 2);
 					Color = BundleColors.Yellow;
 					break;
-				//case BundleTypes.PantryRareFoods: //TODO - need those foods to exist!
-				//	Name = "Rare Foods";
-				//	RequiredItems = new List<RequiredItem>
-				//	{
-				//		new RequiredItem((int)ObjectIndexes.AncientFruit),
-				//		new RequiredItem((int)ObjectIndexes.Starfruit),
-				//		new RequiredItem((int)ObjectIndexes.SweetGemBerry)
-				//	};
-				//	Color = BundleColors.Blue;
-				//	break;
+				case BundleTypes.PantryRareFoods:
+					Name = "Rare Foods";
+					RequiredItems = new List<RequiredItem>
+					{
+						new RequiredItem((int)ObjectIndexes.AncientFruit),
+						new RequiredItem((int)ObjectIndexes.Starfruit),
+						new RequiredItem((int)ObjectIndexes.SweetGemBerry)
+					};
+					Color = BundleColors.Blue;
+					break;
 				case BundleTypes.PantryDesert:
 					Name = "Desert";
 					RequiredItems = new List<RequiredItem>
@@ -81,8 +96,8 @@ namespace Randomizer
 							new RequiredItem((int)ObjectIndexes.GoldenRelic),
 						}),
 						new RequiredItem((int)ObjectIndexes.Sandfish), //TODO: change for the fish shuffle
-						Globals.RNGGetRandomValueFromList(RequiredItem.CreateList(ItemList.GetUniqueDesertForagables(), 1, 3))
-						//new RequiredItem((int)ObjectIndexes.StarfruitSeeds, 5) //TODO: need this item to exist
+						Globals.RNGGetRandomValueFromList(RequiredItem.CreateList(ItemList.GetUniqueDesertForagables(), 1, 3)),
+						new RequiredItem((int)ObjectIndexes.StarfruitSeeds, 5)
 					};
 					MinimumRequiredItems = 4;
 					Color = BundleColors.Yellow;
@@ -112,17 +127,31 @@ namespace Randomizer
 					RequiredItems = new List<RequiredItem>
 					{
 						new RequiredItem((int)ObjectIndexes.Tortilla),
-						//new RequiredItem((int)ObjectIndexes.Corn, 1, 5), //TODO: uncomment when these exist
-						//new RequiredItem((int)ObjectIndexes.Tomato, 1, 5),
-						//new RequiredItem((int)ObjectIndexes.HotPepper, 1, 5),
+						new RequiredItem((int)ObjectIndexes.Corn, 1, 5),
+						new RequiredItem((int)ObjectIndexes.Tomato, 1, 5),
+						new RequiredItem((int)ObjectIndexes.HotPepper, 1, 5),
 						new RequiredItem((int)ObjectIndexes.FishTaco),
-						//new RequiredItem((int)ObjectIndexes.Rice),
+						new RequiredItem((int)ObjectIndexes.Rice),
 						new RequiredItem((int)ObjectIndexes.Cheese),
 					};
-					MinimumRequiredItems = 3;//Range.GetRandomValue(4, 5);
+					MinimumRequiredItems = Range.GetRandomValue(4, 5);
 					Color = BundleColors.Red;
 					break;
 			}
+		}
+
+		/// <summary>
+		/// Generates a bundle of crops belonging to the given season
+		/// </summary>
+		/// <param name="season">The season</param>
+		/// <param name="color">The color of the bundle</param>
+		private void GenerateBundleForSeasonCrops(Seasons season, BundleColors color)
+		{
+			Name = $"{season.ToString()} Crops";
+			List<RequiredItem> potentialItems = RequiredItem.CreateList(ItemList.GetCrops(season));
+			RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+			MinimumRequiredItems = 6;
+			Color = color;
 		}
 
 		/// <summary>

@@ -103,7 +103,7 @@ namespace Randomizer
 					Name = "Spoopy";
 					potentialItems = new List<RequiredItem>
 					{
-						//new RequiredItem((int)ObjectIndexes.Pumpkin, 6), //TODO: bring back when crops are done
+						new RequiredItem((int)ObjectIndexes.Pumpkin, 6),
 						new RequiredItem((int)ObjectIndexes.JackOLantern, 6),
 						new RequiredItem((int)ObjectIndexes.Ghostfish, 6),
 						new RequiredItem((int)ObjectIndexes.BatWing, 6),

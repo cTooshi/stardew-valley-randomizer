@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace Randomizer
 {
@@ -9,17 +8,32 @@ namespace Randomizer
 	public class SeedItem : Item
 	{
 		public int Price { get; set; }
-		public List<Seasons> GrowingSeasons { get; set; } = new List<Seasons>();
-		public string Description { get; set; }
-
-		public List<int> GrowthStages { get; set; } = new List<int>();
-		public int GraphicId { get; set; }
-		public int HarvestedCropId { get; set; }
-		public int TimeToGrow
+		public string Description
 		{
-			get { return GrowthStages.Sum(); }
+			get
+			{
+				if (Id == (int)ObjectIndexes.CoffeeBean)
+				{
+					return "Plant in spring or summer. Place five beans in a keg to make a hot drink.";
+				}
+
+				CropItem growsCrop = (CropItem)ItemList.Items[CropGrowthInfo.CropId];
+				string flowerString = growsCrop.IsFlower ? "This is a flower. " : "";
+				string scytheString = CropGrowthInfo.CanScythe ? "Harvest with the scythe. " : "";
+				string trellisString = CropGrowthInfo.IsTrellisCrop ? "Grows on a trellis. " : "";
+				string growthString = CropGrowthInfo.RegrowsAfterHarvest ?
+					$"Takes {CropGrowthInfo.TimeToGrow} days to grow but keeps producing after that. " :
+					$"Takes {CropGrowthInfo.TimeToGrow} days to mature. ";
+				string seasonsString = $"Plant during: {CropGrowthInfo.GetSeasonsString(true)}. ";
+				string indoorsString = growsCrop.Id == (int)ObjectIndexes.CactusFruit ? "Can only be grown indoors." : "";
+
+				return $"{flowerString}{scytheString}{trellisString}{growthString}{seasonsString}{indoorsString}";
+			}
 		}
-		public string CropSuffix { get; set; }
+		public CropGrowthInformation CropGrowthInfo { get { return CropGrowthInformation.CropIdsToInfo[Id]; } }
+		public List<Seasons> GrowingSeasons { get; set; }
+
+		public bool Randomize { get; set; } = true;
 
 		public SeedItem(int id, List<Seasons> growingSeasons) : base(id)
 		{
@@ -32,35 +46,9 @@ namespace Randomizer
 		/// Gets the string that's part of Data/ObjectInformation
 		/// </summary>
 		/// <returns />
-		public string GetObjectInformationString()
+		public override string ToString()
 		{
 			return $"{Name}/{Price}/-300/Seeds -74/{Name}/{Description}";
-		}
-
-		/// <summary>
-		/// Gets the string that's part of Data/Crops
-		/// </summary>
-		/// <returns />
-		public string GetCropInfoString()
-		{
-			string growthStagesString = "";
-			foreach (int stageTime in GrowthStages)
-			{
-				growthStagesString += $"{stageTime} ";
-			}
-			growthStagesString = growthStagesString.Trim();
-
-			return $"{growthStagesString}/{GetSeasonsString()}/{GraphicId}/{HarvestedCropId}/{CropSuffix}";
-		}
-
-		public string GetSeasonsString()
-		{
-			string seasonsString = "";
-			foreach (Seasons season in GrowingSeasons)
-			{
-				seasonsString += $"{season.ToString()} ";
-			}
-			return seasonsString.Trim();
 		}
 	}
 }

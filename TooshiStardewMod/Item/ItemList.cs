@@ -87,12 +87,66 @@ namespace Randomizer
 		}
 
 		/// <summary>
-		/// Gets all the crops
+		/// Gets all the seeds
 		/// </summary>
 		/// <returns />
-		public static List<Item> GetCrops()
+		public static List<Item> GetSeeds()
 		{
-			return Items.Values.Where(x => x.IsCrop).ToList();
+			return Items.Values.Where(x => x.IsSeed).ToList();
+		}
+
+		/// <summary>
+		/// Gets the seed that grows the given crop
+		/// </summary>
+		/// <param name="crop">The crop</param>
+		/// <returns>The seed the grows the crop</returns>
+		public static SeedItem GetSeedFromCrop(CropItem crop)
+		{
+			int seedId = GetSeeds().Cast<SeedItem>()
+				.Where(x => x.CropGrowthInfo.CropId == crop.Id)
+				.Select(x => x.Id).FirstOrDefault();
+
+			if (seedId == 0)
+			{
+				Globals.ConsoleWrite($"ERROR: No seed can grow {crop.Name}!");
+				return null;
+			}
+
+			return (SeedItem)Items[seedId];
+		}
+
+		/// <summary>
+		/// Gets all the crops
+		/// </summary>
+		/// <param name="includeFlowers">Whether to include flowers in the results</param>
+		/// <returns />
+		public static List<Item> GetCrops(bool includeFlowers = false)
+		{
+			return Items.Values.Where(x =>
+				x.IsCrop && (includeFlowers || (!includeFlowers && !x.IsFlower))
+			).ToList();
+		}
+
+		/// <summary>
+		/// Gets crops that grow in the given season
+		/// </summary>
+		/// <param name="season">The season</param>
+		/// <returns></returns>
+		public static List<Item> GetCrops(Seasons season)
+		{
+			List<int> cropidsInSeason = GetSeeds().Cast<SeedItem>().Where(x =>
+				x.CropGrowthInfo.GrowingSeasons.Contains(season)).Select(x => x.CropGrowthInfo.CropId).ToList();
+
+			return Items.Values.Where(x => cropidsInSeason.Contains(x.Id)).ToList();
+		}
+
+		/// <summary>
+		/// Gets all the flowers
+		/// </summary>
+		/// <returns />
+		public static List<Item> GetFlowers()
+		{
+			return Items.Values.Where(x => x.IsFlower).ToList();
 		}
 
 		/// <summary>
@@ -765,7 +819,13 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Wine, new Item((int)ObjectIndexes.Wine, ObtainingDifficulties.Impossible) },
 			{ (int)ObjectIndexes.Juice, new Item((int)ObjectIndexes.Juice, ObtainingDifficulties.Impossible) },
 			{ (int)ObjectIndexes.Jelly, new Item((int)ObjectIndexes.Jelly, ObtainingDifficulties.Impossible) },
+			{ (int)ObjectIndexes.Pickles, new Item((int)ObjectIndexes.Pickles, ObtainingDifficulties.Impossible) },
 			{ (int)ObjectIndexes.GoldenPumpkin, new Item((int)ObjectIndexes.GoldenPumpkin, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.Rice, new Item((int)ObjectIndexes.Rice, ObtainingDifficulties.MediumTimeRequirements) },
+			{ (int)ObjectIndexes.Salmonberry, new Item((int)ObjectIndexes.Salmonberry, ObtainingDifficulties.LargeTimeRequirements) },
+			{ (int)ObjectIndexes.GrassStarter, new Item((int)ObjectIndexes.GrassStarter, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.SpringOnion, new Item((int)ObjectIndexes.SpringOnion, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.Coffee, new Item((int)ObjectIndexes.Coffee, ObtainingDifficulties.NonCraftingItem) },
 
 			// All cooking recipes - ObtainingDifficulties.LargeTimeRequirements
 			{ (int)ObjectIndexes.FriedEgg, new CookedItem((int)ObjectIndexes.FriedEgg) },
@@ -926,7 +986,7 @@ namespace Randomizer
 			{ (int)ObjectIndexes.ParsnipSeeds, new SeedItem((int)ObjectIndexes.ParsnipSeeds, new List<Seasons> { Seasons.Spring }) },
 			{ (int)ObjectIndexes.JazzSeeds, new SeedItem((int)ObjectIndexes.JazzSeeds, new List<Seasons> { Seasons.Spring }) },
 			{ (int)ObjectIndexes.CauliflowerSeeds, new SeedItem((int)ObjectIndexes.CauliflowerSeeds, new List<Seasons> { Seasons.Spring }) },
-			{ (int)ObjectIndexes.CoffeeBean, new SeedItem((int)ObjectIndexes.CoffeeBean, new List<Seasons> { Seasons.Spring,Seasons.Summer }) },
+			{ (int)ObjectIndexes.CoffeeBean, new SeedItem((int)ObjectIndexes.CoffeeBean, new List<Seasons> { Seasons.Spring, Seasons.Summer }) { Randomize = false, Price = 15 } },
 			{ (int)ObjectIndexes.GarlicSeeds, new SeedItem((int)ObjectIndexes.GarlicSeeds, new List<Seasons> { Seasons.Spring }) },
 			{ (int)ObjectIndexes.BeanStarter, new SeedItem((int)ObjectIndexes.BeanStarter, new List<Seasons> { Seasons.Spring }) },
 			{ (int)ObjectIndexes.KaleSeeds, new SeedItem((int)ObjectIndexes.KaleSeeds, new List<Seasons> { Seasons.Spring }) },
@@ -944,9 +1004,9 @@ namespace Randomizer
 			{ (int)ObjectIndexes.RedCabbageSeeds, new SeedItem((int)ObjectIndexes.RedCabbageSeeds, new List<Seasons> { Seasons.Summer }) },
 			{ (int)ObjectIndexes.StarfruitSeeds, new SeedItem((int)ObjectIndexes.StarfruitSeeds, new List<Seasons> { Seasons.Summer }) },
 			{ (int)ObjectIndexes.SpangleSeeds, new SeedItem((int)ObjectIndexes.SpangleSeeds, new List<Seasons> { Seasons.Summer }) },
-			{ (int)ObjectIndexes.SunflowerSeeds, new SeedItem((int)ObjectIndexes.SunflowerSeeds, new List<Seasons> { Seasons.Summer,Seasons.Fall }) },
+			{ (int)ObjectIndexes.SunflowerSeeds, new SeedItem((int)ObjectIndexes.SunflowerSeeds, new List<Seasons> { Seasons.Summer, Seasons.Fall }) },
 			{ (int)ObjectIndexes.TomatoSeeds, new SeedItem((int)ObjectIndexes.TomatoSeeds, new List<Seasons> { Seasons.Summer }) },
-			{ (int)ObjectIndexes.WheatSeeds, new SeedItem((int)ObjectIndexes.WheatSeeds, new List<Seasons> { Seasons.Summer,Seasons.Fall }) },
+			{ (int)ObjectIndexes.WheatSeeds, new SeedItem((int)ObjectIndexes.WheatSeeds, new List<Seasons> { Seasons.Summer, Seasons.Fall }) },
 			{ (int)ObjectIndexes.AmaranthSeeds, new SeedItem((int)ObjectIndexes.AmaranthSeeds, new List<Seasons> { Seasons.Fall }) },
 			{ (int)ObjectIndexes.ArtichokeSeeds, new SeedItem((int)ObjectIndexes.ArtichokeSeeds, new List<Seasons> { Seasons.Fall }) },
 			{ (int)ObjectIndexes.BeetSeeds, new SeedItem((int)ObjectIndexes.BeetSeeds, new List<Seasons> { Seasons.Fall }) },
@@ -957,12 +1017,11 @@ namespace Randomizer
 			{ (int)ObjectIndexes.GrapeStarter, new SeedItem((int)ObjectIndexes.GrapeStarter, new List<Seasons> { Seasons.Fall }) },
 			{ (int)ObjectIndexes.PumpkinSeeds, new SeedItem((int)ObjectIndexes.PumpkinSeeds, new List<Seasons> { Seasons.Fall }) },
 			{ (int)ObjectIndexes.YamSeeds, new SeedItem((int)ObjectIndexes.YamSeeds, new List<Seasons> { Seasons.Fall }) },
-			{ (int)ObjectIndexes.AncientSeeds, new SeedItem((int)ObjectIndexes.AncientSeeds, new List<Seasons> { Seasons.Spring,Seasons.Summer,Seasons.Fall }) },
-			{ (int)ObjectIndexes.CactusSeeds, new SeedItem((int)ObjectIndexes.CactusSeeds, new List<Seasons> { Seasons.Spring,Seasons.Summer,Seasons.Fall,Seasons.Winter }) },
+			{ (int)ObjectIndexes.AncientSeeds, new SeedItem((int)ObjectIndexes.AncientSeeds, new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Fall }) { Randomize = false } }, //TODO; setting for this
+			{ (int)ObjectIndexes.CactusSeeds, new SeedItem((int)ObjectIndexes.CactusSeeds, new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Fall, Seasons.Winter }) },
 			{ (int)ObjectIndexes.RareSeed, new SeedItem((int)ObjectIndexes.RareSeed, new List<Seasons> { Seasons.Fall }) },
 
 			// Crops - ObtainingDifficulties.LargeTimeRequirements
-			{ (int)ObjectIndexes.Parsnip, new CropItem((int)ObjectIndexes.Parsnip, "10/Basic -75") },
 			{ (int)ObjectIndexes.Parsnip, new CropItem((int)ObjectIndexes.Parsnip, "10/Basic -75") },
 			{ (int)ObjectIndexes.BlueJazz, new CropItem((int)ObjectIndexes.BlueJazz, "18/Basic -80") },
 			{ (int)ObjectIndexes.Cauliflower, new CropItem((int)ObjectIndexes.Cauliflower, "10/Basic -75") },

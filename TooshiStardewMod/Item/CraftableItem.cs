@@ -74,7 +74,7 @@ namespace Randomizer
 			string stringSuffix = IsLearnedOnLevelup ? $"{SkillString} {GetLevelLearnedAt()}" : "";
 			string craftingString = $"{itemsRequiredString}{Path}{stringSuffix}";
 
-			Globals.ConsoleWrite($"{Name} crafting string: {craftingString}");
+			//Globals.ConsoleWrite($"{Name} crafting string: {craftingString}");
 			return craftingString;
 		}
 

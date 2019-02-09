@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Randomizer
 {
-    public class CropNameRandomizer
-    {
+	public class CropNameRandomizer
+	{
 		public static List<string> GenerateVegetableNames(int numberOfNames)
 		{
 			List<string> adjectives = new List<string>
@@ -128,10 +124,10 @@ namespace Randomizer
 			return (CreateNameFromPieces(numberOfNames, adjectives, prefixes, suffixes));
 		}
 
-        public static List<string> GenerateFlowerNames(int numberOfNames)
-        {
-            List<string> adjectives = new List<string>
-            {
+		public static List<string> GenerateFlowerNames(int numberOfNames)
+		{
+			List<string> adjectives = new List<string>
+			{
 				"Fragrant",
 				"Ugly",
 				"Sweet",
@@ -146,8 +142,8 @@ namespace Randomizer
 				"Lesser"
 			};
 
-            List<string> prefixes = new List<string>
-            {
+			List<string> prefixes = new List<string>
+			{
 				"Daffo",
 				"Mary",
 				"Snap",
@@ -169,8 +165,8 @@ namespace Randomizer
 				"Forget-me-"
 			};
 
-            List<string> suffixes = new List<string>
-            {
+			List<string> suffixes = new List<string>
+			{
 				"ster",
 				"hock",
 				"fodil",
@@ -195,25 +191,25 @@ namespace Randomizer
 			return (CreateNameFromPieces(numberOfNames, adjectives, prefixes, suffixes));
 		}
 
-        private static List<string> CreateNameFromPieces(int numberOfNames, List<string> adjectives, List<string> prefixes, List<string> suffixes)
-        {
+		private static List<string> CreateNameFromPieces(int numberOfNames, List<string> adjectives, List<string> prefixes, List<string> suffixes)
+		{
 			List<string> createdNames = new List<string>();
 			string newName = "default name";
 
 			for (int i = 0; i < numberOfNames; i++)
 			{
 				if (prefixes.Count > 0 && suffixes.Count > 0)
-				{
-					newName = $"{Globals.RNGGetAndRemoveRandomValueFromList(prefixes)}{Globals.RNGGetAndRemoveRandomValueFromList(suffixes)}";
-					if (newName.StartsWith("Mc")) newName = $"Mc{newName.Substring(2, 1).ToUpper()}{newName.Substring(3)}";
-				} 
+					if (prefixes.Count > 0 && suffixes.Count > 0)
+					{
+						newName = $"{Globals.RNGGetAndRemoveRandomValueFromList(prefixes)}{Globals.RNGGetAndRemoveRandomValueFromList(suffixes)}";
+						if (newName.StartsWith("Mc")) newName = $"Mc{newName.Substring(2, 1).ToUpper()}{newName.Substring(3)}";
+					}
 				if (Globals.RNGGetNextBoolean(10) && adjectives.Count > 0) newName = $"{Globals.RNGGetAndRemoveRandomValueFromList(adjectives)} {newName}";
 				createdNames.Add(newName);
-				Globals.ConsoleWrite(createdNames[i]);
 			}
 
 			return createdNames;
-        }
+		}
 
-    }
+	}
 }

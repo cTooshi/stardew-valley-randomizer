@@ -7,7 +7,29 @@
 	{
 		public int Price { get; set; }
 		public string CategoryString { get; set; }
-		public string Description { get; set; }
+		public string Description
+		{
+			get
+			{
+				return Name; //TODO: better info
+			}
+		}
+
+		public override bool IsFlower
+		{
+			get
+			{
+				return CategoryString == "18/Basic -80";
+			}
+		}
+
+		public SeedItem MatchingSeedItem
+		{
+			get
+			{
+				return ItemList.GetSeedFromCrop(this);
+			}
+		}
 
 		public CropItem(int id, string categoryString) : base(id)
 		{

@@ -12,6 +12,7 @@
 		public TrashItem(int id) : base(id)
 		{
 			DifficultyToObtain = ObtainingDifficulties.NoRequirements;
+			IsTrash = true;
 		}
 	}
 }

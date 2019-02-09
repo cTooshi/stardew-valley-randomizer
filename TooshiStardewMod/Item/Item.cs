@@ -31,6 +31,7 @@ namespace Randomizer
 		public bool IsGeodeMineral { get; set; }
 		public bool IsCrabPotItem { get; set; }
 		public bool IsCrop { get; set; }
+		public virtual bool IsFlower { get; set; }
 		public bool IsSeed { get; set; }
 		public bool IsCooked { get; set; }
 		public bool IsRing { get; set; }
@@ -167,6 +168,21 @@ namespace Randomizer
 				(int)(smallerBasePrice * (multiplier + 1))
 			);
 			return range.GetRandomValue() * 10;
+		}
+
+		/// <summary>
+		/// Not used normally - but when it is, used for the ObjectInformation string
+		/// </summary>
+		/// <returns />
+		public override string ToString()
+		{
+			if (Id == (int)ObjectIndexes.Coffee)
+			{
+				return $"{Name}/150/1/Crafting/Coffee/It smells delicious. This is sure to give you a boost./drink/0 0 0 0 0 0 0 0 0 1 0/120";
+			}
+
+			Globals.ConsoleWrite($"ERROR: called the ToString of unexpected item {Id}: {Name}");
+			return "";
 		}
 	}
 }
