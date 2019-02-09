@@ -89,11 +89,10 @@ namespace Randomizer
 		/// crop format: name/price/-300/Seeds -74/name/tooltip
 		private static void RandomizeCrops(EditedObjectInformation editedObjectInfo)
 		{
-			List<SeedItem> seedsToRandomize = ItemList.GetSeeds().Cast<SeedItem>()
+			List<int> seedIdsToRandomize = ItemList.GetSeeds().Cast<SeedItem>()
 				.Where(x => x.Randomize)
+				.Select(x => x.Id)
 				.ToList();
-
-			List<int> seedIdsToRandomize = seedsToRandomize.Select(x => x.Id).ToList();
 			List<int> seedIdsToRandomizeCopy = new List<int>(seedIdsToRandomize);
 
 			// Fill up a dictionary to remap the seed values
@@ -114,8 +113,10 @@ namespace Randomizer
 
 				CropGrowthInformation cropInfoToAdd = CropGrowthInformation.ParseString(CropGrowthInformation.DefaultStringData[newValue]);
 				cropInfoToAdd.GrowingSeasons = CropGrowthInformation.ParseString(CropGrowthInformation.DefaultStringData[originalValue]).GrowingSeasons;
+				cropInfoToAdd.GrowthStages = GetRandomGrowthStages(cropInfoToAdd.GrowthStages.Count);
+				cropInfoToAdd.CanScythe = Globals.RNGGetNextBoolean(10);
+				cropInfoToAdd.AmountPerHarvest = Globals.RNGGetNextBoolean(25) ? Range.GetRandomValue(1, 4) : -1;
 
-				//TODO: modify the growth cycles, scythe stuff, regrowth, etc.
 				CropGrowthInformation.CropIdsToInfo[originalValue] = cropInfoToAdd;
 			}
 
@@ -141,6 +142,30 @@ namespace Randomizer
 				cropDescriptions); // Note: It removes the descriptions it uses from the list after assigning them- may want to edit later
 
 			SetUpCookedFood(editedObjectInfo);
+		}
+
+		/// <summary>
+		/// Gets a list of randomly generated growth stages
+		/// </summary>
+		/// <param name="numberOfStages"></param>
+		/// <returns>A list of integers, totaling up to a max of 12</returns>
+		private static List<int> GetRandomGrowthStages(int numberOfStages)
+		{
+			if (numberOfStages <= 0)
+			{
+				Globals.ConsoleWrite("ERROR: Tried to pass an invalid number of growth stages when randomizing crops.");
+				return new List<int>();
+			}
+
+			int maxValuePerStage = 12 / numberOfStages;
+			List<int> growthStages = new List<int>();
+
+			for (int i = 0; i < numberOfStages; i++)
+			{
+				growthStages.Add(Range.GetRandomValue(1, maxValuePerStage));
+			}
+
+			return growthStages;
 		}
 
 		/// <summary>
