@@ -124,18 +124,23 @@ namespace Randomizer
 				.Where(x => seedIdsToRandomize.Contains(x.MatchingSeedItem.Id))
 				.ToList();
 
-			List<string> vegetableNames = CropNameRandomizer.GenerateVegetableNames(randomizedCrops.Count + 1);
+			List<string> vegetableNames = NameAndDescriptionRandomizer.GenerateVegetableNames(randomizedCrops.Count + 1);
+			List<string> cropDescriptions = NameAndDescriptionRandomizer.GenerateCropDescriptions(randomizedCrops.Count);
 			SetCropAndSeedInformation(
 				editedObjectInfo,
 				randomizedCrops.Where(x => !x.IsFlower).ToList(),
-				vegetableNames);
+				vegetableNames,
+				cropDescriptions); // Note: It removes the descriptions it uses from the list after assigning them- may want to edit later
 
 			SetUpCoffee(editedObjectInfo, vegetableNames[vegetableNames.Count - 1]);
 
 			SetCropAndSeedInformation(
 				editedObjectInfo,
 				randomizedCrops.Where(x => x.IsFlower).ToList(),
-				CropNameRandomizer.GenerateFlowerNames(randomizedCrops.Count));
+				NameAndDescriptionRandomizer.GenerateFlowerNames(randomizedCrops.Count),
+				cropDescriptions); // Note: It removes the descriptions it uses from the list after assigning them- may want to edit later
+
+			SetUpCookedFood(editedObjectInfo);
 		}
 
 		/// <summary>
@@ -147,19 +152,23 @@ namespace Randomizer
 		private static void SetCropAndSeedInformation(
 			EditedObjectInformation editedObjectInfo,
 			List<CropItem> crops,
-			List<string> randomNames)
+			List<string> randomNames,
+			List<string> randomDescriptions)
 		{
 			for (int i = 0; i < crops.Count; i++)
 			{
 				CropItem crop = crops[i];
 				string name = randomNames[i];
+				string description = Globals.RNGGetAndRemoveRandomValueFromList(randomDescriptions);
 				crop.OverrideName = name;
+				crop.Description = description;
 
 				SeedItem seed = ItemList.GetSeedFromCrop(crop);
 				seed.OverrideName = $"{name} {(seed.CropGrowthInfo.IsTrellisCrop ? "Starter" : "Seeds")}";
 
 				editedObjectInfo.ObjectInformationReplacements[crop.Id] = crop.ToString();
 				editedObjectInfo.ObjectInformationReplacements[seed.Id] = seed.ToString();
+
 			}
 		}
 
@@ -173,10 +182,56 @@ namespace Randomizer
 			Item coffeeBean = ItemList.Items[(int)ObjectIndexes.CoffeeBean];
 			coffeeBean.OverrideName = $"{coffeeName} Bean";
 			editedObjectInfo.ObjectInformationReplacements[(int)ObjectIndexes.CoffeeBean] = coffeeBean.ToString();
-
+			
 			Item coffee = ItemList.Items[(int)ObjectIndexes.Coffee];
 			coffee.OverrideName = $"Hot {coffeeName}";
 			editedObjectInfo.ObjectInformationReplacements[(int)ObjectIndexes.Coffee] = coffee.ToString();
+		}
+
+		/// <summary>
+		/// Changes the names of the cooked food to match those of the objects themselves
+		/// </summary>
+		/// <param name="editedObjectInfo">The object info containing changes to apply</param>
+		private static void SetUpCookedFood(EditedObjectInformation editedObjectInfo)
+		{
+			string cauliflower = ItemList.Items[(int)ObjectIndexes.Cauliflower].Name;
+			string parsnip = ItemList.Items[(int)ObjectIndexes.Parsnip].Name;
+			string greenbean = ItemList.Items[(int)ObjectIndexes.GreenBean].Name;
+			string yam = ItemList.Items[(int)ObjectIndexes.Yam].Name;
+			string hotpepper = ItemList.Items[(int)ObjectIndexes.HotPepper].Name;
+			string rhubarb = ItemList.Items[(int)ObjectIndexes.Rhubarb].Name;
+			string eggplant = ItemList.Items[(int)ObjectIndexes.Eggplant].Name;
+			string blueberry = ItemList.Items[(int)ObjectIndexes.Blueberry].Name;
+			string pumpkin = ItemList.Items[(int)ObjectIndexes.Pumpkin].Name;
+			string cranberry = ItemList.Items[(int)ObjectIndexes.Cranberries].Name;
+			string radish = ItemList.Items[(int)ObjectIndexes.Radish].Name;
+			string poppyseed = ItemList.Items[(int)ObjectIndexes.Poppy].Name;
+			string artichoke = ItemList.Items[(int)ObjectIndexes.Artichoke].Name;
+
+			var objectReplacements = new Dictionary<int, string>
+			{
+				{ (int)ObjectIndexes.CheeseCauliflower, $"Cheese {cauliflower}/300/55/Cooking -7/Cheese {cauliflower}/It smells great!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.ParsnipSoup, $"{parsnip} Soup/120/34/Cooking -7/{parsnip} Soup/It's fresh and hearty./food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.BeanHotpot, $"{greenbean} Hotpot/100/50/Cooking -7/{greenbean} Hotpot/It sure is healthy./food/0 0 0 0 0 0 2 0 0 0 0/600" },
+				{ (int)ObjectIndexes.GlazedYams, $"Glazed {yam} Platter/200/80/Cooking -7/Glazed {yam} Platter/Sweet and satisfying... The sugar gives it a hint of caramel./food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.PepperPoppers, $"{hotpepper} Poppers/200/52/Cooking -7/{hotpepper} Poppers/Spicy, breaded, and filled with cheese./food/2 0 0 0 0 0 0 0 0 1 0/600" },
+				{ (int)ObjectIndexes.RhubarbPie, $"{rhubarb} Pie/400/86/Cooking -7/{rhubarb} Pie/Mmm, tangy and sweet!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.EggplantParmesan, $"{eggplant} Parmesan/200/70/Cooking -7/{eggplant} Parmesan/Tangy, cheesy, and wonderful./food/0 0 1 0 0 0 0 0 0 0 3/400" },
+				{ (int)ObjectIndexes.BlueberryTart, $"{blueberry} Tart/150/50/Cooking -7/{blueberry} Tart/It's subtle and refreshing./food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.PumpkinSoup, $"{pumpkin} Soup/300/80/Cooking -7/{pumpkin} Soup/A seasonal favorite./food/0 0 0 0 2 0 0 0 0 0 2/660" },
+				{ (int)ObjectIndexes.CranberrySauce, $"{cranberry} Sauce/120/50/Cooking -7/{cranberry} Sauce/A festive treat./food/0 0 2 0 0 0 0 0 0 0 0/300" },
+				{ (int)ObjectIndexes.PumpkinPie, $"{pumpkin} Pie/385/90/Cooking -7/{pumpkin} Pie/Silky {pumpkin} cream in a flakey crust./food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.RadishSalad, $"{radish} Salad/300/80/Cooking -7/{radish} Salad/The {radish} is so crisp!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.CranberryCandy, $"{cranberry} Candy/175/50/Cooking -7/{cranberry} Candy/It's sweet enough to mask the {cranberry}'s bitterness./drink/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.PoppyseedMuffin, $"{poppyseed} Muffin/250/60/Cooking -7/{poppyseed} Muffin/It has a soothing effect./food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.ArtichokeDip, $"{artichoke} Dip/210/40/Cooking -7/{artichoke} Dip/It's cool and refreshing./food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.FruitSalad, $"Harvest Salad/450/105/Cooking -7/Harvest Salad/A delicious combination of local plants./food/0 0 0 0 0 0 0 0 0 0 0/0" }
+			};
+
+			foreach (KeyValuePair<int, string> pair in objectReplacements)
+			{
+				editedObjectInfo.ObjectInformationReplacements[pair.Key] = pair.Value;
+			}
 		}
 	}
 }

@@ -7,13 +7,7 @@
 	{
 		public int Price { get; set; }
 		public string CategoryString { get; set; }
-		public string Description
-		{
-			get
-			{
-				return Name; //TODO: better info
-			}
-		}
+		public string Description { get; set; }
 
 		public override bool IsFlower
 		{
