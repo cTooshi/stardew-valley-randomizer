@@ -115,7 +115,7 @@ namespace Randomizer
 				cropInfoToAdd.GrowingSeasons = CropGrowthInformation.ParseString(CropGrowthInformation.DefaultStringData[originalValue]).GrowingSeasons;
 				cropInfoToAdd.GrowthStages = GetRandomGrowthStages(cropInfoToAdd.GrowthStages.Count);
 				cropInfoToAdd.CanScythe = Globals.RNGGetNextBoolean(10);
-				cropInfoToAdd.AmountPerHarvest = Globals.RNGGetNextBoolean(25) ? Range.GetRandomValue(1, 4) : -1;
+				cropInfoToAdd.DaysToRegrow = Globals.RNGGetNextBoolean(25) ? Range.GetRandomValue(1, 7) : -1;
 
 				CropGrowthInformation.CropIdsToInfo[originalValue] = cropInfoToAdd;
 			}
@@ -193,9 +193,11 @@ namespace Randomizer
 				SeedItem seed = ItemList.GetSeedFromCrop(crop);
 				seed.OverrideName = $"{name} {(seed.CropGrowthInfo.IsTrellisCrop ? "Starter" : "Seeds")}";
 
+				seed.Price = GetRandomSeedPrice();
+				crop.Price = CalculateCropPrice(seed);
+
 				editedObjectInfo.ObjectInformationReplacements[crop.Id] = crop.ToString();
 				editedObjectInfo.ObjectInformationReplacements[seed.Id] = seed.ToString();
-
 			}
 		}
 
@@ -259,6 +261,100 @@ namespace Randomizer
 			{
 				editedObjectInfo.ObjectInformationReplacements[pair.Key] = pair.Value;
 			}
+		}
+
+		/// <summary>
+		/// Get a random seed price - the weighted values are as follows:
+		/// 10 - 30: 40%
+		/// 30 - 60: 30%
+		/// 60 - 90: 15%
+		/// 90 - 120: 10%
+		/// 120 - 150: 5%
+		/// </summary>
+		/// <returns>
+		/// The generated number - this will be an even number because the seed price that
+		/// we need to report is actually the sell value, which is half of the price we will
+		/// generate here
+		/// </returns>
+		private static int GetRandomSeedPrice()
+		{
+			int generatedValue = Range.GetRandomValue(1, 100);
+			int baseValue = 0;
+			if (generatedValue < 41)
+			{
+				baseValue = Range.GetRandomValue(10, 30);
+			}
+			else if (generatedValue < 71)
+			{
+				baseValue = Range.GetRandomValue(31, 60);
+			}
+			else if (generatedValue < 86)
+			{
+				baseValue = Range.GetRandomValue(61, 90);
+			}
+			else if (generatedValue < 96)
+			{
+				baseValue = Range.GetRandomValue(91, 120);
+			}
+			else
+			{
+				baseValue = Range.GetRandomValue(121, 150);
+			}
+
+			return baseValue / 2; // We need to store the sell price, not the buy price
+		}
+
+		/// <summary>
+		/// Calculates the seed price based on the seed growth info and price
+		/// </summary>
+		/// <param name="seed">The seed</param>
+		/// <returns>
+		/// Returns a value based on a random multiplier, regrowth days, and
+		/// potential amount per harvest
+		/// </returns>
+		private static int CalculateCropPrice(SeedItem seed)
+		{
+			int seedPrice = seed.Price * 2; // The amount we store here is half of what we want to base this off of
+			CropGrowthInformation growthInfo = seed.CropGrowthInfo;
+
+			double multiplier = 1;
+			if (seedPrice < 31) { multiplier = Range.GetRandomValue(15, 40) / (double)10; }
+			else if (seedPrice < 61) { multiplier = Range.GetRandomValue(15, 35) / (double)10; }
+			else if (seedPrice < 91) { multiplier = Range.GetRandomValue(15, 30) / (double)10; }
+			else if (seedPrice < 121) { multiplier = Range.GetRandomValue(15, 25) / (double)10; }
+			else { multiplier = Range.GetRandomValue(15, 20) / (double)10; }
+
+			double regrowthDaysMultiplier = 1;
+			switch (growthInfo.DaysToRegrow)
+			{
+				case 1: regrowthDaysMultiplier = 0.3; break;
+				case 2: regrowthDaysMultiplier = 0.4; break;
+				case 3: regrowthDaysMultiplier = 0.5; break;
+				case 4: regrowthDaysMultiplier = 0.6; break;
+				case 5: regrowthDaysMultiplier = 0.7; break;
+				case 6: regrowthDaysMultiplier = 0.8; break;
+				case 7: regrowthDaysMultiplier = 0.9; break;
+				default: regrowthDaysMultiplier = 1; break;
+			}
+
+			double amountPerHarvestMultiplier = 1;
+			switch (growthInfo.ExtraCropInfo.MinExtra)
+			{
+				case 0: break;
+				case 1: break;
+				case 2: amountPerHarvestMultiplier = 0.6; break;
+				case 3: amountPerHarvestMultiplier = 0.45; break;
+				case 4: amountPerHarvestMultiplier = 0.3; break;
+				default:
+					Globals.ConsoleWrite($"ERROR: Unexpected seed with more than 4 minimum extra crops: {seed.Id}");
+					break;
+			}
+			if (growthInfo.ExtraCropInfo.CanGetExtraCrops && amountPerHarvestMultiplier == 1)
+			{
+				amountPerHarvestMultiplier = 0.9;
+			}
+
+			return (int)(seedPrice * multiplier * regrowthDaysMultiplier * amountPerHarvestMultiplier);
 		}
 	}
 }

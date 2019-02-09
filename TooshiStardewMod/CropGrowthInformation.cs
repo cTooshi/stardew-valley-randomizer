@@ -16,8 +16,8 @@ namespace Randomizer
 		public List<Seasons> GrowingSeasons { get; set; } = new List<Seasons>();
 		public int GraphicId { get; set; }
 		public int CropId { get; set; }
-		public int AmountPerHarvest { get; set; }
-		public bool RegrowsAfterHarvest { get { return AmountPerHarvest != -1; } }
+		public int DaysToRegrow { get; set; }
+		public bool RegrowsAfterHarvest { get { return DaysToRegrow != -1; } }
 
 		public bool CanScythe { get; set; }
 		public int CanScytheInt { get { return CanScythe ? 1 : 0; } }
@@ -162,10 +162,10 @@ namespace Randomizer
 			}
 
 			// Amount per harvest
-			string amountPerHarvest = fields[(int)CropGrowthFields.AmountPerHarvest];
-			if (int.TryParse(amountPerHarvest, out result))
+			string daysToRegrow = fields[(int)CropGrowthFields.DaysToRegrow];
+			if (int.TryParse(daysToRegrow, out result))
 			{
-				cropGrowthInfo.AmountPerHarvest = result;
+				cropGrowthInfo.DaysToRegrow = result;
 			}
 			else
 			{
@@ -229,7 +229,7 @@ namespace Randomizer
 			}
 			growthStagesString = growthStagesString.Trim();
 
-			return $"{growthStagesString}/{GetSeasonsString()}/{GraphicId}/{CropId}/{(AmountPerHarvest == 0 ? -1 : AmountPerHarvest)}/{CanScytheInt}/{ExtraCropInfo.ToString()}/{IsTrellisCrop.ToString().ToLower()}/{TintColorInfo.ToString()}";
+			return $"{growthStagesString}/{GetSeasonsString()}/{GraphicId}/{CropId}/{(DaysToRegrow == 0 ? -1 : DaysToRegrow)}/{CanScytheInt}/{ExtraCropInfo.ToString()}/{IsTrellisCrop.ToString().ToLower()}/{TintColorInfo.ToString()}";
 		}
 
 		public string GetSeasonsString(bool useCommaDelimiter = false)
@@ -434,7 +434,7 @@ namespace Randomizer
 		Seasons = 1,
 		GraphicId = 2,
 		CropId = 3,
-		AmountPerHarvest = 4,
+		DaysToRegrow = 4,
 		CanScythe = 5,
 		ExtraCropInfo = 6,
 		IsTrellisCrop = 7,
