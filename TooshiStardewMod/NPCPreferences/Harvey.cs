@@ -7,7 +7,7 @@ namespace Randomizer
 		public static List<Item> Loves = new List<Item>
 		{
 			ItemList.Items[(int)ObjectIndexes.Coffee],
-			//ItemList.Items[(int)ObjectIndexes.Pickles], //TODO: when crops are done
+			ItemList.Items[(int)ObjectIndexes.Pickles],
 			ItemList.Items[(int)ObjectIndexes.SuperMeal],
 			ItemList.Items[(int)ObjectIndexes.TruffleOil],
 			ItemList.Items[(int)ObjectIndexes.Wine]

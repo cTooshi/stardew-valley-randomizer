@@ -7,7 +7,7 @@ namespace Randomizer
 		public static List<Item> Loves = new List<Item>
 		{
 			ItemList.Items[(int)ObjectIndexes.FishTaco],
-			//ItemList.Items[(int)ObjectIndexes.SummerSpangle] //TODO: when crops done
+			ItemList.Items[(int)ObjectIndexes.SummerSpangle]
 		};
 	}
 }

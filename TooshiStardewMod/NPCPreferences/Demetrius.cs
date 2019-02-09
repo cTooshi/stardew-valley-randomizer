@@ -9,7 +9,7 @@ namespace Randomizer
 			ItemList.Items[(int)ObjectIndexes.BeanHotpot],
 			ItemList.Items[(int)ObjectIndexes.IceCream],
 			ItemList.Items[(int)ObjectIndexes.RicePudding],
-			//ItemList.Items[(int)ObjectIndexes.Strawberry] //TODO: when crops done
+			ItemList.Items[(int)ObjectIndexes.Strawberry]
 		};
 	}
 }

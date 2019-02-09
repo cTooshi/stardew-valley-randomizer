@@ -8,8 +8,8 @@ namespace Randomizer
 		{
 			ItemList.Items[(int)ObjectIndexes.Diamond],
 			ItemList.Items[(int)ObjectIndexes.Emerald],
-			//ItemList.Items[(int)ObjectIndexes.Melon], //TODO: when crops done
-			//ItemList.Items[(int)ObjectIndexes.Poppy], //TODO: when cops done
+			ItemList.Items[(int)ObjectIndexes.Melon],
+			ItemList.Items[(int)ObjectIndexes.Poppy],
 			ItemList.Items[(int)ObjectIndexes.PoppyseedMuffin],
 			ItemList.Items[(int)ObjectIndexes.RedPlate],
 			ItemList.Items[(int)ObjectIndexes.RootsPlatter],

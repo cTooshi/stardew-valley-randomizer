@@ -6,12 +6,12 @@ namespace Randomizer
 	{
 		public static List<Item> Loves = new List<Item>
 		{
-			//ItemList.Items[(int)ObjectIndexes.Beet],
+			ItemList.Items[(int)ObjectIndexes.Beet],
 			ItemList.Items[(int)ObjectIndexes.ChocolateCake],
 			ItemList.Items[(int)ObjectIndexes.Diamond],
-			//ItemList.Items[(int)ObjectIndexes.FairyRose], //TODO: when crops done
+			ItemList.Items[(int)ObjectIndexes.FairyRose],
 			ItemList.Items[(int)ObjectIndexes.Stuffing],
-			//ItemList.Items[(int)ObjectIndexes.Tulip]
+			ItemList.Items[(int)ObjectIndexes.Tulip]
 		};
 	}
 }

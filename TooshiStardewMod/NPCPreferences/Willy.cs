@@ -11,7 +11,7 @@ namespace Randomizer
 			ItemList.Items[(int)ObjectIndexes.IridiumBar],
 			ItemList.Items[(int)ObjectIndexes.Mead],
 			ItemList.Items[(int)ObjectIndexes.Octopus],
-			//ItemList.Items[(int)ObjectIndexes.Pumpkin], //TODO: when crops done
+			ItemList.Items[(int)ObjectIndexes.Pumpkin],
 			ItemList.Items[(int)ObjectIndexes.SeaCucumber],
 			ItemList.Items[(int)ObjectIndexes.Sturgeon]
 		};

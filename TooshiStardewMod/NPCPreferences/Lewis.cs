@@ -8,7 +8,7 @@ namespace Randomizer
 		{
 			ItemList.Items[(int)ObjectIndexes.AutumnsBounty],
 			ItemList.Items[(int)ObjectIndexes.GlazedYams],
-			//ItemList.Items[(int)ObjectIndexes.HotPepper], //TODO when crops done
+			ItemList.Items[(int)ObjectIndexes.HotPepper],
 			ItemList.Items[(int)ObjectIndexes.VegetableMedley]
 		};
 	}

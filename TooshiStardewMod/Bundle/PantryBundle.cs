@@ -167,9 +167,9 @@ namespace Randomizer
 				new RequiredItem((int)ObjectIndexes.Heater),
 				new RequiredItem((int)ObjectIndexes.AutoGrabber),
 				new RequiredItem((int)ObjectIndexes.SeedMaker),
-				//new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetCrops()), 25, 50), //TODO: uncomment when crops are done
+				new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetCrops(true)), 25, 50),
 				new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetCookeditems())),
-				//new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetSeeds()), 50 100), // TODO: uncomment when crops are done
+				new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetSeeds()), 50, 100),
 				new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetAnimalProducts()), 25, 50),
 			};
 

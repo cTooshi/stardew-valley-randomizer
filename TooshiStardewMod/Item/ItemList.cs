@@ -908,7 +908,7 @@ namespace Randomizer
 			{ (int)ObjectIndexes.CrabCakes, new CookedItem((int)ObjectIndexes.CrabCakes) },
 			
 			// ------ All Foragables - ObtainingDifficulties.LargeTimeRequirements -------
-			// Spring Foragables - TODO: look into Salmonberries and Spring Onions
+			// Spring Foragables
 			{ (int)ObjectIndexes.WildHorseradish, new ForagableItem((int)ObjectIndexes.WildHorseradish) },
 			{ (int)ObjectIndexes.Daffodil, new ForagableItem((int)ObjectIndexes.Daffodil) },
 			{ (int)ObjectIndexes.Leek, new ForagableItem((int)ObjectIndexes.Leek) },
@@ -1017,7 +1017,7 @@ namespace Randomizer
 			{ (int)ObjectIndexes.GrapeStarter, new SeedItem((int)ObjectIndexes.GrapeStarter, new List<Seasons> { Seasons.Fall }) },
 			{ (int)ObjectIndexes.PumpkinSeeds, new SeedItem((int)ObjectIndexes.PumpkinSeeds, new List<Seasons> { Seasons.Fall }) },
 			{ (int)ObjectIndexes.YamSeeds, new SeedItem((int)ObjectIndexes.YamSeeds, new List<Seasons> { Seasons.Fall }) },
-			{ (int)ObjectIndexes.AncientSeeds, new SeedItem((int)ObjectIndexes.AncientSeeds, new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Fall }) { Randomize = false } }, //TODO; setting for this
+			{ (int)ObjectIndexes.AncientSeeds, new SeedItem((int)ObjectIndexes.AncientSeeds, new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Fall }) { Randomize = false } },
 			{ (int)ObjectIndexes.CactusSeeds, new SeedItem((int)ObjectIndexes.CactusSeeds, new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Fall, Seasons.Winter }) },
 			{ (int)ObjectIndexes.RareSeed, new SeedItem((int)ObjectIndexes.RareSeed, new List<Seasons> { Seasons.Fall }) },
 
