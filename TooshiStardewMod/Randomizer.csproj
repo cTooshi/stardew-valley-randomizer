@@ -322,6 +322,52 @@
     <None Include="Assets\Characters\Wizard.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\Maps\FarmPalm.xnb" />
+    <None Include="Assets\Maps\FarmPalmNotused.xnb" />
+    <None Include="Assets\Maps\Farm_CombatPalm.xnb" />
+    <None Include="Assets\Maps\Farm_FishingPalm.xnb" />
+    <None Include="Assets\Maps\Farm_ForagingPalm.xnb" />
+    <None Include="Assets\Maps\Farm_MiningPalm.xnb" />
+    <None Include="Assets\Maps\Mines\10New.xnb" />
+    <None Include="Assets\Maps\Mines\11New.xnb" />
+    <None Include="Assets\Maps\Mines\120New.xnb" />
+    <None Include="Assets\Maps\Mines\12New.xnb" />
+    <None Include="Assets\Maps\Mines\13New.xnb" />
+    <None Include="Assets\Maps\Mines\14New.xnb" />
+    <None Include="Assets\Maps\Mines\15New.xnb" />
+    <None Include="Assets\Maps\Mines\16New.xnb" />
+    <None Include="Assets\Maps\Mines\17New.xnb" />
+    <None Include="Assets\Maps\Mines\18New.xnb" />
+    <None Include="Assets\Maps\Mines\19New.xnb" />
+    <None Include="Assets\Maps\Mines\1New.xnb" />
+    <None Include="Assets\Maps\Mines\20New.xnb" />
+    <None Include="Assets\Maps\Mines\21New.xnb" />
+    <None Include="Assets\Maps\Mines\22New.xnb" />
+    <None Include="Assets\Maps\Mines\23New.xnb" />
+    <None Include="Assets\Maps\Mines\24New.xnb" />
+    <None Include="Assets\Maps\Mines\25New.xnb" />
+    <None Include="Assets\Maps\Mines\26New.xnb" />
+    <None Include="Assets\Maps\Mines\27New.xnb" />
+    <None Include="Assets\Maps\Mines\28New.xnb" />
+    <None Include="Assets\Maps\Mines\29New.xnb" />
+    <None Include="Assets\Maps\Mines\2New.xnb" />
+    <None Include="Assets\Maps\Mines\31New.xnb" />
+    <None Include="Assets\Maps\Mines\32New.xnb" />
+    <None Include="Assets\Maps\Mines\33New.xnb" />
+    <None Include="Assets\Maps\Mines\34New.xnb" />
+    <None Include="Assets\Maps\Mines\35New.xnb" />
+    <None Include="Assets\Maps\Mines\36New.xnb" />
+    <None Include="Assets\Maps\Mines\37New.xnb" />
+    <None Include="Assets\Maps\Mines\38New.xnb" />
+    <None Include="Assets\Maps\Mines\39New.xnb" />
+    <None Include="Assets\Maps\Mines\3New.xnb" />
+    <None Include="Assets\Maps\Mines\4New.xnb" />
+    <None Include="Assets\Maps\Mines\5New.xnb" />
+    <None Include="Assets\Maps\Mines\6New.xnb" />
+    <None Include="Assets\Maps\Mines\7New.xnb" />
+    <None Include="Assets\Maps\Mines\8New.xnb" />
+    <None Include="Assets\Maps\Mines\9New.xnb" />
+    <None Include="Assets\Maps\springobjects.xnb" />
     <None Include="Assets\Minigames\TitleButtons.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -124,12 +124,14 @@ namespace Randomizer
 			List<CropItem> randomizedCrops = ItemList.GetCrops(true).Cast<CropItem>()
 				.Where(x => seedIdsToRandomize.Contains(x.MatchingSeedItem.Id))
 				.ToList();
+			List<CropItem> vegetables = randomizedCrops.Where(x => !x.IsFlower).ToList();
+			List<CropItem> flowers = randomizedCrops.Where(x => x.IsFlower).ToList();
 
-			List<string> vegetableNames = NameAndDescriptionRandomizer.GenerateVegetableNames(randomizedCrops.Count + 1);
+			List<string> vegetableNames = NameAndDescriptionRandomizer.GenerateVegetableNames(vegetables.Count + 1);
 			List<string> cropDescriptions = NameAndDescriptionRandomizer.GenerateCropDescriptions(randomizedCrops.Count);
 			SetCropAndSeedInformation(
 				editedObjectInfo,
-				randomizedCrops.Where(x => !x.IsFlower).ToList(),
+				vegetables,
 				vegetableNames,
 				cropDescriptions); // Note: It removes the descriptions it uses from the list after assigning them- may want to edit later
 
@@ -137,8 +139,8 @@ namespace Randomizer
 
 			SetCropAndSeedInformation(
 				editedObjectInfo,
-				randomizedCrops.Where(x => x.IsFlower).ToList(),
-				NameAndDescriptionRandomizer.GenerateFlowerNames(randomizedCrops.Count),
+				flowers,
+				NameAndDescriptionRandomizer.GenerateFlowerNames(flowers.Count),
 				cropDescriptions); // Note: It removes the descriptions it uses from the list after assigning them- may want to edit later
 
 			SetUpCookedFood(editedObjectInfo);
@@ -207,7 +209,7 @@ namespace Randomizer
 			Item coffeeBean = ItemList.Items[(int)ObjectIndexes.CoffeeBean];
 			coffeeBean.OverrideName = $"{coffeeName} Bean";
 			editedObjectInfo.ObjectInformationReplacements[(int)ObjectIndexes.CoffeeBean] = coffeeBean.ToString();
-			
+
 			Item coffee = ItemList.Items[(int)ObjectIndexes.Coffee];
 			coffee.OverrideName = $"Hot {coffeeName}";
 			editedObjectInfo.ObjectInformationReplacements[(int)ObjectIndexes.Coffee] = coffee.ToString();
