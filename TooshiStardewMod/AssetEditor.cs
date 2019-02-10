@@ -145,6 +145,12 @@ namespace Randomizer
 			_locationsReplacements = LocationRandomizer.Randomize();
 			_bundleReplacements = BundleRandomizer.Randomize(); // This needs to happen after the location AND the crop replacements
 			MusicReplacements = MusicRandomizer.Randomize();
+
+			//TODO: remove me
+			foreach (Item item in FishItem.Get(true))
+			{
+				Globals.ConsoleWrite(item.ToString());
+			}
 		}
 
 		/// <summary>

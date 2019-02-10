@@ -84,7 +84,7 @@ namespace Randomizer
 				case BundleTypes.FishTankRainFish:
 					Name = "Rain Fish";
 					RequiredItems = RequiredItem.CreateList(
-						Globals.RNGGetRandomValuesFromList(FishItem.Get(Weather.Rain), 8)
+						Globals.RNGGetRandomValuesFromList(FishItem.Get(Weather.Rainy), 8)
 					);
 					MinimumRequiredItems = Math.Min(RequiredItems.Count, 4);
 					Color = BundleColors.Blue;

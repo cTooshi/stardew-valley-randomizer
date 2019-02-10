@@ -6,8 +6,7 @@
 	public enum Weather
 	{
 		Any,
-		Sun,
-		Rain,
-		Wind
+		Sunny,
+		Rainy
 	}
 }
