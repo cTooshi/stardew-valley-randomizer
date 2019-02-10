@@ -8,7 +8,7 @@ namespace Randomizer
 	public class ForagableData
 	{
 		public int ItemId { get; }
-		public double ItemRarity { get; }
+		public double ItemRarity { get; set; }
 
 		/// <summary>
 		/// Constructor
