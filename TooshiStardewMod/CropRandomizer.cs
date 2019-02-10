@@ -9,12 +9,10 @@ namespace Randomizer
 	/// </summary>
 	public class CropRandomizer
 	{
-		public static EditedObjectInformation Randomize()
+		public static void Randomize(EditedObjectInformation editedObjectInfo)
 		{
-			EditedObjectInformation editedObjectInfo = new EditedObjectInformation();
 			RandomizeCrops(editedObjectInfo);
 			RandomizeFruitTrees(editedObjectInfo);
-			return editedObjectInfo;
 		}
 
 		/// <summary>

@@ -14,7 +14,7 @@ namespace Randomizer
 		private readonly Dictionary<string, string> _stringReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _farmEventReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _mailReplacements = new Dictionary<string, string>();
-		private readonly Dictionary<int, string> _fishReplacements = new Dictionary<int, string>();
+		private Dictionary<int, string> _fishReplacements = new Dictionary<int, string>();
 		private readonly Dictionary<int, string> _questReplacements = new Dictionary<int, string>();
 		private Dictionary<string, string> _locationsReplacements = new Dictionary<string, string>();
 		private Dictionary<int, string> _objectInformationReplacements = new Dictionary<int, string>();
@@ -131,16 +131,20 @@ namespace Randomizer
 		{
 			ValidateItemList();
 
-			EditedObjectInformation editedObjectInfo = CropRandomizer.Randomize();
+			EditedObjectInformation editedObjectInfo = new EditedObjectInformation();
+			CropRandomizer.Randomize(editedObjectInfo);
 			_fruitTreeReplacements = editedObjectInfo.FruitTreeReplacements;
-			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
 			_cropReplacements = editedObjectInfo.CropsReplacements;
+
+			FishRandomizer.Randomize(editedObjectInfo);
+			_fishReplacements = editedObjectInfo.FishReplacements;
+
+			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
 
 			this.CalculateRecipeEdits();
 			this.CalculateBlueprintEdits();
 			//this.CalculateFarmEventEdits();
 			//this.CalculateMailEdits();
-			this.CalculateFishEdits();
 			this.CalculateQuestEdits();
 			_locationsReplacements = LocationRandomizer.Randomize();
 			_bundleReplacements = BundleRandomizer.Randomize(); // This needs to happen after the location AND the crop replacements
@@ -365,67 +369,6 @@ namespace Randomizer
 		{
 			//TODO: replace this code
 			throw new NotImplementedException();
-		}
-
-		private void CalculateFishEdits()
-		{
-			this._fishReplacements.Clear();
-			Random rng = Globals.RNG;
-
-			string[] fishBehavior = new string[5];
-			fishBehavior[0] = $"floater"; fishBehavior[1] = $"dart"; fishBehavior[2] = $"smooth"; fishBehavior[3] = $"mixed"; fishBehavior[4] = $"sinker";
-
-			IDictionary<Int32, string> FishEdits;
-			FishEdits = new Dictionary<int, string>()
-			{
-				{ (int) ObjectIndexes.Pufferfish, $"Pufferfish/{rng.Next(70,80)}/{fishBehavior[rng.Next(0,5)]}/1/{rng.Next(20,50)}/1200 1600/summer/sunny/690 .4 685 .1/4/.3/.5/0"},
-				{ (int) ObjectIndexes.Anchovy, $"Anchovy/{rng.Next(15,40)}/{fishBehavior[rng.Next(0,5)]}/1/{rng.Next(10,20)}/600 2600/spring fall/both/682 .2/1/.25/.3/0"},
-				{ (int) ObjectIndexes.Tuna, $"Tuna/{rng.Next(60,70)}/{fishBehavior[rng.Next(0,5)]}/12/{rng.Next(30,90)}/600 1900/summer winter/both/689 .35 681 .1/3/.15/.55/0"},
-				{ (int) ObjectIndexes.Sardine, $"Sardine/{rng.Next(10,50)}/{fishBehavior[rng.Next(0,5)]}/1/{rng.Next(6,18)}/600 1900/spring summer fall winter/both/683 .3/1/.65/.1/0"},
-				{ (int) ObjectIndexes.Bream, $"Bream/{rng.Next(20,50)}/{fishBehavior[rng.Next(0,5)]}/12/{rng.Next(15,45)}/1800 2600/spring summer fall winter/both/684 .35/1/.45/.1/0"},
-				{ (int) ObjectIndexes.LargemouthBass, $"Largemouth Bass/{rng.Next(30,65)}/{fishBehavior[rng.Next(0,5)]}/11/{rng.Next(20,40)}/600 1900/spring summer fall winter/both/685 .35/3/.4/.2/0"},
-				{ (int) ObjectIndexes.SmallmouthBass, $"Smallmouth Bass/{rng.Next(15,40)}/{fishBehavior[rng.Next(0,5)]}/12/{rng.Next(15,30)}/600 2600/spring fall/both/682 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.RainbowTrout, $"Rainbow Trout/{rng.Next(30,60)}/{fishBehavior[rng.Next(0,5)]}/10/{rng.Next(15,40)}/600 1900/summer/sunny/684 .35/2/.35/.3/0"},
-				{ (int) ObjectIndexes.Salmon, $"Salmon/{rng.Next(40,60)}/{fishBehavior[rng.Next(0,5)]}/24/{rng.Next(40,90)}/600 1900/fall/both/684 .35/3/.4/.2/0"},
-				{ (int) ObjectIndexes.Walleye, $"Walleye/{rng.Next(30,65)}/{fishBehavior[rng.Next(0,5)]}/10/{rng.Next(20,60)}/1200 2600/fall winter/rainy/680 .35/2/.4/.15/0"},
-				{ (int) ObjectIndexes.Perch, $"Perch/{rng.Next(20,60)}/{fishBehavior[rng.Next(0,5)]}/10/24/600 2600/winter/both/683 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.Carp, $"Carp/{rng.Next(5,30)}/{fishBehavior[rng.Next(0,5)]}/15/50/600 2600/spring summer fall/both/682 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.Catfish, $"Catfish/{rng.Next(55,80)}/{fishBehavior[rng.Next(0,5)]}/12/72/600 2400/spring fall winter/rainy/689 .4 680 .1/4/.4/.1/0"},
-				{ (int) ObjectIndexes.Pike, $"Pike/{rng.Next(40,80)}/{fishBehavior[rng.Next(0,5)]}/15/60/600 2600/summer winter/both/690 .3 681 .1/3/.4/.15/0"},
-				{ (int) ObjectIndexes.Sunfish, $"Sunfish/{rng.Next(15,45)}/{fishBehavior[rng.Next(0,5)]}/5/15/600 1900/spring summer/sunny/683 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.RedMullet, $"Red Mullet/{rng.Next(30,70)}/{fishBehavior[rng.Next(0,5)]}/8/22/600 1900/summer winter/both/680 .25/2/.4/.15/0"},
-				{ (int) ObjectIndexes.Herring, $"Herring/{rng.Next(15,35)}/{fishBehavior[rng.Next(0,5)]}/8/20/600 2600/spring winter/both/685 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.Eel, $"Eel/{rng.Next(55,80)}/{fishBehavior[rng.Next(0,5)]}/12/80/1600 2600/spring fall/rainy/689 .35 680 .1/3/.55/.1/0"},
-				{ (int) ObjectIndexes.Octopus, $"Octopus/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/12/48/600 1300/summer/both/688 .6 684 .1/5/.1/.08/0"},
-				{ (int) ObjectIndexes.RedSnapper, $"Red Snapper/{rng.Next(30,50)}/{fishBehavior[rng.Next(0,5)]}/8/25/600 1900/summer fall winter/rainy/682 .25/2/.45/.1/0"},
-				{ (int) ObjectIndexes.Squid, $"Squid/{rng.Next(55,80)}/{fishBehavior[rng.Next(0,5)]}/12/48/1800 2600/winter/both/690 .35 680 .1/3/.35/.3/0"},
-				{ (int) ObjectIndexes.SeaCucumber, $"Sea Cucumber/{rng.Next(30,50)}/{fishBehavior[rng.Next(0,5)]}/3/20/600 1900/fall winter/both/683 .2 689 .4/3/.25/.25/0"},
-				{ (int) ObjectIndexes.SuperCucumber, $"Super Cucumber/{rng.Next(60,90)}/{fishBehavior[rng.Next(0,5)]}/12/36/1800 2600/summer winter/both/683 .2 689 .4/4/.1/.25/0"},
-				{ (int) ObjectIndexes.Ghostfish, $"Ghostfish/{rng.Next(40,60)}/{fishBehavior[rng.Next(0,5)]}/10/35/600 2600/spring summer fall winter/both/684 .35/2/.3/.3/0"},
-				{ (int) ObjectIndexes.Stonefish, $"Stonefish/{rng.Next(40,75)}/{fishBehavior[rng.Next(0,5)]}/15/15/600 2600/spring summer fall winter/both/689 .2/2/.1/.1/3"},
-				{ (int) ObjectIndexes.Crimsonfish, $"Crimsonfish/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/20/20/600 2000/winter/both/690 .15/4/.1/.1/5"},
-				{ (int) ObjectIndexes.Angler, $"Angler/{rng.Next(75,90)}/{fishBehavior[rng.Next(0,5)]}/18/18/600 2600/spring summer fall winter/both/690 .1/4/.05/.1/3"},
-				{ (int) ObjectIndexes.IcePip, $"Ice Pip/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/8/8/600 2600/spring summer fall winter/both/682 .1/2/.05/.1/5"},
-				{ (int) ObjectIndexes.LavaEel, $"Lava Eel/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/32/32/600 2600/spring summer fall winter/both/684 .1/2/.05/.1/7"},
-				{ (int) ObjectIndexes.Sandfish, $"Sandfish/{rng.Next(40,75)}/{fishBehavior[rng.Next(0,5)]}/8/24/600 2000/spring summer fall winter/both/682 .2/1/.65/.1/0"},
-				{ (int) ObjectIndexes.ScorpionCarp, $"Scorpion Carp/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/12/32/600 2000/spring summer fall winter/both/683 .4/2/.15/.1/4"},
-				{ (int) ObjectIndexes.Sturgeon, $"Sturgeon/{rng.Next(60,90)}/{fishBehavior[rng.Next(0,5)]}/12/60/600 1900/summer winter/both/689 .35 682 .1/3/.35/.2/0"},
-				{ (int) ObjectIndexes.Bullhead, $"Bullhead/{rng.Next(20,65)}/{fishBehavior[rng.Next(0,5)]}/12/30/600 2600/spring summer fall winter/both/681 .25/2/.35/.2/0"},
-				{ (int) ObjectIndexes.Chub, $"Chub/{rng.Next(20,60)}/{fishBehavior[rng.Next(0,5)]}/12/24/600 2600/spring summer fall winter/both/684 .35/1/.45/.1/0"},
-				{ (int) ObjectIndexes.Albacore, $"Albacore/{rng.Next(40,75)}/{fishBehavior[rng.Next(0,5)]}/20/40/600 1100 1800 2600/fall winter/both/685 .35/3/.3/.15/0"},
-				{ (int) ObjectIndexes.Shad, $"Shad/{rng.Next(20,65)}/{fishBehavior[rng.Next(0,5)]}/20/48/900 2600/spring summer fall/rainy/684 .35/2/.35/.2/0"},
-				{ (int) ObjectIndexes.Halibut, $"Halibut/{rng.Next(25,75)}/{fishBehavior[rng.Next(0,5)]}/10/33/600 1100 1900 2600/spring summer winter/both/681 .35/3/.4/.2/0"},
-				{ (int) ObjectIndexes.MidnightSquid, $"Midnight Squid/{rng.Next(20,70)}/{fishBehavior[rng.Next(0,5)]}/8/25/600 2600/spring summer fall winter/both/685 .35/3/.4/.1/0"},
-				{ (int) ObjectIndexes.SpookFish, $"Spook Fish/{rng.Next(40,80)}/{fishBehavior[rng.Next(0,5)]}/8/25/600 2600/spring summer fall winter/both/685 .35/3/.4/.1/0"},
-				{ (int) ObjectIndexes.Blobfish, $"Blobfish/{rng.Next(50,85)}/{fishBehavior[rng.Next(0,5)]}/8/25/600 2600/spring summer fall winter/both/685 .35/3/.4/.1/0"},
-
-			};
-
-			foreach (KeyValuePair<int, string> pair in FishEdits)
-			{
-				this._fishReplacements[pair.Key] = pair.Value;
-			}
-
 		}
 
 		private void CalculateQuestEdits()

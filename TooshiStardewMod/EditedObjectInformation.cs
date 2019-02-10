@@ -21,5 +21,6 @@ namespace Randomizer
 				return cropsReplacements;
 			}
 		}
+		public Dictionary<int, string> FishReplacements = new Dictionary<int, string>();
 	}
 }

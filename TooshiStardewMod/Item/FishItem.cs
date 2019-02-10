@@ -47,6 +47,8 @@ namespace Randomizer
 			}
 		}
 
+		public FishItem(int id) : base(id) { }
+
 		/// <summary>
 		/// Returns the ToString representation to be used for the Fish asset
 		/// </summary>

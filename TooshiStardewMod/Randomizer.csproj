@@ -48,6 +48,7 @@
     <Compile Include="AssetLoader.cs" />
     <Compile Include="CropGrowthInformation.cs" />
     <Compile Include="Enums\FishBehaviorType.cs" />
+    <Compile Include="FishRandomizer.cs" />
     <Compile Include="Item\FishData.cs" />
     <Compile Include="NameAndDescriptionRandomizer.cs" />
     <Compile Include="CropRandomizer.cs" />
