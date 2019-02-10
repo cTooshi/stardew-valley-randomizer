@@ -43,6 +43,7 @@ namespace Randomizer
 		{
 			return ItemList.Items.Values.Where(x =>
 				x.IsFish &&
+				x.Id != (int)ObjectIndexes.AnyFish &&
 				x.DifficultyToObtain != ObtainingDifficulties.Impossible &&
 				(includeLegendaries || x.DifficultyToObtain < ObtainingDifficulties.EndgameItem)
 			).ToList();

@@ -26,6 +26,7 @@ namespace Randomizer
 
 			List<RequiredItem> potentialItems;
 			int numberOfChoices;
+
 			switch (BundleType)
 			{
 				case BundleTypes.CraftingResource:
@@ -96,18 +97,21 @@ namespace Randomizer
 					Name = "Bindle";
 					potentialItems = new List<RequiredItem>
 					{
-						new RequiredItem((int)ObjectIndexes.Cloth),
-						new RequiredItem((int)ObjectIndexes.ChewingStick),
+
 						new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetCookeditems())),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetForagables())),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(FishItem.Get())),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(
-							ItemList.Items.Values.Where(x => x.Id >= -4 && x.DifficultyToObtain <= ObtainingDifficulties.LargeTimeRequirements).ToList()).Id
+							ItemList.Items.Values.Where(x => x.Id > 0 && x.DifficultyToObtain <= ObtainingDifficulties.LargeTimeRequirements).ToList()).Id
 						),
 					};
-					numberOfChoices = Range.GetRandomValue(4, 5);
-					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, numberOfChoices);
-					MinimumRequiredItems = Range.GetRandomValue(numberOfChoices - 1, numberOfChoices);
+					RequiredItems = new List<RequiredItem>
+					{
+						new RequiredItem((int)ObjectIndexes.ChewingStick),
+						new RequiredItem((int)ObjectIndexes.Cloth),
+					};
+					RequiredItems.AddRange(Globals.RNGGetRandomValuesFromList(potentialItems, Range.GetRandomValue(2, 3)));
+					MinimumRequiredItems = RequiredItems.Count - 1;
 					Color = BundleColors.Yellow;
 					break;
 				case BundleTypes.CraftingSpringForaging:
