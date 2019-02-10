@@ -11,12 +11,12 @@ namespace Randomizer
 	{
 		public static void Randomize(EditedObjectInformation editedObjectInfo)
 		{
-			List<FishItem> legendaryFish = FishItem.Get(true).Cast<FishItem>().ToList();
+			List<FishItem> legendaryFish = FishItem.GetLegendaries().Cast<FishItem>().ToList();
 			List<FishItem> normalFish = FishItem.Get().Cast<FishItem>().ToList();
-			List<FishItem> normalFishCopy = new List<FishItem>();
+			List<FishItem> normalFishCopy = new List<FishItem>(normalFish);
 			foreach (FishItem fish in normalFish)
 			{
-				FishItem fishInfo = new FishItem(fish.Id);
+				FishItem fishInfo = new FishItem(fish.Id, true);
 				CopyFishInfo(fish, fishInfo);
 				normalFishCopy.Add(fishInfo);
 			}

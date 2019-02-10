@@ -47,7 +47,9 @@ namespace Randomizer
 			}
 		}
 
-		public FishItem(int id) : base(id) { }
+		public FishItem(int id, bool boop) : base(id)
+		{
+		}
 
 		/// <summary>
 		/// Returns the ToString representation to be used for the Fish asset
@@ -95,7 +97,7 @@ namespace Randomizer
 				x.IsFish &&
 				x.Id != (int)ObjectIndexes.AnyFish &&
 				x.DifficultyToObtain != ObtainingDifficulties.Impossible &&
-				(includeLegendaries || x.DifficultyToObtain < ObtainingDifficulties.EndgameItem)
+				(includeLegendaries || (!includeLegendaries && x.DifficultyToObtain < ObtainingDifficulties.EndgameItem))
 			).ToList();
 		}
 
@@ -106,11 +108,7 @@ namespace Randomizer
 		/// <returns />
 		public static List<FishItem> GetListAsFishItem(bool includeLegendaries = false)
 		{
-			return ItemList.Items.Values.Where(x =>
-				x.IsFish &&
-				x.DifficultyToObtain != ObtainingDifficulties.Impossible &&
-				(includeLegendaries || x.DifficultyToObtain < ObtainingDifficulties.EndgameItem)
-			).Cast<FishItem>().ToList();
+			return Get(includeLegendaries).Cast<FishItem>().ToList();
 		}
 
 		/// <summary>
