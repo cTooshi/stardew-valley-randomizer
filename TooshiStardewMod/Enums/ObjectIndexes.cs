@@ -93,6 +93,14 @@
 		WoodLampPost = -140,
 		IronLampPost = -141,
 		Heater = -142,
-		AutoGrabber = -143
+		AutoGrabber = -143,
+		PrairieKingArcadeSystem = -144,
+		JunimoKartArcadeSystem = -145,
+		SodaMachine = -146,
+		HMTGF = -147,
+		PinkyLemon = -148,
+		Foroguemon = -149,
+		SolidGoldLewis = -150,
+		StardewHeroTrophy = -151
 	};
 }

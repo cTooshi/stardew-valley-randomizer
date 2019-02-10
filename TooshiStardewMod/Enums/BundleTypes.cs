@@ -23,7 +23,7 @@
 		CraftingFallForaging,
 		CraftingWinterForaging,
 
-		// Pantry //TODO
+		// Pantry
 		PantryAnimal,
 		PantryQualityCrops,
 		PantryQualityForagables,
@@ -64,6 +64,12 @@
 		BoilerRing,
 		BoilerSpoopy,
 		BoilerMonster,
+
+		// Vault
+		Vault2500,
+		Vault5000,
+		Vault10000,
+		Vault25000,
 
 		// Bulletin Board
 		BulletinNews,

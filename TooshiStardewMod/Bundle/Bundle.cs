@@ -196,7 +196,7 @@ namespace Randomizer
 		/// <returns>True if successful, false otherwise</returns>
 		protected bool TryGenerateRandomBundle()
 		{
-			if (Globals.RNGGetNextBoolean(10))
+			if (Room != CommunityCenterRooms.Vault && Globals.RNGGetNextBoolean(10))
 			{
 				PopulateRandomBundle();
 				return true;

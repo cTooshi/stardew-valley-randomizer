@@ -64,6 +64,11 @@ namespace Randomizer
 		}
 
 		/// <summary>
+		/// Default constructor
+		/// </summary>
+		public RequiredItem() { }
+
+		/// <summary>
 		/// Creates a list of required items based on the given list of items
 		/// </summary>
 		/// <param name="itemList">The item list</param>

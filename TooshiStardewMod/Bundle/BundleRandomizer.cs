@@ -41,7 +41,7 @@ namespace Randomizer
 			new RoomInformation(CommunityCenterRooms.FishTank, 6, 11),
 			new RoomInformation(CommunityCenterRooms.BoilerRoom, 20, 22),
 			new RoomInformation(CommunityCenterRooms.BulletinBoard, 31, 35),
-			//new RoomInformation(CommunityCenterRooms.Vault, 23, 26),
+			new RoomInformation(CommunityCenterRooms.Vault, 23, 26),
 		};
 
 		private readonly static Dictionary<string, string> _randomizedBundles = new Dictionary<string, string>();

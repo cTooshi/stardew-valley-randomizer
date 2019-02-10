@@ -360,6 +360,14 @@ namespace Randomizer
 			// Non-craftable BigObjects
 			{ (int)ObjectIndexes.Heater, new Item((int)ObjectIndexes.Heater, ObtainingDifficulties.NonCraftingItem) },
 			{ (int)ObjectIndexes.AutoGrabber, new Item((int)ObjectIndexes.AutoGrabber, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.PrairieKingArcadeSystem, new Item((int)ObjectIndexes.PrairieKingArcadeSystem, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.JunimoKartArcadeSystem, new Item((int)ObjectIndexes.JunimoKartArcadeSystem, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.SodaMachine, new Item((int)ObjectIndexes.SodaMachine, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.HMTGF, new Item((int)ObjectIndexes.HMTGF, ObtainingDifficulties.NonCraftingItem) { OverrideName = "??HMTGF??" } },
+			{ (int)ObjectIndexes.PinkyLemon, new Item((int)ObjectIndexes.PinkyLemon, ObtainingDifficulties.NonCraftingItem) { OverrideName = "??Pinky Lemon??" } },
+			{ (int)ObjectIndexes.Foroguemon, new Item((int)ObjectIndexes.Foroguemon, ObtainingDifficulties.NonCraftingItem) { OverrideName = "??Foroguemon??" } },
+			{ (int)ObjectIndexes.SolidGoldLewis, new Item((int)ObjectIndexes.SolidGoldLewis, ObtainingDifficulties.NonCraftingItem) },
+			{ (int)ObjectIndexes.StardewHeroTrophy, new Item((int)ObjectIndexes.StardewHeroTrophy, ObtainingDifficulties.NonCraftingItem) },
 
 			// Resources - ObtainingDifficulties.NoRequirements
 			{ (int)ObjectIndexes.Wood, new ResourceItem((int)ObjectIndexes.Wood) },
@@ -1096,7 +1104,15 @@ namespace Randomizer
 			{(int)ObjectIndexes.WoodLampPost, 152},
 			{(int)ObjectIndexes.IronLampPost, 153},
 			{(int)ObjectIndexes.Heater, 104},
-			{(int)ObjectIndexes.AutoGrabber, 165}
+			{(int)ObjectIndexes.AutoGrabber, 165},
+			{(int)ObjectIndexes.PrairieKingArcadeSystem, 141},
+			{(int)ObjectIndexes.JunimoKartArcadeSystem, 159},
+			{(int)ObjectIndexes.SodaMachine, 117},
+			{(int)ObjectIndexes.HMTGF, 155},
+			{(int)ObjectIndexes.PinkyLemon, 161},
+			{(int)ObjectIndexes.Foroguemon, 162},
+			{(int)ObjectIndexes.SolidGoldLewis, 164},
+			{(int)ObjectIndexes.StardewHeroTrophy, 116}
 		};
 	}
 }

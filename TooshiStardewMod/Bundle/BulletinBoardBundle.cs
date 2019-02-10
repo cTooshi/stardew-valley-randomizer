@@ -304,10 +304,20 @@ namespace Randomizer
 				Reward = Globals.RNGGetRandomValueFromList(RequiredItem.CreateList(universalLoves, 5, 10));
 			}
 
-			else
+			List<RequiredItem> potentialRewards = new List<RequiredItem>
 			{
-				GenerateRandomReward();
-			}
+				new RequiredItem((int)ObjectIndexes.JunimoKartArcadeSystem),
+				new RequiredItem((int)ObjectIndexes.PrairieKingArcadeSystem),
+				new RequiredItem((int)ObjectIndexes.SodaMachine),
+				new RequiredItem((int)ObjectIndexes.Beer, 43),
+				new RequiredItem((int)ObjectIndexes.Salad, Range.GetRandomValue(5, 25)),
+				new RequiredItem((int)ObjectIndexes.Bread, Range.GetRandomValue(5, 25)),
+				new RequiredItem((int)ObjectIndexes.Spaghetti, Range.GetRandomValue(5, 25)),
+				new RequiredItem((int)ObjectIndexes.Pizza, Range.GetRandomValue(5, 25)),
+				new RequiredItem((int)ObjectIndexes.Coffee, Range.GetRandomValue(5, 25))
+			};
+
+			Reward = Globals.RNGGetRandomValueFromList(potentialRewards);
 		}
 	}
 }
