@@ -26,6 +26,7 @@ namespace Randomizer
 
 			List<RequiredItem> potentialItems;
 			int numberOfChoices;
+
 			switch (BundleType)
 			{
 				case BundleTypes.CraftingResource:
@@ -96,18 +97,21 @@ namespace Randomizer
 					Name = "Bindle";
 					potentialItems = new List<RequiredItem>
 					{
-						new RequiredItem((int)ObjectIndexes.Cloth),
-						new RequiredItem((int)ObjectIndexes.ChewingStick),
+
 						new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetCookeditems())),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(ItemList.GetForagables())),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(FishItem.Get())),
 						new RequiredItem(Globals.RNGGetRandomValueFromList(
-							ItemList.Items.Values.Where(x => x.Id >= -4 && x.DifficultyToObtain <= ObtainingDifficulties.LargeTimeRequirements).ToList()).Id
+							ItemList.Items.Values.Where(x => x.Id > 0 && x.DifficultyToObtain <= ObtainingDifficulties.LargeTimeRequirements).ToList()).Id
 						),
 					};
-					numberOfChoices = Range.GetRandomValue(4, 5);
-					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, numberOfChoices);
-					MinimumRequiredItems = Range.GetRandomValue(numberOfChoices - 1, numberOfChoices);
+					RequiredItems = new List<RequiredItem>
+					{
+						new RequiredItem((int)ObjectIndexes.ChewingStick),
+						new RequiredItem((int)ObjectIndexes.Cloth),
+					};
+					RequiredItems.AddRange(Globals.RNGGetRandomValuesFromList(potentialItems, Range.GetRandomValue(2, 3)));
+					MinimumRequiredItems = RequiredItems.Count - 1;
 					Color = BundleColors.Yellow;
 					break;
 				case BundleTypes.CraftingSpringForaging:
@@ -122,7 +126,108 @@ namespace Randomizer
 				case BundleTypes.CraftingWinterForaging:
 					GenerateForagingBundle(Seasons.Winter, BundleColors.Cyan);
 					break;
-					//TODO: make the colored bundles here instead of in all
+				case BundleTypes.CraftingColorOrange:
+					Name = "Orange";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.RustySpur,
+						(int)ObjectIndexes.RustyCog,
+						(int)ObjectIndexes.Sunfish,
+						(int)ObjectIndexes.Octopus,
+						(int)ObjectIndexes.Sandfish,
+						(int)ObjectIndexes.Dorado,
+						(int)ObjectIndexes.Lobster,
+						(int)ObjectIndexes.Crab,
+						(int)ObjectIndexes.GlazedYams,
+						(int)ObjectIndexes.FriedEel,
+						(int)ObjectIndexes.SpicyEel,
+						(int)ObjectIndexes.PaleAle,
+						(int)ObjectIndexes.Chanterelle,
+						(int)ObjectIndexes.CopperBar,
+						(int)ObjectIndexes.QualityFertilizer,
+						(int)ObjectIndexes.CopperOre,
+						(int)ObjectIndexes.NautilusShell,
+						(int)ObjectIndexes.SpiceBerry,
+						(int)ObjectIndexes.WinterRoot,
+						(int)ObjectIndexes.Tigerseye,
+						(int)ObjectIndexes.Baryte,
+						(int)ObjectIndexes.LemonStone,
+						(int)ObjectIndexes.Orpiment,
+						(int)ObjectIndexes.PumpkinPie,
+						(int)ObjectIndexes.Apricot,
+						(int)ObjectIndexes.Orange,
+						(int)ObjectIndexes.LobsterBisque,
+						(int)ObjectIndexes.CrabCakes,
+						(int)ObjectIndexes.JackOLantern
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Orange;
+					break;
+				case BundleTypes.CraftingColorYellow:
+					Name = "Yellow";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.Daffodil,
+						(int)ObjectIndexes.Dandelion,
+						(int)ObjectIndexes.Topaz,
+						(int)ObjectIndexes.Sap,
+						(int)ObjectIndexes.DwarfScrollIV,
+						(int)ObjectIndexes.DriedStarfish,
+						(int)ObjectIndexes.BoneFlute,
+						(int)ObjectIndexes.GoldenMask,
+						(int)ObjectIndexes.GoldenRelic,
+						(int)ObjectIndexes.StrangeDoll1,
+						(int)ObjectIndexes.Pufferfish,
+						(int)ObjectIndexes.RainbowTrout,
+						(int)ObjectIndexes.Perch,
+						(int)ObjectIndexes.Carp,
+						(int)ObjectIndexes.Eel,
+						(int)ObjectIndexes.SeaCucumber,
+						(int)ObjectIndexes.Angler,
+						(int)ObjectIndexes.Hay,
+						(int)ObjectIndexes.Omelet,
+						(int)ObjectIndexes.CheeseCauliflower,
+						(int)ObjectIndexes.FriedCalamari,
+						(int)ObjectIndexes.LuckyLunch,
+						(int)ObjectIndexes.Pizza,
+						(int)ObjectIndexes.FishTaco,
+						(int)ObjectIndexes.Spaghetti,
+						(int)ObjectIndexes.Tortilla,
+						(int)ObjectIndexes.FarmersLunch,
+						(int)ObjectIndexes.Oil,
+						(int)ObjectIndexes.Morel,
+						(int)ObjectIndexes.DuckMayonnaise,
+						(int)ObjectIndexes.MapleSeed,
+						(int)ObjectIndexes.GoldBar,
+						(int)ObjectIndexes.Honey,
+						(int)ObjectIndexes.Beer,
+						(int)ObjectIndexes.MuscleRemedy,
+						(int)ObjectIndexes.BasicFertilizer,
+						(int)ObjectIndexes.GoldenPumpkin,
+						(int)ObjectIndexes.GoldOre,
+						(int)ObjectIndexes.StrawFloor,
+						(int)ObjectIndexes.Cheese,
+						(int)ObjectIndexes.TruffleOil,
+						(int)ObjectIndexes.CoffeeBean,
+						(int)ObjectIndexes.TreasureChest,
+						(int)ObjectIndexes.Mead,
+						(int)ObjectIndexes.GlowRing,
+						(int)ObjectIndexes.SmallGlowRing,
+						(int)ObjectIndexes.RingOfYoba,
+						(int)ObjectIndexes.TopazRing,
+						(int)ObjectIndexes.Calcite,
+						(int)ObjectIndexes.Jagoite,
+						(int)ObjectIndexes.Pyrite,
+						(int)ObjectIndexes.Sandstone,
+						(int)ObjectIndexes.Hematite,
+						(int)ObjectIndexes.MapleSyrup,
+						(int)ObjectIndexes.SolarEssence
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Yellow;
+					break;
 			}
 		}
 

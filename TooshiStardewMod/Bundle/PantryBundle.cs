@@ -137,6 +137,129 @@ namespace Randomizer
 					MinimumRequiredItems = Range.GetRandomValue(4, 5);
 					Color = BundleColors.Red;
 					break;
+				case BundleTypes.PantryColorBrown:
+					Name = "Brown";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.WildHorseradish,
+						(int)ObjectIndexes.CaveCarrot,
+						(int)ObjectIndexes.EarthCrystal,
+						(int)ObjectIndexes.Coconut,
+						(int)ObjectIndexes.Torch,
+						(int)ObjectIndexes.ChippedAmphora,
+						(int)ObjectIndexes.ChewingStick,
+						(int)ObjectIndexes.AncientSeed,
+						(int)ObjectIndexes.DwarvishHelm,
+						(int)ObjectIndexes.SmallmouthBass,
+						(int)ObjectIndexes.Walleye,
+						(int)ObjectIndexes.Pike,
+						(int)ObjectIndexes.Stonefish,
+						(int)ObjectIndexes.Driftwood,
+						(int)ObjectIndexes.BrownEgg,
+						(int)ObjectIndexes.LargeBrownEgg,
+						(int)ObjectIndexes.BakedFish,
+						(int)ObjectIndexes.ParsnipSoup,
+						(int)ObjectIndexes.CompleteBreakfast,
+						(int)ObjectIndexes.FriedMushroom,
+						(int)ObjectIndexes.CarpSurprise,
+						(int)ObjectIndexes.Hashbrowns,
+						(int)ObjectIndexes.Pancakes,
+						(int)ObjectIndexes.CrispyBass,
+						(int)ObjectIndexes.Bread,
+						(int)ObjectIndexes.TomKhaSoup,
+						(int)ObjectIndexes.ChocolateCake,
+						(int)ObjectIndexes.Cookie,
+						(int)ObjectIndexes.EggplantParmesan,
+						(int)ObjectIndexes.SurvivalBurger,
+						(int)ObjectIndexes.WheatFlour,
+						(int)ObjectIndexes.HardwoodFence,
+						(int)ObjectIndexes.Acorn,
+						(int)ObjectIndexes.PineCone,
+						(int)ObjectIndexes.WoodFence,
+						(int)ObjectIndexes.Gate,
+						(int)ObjectIndexes.WoodFloor,
+						(int)ObjectIndexes.Clay,
+						(int)ObjectIndexes.WeatheredFloor,
+						(int)ObjectIndexes.Wood,
+						(int)ObjectIndexes.Coffee,
+						(int)ObjectIndexes.CommonMushroom,
+						(int)ObjectIndexes.WoodPath,
+						(int)ObjectIndexes.Hazelnut,
+						(int)ObjectIndexes.Truffle,
+						(int)ObjectIndexes.Geode,
+						(int)ObjectIndexes.Mudstone,
+						(int)ObjectIndexes.AmphibianFossil,
+						(int)ObjectIndexes.PalmFossil,
+						(int)ObjectIndexes.PlumPudding,
+						(int)ObjectIndexes.RoastedHazelnuts,
+						(int)ObjectIndexes.Bruschetta,
+						(int)ObjectIndexes.QualitySprinkler,
+						(int)ObjectIndexes.PoppyseedMuffin,
+						(int)ObjectIndexes.RainTotem,
+						(int)ObjectIndexes.WarpTotemMountains,
+						(int)ObjectIndexes.CorkBobber,
+						(int)ObjectIndexes.PineTar,
+						(int)ObjectIndexes.MapleBar
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Orange;
+					break;
+				case BundleTypes.PantryColorGreen:
+					Name = "Green";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.Emerald,
+						(int)ObjectIndexes.Jade,
+						(int)ObjectIndexes.CactusFruit,
+						(int)ObjectIndexes.DwarfScrollII,
+						(int)ObjectIndexes.StrangeDoll2,
+						(int)ObjectIndexes.LargemouthBass,
+						(int)ObjectIndexes.Shad,
+						(int)ObjectIndexes.Slimejack,
+						(int)ObjectIndexes.Legend,
+						(int)ObjectIndexes.MutantCarp,
+						(int)ObjectIndexes.Snail,
+						(int)ObjectIndexes.Seaweed,
+						(int)ObjectIndexes.GreenAlgae,
+						(int)ObjectIndexes.Salad,
+						(int)ObjectIndexes.BeanHotpot,
+						(int)ObjectIndexes.TroutSoup,
+						(int)ObjectIndexes.IceCream,
+						(int)ObjectIndexes.Stuffing,
+						(int)ObjectIndexes.FiddleheadFern,
+						(int)ObjectIndexes.GrassStarter,
+						(int)ObjectIndexes.Pickles,
+						(int)ObjectIndexes.Juice,
+						(int)ObjectIndexes.FieldSnack,
+						(int)ObjectIndexes.DuckFeather,
+						(int)ObjectIndexes.AlgaeSoup,
+						(int)ObjectIndexes.SlimeCharmerRing,
+						(int)ObjectIndexes.BurglarsRing,
+						(int)ObjectIndexes.JadeRing,
+						(int)ObjectIndexes.EmeraldRing,
+						(int)ObjectIndexes.Alamite,
+						(int)ObjectIndexes.Geminite,
+						(int)ObjectIndexes.Jamborite,
+						(int)ObjectIndexes.Malachite,
+						(int)ObjectIndexes.PetrifiedSlime,
+						(int)ObjectIndexes.OceanStone,
+						(int)ObjectIndexes.Coleslaw,
+						(int)ObjectIndexes.FiddleheadRisotto,
+						(int)ObjectIndexes.GreenSlimeEgg,
+						(int)ObjectIndexes.WarpTotemFarm,
+						(int)ObjectIndexes.OakResin,
+						(int)ObjectIndexes.FishStew,
+						(int)ObjectIndexes.Escargot,
+						(int)ObjectIndexes.Slime,
+						(int)ObjectIndexes.Fiber,
+						(int)ObjectIndexes.OilOfGarlic,
+						(int)ObjectIndexes.WildBait
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Green;
+					break;
 			}
 		}
 

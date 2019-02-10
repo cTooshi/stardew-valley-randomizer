@@ -129,6 +129,118 @@ namespace Randomizer
 					};
 					Color = BundleColors.Red;
 					break;
+				case BundleTypes.BoilerColorBlack:
+					Name = "Black";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.RareDisc,
+						(int)ObjectIndexes.Catfish,
+						(int)ObjectIndexes.ScorpionCarp,
+						(int)ObjectIndexes.TigerTrout,
+						(int)ObjectIndexes.Halibut,
+						(int)ObjectIndexes.MakiRoll,
+						(int)ObjectIndexes.Bomb,
+						(int)ObjectIndexes.VoidEgg,
+						(int)ObjectIndexes.VoidMayonnaise,
+						(int)ObjectIndexes.Coal,
+						(int)ObjectIndexes.Blackberry,
+						(int)ObjectIndexes.VampireRing,
+						(int)ObjectIndexes.Neptunite,
+						(int)ObjectIndexes.ThunderEgg,
+						(int)ObjectIndexes.BatWing,
+						(int)ObjectIndexes.VoidEssence,
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Purple;
+					break;
+				case BundleTypes.BoilerColorRed:
+					Name = "Red";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.Ruby,
+						(int)ObjectIndexes.FireQuartz,
+						(int)ObjectIndexes.DwarfScrollI,
+						(int)ObjectIndexes.RedMullet,
+						(int)ObjectIndexes.RedSnapper,
+						(int)ObjectIndexes.LavaEel,
+						(int)ObjectIndexes.Bullhead,
+						(int)ObjectIndexes.Woodskip,
+						(int)ObjectIndexes.Crimsonfish,
+						(int)ObjectIndexes.PepperPoppers,
+						(int)ObjectIndexes.RhubarbPie,
+						(int)ObjectIndexes.RedPlate,
+						(int)ObjectIndexes.CranberrySauce,
+						(int)ObjectIndexes.Holly,
+						(int)ObjectIndexes.CherryBomb,
+						(int)ObjectIndexes.MegaBomb,
+						(int)ObjectIndexes.Jelly,
+						(int)ObjectIndexes.EnergyTonic,
+						(int)ObjectIndexes.RedMushroom,
+						(int)ObjectIndexes.RedSlimeEgg,
+						(int)ObjectIndexes.ExplosiveAmmo,
+						(int)ObjectIndexes.RubyRing,
+						(int)ObjectIndexes.MagmaGeode,
+						(int)ObjectIndexes.Helvite,
+						(int)ObjectIndexes.Jasper,
+						(int)ObjectIndexes.RadishSalad,
+						(int)ObjectIndexes.FruitSalad,
+						(int)ObjectIndexes.CranberryCandy,
+						(int)ObjectIndexes.Apple,
+						(int)ObjectIndexes.Pomegranate,
+						(int)ObjectIndexes.Cherry,
+						(int)ObjectIndexes.TreasureHunter,
+						(int)ObjectIndexes.CrabPot,
+						(int)ObjectIndexes.LifeElixir
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3,6);
+					Color = BundleColors.Red;
+					break;
+				case BundleTypes.BoilerColorGray:
+					Name = "Gray";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.Stone,
+						(int)ObjectIndexes.Arrowhead,
+						(int)ObjectIndexes.AncientSword,
+						(int)ObjectIndexes.RustySpoon,
+						(int)ObjectIndexes.PrehistoricTool,
+						(int)ObjectIndexes.Anchor,
+						(int)ObjectIndexes.PrehistoricHandaxe,
+						(int)ObjectIndexes.DwarfGadget,
+						(int)ObjectIndexes.Tilapia,
+						(int)ObjectIndexes.Chub,
+						(int)ObjectIndexes.Lingcod,
+						(int)ObjectIndexes.Crayfish,
+						(int)ObjectIndexes.Cockle,
+						(int)ObjectIndexes.Mussel,
+						(int)ObjectIndexes.Oyster,
+						(int)ObjectIndexes.Trash,
+						(int)ObjectIndexes.SoggyNewspaper,
+						(int)ObjectIndexes.StoneFence,
+						(int)ObjectIndexes.IronFence,
+						(int)ObjectIndexes.StoneFloor,
+						(int)ObjectIndexes.CrystalFloor,
+						(int)ObjectIndexes.TeaSet,
+						(int)ObjectIndexes.GravelPath,
+						(int)ObjectIndexes.MagnetRing,
+						(int)ObjectIndexes.SmallMagnetRing,
+						(int)ObjectIndexes.WarriorRing,
+						(int)ObjectIndexes.SavageRing,
+						(int)ObjectIndexes.Bixite,
+						(int)ObjectIndexes.Granite,
+						(int)ObjectIndexes.Basalt,
+						(int)ObjectIndexes.Limestone,
+						(int)ObjectIndexes.Sprinkler,
+						(int)ObjectIndexes.BarbedHook,
+						(int)ObjectIndexes.TrapBobber,
+						(int)ObjectIndexes.OmniGeode,
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Blue;
+					break;
 			}
 		}
 

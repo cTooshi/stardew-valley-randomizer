@@ -283,6 +283,84 @@ namespace Randomizer
 					MinimumRequiredItems = Math.Min(Math.Max(RequiredItems.Count - 2, 3), RequiredItems.Count);
 					Color = BundleColors.Purple;
 					break;
+				case BundleTypes.BulletinColorPink:
+					Name = "Pink";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.Blobfish,
+						(int)ObjectIndexes.VoidSalmon,
+						(int)ObjectIndexes.Shrimp,
+						(int)ObjectIndexes.StrangeBun,
+						(int)ObjectIndexes.SalmonDinner,
+						(int)ObjectIndexes.PinkCake,
+						(int)ObjectIndexes.Sashimi,
+						(int)ObjectIndexes.IceCream,
+						(int)ObjectIndexes.Salmonberry,
+						(int)ObjectIndexes.Coral,
+						(int)ObjectIndexes.Dolomite,
+						(int)ObjectIndexes.Nekoite,
+						(int)ObjectIndexes.StarShards,
+						(int)ObjectIndexes.Peach,
+						(int)ObjectIndexes.BugMeat,
+						(int)ObjectIndexes.Bait
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Red;
+					break;
+				case BundleTypes.BulletinColorWhite:
+					Name = "White";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.Leek,
+						(int)ObjectIndexes.Quartz,
+						(int)ObjectIndexes.OrnamentalFan,
+						(int)ObjectIndexes.DinosaurEgg,
+						(int)ObjectIndexes.ChickenStatue,
+						(int)ObjectIndexes.Ghostfish,
+						(int)ObjectIndexes.WhiteAlgae,
+						(int)ObjectIndexes.WhiteEgg,
+						(int)ObjectIndexes.LargeWhiteEgg,
+						(int)ObjectIndexes.Milk,
+						(int)ObjectIndexes.LargeMilk,
+						(int)ObjectIndexes.FriedEgg,
+						(int)ObjectIndexes.RicePudding,
+						(int)ObjectIndexes.IceCream,
+						(int)ObjectIndexes.Mayonnaise,
+						(int)ObjectIndexes.IronBar,
+						(int)ObjectIndexes.RefinedQuartz,
+						(int)ObjectIndexes.IronOre,
+						(int)ObjectIndexes.SpringOnion,
+						(int)ObjectIndexes.SnowYam,
+						(int)ObjectIndexes.Rice,
+						(int)ObjectIndexes.GoatCheese,
+						(int)ObjectIndexes.Cloth,
+						(int)ObjectIndexes.GoatMilk,
+						(int)ObjectIndexes.LargeGoatMilk,
+						(int)ObjectIndexes.Wool,
+						(int)ObjectIndexes.DuckEgg,
+						(int)ObjectIndexes.RabbitsFoot,
+						(int)ObjectIndexes.PaleBroth,
+						(int)ObjectIndexes.Esperite,
+						(int)ObjectIndexes.Lunarite,
+						(int)ObjectIndexes.Marble,
+						(int)ObjectIndexes.PrehistoricScapula,
+						(int)ObjectIndexes.PrehistoricTibia,
+						(int)ObjectIndexes.PrehistoricSkull,
+						(int)ObjectIndexes.SkeletalHand,
+						(int)ObjectIndexes.PrehistoricRib,
+						(int)ObjectIndexes.PrehistoricVertebra,
+						(int)ObjectIndexes.SkeletalTail,
+						(int)ObjectIndexes.NautilusFossil,
+						(int)ObjectIndexes.Trilobite,
+						(int)ObjectIndexes.ArtichokeDip,
+						(int)ObjectIndexes.LeadBobber,
+						(int)ObjectIndexes.Chowder
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Yellow;
+					break;
 			}
 		}
 
