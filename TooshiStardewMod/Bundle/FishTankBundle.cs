@@ -148,6 +148,94 @@ namespace Randomizer
 					MinimumRequiredItems = Range.GetRandomValue(RequiredItems.Count - 1, RequiredItems.Count);
 					Color = BundleColors.Cyan;
 					break;
+				case BundleTypes.FishTankColorBlue:
+					Name = "Blue";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.Aquamarine,
+						(int)ObjectIndexes.Diamond,
+						(int)ObjectIndexes.FrozenTear,
+						(int)ObjectIndexes.DwarfScrollIII,
+						(int)ObjectIndexes.ElvishJewelry,
+						(int)ObjectIndexes.GlassShards,
+						(int)ObjectIndexes.Anchovy,
+						(int)ObjectIndexes.Tuna,
+						(int)ObjectIndexes.Sardine,
+						(int)ObjectIndexes.Bream,
+						(int)ObjectIndexes.Salmon,
+						(int)ObjectIndexes.Herring,
+						(int)ObjectIndexes.Squid,
+						(int)ObjectIndexes.IcePip,
+						(int)ObjectIndexes.Sturgeon,
+						(int)ObjectIndexes.Albacore,
+						(int)ObjectIndexes.MidnightSquid,
+						(int)ObjectIndexes.SpookFish,
+						(int)ObjectIndexes.Glacierfish,
+						(int)ObjectIndexes.Clam,
+						(int)ObjectIndexes.Periwinkle,
+						(int)ObjectIndexes.JojaCola,
+						(int)ObjectIndexes.BrokenGlasses,
+						(int)ObjectIndexes.BrokenCD,
+						(int)ObjectIndexes.BlueberryTart,
+						(int)ObjectIndexes.Sugar,
+						(int)ObjectIndexes.BasicRetainingSoil,
+						(int)ObjectIndexes.QualityRetainingSoil,
+						(int)ObjectIndexes.RainbowShell,
+						(int)ObjectIndexes.BlueSlimeEgg,
+						(int)ObjectIndexes.CrystalFruit,
+						(int)ObjectIndexes.SturdyRing,
+						(int)ObjectIndexes.AquamarineRing,
+						(int)ObjectIndexes.FrozenGeode,
+						(int)ObjectIndexes.Opal,
+						(int)ObjectIndexes.Aerinite,
+						(int)ObjectIndexes.Kyanite,
+						(int)ObjectIndexes.GhostCrystal,
+						(int)ObjectIndexes.Celestine,
+						(int)ObjectIndexes.Soapstone,
+						(int)ObjectIndexes.Slate,
+						(int)ObjectIndexes.Spinner,
+						(int)ObjectIndexes.WarpTotemBeach,
+						(int)ObjectIndexes.Battery
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Blue;
+					break;
+				case BundleTypes.FishTankColorPurple:
+					Name = "Purple";
+					potentialItems = RequiredItem.CreateList(new List<int>
+					{
+						(int)ObjectIndexes.Amethyst,
+						(int)ObjectIndexes.AncientDrum,
+						(int)ObjectIndexes.SuperCucumber,
+						(int)ObjectIndexes.PumpkinSoup,
+						(int)ObjectIndexes.RootsPlatter,
+						(int)ObjectIndexes.IridiumBar,
+						(int)ObjectIndexes.Wine,
+						(int)ObjectIndexes.IridiumOre,
+						(int)ObjectIndexes.SeaUrchin,
+						(int)ObjectIndexes.SweetPea,
+						(int)ObjectIndexes.WildPlum,
+						(int)ObjectIndexes.Blackberry,
+						(int)ObjectIndexes.Crocus,
+						(int)ObjectIndexes.Vinegar,
+						(int)ObjectIndexes.PurpleMushroom,
+						(int)ObjectIndexes.SpeedGro,
+						(int)ObjectIndexes.DeluxeSpeedGro,
+						(int)ObjectIndexes.IridiumBand,
+						(int)ObjectIndexes.AmethystRing,
+						(int)ObjectIndexes.FireOpal,
+						(int)ObjectIndexes.Fluorapatite,
+						(int)ObjectIndexes.Obsidian,
+						(int)ObjectIndexes.FairyStone,
+						(int)ObjectIndexes.BlackberryCobbler,
+						(int)ObjectIndexes.IridiumSprinkler,
+						(int)ObjectIndexes.DressedSpinner
+					});
+					RequiredItems = Globals.RNGGetRandomValuesFromList(potentialItems, 8);
+					MinimumRequiredItems = Range.GetRandomValue(3, 6);
+					Color = BundleColors.Purple;
+					break;
 			}
 		}
 

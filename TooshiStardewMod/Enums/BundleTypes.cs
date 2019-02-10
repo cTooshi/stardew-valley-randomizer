@@ -22,6 +22,8 @@
 		CraftingSummerForaging,
 		CraftingFallForaging,
 		CraftingWinterForaging,
+		CraftingColorYellow,
+		CraftingColorOrange,
 
 		// Pantry
 		PantryAnimal,
@@ -38,6 +40,9 @@
 		PantryDesert,
 		PantryDessert,
 		PantryMexicanFood,
+		PantryAsianFood,
+		PantryColorGreen,
+		PantryColorBrown,
 
 		// Fish tank
 		FishTankSpringFish,
@@ -53,6 +58,8 @@
 		FishTankBeachForagables,
 		FishTankFishingTools,
 		FishTankUnique,
+		FishTankColorBlue,
+		FishTankColorPurple,
 
 		// Boiler room
 		BoilerArtifacts,
@@ -64,6 +71,9 @@
 		BoilerRing,
 		BoilerSpoopy,
 		BoilerMonster,
+		BoilerColorBlack,
+		BoilerColorRed,
+		BoilerColorGray,
 
 		// Vault
 		Vault2500,
@@ -108,6 +118,8 @@
 		BulletinShane,
 		BulletinVincent,
 		BulletinWilly,
-		BulletinWizard
+		BulletinWizard,
+		BulletinColorPink,
+		BulletinColorWhite
 	}
 }
