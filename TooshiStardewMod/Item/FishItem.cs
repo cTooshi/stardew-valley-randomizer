@@ -10,28 +10,76 @@ namespace Randomizer
 	{
 		// TODO when this is better randomized: fish behaviors
 
-		public List<Seasons> AvailableSeasons { get; set; } =
-			new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Fall, Seasons.Winter };
+		public List<Seasons> AvailableSeasons { get; set; } = new List<Seasons>();
 		public List<Seasons> WoodsOnlySeasons { get; set; } = new List<Seasons>();
-		public List<Weather> Weathers { get; set; } = new List<Weather>(); // Empty means any
+		public List<Weather> Weathers { get; set; } = new List<Weather>();
 		public List<Locations> AvailableLocations { get; set; } = new List<Locations>();
 		public Range Times { get; set; } = new Range(600, 2600); // That's anytime in the day
 		public Range ExcludedTimes { get; set; } = new Range(0, 0);
 
 		public bool IsNightFish { get { return Times.MaxValue >= 1800; } }
-		public bool IsRainFish { get { return Weathers.Contains(Weather.Rain); } }
-		public bool IsSunFish { get { return Weathers.Contains(Weather.Sun); } }
-		public bool IsWindFish { get { return Weathers.Contains(Weather.Wind); } }
+		public bool IsRainFish { get { return Weathers.Contains(Weather.Rainy); } }
+		public bool IsSunFish { get { return Weathers.Contains(Weather.Sunny); } }
 
 		public bool IsSpringFish { get { return AvailableSeasons.Contains(Seasons.Spring); } }
 		public bool IsSummerFish { get { return AvailableSeasons.Contains(Seasons.Summer); } }
 		public bool IsFallFish { get { return AvailableSeasons.Contains(Seasons.Fall); } }
 		public bool IsWinterFish { get { return AvailableSeasons.Contains(Seasons.Winter); } }
 
+		public int DartChance { get; set; }
+		public FishBehaviorType BehaviorType { get; set; }
+		public int MinSize { get; set; }
+		public int MaxSize { get; set; }
+		public string UnusedData { get; set; }
+		public int MinWaterDepth { get; set; }
+		public double SpawnMultiplier { get; set; }
+		public double DepthMultiplier { get; set; }
+		public int MinFishingLevel { get; set; }
+
 		public FishItem(int id, ObtainingDifficulties difficultyToObtain = ObtainingDifficulties.LargeTimeRequirements) : base(id)
 		{
 			DifficultyToObtain = difficultyToObtain;
 			IsFish = true;
+
+			if (id != (int)ObjectIndexes.AnyFish)
+			{
+				FishData.FillDefaultFishInfo(this);
+			}
+		}
+
+		/// <summary>
+		/// Returns the ToString representation to be used for the Fish asset
+		/// </summary>
+		/// <returns />
+		public override string ToString()
+		{
+			if (Id == -4) { return ""; }
+
+			string timeString = "";
+			if (ExcludedTimes.MinValue < 600 || ExcludedTimes.MaxValue < 600)
+			{
+				timeString = $"{Times.MinValue} {Times.MaxValue}";
+			}
+			else
+			{
+				timeString = $"{Times.MinValue} {ExcludedTimes.MinValue} {ExcludedTimes.MaxValue} {Times.MaxValue}";
+			}
+
+			string seasonsString = "";
+			foreach (Seasons season in AvailableSeasons)
+			{
+				seasonsString += $"{season.ToString().ToLower()} ";
+			}
+			seasonsString = seasonsString.Trim();
+
+			string weatherString = "";
+			if (Weathers.Count >= 2) { weatherString = "both"; }
+			else { weatherString = Weathers[0].ToString().ToLower(); }
+
+			string spawnMultiplierString = (SpawnMultiplier == 0) ? "0" : SpawnMultiplier.ToString().TrimStart(new char[] { '0' });
+			string depthMultiplierString = (DepthMultiplier == 0) ? "0" : DepthMultiplier.ToString().TrimStart(new char[] { '0' });
+
+			return $"{Name}/{DartChance}/{BehaviorType.ToString().ToLower()}/{MinSize}/{MaxSize}/{timeString}/{seasonsString}/{weatherString}/{UnusedData}/{MinWaterDepth}/{spawnMultiplierString}/{depthMultiplierString}/{MinFishingLevel}";
 		}
 
 		/// <summary>
@@ -100,13 +148,11 @@ namespace Randomizer
 			switch (weather)
 			{
 				case Weather.Any:
-					return allFish.Where(x => x.Weathers.Count == 0).Cast<Item>().ToList();
-				case Weather.Sun:
+					return allFish.Cast<Item>().ToList();
+				case Weather.Sunny:
 					return allFish.Where(x => x.IsSunFish).Cast<Item>().ToList();
-				case Weather.Rain:
+				case Weather.Rainy:
 					return allFish.Where(x => x.IsRainFish).Cast<Item>().ToList();
-				case Weather.Wind:
-					return allFish.Where(x => x.IsWindFish).Cast<Item>().ToList();
 			}
 
 			Globals.ConsoleWrite($"ERROR: Tried to get fish belonging to the non-existent weather: {weather.ToString()}");

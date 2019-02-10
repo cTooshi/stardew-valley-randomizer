@@ -404,187 +404,124 @@ namespace Randomizer
 			{ (int)ObjectIndexes.AnyFish, new FishItem((int)ObjectIndexes.AnyFish, ObtainingDifficulties.NoRequirements) },
 
 			{ (int)ObjectIndexes.Pufferfish, new FishItem((int)ObjectIndexes.Pufferfish) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(1200, 1600),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer },
-				Weathers = new List<Weather> { Weather.Sun }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Anchovy, new FishItem((int)ObjectIndexes.Anchovy) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Fall }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Tuna, new FishItem((int)ObjectIndexes.Tuna) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Sardine, new FishItem((int)ObjectIndexes.Sardine) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Fall, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Bream, new FishItem((int)ObjectIndexes.Bream) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest },
-				Times = new Range(1800, 2600),
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.LargemouthBass, new FishItem((int)ObjectIndexes.LargemouthBass) {
-				AvailableLocations = new List<Locations> { Locations.Mountain },
-				Times = new Range(600, 1900)
+				AvailableLocations = new List<Locations> { Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.SmallmouthBass, new FishItem((int)ObjectIndexes.SmallmouthBass) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest },
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Fall },
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.RainbowTrout, new FishItem((int)ObjectIndexes.RainbowTrout) {
-				AvailableLocations = new List<Locations> { Locations.Forest, Locations.Town, Locations.Mountain },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer },
-				Weathers = new List<Weather> { Weather.Sun }
+				AvailableLocations = new List<Locations> { Locations.Forest, Locations.Town, Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.Salmon, new FishItem((int)ObjectIndexes.Salmon) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Fall }
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.Walleye, new FishItem((int)ObjectIndexes.Walleye) {
-				AvailableLocations = new List<Locations> { Locations.Forest, Locations.Town, Locations.Mountain },
-				Times = new Range(1200, 2600),
-				AvailableSeasons = new List<Seasons> { Seasons.Fall, Seasons.Winter },
-				Weathers = new List<Weather> { Weather.Rain }
+				AvailableLocations = new List<Locations> { Locations.Forest, Locations.Town, Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.Perch, new FishItem((int)ObjectIndexes.Perch) {
-				AvailableLocations = new List<Locations> { Locations.Forest, Locations.Town, Locations.Mountain },
-				AvailableSeasons = new List<Seasons> { Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Forest, Locations.Town, Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.Carp, new FishItem((int)ObjectIndexes.Carp) {
-				AvailableLocations = new List<Locations> { Locations.Mountain, Locations.Woods, Locations.Sewer },
+				AvailableLocations = new List<Locations> { Locations.Mountain, Locations.Woods, Locations.Sewer }
 			} },
 			{ (int)ObjectIndexes.Catfish, new FishItem((int)ObjectIndexes.Catfish) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest, Locations.Woods, Locations.WitchSwamp },
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Fall },
-				WoodsOnlySeasons = new List<Seasons> { Seasons.Summer, Seasons.Winter },
-				Weathers = new List<Weather> { Weather.Rain }
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest, Locations.Woods, Locations.WitchSwamp }
 			} },
 			{ (int)ObjectIndexes.Pike, new FishItem((int)ObjectIndexes.Pike) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest },
-				AvailableSeasons = new List<Seasons> { Seasons.Summer, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.Sunfish, new FishItem((int)ObjectIndexes.Sunfish) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Summer },
-				Weathers = new List<Weather> { Weather.Sun, Weather.Wind }
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.RedMullet, new FishItem((int)ObjectIndexes.RedMullet) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Herring, new FishItem((int)ObjectIndexes.Herring) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Eel, new FishItem((int)ObjectIndexes.Eel) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(1600, 2600),
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Fall },
-				Weathers = new List<Weather> { Weather.Rain }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Octopus, new FishItem((int)ObjectIndexes.Octopus) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(600, 1300),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.RedSnapper, new FishItem((int)ObjectIndexes.RedSnapper) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer, Seasons.Fall, Seasons.Winter },
-				Weathers = new List<Weather> { Weather.Rain }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Squid, new FishItem((int)ObjectIndexes.Squid) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(1800, 2600),
-				AvailableSeasons = new List<Seasons> { Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.SeaCucumber, new FishItem((int)ObjectIndexes.SeaCucumber) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Fall, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.SuperCucumber, new FishItem((int)ObjectIndexes.SuperCucumber) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(1800, 2600),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer, Seasons.Fall }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Ghostfish, new FishItem((int)ObjectIndexes.Ghostfish) {
-				AvailableLocations = new List<Locations> { Locations.UndergroundMine },
+				AvailableLocations = new List<Locations> { Locations.UndergroundMine }
 			} },
 			{ (int)ObjectIndexes.Stonefish, new FishItem((int)ObjectIndexes.Stonefish) {
-				AvailableLocations = new List<Locations> { Locations.UndergroundMine },
+				AvailableLocations = new List<Locations> { Locations.UndergroundMine }
 			} },
 			{ (int)ObjectIndexes.IcePip, new FishItem((int)ObjectIndexes.IcePip) {
-				AvailableLocations = new List<Locations> { Locations.UndergroundMine },
+				AvailableLocations = new List<Locations> { Locations.UndergroundMine }
 			} },
 			{ (int)ObjectIndexes.LavaEel, new FishItem((int)ObjectIndexes.LavaEel) {
-				AvailableLocations = new List<Locations> { Locations.UndergroundMine },
+				AvailableLocations = new List<Locations> { Locations.UndergroundMine }
 			} },
 			{ (int)ObjectIndexes.Sandfish, new FishItem((int)ObjectIndexes.Sandfish) {
-				AvailableLocations = new List<Locations> { Locations.Desert },
-				Times = new Range(600, 2000)
+				AvailableLocations = new List<Locations> { Locations.Desert }
 			} },
 			{ (int)ObjectIndexes.ScorpionCarp, new FishItem((int)ObjectIndexes.ScorpionCarp) {
-				AvailableLocations = new List<Locations> { Locations.Desert },
-				Times = new Range(600, 2000)
+				AvailableLocations = new List<Locations> { Locations.Desert }
 			} },
 			{ (int)ObjectIndexes.Sturgeon, new FishItem((int)ObjectIndexes.Sturgeon) {
-				AvailableLocations = new List<Locations> { Locations.Mountain },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.TigerTrout, new FishItem((int)ObjectIndexes.TigerTrout) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Fall, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.Bullhead, new FishItem((int)ObjectIndexes.Bullhead) {
 				AvailableLocations = new List<Locations> { Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.Tilapia, new FishItem((int)ObjectIndexes.Tilapia) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				Times = new Range(600, 1400),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer, Seasons.Fall }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Chub, new FishItem((int)ObjectIndexes.Chub) {
 				AvailableLocations = new List<Locations> { Locations.Forest, Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.Dorado, new FishItem((int)ObjectIndexes.Dorado) {
-				AvailableLocations = new List<Locations> { Locations.Forest },
-				Times = new Range(600, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Summer }
+				AvailableLocations = new List<Locations> { Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.Albacore, new FishItem((int)ObjectIndexes.Albacore) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				ExcludedTimes = new Range(1100, 1800),
-				AvailableSeasons = new List<Seasons> { Seasons.Fall, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Shad, new FishItem((int)ObjectIndexes.Shad) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest },
-				Times = new Range(900, 2600),
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Fall },
-				Weathers = new List<Weather> { Weather.Rain }
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.Lingcod, new FishItem((int)ObjectIndexes.Lingcod) {
-				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest, Locations.Mountain },
-				Times = new Range(1200, 1600),
-				AvailableSeasons = new List<Seasons> { Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Town, Locations.Forest, Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.Halibut, new FishItem((int)ObjectIndexes.Halibut) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				ExcludedTimes = new Range(1100, 1900),
-				AvailableSeasons = new List<Seasons> { Seasons.Spring, Seasons.Summer, Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Woodskip, new FishItem((int)ObjectIndexes.Woodskip) {
-				AvailableLocations = new List<Locations> { Locations.Woods },
+				AvailableLocations = new List<Locations> { Locations.Woods }
 			} },
 			{ (int)ObjectIndexes.VoidSalmon, new FishItem((int)ObjectIndexes.VoidSalmon, ObtainingDifficulties.Impossible) {
 				AvailableLocations = new List<Locations> { Locations.WitchSwamp }
@@ -592,36 +529,26 @@ namespace Randomizer
 			{ (int)ObjectIndexes.Slimejack, new FishItem((int)ObjectIndexes.Slimejack, ObtainingDifficulties.Impossible) {
 				AvailableLocations = new List<Locations> { Locations.BugLand }
 			} },
-
 			{ (int)ObjectIndexes.MidnightSquid, new FishItem((int)ObjectIndexes.MidnightSquid, ObtainingDifficulties.RareItem) {
-				AvailableLocations = new List<Locations> { Locations.NightMarket },
-				AvailableSeasons = new List<Seasons> { Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.NightMarket }
 			} },
 			{ (int)ObjectIndexes.SpookFish, new FishItem((int)ObjectIndexes.SpookFish, ObtainingDifficulties.RareItem) {
-				AvailableLocations = new List<Locations> { Locations.NightMarket },
-				AvailableSeasons = new List<Seasons> { Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.NightMarket }
 			} },
 			{ (int)ObjectIndexes.Blobfish, new FishItem((int)ObjectIndexes.Blobfish, ObtainingDifficulties.RareItem) {
-				AvailableLocations = new List<Locations> { Locations.NightMarket },
-				AvailableSeasons = new List<Seasons> { Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.NightMarket }
 			} },
-
 			{ (int)ObjectIndexes.Crimsonfish, new FishItem((int)ObjectIndexes.Crimsonfish, ObtainingDifficulties.EndgameItem) {
-				AvailableLocations = new List<Locations> { Locations.Beach },
-				AvailableSeasons = new List<Seasons> { Seasons.Summer }
+				AvailableLocations = new List<Locations> { Locations.Beach }
 			} },
 			{ (int)ObjectIndexes.Angler, new FishItem((int)ObjectIndexes.Angler, ObtainingDifficulties.EndgameItem) {
-				AvailableLocations = new List<Locations> { Locations.Town },
-				AvailableSeasons = new List<Seasons> { Seasons.Fall }
+				AvailableLocations = new List<Locations> { Locations.Town }
 			} },
 			{ (int)ObjectIndexes.Legend, new FishItem((int)ObjectIndexes.Legend, ObtainingDifficulties.EndgameItem) {
-				AvailableLocations = new List<Locations> { Locations.Mountain },
-				AvailableSeasons = new List<Seasons> { Seasons.Spring },
-				Weathers = new List<Weather> { Weather.Rain }
+				AvailableLocations = new List<Locations> { Locations.Mountain }
 			} },
 			{ (int)ObjectIndexes.Glacierfish, new FishItem((int)ObjectIndexes.Glacierfish, ObtainingDifficulties.EndgameItem) {
-				AvailableLocations = new List<Locations> { Locations.Forest },
-				AvailableSeasons = new List<Seasons> { Seasons.Winter }
+				AvailableLocations = new List<Locations> { Locations.Forest }
 			} },
 			{ (int)ObjectIndexes.MutantCarp, new FishItem((int)ObjectIndexes.MutantCarp, ObtainingDifficulties.EndgameItem) {
 				AvailableLocations = new List<Locations> { Locations.Sewer }

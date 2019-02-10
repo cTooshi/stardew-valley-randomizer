@@ -124,7 +124,7 @@ namespace Randomizer
 			return (CreateNameFromPieces(numberOfNames, adjectives, prefixes, suffixes));
 		}
 
-		public static List<string> GenerateFlowerNames(int numberOfNames)
+		public static List<string> GenerateFlowerNames (int numberOfNames)
 		{
 			List<string> adjectives = new List<string>
 			{
@@ -189,6 +189,182 @@ namespace Randomizer
 			};
 
 			return (CreateNameFromPieces(numberOfNames, adjectives, prefixes, suffixes));
+		}
+
+		public static List<string> GenerateFishNames(int numberOfNames)
+		{
+			List<string> adjectives = new List<string>
+			{
+				"Largemouth",
+				"Smallmouth",
+				"Rainbow",
+				"Jumping",
+				"Salty",
+				"Fresh",
+				"Super",
+				"Ice",
+				"Lava",
+				"Sandy",
+				"Void",
+				"Armored",
+				"Atlantic",
+				"Bristlemouth",
+				"Bigeye",
+				"Cutthroat",
+				"Deepwater",
+				"Dwarf",
+				"Electric",
+				"Flathead",
+				"Glass",
+				"Round",
+				"Ribbon",
+				"Fat",
+				"Sabertooth",
+				"Toxic",
+				"Whale",
+				"Whitetip",
+				"Thorn",
+				"Sixgill",
+				"Southern",
+				"Pacific"
+			};
+
+			List<string> prefixes = new List<string>
+			{
+				"Puffer",
+				"Tu",
+				"Brea",
+				"Trou",
+				"Sal",
+				"Wal",
+				"Per",
+				"Car",
+				"Dog",
+				"Pi",
+				"Son",
+				"Ee",
+				"Un",
+				"Octop",
+				"Squi",
+				"Gost",
+				"Bull",
+				"Chu",
+				"Dour",
+				"Alba",
+				"Sha",
+				"Linc",
+				"Halli",
+				"Wo",
+				"Ange",
+				"Ancho",
+				"Drago",
+				"Bara",
+				"Ba",
+				"Bram",
+				"Bone",
+				"Box",
+				"Bri",
+				"Can",
+				"Lem",
+				"Dab",
+				"Dart",
+				"Floun",
+				"Mor",
+				"Gob",
+				"Grou",
+				"Had",
+				"Ho",
+				"Ma",
+				"Ina",
+				"Koi",
+				"Kelp",
+				"Moon",
+				"Mar",
+				"Milk",
+				"Mul",
+				"Mud",
+				"Pol",
+				"Piran",
+				"Quill",
+				"Rock",
+				"Sol",
+				"Lun",
+				"Sting",
+				"Star",
+				"Squea",
+				"Vel",
+				"Tilla"
+			};
+
+			List<string> suffixes = new List<string>
+			{
+				"phish",
+				"dine",
+				"t",
+				"m",
+				"eye",
+				"ch",
+				"arp",
+				"let",
+				"rring",
+				"opus",
+				"apper",
+				"umber",
+				"ion",
+				"geon",
+				"out",
+				"ub",
+				"ado",
+				"chore",
+				"ad",
+				"cod",
+				"bu",
+				"skip",
+				"jack",
+				"ling",
+				"ish",
+				"ma",
+				"ovy",
+				"shark",
+				"cuda",
+				"ass",
+				"luga",
+				"fin",
+				"tongue",
+				"diru",
+				"sucker",
+				"oach",
+				"ray",
+				"now",
+				"kerel",
+				"ail",
+				"ag",
+				"k",
+				"g",
+				"et",
+				"b",
+				"sh",
+				"ock",
+				"ki",
+				"d",
+				"f",
+				"h",
+				"m",
+				"enn",
+				"skipper",
+				"ha",
+				"le",
+				"ng",
+				"ley",
+				"ace",
+				"apia",
+				"io",
+				"gel",
+				"ghoti"
+			};
+
+			return (CreateNameFromPieces(numberOfNames, adjectives, prefixes, suffixes));
+
 		}
 
 		public static List<string> GenerateCropDescriptions(int numberOfDescriptions)
@@ -595,9 +771,10 @@ namespace Randomizer
 
 					if (Globals.RNGGetNextBoolean(10) && adjectives.Count > 0) newName = $"{Globals.RNGGetAndRemoveRandomValueFromList(adjectives)} {newName}";
 					createdNames.Add(newName);
+					Globals.ConsoleWrite(newName);
 				} else
 				{
-					Globals.ConsoleWrite("Error generating new crop name: not enough prefixes/suffixes in lists");
+					Globals.ConsoleWrite("Error generating new name: not enough prefixes/suffixes in lists");
 				}
 			}
 
