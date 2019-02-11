@@ -68,21 +68,10 @@ namespace Randomizer
 			}
 		}
 
-		public void CalculateReplacementsBeforeLoad(Random placeHolderNumber)
+		public void CalculateReplacementsBeforeLoad()
 		{
 			// Replace title screen
 			this.AddReplacement("Minigames/TitleButtons", "Assets/Minigames/TitleButtons");
-		}
-
-		public void CalculateReplacementsOnCreation(Random rng2)
-		{
-			/* Add palm trees to farm
-            string[] possibleFarms = { "", "_Combat", "_Fishing", "_Foraging", "_Mining"};
-            for (int i = 0; i < possibleFarms.Length; i++) { 
-            this.AddReplacement($"Maps/Farm{possibleFarms[i]}", $"Assets/Maps/Farm{possibleFarms[i]}Palm");
-                this._mod.Monitor.Log($"Farm{possibleFarms[i]} has palm trees!");
-            }
-           */
 		}
 
 		/// <summary>
