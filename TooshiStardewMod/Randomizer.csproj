@@ -47,8 +47,10 @@
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
     <Compile Include="QuestRandomizer.cs" />
+    <Compile Include="CraftingRecipeRandomizer.cs" />
     <Compile Include="CropGrowthInformation.cs" />
     <Compile Include="Enums\FishBehaviorType.cs" />
+    <Compile Include="Enums\RainTypes.cs" />
     <Compile Include="FishRandomizer.cs" />
     <Compile Include="Item\FishData.cs" />
     <Compile Include="NameAndDescriptionRandomizer.cs" />
@@ -132,6 +134,8 @@
     <Compile Include="PossibleSwap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />
+    <Compile Include="SpoilerLogger.cs" />
+    <Compile Include="StringsRandomizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Characters\Abigail.xnb">
@@ -528,6 +532,7 @@
     <None Include="Assets\TileSheets\PotatoRain.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\TileSheets\StandardRain.xnb" />
     <None Include="manifest.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

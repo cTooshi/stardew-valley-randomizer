@@ -40,7 +40,6 @@
 		PantryDesert,
 		PantryDessert,
 		PantryMexicanFood,
-		PantryAsianFood,
 		PantryColorGreen,
 		PantryColorBrown,
 
