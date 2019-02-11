@@ -49,6 +49,7 @@
     <Compile Include="CraftingRecipeRandomizer.cs" />
     <Compile Include="CropGrowthInformation.cs" />
     <Compile Include="Enums\FishBehaviorType.cs" />
+    <Compile Include="Enums\RainTypes.cs" />
     <Compile Include="FishRandomizer.cs" />
     <Compile Include="Item\FishData.cs" />
     <Compile Include="NameAndDescriptionRandomizer.cs" />
@@ -529,6 +530,7 @@
     <None Include="Assets\TileSheets\PotatoRain.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\TileSheets\StandardRain.xnb" />
     <None Include="manifest.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

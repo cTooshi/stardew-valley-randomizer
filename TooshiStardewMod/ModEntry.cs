@@ -14,11 +14,40 @@ namespace Randomizer
 		public static Dictionary<string, bool> configDict;
 
 		public PossibleSwap[] PossibleSwaps = {
-			new PossibleSwap("Pierre", "Lewis"), new PossibleSwap("Wizard", "Sandy"), new PossibleSwap("Willy", "Pam"), new PossibleSwap("Abigail", "Marnie"), new PossibleSwap("MrQi", "Gunther"), new PossibleSwap("Marlon", "Governor"), new PossibleSwap("Caroline", "Evelyn"), new PossibleSwap("Pam", "Haley"), new PossibleSwap("Morris", "Krobus"), new PossibleSwap("Gus", "Elliott"), new PossibleSwap("Linus", "Pam"), new PossibleSwap("Kent", "Pierre"),
-			new PossibleSwap("Sandy", "Maru"), new PossibleSwap("Sebastian", "Wizard"), new PossibleSwap("Jas", "Vincent"), new PossibleSwap("Krobus", "Dwarf"), new PossibleSwap("Leah", "Marnie"), new PossibleSwap("Henchman", "Bouncer"),
-			new PossibleSwap("Harvey", "Gus"), new PossibleSwap("Bouncer", "Gunther"), new PossibleSwap("Gunther", "Governor"), new PossibleSwap("Evelyn", "Jodi"), new PossibleSwap("George", "Wizard"), new PossibleSwap("Emily", "Marnie"), new PossibleSwap("Sam", "Linus"), new PossibleSwap("Alex", "Gus"), new PossibleSwap("Penny", "Sandy"), new PossibleSwap("Morris", "Governor"),
-
-			new PossibleSwap("Haley", "Alex"), new PossibleSwap("Harvey", "Maru"), new PossibleSwap("Abigail", "Sebastian"), new PossibleSwap("Penny", "Sam"), new PossibleSwap("Leah", "Elliott"), new PossibleSwap("Shane", "Emily"),
+			new PossibleSwap("Pierre", "Lewis"),
+			new PossibleSwap("Wizard", "Sandy"),
+			new PossibleSwap("Willy", "Pam"),
+			new PossibleSwap("Abigail", "Marnie"),
+			new PossibleSwap("MrQi", "Gunther"),
+			new PossibleSwap("Marlon", "Governor"),
+			new PossibleSwap("Caroline", "Evelyn"),
+			new PossibleSwap("Pam", "Haley"),
+			new PossibleSwap("Morris", "Krobus"),
+			new PossibleSwap("Gus", "Elliott"),
+			new PossibleSwap("Linus", "Pam"),
+			new PossibleSwap("Kent", "Pierre"),
+			new PossibleSwap("Sandy", "Maru"),
+			new PossibleSwap("Sebastian", "Wizard"),
+			new PossibleSwap("Jas", "Vincent"),
+			new PossibleSwap("Krobus", "Dwarf"),
+			new PossibleSwap("Leah", "Marnie"),
+			new PossibleSwap("Henchman", "Bouncer"),
+			new PossibleSwap("Harvey", "Gus"),
+			new PossibleSwap("Bouncer", "Gunther"),
+			new PossibleSwap("Gunther", "Governor"),
+			new PossibleSwap("Evelyn", "Jodi"),
+			new PossibleSwap("George", "Wizard"),
+			new PossibleSwap("Emily", "Marnie"),
+			new PossibleSwap("Sam", "Linus"),
+			new PossibleSwap("Alex", "Gus"),
+			new PossibleSwap("Penny", "Sandy"),
+			new PossibleSwap("Morris", "Governor"),
+			new PossibleSwap("Haley", "Alex"),
+			new PossibleSwap("Harvey", "Maru"),
+			new PossibleSwap("Abigail", "Sebastian"),
+			new PossibleSwap("Penny", "Sam"),
+			new PossibleSwap("Leah", "Elliott"),
+			new PossibleSwap("Shane", "Emily"),
 			new PossibleSwap("Shane", "Pam")
 		};
 
@@ -54,6 +83,7 @@ namespace Randomizer
 			this.PreLoadReplacments();
 			SaveEvents.AfterLoad += (sender, args) => this.CalculateAllReplacements();
 			GameEvents.UpdateTick += (sender, args) => this.CheckSong();
+			helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain;
 		}
 
 		public void PreLoadReplacments()

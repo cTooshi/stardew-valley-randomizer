@@ -18,7 +18,7 @@ namespace Randomizer
 
 			// Fix the "Parsnip" string at the start of the game
 			string parsnipSeedName = ItemList.Items[(int)ObjectIndexes.ParsnipSeeds].Name;
-			stringReplacements["Farmer.cs.1918"] = $"You received 15 {parsnipSeedName}!^^'The name is not accurate but everything else should be!^-Rando Mod Dev'";
+			stringReplacements["Farmer.cs.1918"] = $"You received 15 {parsnipSeedName}!^^'I found these seeds - I think they're Parsnip seeds but they probably aren't!^-Mayor Lewis'";
 
 			return stringReplacements;
 		}

@@ -1,4 +1,5 @@
 ﻿using StardewModdingAPI;
+using StardewModdingAPI.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,20 +33,15 @@ namespace Randomizer
 
 		public T Load<T>(IAssetInfo asset)
 		{
-			// Normalize the asset name
-
-
 			string normalizedAssetName = this._mod.Helper.Content.NormaliseAssetName(asset.AssetName);
 
 			// Try to get the replacement asset from the replacements dictionary
 			if (this._replacements.TryGetValue(normalizedAssetName, out string replacementAsset))
 			{
 				return this._mod.Helper.Content.Load<T>(replacementAsset, ContentSource.ModFolder);
-
 			}
 
 			throw new InvalidOperationException($"Unknown asset: {asset.AssetName}.");
-
 		}
 
 
@@ -185,31 +181,6 @@ namespace Randomizer
 				}
 			}
 
-			// Replace rain
-			if (ModEntry.configDict.ContainsKey("rain") ? ModEntry.configDict["rain"] : true)
-			{
-				switch (Globals.RNG.Next(0, 6))
-				{
-					case 0:
-						this.AddReplacement("TileSheets/rain", "Assets/TileSheets/PotatoRain");
-						break;
-					case 1:
-						this.AddReplacement("TileSheets/rain", "Assets/TileSheets/EggplantRain");
-						break;
-					case 2:
-						this.AddReplacement("TileSheets/rain", "Assets/TileSheets/CatsAndDogsRain");
-						break;
-					case 3:
-						this.AddReplacement("TileSheets/rain", "Assets/TileSheets/JunimoRain");
-						break;
-					case 4:
-						this.AddReplacement("TileSheets/rain", "Assets/TileSheets/SkullRain");
-						break;
-					case 5:
-						break;
-				}
-			}
-
 			// Character swaps
 			if (ModEntry.configDict.ContainsKey("npc skins") ? ModEntry.configDict["npc skins"] : true)
 			{
@@ -251,6 +222,23 @@ namespace Randomizer
 					swapsRemaining--;
 				}
 			}
+
+			ReplaceRain();
+		}
+
+		/// <summary>
+		/// Replaces the rain - intended to be called once per day start
+		/// <param name="sender">The event sender.</param>
+		/// <param name="e">The event arguments.</param>
+		/// </summary>
+		public void ReplaceRain(object sender = null, DayEndingEventArgs e = null)
+		{
+			_mod.Helper.Content.InvalidateCache("TileSheets/rain");
+
+			RainTypes rainType = Globals.RNGGetRandomValueFromList(
+				Enum.GetValues(typeof(RainTypes)).Cast<RainTypes>().ToList());
+
+			AddReplacement("TileSheets/rain", $"Assets/TileSheets/{rainType.ToString()}Rain");
 		}
 	}
 }
