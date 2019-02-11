@@ -129,12 +129,6 @@ namespace Randomizer
 
 		public void CalculateEdits()
 		{
-			Globals.RNG.Next();
-			Globals.RNG.Next();
-			Globals.RNG.Next();
-			Globals.RNG.Next();
-			Globals.RNG.Next();
-
 			ValidateItemList();
 
 			EditedObjectInformation editedObjectInfo = new EditedObjectInformation();

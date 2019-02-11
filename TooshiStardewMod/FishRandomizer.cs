@@ -102,6 +102,8 @@ namespace Randomizer
 
 			objectInfoParts[0] = fish.OverrideName;
 			objectInfoParts[4] = fish.OverrideName;
+			objectInfoParts[5] = fish.Description;
+			objectInfoParts[6] = fish.ObjectInformationSuffix;
 
 			return string.Join("/", objectInfoParts);
 		}

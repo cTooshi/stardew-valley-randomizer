@@ -95,6 +95,8 @@ namespace Randomizer
 
 		/// <summary>
 		/// Gets the fish location data string for all the seasons
+		/// Note that the original behaviors for carps and catfish were changed here for ease
+		/// of ensuring that all locations have all the fish they need
 		/// </summary>
 		/// <returns />
 		private string GetFishLocationData()
@@ -163,23 +165,20 @@ namespace Randomizer
 			Locations location = (Location == Locations.Backwoods) ? Locations.Mountain : Location;
 
 			List<int> allFishIds = FishItem.Get().Select(x => x.Id).ToList();
-
-			List<string> fishnames = FishItem.Get(location, season).Select(x => x.Name).ToList();
 			List<int> fishIds = FishItem.Get(location, season).Select(x => x.Id).ToList();
 
 			string[] stringParts = defaultString.Split(' ');
 			int fishIdIndex = 0;
-			bool useCarp = false;
 			for (int i = 0; i < stringParts.Length; i += 2)
 			{
 				// Skips over algae, etc.
-				if (allFishIds.Contains(int.Parse(stringParts[i])) || useCarp)
+				if (allFishIds.Contains(int.Parse(stringParts[i])))
 				{
 					stringParts[i] = fishIds[fishIdIndex].ToString();
 					fishIdIndex++;
 				}
 			}
-			if (fishIdIndex + (useCarp ? 1 : 0) != fishIds.Count)
+			if (fishIdIndex != fishIds.Count)
 			{
 				Globals.ConsoleWrite($"ERROR: Didn't assign all the fish to {Location.ToString()} in the {season.ToString()}! Assigned {fishIdIndex} out of {fishIds.Count}.");
 			}
