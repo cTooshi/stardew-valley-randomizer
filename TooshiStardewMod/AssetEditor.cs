@@ -15,7 +15,7 @@ namespace Randomizer
 		private readonly Dictionary<string, string> _farmEventReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _mailReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<int, string> _fishReplacements = new Dictionary<int, string>();
-		private readonly Dictionary<int, string> _questReplacements = new Dictionary<int, string>();
+		private Dictionary<int, string> _questReplacements = new Dictionary<int, string>();
 		private Dictionary<string, string> _locationsReplacements = new Dictionary<string, string>();
 		private Dictionary<int, string> _objectInformationReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _fruitTreeReplacements = new Dictionary<int, string>();
@@ -87,7 +87,7 @@ namespace Randomizer
 			{
 				this.ApplyEdits(asset, this._fishReplacements);
 			}
-			else if (asset.AssetNameEquals("Data/Quest"))
+			else if (asset.AssetNameEquals("Data/Quests"))
 			{
 				this.ApplyEdits(asset, this._questReplacements);
 			}
@@ -115,7 +115,7 @@ namespace Randomizer
 			this._mod.Helper.Content.InvalidateCache("Data/Events/Farm");
 			this._mod.Helper.Content.InvalidateCache("Data/Mail");
 			this._mod.Helper.Content.InvalidateCache("Data/Fish");
-			this._mod.Helper.Content.InvalidateCache("Data/Quest");
+			this._mod.Helper.Content.InvalidateCache("Data/Quests");
 			this._mod.Helper.Content.InvalidateCache("Data/Locations");
 			this._mod.Helper.Content.InvalidateCache("Data/fruitTrees");
 			this._mod.Helper.Content.InvalidateCache("Data/Crops");
@@ -141,17 +141,18 @@ namespace Randomizer
 			//this.CalculateFarmEventEdits();
 			//this.CalculateMailEdits();
 			this.CalculateFishEdits();
-			this.CalculateQuestEdits();
 			_locationsReplacements = LocationRandomizer.Randomize();
 			_bundleReplacements = BundleRandomizer.Randomize(); // This needs to happen after the location AND the crop replacements
 			MusicReplacements = MusicRandomizer.Randomize();
-			//NameAndDescriptionRandomizer.GenerateFishNames(20);
+			_questReplacements = QuestRandomizer.Randomize();
 
 			//TODO: remove me
-			foreach (Item item in FishItem.Get(true))
-			{
-				Globals.ConsoleWrite(item.ToString());
-			}
+			//foreach (Item item in FishItem.Get(true))
+			//{
+			//	Globals.ConsoleWrite(item.ToString());
+			//}
+
+			
 		}
 
 		/// <summary>
@@ -428,19 +429,5 @@ namespace Randomizer
 
 		}
 
-		private void CalculateQuestEdits()
-		{
-			this._questReplacements.Clear();
-			Random rng = Globals.RNG;
-
-			string[] Quest101Values = new string[4];
-			Quest101Values[0] = "ItemDelivery/Jodi's Request/Jodi needs fresh kale for a recipe she's making. She's asking you to bring her one./Bring Jodi kale./Jodi 250/-1/250/-1/true/Oh, that looks so delicious! Thank you, this is just what I wanted. It's going to be perfect for my yellow curry.";
-			Quest101Values[1] = "ItemDelivery/Jodi's Request/Hey @,^ I heard you've been exploring the abandoned mines, have you seen any frozen tears? I'd love to have one if you find any! /Bring Jodi a frozen tear./Jodi 84/-1/300/-1/true/Wow, you actually found a frozen tear! This will make a great decorative piece.";
-			Quest101Values[2] = "ItemDelivery/Jodi's Request/Hey @,^ Willy told me that you've started fishing, can you catch a halibut for me? I'd like to try a new recipe. /Bring Jodi a halibut./Jodi 708/-1/300/-1/true/Hey the halibut I asked for! I cant wait to make this new dish, here is payment for your trouble.";
-			Quest101Values[3] = "ItemDelivery/Jodi's Request/Jodi needs a fresh cauliflower for a recipe she's making. She's asking you to bring her one./Bring Jodi a cauliflower./Jodi 190/-1/350/-1/true/Oh, that looks so delicious! Thank you, this is just what I wanted. It's going to be perfect for my yellow curry.";
-
-
-			this._questReplacements[101] = Quest101Values[rng.Next(0, 4)];
-		}
 	}
 }

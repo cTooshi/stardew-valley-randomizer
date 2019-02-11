@@ -104,5 +104,18 @@ namespace Randomizer
 
 			return randomValues;
 		}
+
+		/// <summary>
+		/// Returns "a" or "an" based on if word begins with vowel
+		/// </summary>
+
+		public static string GetArticle(string word)
+		{	
+			word = word.ToLower();
+			if (word.StartsWith("a") || word.StartsWith("e") || word.StartsWith("i") || word.StartsWith("o") || word.StartsWith("u"))
+				return "an";
+			else
+				return "a";
+		}
 	}
 }

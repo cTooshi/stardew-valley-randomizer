@@ -60,5 +60,38 @@ namespace Randomizer
 			UniversalHates.AddRange(ItemList.GetTrash());
 			UniversalHates.AddRange(ItemList.GetArtifacts());
 		}
+
+		public static List<string> QuestableNPCsList = new List<string>
+		{ // Kent is not included because of him not appearing for awhile
+			"Alex",
+			"Elliot",
+			"Harvey",
+			"Sam",
+			"Sebastian",
+			"Shane",
+			"Abigail",
+			"Emily",
+			"Haley",
+			"Leah",
+			"Maru",
+			"Penny",
+			"Caroline",
+			"Clint",
+			"Demetrius",
+			"Evelyn",
+			"George",
+			"Gus",
+			"Jas",
+			"Jodi",
+			"Lewis",
+			"Linus",
+			"Marnie",
+			"Pam",
+			"Pierre",
+			"Robin",
+			"Vincent",
+			"Willy",
+			"Wizard"
+		};
 	}
 }
