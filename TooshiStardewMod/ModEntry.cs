@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Randomizer
 {
-	/// <summary>The mod entry point.</summary>
+	/// <summary>The mod entry point</summary>
 	public class ModEntry : Mod
 	{
 		public static Dictionary<string, bool> configDict;
@@ -54,12 +54,8 @@ namespace Randomizer
 		private AssetLoader _modAssetLoader;
 		private AssetEditor _modAssetEditor;
 
-		/*********
-        ** Public methods
-        *********/
-		/// <summary>The mod entry point, called after the mod is first loaded.</summary>
-		/// <param name="helper">Provides simplified APIs for writing mods.</param>
-		///
+		/// <summary>The mod entry point, called after the mod is first loaded</summary>
+		/// <param name="helper">Provides simplified APIs for writing mods</param>
 		public override void Entry(IModHelper helper)
 		{
 			Globals.ModRef = this;
@@ -82,16 +78,22 @@ namespace Randomizer
 
 			this.PreLoadReplacments();
 			SaveEvents.AfterLoad += (sender, args) => this.CalculateAllReplacements();
-			GameEvents.UpdateTick += (sender, args) => this.CheckSong();
+			GameEvents.UpdateTick += (sender, args) => this.TryReplaceSong();
 			helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain;
 		}
 
+		/// <summary>
+		/// Loads the replacements that can be loaded before a game is selected
+		/// </summary>
 		public void PreLoadReplacments()
 		{
 			this._modAssetLoader.CalculateReplacementsBeforeLoad();
 			this._modAssetEditor.CalculateEditsBeforeLoad();
 		}
 
+		/// <summary>
+		/// Does all the randomizer replacements that take place after a game is loaded
+		/// </summary>
 		public void CalculateAllReplacements()
 		{
 			//Seed is pulled from farm name
@@ -111,8 +113,16 @@ namespace Randomizer
 			this._modAssetEditor.InvalidateCache();
 		}
 
+		/// <summary>
+		/// The last song that played/is playing
+		/// </summary>
 		private string _lastCurrentSong { get; set; }
-		public void CheckSong()
+
+		/// <summary>
+		/// Attempts to replace the current song with a different one
+		/// If the song was barely replaced, it doesn't do anything
+		/// </summary>
+		public void TryReplaceSong()
 		{
 			//Game1.addHUDMessage(new HUDMessage(Game1.currentSong?.Name));
 
@@ -123,21 +133,5 @@ namespace Randomizer
 				Game1.changeMusicTrack(value);
 			}
 		}
-
-		/*********
-        ** Private methods
-        *********/
-		/// <summary>The method invoked when the player presses a controller, keyboard, or mouse button.</summary>
-		/// <param name="sender">The event sender.</param>
-		/// <param name="e">The event data.</param>
-		private void InputEvents_ButtonPressed(object sender, EventArgsInput e)
-		{
-			if (Context.IsWorldReady) // save is loaded
-			{
-				// this.Monitor.Log($"Save ID: {Game1.uniqueIDForThisGame}");
-				// this.Monitor.Log($"Seed: {seed}");
-			}
-		}
-
 	}
 }

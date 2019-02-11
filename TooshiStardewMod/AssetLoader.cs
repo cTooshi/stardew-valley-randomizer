@@ -233,6 +233,7 @@ namespace Randomizer
 		/// </summary>
 		public void ReplaceRain(object sender = null, DayEndingEventArgs e = null)
 		{
+			if (Globals.RNG == null) { return; }
 			_mod.Helper.Content.InvalidateCache("TileSheets/rain");
 
 			RainTypes rainType = Globals.RNGGetRandomValueFromList(
