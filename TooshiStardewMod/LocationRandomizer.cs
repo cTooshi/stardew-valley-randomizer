@@ -36,23 +36,23 @@ namespace Randomizer
 			var locationsReplacements = new Dictionary<string, string>();
 			GroupForagablesBySeason();
 
-			List<ForagableLocationData> foragableLocationDataList = GetForagableLocationDataList();
+			List<LocationData> foragableLocationDataList = GetForagableLocationDataList();
 
 			//TODO: create a spoiler log instead of dumping everything to the console
-			Globals.ConsoleWrite("======== Begin Foragable Replacements ========");
-			foreach (ForagableLocationData foragableLocationData in foragableLocationDataList)
+			//Globals.ConsoleWrite("======== Begin Foragable Replacements ========");
+			foreach (LocationData foragableLocationData in foragableLocationDataList)
 			{
 				locationsReplacements.Add(foragableLocationData.LocationName, foragableLocationData.ToString());
 
-				Globals.ConsoleWrite("");
-				Globals.ConsoleWrite($">> {foragableLocationData.LocationName} <<");
+				//Globals.ConsoleWrite("");
+				//Globals.ConsoleWrite($">> {foragableLocationData.LocationName} <<");
 
 				WriteResultsForSeason(Seasons.Spring, foragableLocationData);
 				WriteResultsForSeason(Seasons.Summer, foragableLocationData);
 				WriteResultsForSeason(Seasons.Fall, foragableLocationData);
 				WriteResultsForSeason(Seasons.Winter, foragableLocationData);
 			}
-			Globals.ConsoleWrite("======== End Foragable Replacements ========");
+			//Globals.ConsoleWrite("======== End Foragable Replacements ========");
 
 			return locationsReplacements;
 		}
@@ -62,7 +62,7 @@ namespace Randomizer
 		/// </summary>
 		/// <param name="season">The season to write the results for</param>
 		/// <param name="locationData">The data to write the results for</param>
-		private static void WriteResultsForSeason(Seasons season, ForagableLocationData locationData)
+		private static void WriteResultsForSeason(Seasons season, LocationData locationData)
 		{
 			List<ForagableData> dataToWrite = null;
 			switch (season)
@@ -83,15 +83,15 @@ namespace Randomizer
 
 			if (dataToWrite == null)
 			{
-				Globals.ConsoleWrite($"ERROR: Could not find the foragable list for {season.ToString()}");
+				//Globals.ConsoleWrite($"ERROR: Could not find the foragable list for {season.ToString()}");
 				return;
 			}
 
-			Globals.ConsoleWrite("");
-			Globals.ConsoleWrite(season.ToString());
+			//Globals.ConsoleWrite("");
+			//Globals.ConsoleWrite(season.ToString());
 			foreach (ForagableData foragableData in dataToWrite)
 			{
-				Globals.ConsoleWrite($"{foragableData.ItemId}: {ItemList.Items[foragableData.ItemId].Name} | {foragableData.ItemRarity}");
+				//Globals.ConsoleWrite($"{foragableData.ItemId}: {ItemList.Items[foragableData.ItemId].Name} | {foragableData.ItemRarity}");
 			}
 		}
 
@@ -187,7 +187,7 @@ namespace Randomizer
 		/// Gets the list for foragable location data - one per location
 		/// </summary>
 		/// <returns></returns>
-		private static List<ForagableLocationData> GetForagableLocationDataList()
+		private static List<LocationData> GetForagableLocationDataList()
 		{
 			var foragableLocations = new List<Locations>
 			{
@@ -202,7 +202,7 @@ namespace Randomizer
 				Locations.Woods
 			};
 
-			var forgabableLocationDataList = new List<ForagableLocationData>();
+			var forgabableLocationDataList = new List<LocationData>();
 			foreach (Locations location in foragableLocations)
 			{
 				// Add any item to the desert
@@ -211,7 +211,7 @@ namespace Randomizer
 					AddUniqueNewForagable(DesertForagables);
 				}
 
-				ForagableLocationData foragableLocationData = new ForagableLocationData()
+				LocationData foragableLocationData = new LocationData()
 				{
 					Location = location
 				};
@@ -232,7 +232,7 @@ namespace Randomizer
 		/// </summary>
 		/// <param name="foragableLocationData">The location data</param>
 		/// <param name="season">The season</param>
-		private static void PopulateLocationBySeason(ForagableLocationData foragableLocationData, Seasons season)
+		private static void PopulateLocationBySeason(LocationData foragableLocationData, Seasons season)
 		{
 			List<ForagableData> foragableDataList = null;
 			List<Item> foragableItemList = null;

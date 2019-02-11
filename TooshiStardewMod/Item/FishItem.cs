@@ -162,7 +162,20 @@ namespace Randomizer
 		/// <summary>
 		/// Gets all the fish that can be caught at a given location
 		/// </summary>
-		/// <param name="location">The weather type</param>
+		/// <param name="location">The location</param>
+		/// <param name="season">The season</param>
+		/// <param name="includeLegendaries">Include the legendary fish</param>
+		/// <returns />
+		public static List<Item> Get(Locations location, Seasons season, bool includeLegendaries = false)
+		{
+			List<FishItem> fishFromSeason = Get(season, includeLegendaries).Cast<FishItem>().ToList();
+			return fishFromSeason.Where(x => x.AvailableLocations.Contains(location)).Cast<Item>().ToList();
+		}
+
+		/// <summary>
+		/// Gets all the fish that can be caught at a given location and season
+		/// </summary>
+		/// <param name="location">The location</param>
 		/// <param name="includeLegendaries">Include the legendary fish</param>
 		/// <returns />
 		public static List<Item> Get(Locations location, bool includeLegendaries = false)

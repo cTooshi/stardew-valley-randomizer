@@ -13,7 +13,7 @@ namespace Randomizer
 		{
 			List<FishItem> legendaryFish = FishItem.GetLegendaries().Cast<FishItem>().ToList();
 			List<FishItem> normalFish = FishItem.Get().Cast<FishItem>().ToList();
-			List<FishItem> normalFishCopy = new List<FishItem>(normalFish);
+			List<FishItem> normalFishCopy = new List<FishItem>();
 			foreach (FishItem fish in normalFish)
 			{
 				FishItem fishInfo = new FishItem(fish.Id, true);
@@ -56,6 +56,7 @@ namespace Randomizer
 			toFish.ExcludedTimes = new Range(fromFish.ExcludedTimes.MinValue, fromFish.ExcludedTimes.MaxValue);
 			toFish.Weathers = new List<Weather>(fromFish.Weathers);
 			toFish.AvailableLocations = new List<Locations>(fromFish.AvailableLocations);
+			toFish.AvailableSeasons = new List<Seasons>(fromFish.AvailableSeasons);
 		}
 
 		/// <summary>

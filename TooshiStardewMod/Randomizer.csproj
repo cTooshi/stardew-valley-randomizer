@@ -86,7 +86,7 @@
     <Compile Include="Item\ForagableItem.cs" />
     <Compile Include="Item\ItemList.cs" />
     <Compile Include="Enums\Seasons.cs" />
-    <Compile Include="Item\ForagableLocationData.cs" />
+    <Compile Include="Item\LocationData.cs" />
     <Compile Include="Item\Item.cs" />
     <Compile Include="Item\ResourceItem.cs" />
     <Compile Include="Item\SmeltedItem.cs" />

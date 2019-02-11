@@ -14,7 +14,7 @@ namespace Randomizer
 			get { return GetName(); }
 		}
 		public string OverrideName { get; set; }
-		public ForagableLocationData ForagableLocationData { get; } = new ForagableLocationData();
+		public LocationData ForagableLocationData { get; } = new LocationData();
 		public bool ShouldBeForagable { get; set; }
 		public bool IsForagable
 		{

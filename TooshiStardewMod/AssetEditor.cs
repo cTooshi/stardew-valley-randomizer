@@ -129,6 +129,12 @@ namespace Randomizer
 
 		public void CalculateEdits()
 		{
+			Globals.RNG.Next();
+			Globals.RNG.Next();
+			Globals.RNG.Next();
+			Globals.RNG.Next();
+			Globals.RNG.Next();
+
 			ValidateItemList();
 
 			EditedObjectInformation editedObjectInfo = new EditedObjectInformation();
@@ -149,7 +155,6 @@ namespace Randomizer
 			_locationsReplacements = LocationRandomizer.Randomize();
 			_bundleReplacements = BundleRandomizer.Randomize(); // This needs to happen after the location AND the crop replacements
 			MusicReplacements = MusicRandomizer.Randomize();
-			//NameAndDescriptionRandomizer.GenerateFishNames(20);
 
 			//TODO: remove me
 			foreach (Item item in FishItem.Get(true))
