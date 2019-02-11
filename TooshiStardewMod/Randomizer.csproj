@@ -133,6 +133,7 @@
     <Compile Include="PossibleSwap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />
+    <Compile Include="SpoilerLogger.cs" />
     <Compile Include="StringsRandomizer.cs" />
   </ItemGroup>
   <ItemGroup>

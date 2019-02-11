@@ -160,22 +160,13 @@ namespace Randomizer
 		/// </summary>
 		private void ValidateItemList()
 		{
-			bool foundIssue = false;
 			foreach (ObjectIndexes index in Enum.GetValues(typeof(ObjectIndexes)).Cast<ObjectIndexes>())
 			{
 				if (!ItemList.Items.ContainsKey((int)index))
 				{
-					foundIssue = true;
 					Globals.ConsoleWrite($"Missing item: {(int)index}: {index.ToString()}");
 				}
 			}
-			if (!foundIssue) { Globals.ConsoleWrite("No issues found with the item index!"); }
-
-			//TODO: move me
-			//foreach (string cropItem in CropGrowthInformation.DefaultStringData.Values)
-			//{
-			//	Globals.ConsoleWrite($"Crop string: {CropGrowthInformation.ParseString(cropItem).ToString()}");
-			//}
 		}
 
 		private void CalculateBlueprintEdits()

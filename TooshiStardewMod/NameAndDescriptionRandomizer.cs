@@ -124,7 +124,7 @@ namespace Randomizer
 			return (CreateNameFromPieces(numberOfNames, adjectives, prefixes, suffixes));
 		}
 
-		public static List<string> GenerateFlowerNames (int numberOfNames)
+		public static List<string> GenerateFlowerNames(int numberOfNames)
 		{
 			List<string> adjectives = new List<string>
 			{
@@ -404,7 +404,7 @@ namespace Randomizer
 				"Your friend [name] is allergic to these.",
 				"Nobody knows whether it's a fruit, vegetable, or none of the above.",
 				"Professional chefs never cook this with [noun].",
-				"The renowed chef, [name] Ramsay, always eats it fresh.",
+				"The renowned chef, [name] Ramsay, always eats it fresh.",
 				"Its sweet aroma may attract [noun].",
 				"Can be carved into a festive decoration for St. [name]'s Day.",
 				"One of the most [adjective] things you've ever smelled.",
@@ -748,7 +748,8 @@ namespace Randomizer
 					newDescription = newDescription.Replace("[adjective]", Globals.RNGGetAndRemoveRandomValueFromList(adjectives));
 					newDescription = newDescription.Replace("[name]", Globals.RNGGetAndRemoveRandomValueFromList(names));
 					createdDescriptions.Add(newDescription);
-				} else
+				}
+				else
 				{
 					Globals.ConsoleWrite("Error generating new crop description: not enough descriptions or string replacements in lists");
 				}
@@ -772,7 +773,8 @@ namespace Randomizer
 					if (Globals.RNGGetNextBoolean(10) && adjectives.Count > 0) newName = $"{Globals.RNGGetAndRemoveRandomValueFromList(adjectives)} {newName}";
 					createdNames.Add(newName);
 					Globals.ConsoleWrite(newName);
-				} else
+				}
+				else
 				{
 					Globals.ConsoleWrite("Error generating new name: not enough prefixes/suffixes in lists");
 				}

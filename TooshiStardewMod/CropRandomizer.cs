@@ -12,6 +12,7 @@ namespace Randomizer
 		{
 			RandomizeCrops(editedObjectInfo);
 			RandomizeFruitTrees(editedObjectInfo);
+			WriteToSpoilerLog();
 		}
 
 		/// <summary>
@@ -363,6 +364,21 @@ namespace Randomizer
 			}
 
 			return (int)(seedPrice * multiplier * regrowthDaysMultiplier * amountPerHarvestMultiplier);
+		}
+
+		private static void WriteToSpoilerLog()
+		{
+			Globals.SpoilerWrite("==== CROPS AND SEEDS ====");
+			foreach (SeedItem seedItem in ItemList.GetSeeds())
+			{
+				if (seedItem.Id == (int)ObjectIndexes.CoffeeBean || seedItem.Id == (int)ObjectIndexes.AncientSeeds) { continue; }
+				CropItem cropItem = (CropItem)ItemList.Items[seedItem.CropGrowthInfo.CropId];
+				Globals.SpoilerWrite($"{cropItem.Name} - Seed Buy Price: {seedItem.Price * 2}G - Crop Sell Price: {cropItem.Price}G");
+				Globals.SpoilerWrite(seedItem.Description);
+				Globals.SpoilerWrite("---");
+
+				//Globals.SpoilerLog.WriteLine($"Crop string: {CropGrowthInformation.ParseString(cropItem).ToString()}");
+			}
 		}
 	}
 }

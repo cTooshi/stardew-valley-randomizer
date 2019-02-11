@@ -107,6 +107,7 @@ namespace Randomizer
 			this.Monitor.Log($"Seed Set: {seed}");
 
 			Globals.RNG = new Random(seed);
+			Globals.SpoilerLog = new SpoilerLogger(Game1.player.farmName);
 
 			// Make replacements and edits
 			this._modAssetLoader.CalculateReplacements();
