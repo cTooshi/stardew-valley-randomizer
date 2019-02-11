@@ -78,8 +78,12 @@ namespace Randomizer
 
 			this.PreLoadReplacments();
 			SaveEvents.AfterLoad += (sender, args) => this.CalculateAllReplacements();
-			GameEvents.UpdateTick += (sender, args) => this.TryReplaceSong();
-			helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain;
+
+			bool canReplaceMusic = configDict.ContainsKey("music") ? configDict["music"] : true;
+			if (canReplaceMusic) { GameEvents.UpdateTick += (sender, args) => this.TryReplaceSong(); }
+
+			bool canReplaceRain = configDict.ContainsKey("rain") ? configDict["rain"] : true;
+			if (!canReplaceRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
 		}
 
 		/// <summary>

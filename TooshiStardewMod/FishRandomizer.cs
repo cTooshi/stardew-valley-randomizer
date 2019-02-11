@@ -30,6 +30,9 @@ namespace Randomizer
 					Enum.GetValues(typeof(FishBehaviorType)).Cast<FishBehaviorType>().ToList());
 				fish.OverrideName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
 
+				bool editCrops = ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true;
+				if (!editCrops) { continue; }
+
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));
 			}
@@ -39,6 +42,9 @@ namespace Randomizer
 				fish.BehaviorType = Globals.RNGGetRandomValueFromList(
 					Enum.GetValues(typeof(FishBehaviorType)).Cast<FishBehaviorType>().ToList());
 				fish.OverrideName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
+
+				bool editCrops = ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true;
+				if (!editCrops) { continue; }
 
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));

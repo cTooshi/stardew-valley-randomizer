@@ -33,15 +33,15 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Data/CraftingRecipes")) { return ModEntry.configDict.ContainsKey("crafting recipes") ? ModEntry.configDict["crafting recipes"] : true; }
 			if (asset.AssetNameEquals("Data/Bundles")) { return ModEntry.configDict.ContainsKey("bundles") ? ModEntry.configDict["bundles"] : true; }
 			if (asset.AssetNameEquals("Data/Blueprints")) { return ModEntry.configDict.ContainsKey("building prices/mats") ? ModEntry.configDict["building prices/mats"] : true; }
-			if (asset.AssetNameEquals("Strings/StringsFromCSFiles")) { return ModEntry.configDict.ContainsKey("intro cutscene madlib") ? ModEntry.configDict["intro cutscene madlib"] : true; }
-			if (asset.AssetNameEquals("Data/ObjectInformation")) { return ModEntry.configDict.ContainsKey("crops prices") ? ModEntry.configDict["crop prices"] : true; }
+			if (asset.AssetNameEquals("Strings/StringsFromCSFiles")) { return true; }
+			if (asset.AssetNameEquals("Data/ObjectInformation")) { return true; }
 			if (asset.AssetNameEquals("Data/Events/Farm")) { return true; }
 			if (asset.AssetNameEquals("Data/Mail")) { return true; }
-			if (asset.AssetNameEquals("Data/Fish")) { return ModEntry.configDict.ContainsKey("fishing difficulty") ? ModEntry.configDict["fishing difficulty"] : true; }
+			if (asset.AssetNameEquals("Data/Fish")) { return ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true; }
 			if (asset.AssetNameEquals("Data/Quests")) { return true; }
-			if (asset.AssetNameEquals("Data/Locations")) { return true; } //TODO: add a setting for this
-			if (asset.AssetNameEquals("Data/fruitTrees")) { return true; } //TODO: add a setting for this
-			if (asset.AssetNameEquals("Data/Crops")) { return true; } //TODO: add a setting for this
+			if (asset.AssetNameEquals("Data/Locations")) { return ModEntry.configDict.ContainsKey("foragable and fish locations") ? ModEntry.configDict["foragable and fish locations"] : true; ; }
+			if (asset.AssetNameEquals("Data/fruitTrees")) { return ModEntry.configDict.ContainsKey("fruit trees") ? ModEntry.configDict["fruit trees"] : true; }
+			if (asset.AssetNameEquals("Data/Crops")) { return ModEntry.configDict.ContainsKey("crops prices") ? ModEntry.configDict["crop prices"] : true; }
 			return false;
 		}
 

@@ -233,6 +233,9 @@ namespace Randomizer
 		/// </summary>
 		public void ReplaceRain(object sender = null, DayEndingEventArgs e = null)
 		{
+			bool canReplaceRain = ModEntry.configDict.ContainsKey("rain") ? ModEntry.configDict["rain"] : true;
+			if (!canReplaceRain) { return; }
+
 			if (Globals.RNG == null) { return; }
 			_mod.Helper.Content.InvalidateCache("TileSheets/rain");
 

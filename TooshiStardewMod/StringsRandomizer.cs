@@ -31,6 +31,9 @@ namespace Randomizer
 		{
 			Dictionary<string, string> stringReplacements = new Dictionary<string, string>();
 
+			bool editStory = ModEntry.configDict.ContainsKey("intro cutscene madlib") ? ModEntry.configDict["intro cutscene madlib"] : true;
+			if (!editStory) { return stringReplacements; }
+
 			string[] Adjective = new string[30];
 			Adjective[0] = $"angry"; Adjective[1] = $"arrogant"; Adjective[2] = $"bored"; Adjective[3] = $"clumsy"; Adjective[4] = $"confused"; Adjective[5] = $"creepy"; Adjective[6] = $"cruel"; Adjective[7] = $"fierce";
 			Adjective[8] = $"mysterious"; Adjective[9] = $"adorable"; Adjective[10] = $"handsome"; Adjective[11] = $"confident"; Adjective[12] = $"glamorous"; Adjective[13] = $"kind"; Adjective[14] = $"pretty"; Adjective[15] = $"calm";
