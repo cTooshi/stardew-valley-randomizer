@@ -14,6 +14,11 @@ namespace Randomizer
 			return Items.Values.Where(x => x.IsResource).ToList();
 		}
 
+		public static string GetItemName(int id)
+		{
+			return ItemList.Items[id].Name;
+		}
+
 		/// <summary>
 		/// Gets all the foragables
 		/// </summary>
@@ -201,6 +206,11 @@ namespace Randomizer
 		public static List<Item> GetAnimalProducts()
 		{
 			return Items.Values.Where(x => x.IsAnimalProduct).ToList();
+		}
+
+		public static List<Item> GetItemsBelowDifficulty(ObtainingDifficulties difficulty)
+		{
+			return Items.Values.Where(x => x.DifficultyToObtain < difficulty).ToList();
 		}
 
 		/// <summary>

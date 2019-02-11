@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
+    <Compile Include="QuestRandomizer.cs" />
     <Compile Include="CropGrowthInformation.cs" />
     <Compile Include="Enums\FishBehaviorType.cs" />
     <Compile Include="FishRandomizer.cs" />
