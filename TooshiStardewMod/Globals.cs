@@ -11,6 +11,7 @@ namespace Randomizer
 	{
 		public static Mod ModRef { get; set; }
 		public static Random RNG { get; set; }
+		public static SpoilerLogger SpoilerLog { get; set; }
 
 		/// <summary>
 		/// A shortcut to write to the console
@@ -19,6 +20,15 @@ namespace Randomizer
 		public static void ConsoleWrite(string input)
 		{
 			ModRef.Monitor.Log(input);
+		}
+
+		/// <summary>
+		/// A shortcut to write to the spoiler log
+		/// </summary>
+		/// <param name="input">The input</param>
+		public static void SpoilerWrite(string input)
+		{
+			SpoilerLog.WriteLine(input);
 		}
 
 		/// <summary>

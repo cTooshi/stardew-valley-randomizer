@@ -8,13 +8,14 @@ namespace Randomizer
 	public class AssetEditor : IAssetEditor
 	{
 		private readonly ModEntry _mod;
-		private readonly Dictionary<string, string> _recipeReplacements = new Dictionary<string, string>();
+		private Dictionary<string, string> _recipeReplacements = new Dictionary<string, string>();
 		private Dictionary<string, string> _bundleReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _blueprintReplacements = new Dictionary<string, string>();
-		private readonly Dictionary<string, string> _stringReplacements = new Dictionary<string, string>();
+		private Dictionary<string, string> _grandpaStringReplacements = new Dictionary<string, string>();
+		private Dictionary<string, string> _stringReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _farmEventReplacements = new Dictionary<string, string>();
 		private readonly Dictionary<string, string> _mailReplacements = new Dictionary<string, string>();
-		private readonly Dictionary<int, string> _fishReplacements = new Dictionary<int, string>();
+		private Dictionary<int, string> _fishReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _questReplacements = new Dictionary<int, string>();
 		private Dictionary<string, string> _locationsReplacements = new Dictionary<string, string>();
 		private Dictionary<int, string> _objectInformationReplacements = new Dictionary<int, string>();
@@ -32,15 +33,15 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Data/CraftingRecipes")) { return ModEntry.configDict.ContainsKey("crafting recipes") ? ModEntry.configDict["crafting recipes"] : true; }
 			if (asset.AssetNameEquals("Data/Bundles")) { return ModEntry.configDict.ContainsKey("bundles") ? ModEntry.configDict["bundles"] : true; }
 			if (asset.AssetNameEquals("Data/Blueprints")) { return ModEntry.configDict.ContainsKey("building prices/mats") ? ModEntry.configDict["building prices/mats"] : true; }
-			if (asset.AssetNameEquals("Strings/StringsFromCSFiles")) { return ModEntry.configDict.ContainsKey("intro cutscene madlib") ? ModEntry.configDict["intro cutscene madlib"] : true; }
-			if (asset.AssetNameEquals("Data/ObjectInformation")) { return ModEntry.configDict.ContainsKey("crops prices") ? ModEntry.configDict["crop prices"] : true; }
+			if (asset.AssetNameEquals("Strings/StringsFromCSFiles")) { return true; }
+			if (asset.AssetNameEquals("Data/ObjectInformation")) { return true; }
 			if (asset.AssetNameEquals("Data/Events/Farm")) { return true; }
 			if (asset.AssetNameEquals("Data/Mail")) { return true; }
-			if (asset.AssetNameEquals("Data/Fish")) { return ModEntry.configDict.ContainsKey("fishing difficulty") ? ModEntry.configDict["fishing difficulty"] : true; }
+			if (asset.AssetNameEquals("Data/Fish")) { return ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true; }
 			if (asset.AssetNameEquals("Data/Quests")) { return true; }
-			if (asset.AssetNameEquals("Data/Locations")) { return true; } //TODO: add a setting for this
-			if (asset.AssetNameEquals("Data/fruitTrees")) { return true; } //TODO: add a setting for this
-			if (asset.AssetNameEquals("Data/Crops")) { return true; } //TODO: add a setting for this
+			if (asset.AssetNameEquals("Data/Locations")) { return ModEntry.configDict.ContainsKey("foragable and fish locations") ? ModEntry.configDict["foragable and fish locations"] : true; ; }
+			if (asset.AssetNameEquals("Data/fruitTrees")) { return ModEntry.configDict.ContainsKey("fruit trees") ? ModEntry.configDict["fruit trees"] : true; }
+			if (asset.AssetNameEquals("Data/Crops")) { return ModEntry.configDict.ContainsKey("crops prices") ? ModEntry.configDict["crop prices"] : true; }
 			return false;
 		}
 
@@ -69,6 +70,7 @@ namespace Randomizer
 			}
 			else if (asset.AssetNameEquals("Strings/StringsFromCSFiles"))
 			{
+				this.ApplyEdits(asset, this._grandpaStringReplacements);
 				this.ApplyEdits(asset, this._stringReplacements);
 			}
 			else if (asset.AssetNameEquals("Data/ObjectInformation"))
@@ -121,38 +123,34 @@ namespace Randomizer
 			this._mod.Helper.Content.InvalidateCache("Data/Crops");
 		}
 
-		//Too change before save is loaded/created
-		public void CalculateEditsBeforeLoad(Random placeHolderNumber)
+		public void CalculateEditsBeforeLoad()
 		{
-			this.CalculateStringEdits(placeHolderNumber);
+			_grandpaStringReplacements = StringsRandomizer.RandomizeGrandpasStory();
 		}
 
 		public void CalculateEdits()
 		{
 			ValidateItemList();
 
-			EditedObjectInformation editedObjectInfo = CropRandomizer.Randomize();
+			EditedObjectInformation editedObjectInfo = new EditedObjectInformation();
+			CropRandomizer.Randomize(editedObjectInfo);
 			_fruitTreeReplacements = editedObjectInfo.FruitTreeReplacements;
-			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
 			_cropReplacements = editedObjectInfo.CropsReplacements;
 
-			this.CalculateRecipeEdits();
+			FishRandomizer.Randomize(editedObjectInfo);
+			_fishReplacements = editedObjectInfo.FishReplacements;
+
+			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
+
 			this.CalculateBlueprintEdits();
 			//this.CalculateFarmEventEdits();
 			//this.CalculateMailEdits();
-			this.CalculateFishEdits();
+			_recipeReplacements = CraftingRecipeRandomizer.Randomize();
+			_stringReplacements = StringsRandomizer.Randomize();
 			_locationsReplacements = LocationRandomizer.Randomize();
-			_bundleReplacements = BundleRandomizer.Randomize(); // This needs to happen after the location AND the crop replacements
+			_bundleReplacements = BundleRandomizer.Randomize();
 			MusicReplacements = MusicRandomizer.Randomize();
 			_questReplacements = QuestRandomizer.Randomize();
-
-			//TODO: remove me
-			//foreach (Item item in FishItem.Get(true))
-			//{
-			//	Globals.ConsoleWrite(item.ToString());
-			//}
-
-			
 		}
 
 		/// <summary>
@@ -160,22 +158,13 @@ namespace Randomizer
 		/// </summary>
 		private void ValidateItemList()
 		{
-			bool foundIssue = false;
 			foreach (ObjectIndexes index in Enum.GetValues(typeof(ObjectIndexes)).Cast<ObjectIndexes>())
 			{
 				if (!ItemList.Items.ContainsKey((int)index))
 				{
-					foundIssue = true;
 					Globals.ConsoleWrite($"Missing item: {(int)index}: {index.ToString()}");
 				}
 			}
-			if (!foundIssue) { Globals.ConsoleWrite("No issues found with the item index!"); }
-
-			//TODO: move me
-			//foreach (string cropItem in CropGrowthInformation.DefaultStringData.Values)
-			//{
-			//	Globals.ConsoleWrite($"Crop string: {CropGrowthInformation.ParseString(cropItem).ToString()}");
-			//}
 		}
 
 		private void CalculateBlueprintEdits()
@@ -301,61 +290,6 @@ namespace Randomizer
 			this._blueprintReplacements["Well"] = $"{wellValues[rng.Next(0, 4)]}/3/3/-1/-1/-1/-1/null/Well/Provides a place for you to refill your watering can. Market price of 1,000g/Buildings/none/32/32/-1/null/Farm/{rng.Next(2, 18) * 100}/false";
 		}
 
-		private void CalculateRecipeEdits()
-		{
-			_recipeReplacements.Clear();
-			foreach (CraftableItem item in ItemList.Items.Values.Where(x => x.IsCraftable))
-			{
-				_recipeReplacements[item.Name] = item.GetCraftingString(); //TODO: keep an eye out for the Name being wrong at some point
-			}
-		}
-
-		private void CalculateStringEdits(Random rng)
-		{
-
-			this._stringReplacements.Clear();
-
-			string[] Adjective = new string[30];
-			Adjective[0] = $"angry"; Adjective[1] = $"arrogrant"; Adjective[2] = $"bored"; Adjective[3] = $"clumsy"; Adjective[4] = $"confused"; Adjective[5] = $"creepy"; Adjective[6] = $"cruel"; Adjective[7] = $"fierce";
-			Adjective[8] = $"mysterious"; Adjective[9] = $"adorable"; Adjective[10] = $"handsome"; Adjective[11] = $"confident"; Adjective[12] = $"glamorous"; Adjective[13] = $"kind"; Adjective[14] = $"pretty"; Adjective[15] = $"calm";
-			Adjective[16] = $"peaceful"; Adjective[17] = $"tranquil"; Adjective[18] = $"fat"; Adjective[19] = $"gigantic"; Adjective[20] = $"immense"; Adjective[21] = $"miniature"; Adjective[22] = $"gigantic";
-			Adjective[23] = $"petite"; Adjective[24] = $"tiny"; Adjective[25] = $"brave"; Adjective[26] = $"charming"; Adjective[27] = $"energetic"; Adjective[28] = $"proud"; Adjective[29] = $"lazy";
-
-			string[] Verb = new string[30];
-			Verb[0] = $"bite"; Verb[1] = $"break"; Verb[2] = $"burn"; Verb[3] = $"dig"; Verb[4] = $"dream"; Verb[5] = $"drink"; Verb[6] = $"fight"; Verb[7] = $"freeze";
-			Verb[8] = $"hide"; Verb[9] = $"hurt"; Verb[10] = $"lose"; Verb[11] = $"read"; Verb[12] = $"sell"; Verb[13] = $"swim"; Verb[14] = $"throw"; Verb[15] = $"understand";
-			Verb[16] = $"write"; Verb[17] = $"lead"; Verb[18] = $"fly"; Verb[19] = $"forget"; Verb[20] = $"dive"; Verb[21] = $"choose"; Verb[22] = $"catch";
-			Verb[23] = $"buy"; Verb[24] = $"bend"; Verb[25] = $"stab"; Verb[26] = $"make"; Verb[27] = $"run"; Verb[28] = $"see"; Verb[29] = $"shred";
-
-			string[] PastVerb = new string[20];
-			PastVerb[0] = $"beat"; PastVerb[1] = $"broke"; PastVerb[2] = $"burned"; PastVerb[3] = $"cut"; PastVerb[4] = $"dug"; PastVerb[5] = $"dove"; PastVerb[6] = $"dreamed"; PastVerb[7] = $"fell";
-			PastVerb[8] = $"fought"; PastVerb[9] = $"froze"; PastVerb[10] = $"grew"; PastVerb[11] = $"hurt"; PastVerb[12] = $"laid"; PastVerb[13] = $"paid"; PastVerb[14] = $"sold"; PastVerb[15] = $"showed";
-			PastVerb[16] = $"threw"; PastVerb[17] = $"woke"; PastVerb[18] = $"swam"; PastVerb[19] = $"tore";
-
-			string[] Noun = new string[30];
-			Noun[0] = $"oven mitt"; Noun[1] = $"canadian"; Noun[2] = $"dank weed"; Noun[3] = $"american"; Noun[4] = $"concerned ape"; Noun[5] = $"dragon"; Noun[6] = $"cold-hearted eskimo"; Noun[7] = $"doge";
-			Noun[8] = $"kappa"; Noun[9] = $"twitch chat"; Noun[10] = $"spaceship"; Noun[11] = $"gift"; Noun[12] = $"cowbell"; Noun[13] = $"shark"; Noun[14] = $"Spiderweb"; Noun[15] = $"canoe";
-			Noun[16] = $"cardigan"; Noun[17] = $"tornado"; Noun[18] = $"underwear"; Noun[19] = $"airplane"; Noun[20] = $"toenail"; Noun[21] = $"pathoschild"; Noun[22] = $"mosquito"; Noun[23] = $"missile";
-			Noun[24] = $"landmine"; Noun[25] = $"hamburger"; Noun[26] = $"gorilla"; Noun[27] = $"noob"; Noun[28] = $"dinosaur"; Noun[29] = "particle accelerator";
-
-			string farmerNameTemp = "{0}";
-			string farmNameTemp = "{1}";
-
-
-			this._stringReplacements["GrandpaStory.cs.12026"] = $"...and for my very {Adjective[rng.Next(0, 30)]} grandson:";
-			this._stringReplacements["GrandpaStory.cs.12028"] = $"...and for my very {Adjective[rng.Next(0, 30)]} granddaughter:";
-			this._stringReplacements["GrandpaStory.cs.12029"] = $"I want you to have this {PastVerb[rng.Next(0, 20)]} envelope.";
-			this._stringReplacements["GrandpaStory.cs.12030"] = $"No, no, don't {Verb[rng.Next(0, 30)]} it yet... have patience.";
-			this._stringReplacements["GrandpaStory.cs.12034"] = $"There will come a day when you feel {PastVerb[rng.Next(0, 20)]} by the burden of modern life...";
-			this._stringReplacements["GrandpaStory.cs.12035"] = $"...and your {Adjective[rng.Next(0, 30)]} spirit will fade before a growing emptiness.";
-			this._stringReplacements["GrandpaStory.cs.12036"] = $"When that happens, my boy, you'll be ready for this {Noun[rng.Next(0, 30)]}.";
-			this._stringReplacements["GrandpaStory.cs.12038"] = $"When that happens, my dear, you'll be ready for this {Noun[rng.Next(0, 30)]}.";
-			this._stringReplacements["GrandpaStory.cs.12040"] = $"Now, let Grandpa {Verb[rng.Next(0, 30)]}...";
-			this._stringReplacements["GrandpaStory.cs.12051"] = $"Dear {farmerNameTemp},^^If you're reading this, you must be in dire need of a {Noun[rng.Next(0, 30)]}.^^The same thing happened to me, long ago. I'd lost sight of what mattered most in life... {Noun[rng.Next(0, 30)]}s. So I {PastVerb[rng.Next(0, 20)]} everything and moved to the place I truly belong.^^^I've enclosed the deed to that place... my pride and joy: {farmNameTemp} Farm. It's located in Stardew Valley, on the {Adjective[rng.Next(0, 30)]} coast. It's the {Adjective[rng.Next(0, 30)]} place to start your new life.^^This was my most precious gift of all, and now it's yours. I know you'll honor the family name, my boy. Good luck.^^Love, Grandpa^^P.S. If Lewis is still alive say hi to the {Adjective[rng.Next(0, 30)]} guy for me, will ya?";
-			this._stringReplacements["GrandpaStory.cs.12055"] = $"Dear {farmerNameTemp},^^If you're reading this, you must be in dire need of a {Noun[rng.Next(0, 30)]}.^^The same thing happened to me, long ago. I'd lost sight of what mattered most in life... {Noun[rng.Next(0, 30)]}s. So I {PastVerb[rng.Next(0, 20)]} everything and moved to the place I truly belong.^^^I've enclosed the deed to that place... my pride and joy: {farmNameTemp} Farm. It's located in Stardew Valley, on the {Adjective[rng.Next(0, 30)]} coast. It's the {Adjective[rng.Next(0, 30)]} place to start your new life.^^This was my most precious gift of all, and now it's yours. I know you'll honor the family name, my boy. Good luck.^^Love, Grandpa^^P.S. If Lewis is still alive say hi to the {Adjective[rng.Next(0, 30)]} guy for me, will ya?";
-
-		}
-
 		private void CalculateFarmEventEdits()
 		{
 			//TODO: replace this code
@@ -367,67 +301,5 @@ namespace Randomizer
 			//TODO: replace this code
 			throw new NotImplementedException();
 		}
-
-		private void CalculateFishEdits()
-		{
-			this._fishReplacements.Clear();
-			Random rng = Globals.RNG;
-
-			string[] fishBehavior = new string[5];
-			fishBehavior[0] = $"floater"; fishBehavior[1] = $"dart"; fishBehavior[2] = $"smooth"; fishBehavior[3] = $"mixed"; fishBehavior[4] = $"sinker";
-
-			IDictionary<Int32, string> FishEdits;
-			FishEdits = new Dictionary<int, string>()
-			{
-				{ (int) ObjectIndexes.Pufferfish, $"Pufferfish/{rng.Next(70,80)}/{fishBehavior[rng.Next(0,5)]}/1/{rng.Next(20,50)}/1200 1600/summer/sunny/690 .4 685 .1/4/.3/.5/0"},
-				{ (int) ObjectIndexes.Anchovy, $"Anchovy/{rng.Next(15,40)}/{fishBehavior[rng.Next(0,5)]}/1/{rng.Next(10,20)}/600 2600/spring fall/both/682 .2/1/.25/.3/0"},
-				{ (int) ObjectIndexes.Tuna, $"Tuna/{rng.Next(60,70)}/{fishBehavior[rng.Next(0,5)]}/12/{rng.Next(30,90)}/600 1900/summer winter/both/689 .35 681 .1/3/.15/.55/0"},
-				{ (int) ObjectIndexes.Sardine, $"Sardine/{rng.Next(10,50)}/{fishBehavior[rng.Next(0,5)]}/1/{rng.Next(6,18)}/600 1900/spring summer fall winter/both/683 .3/1/.65/.1/0"},
-				{ (int) ObjectIndexes.Bream, $"Bream/{rng.Next(20,50)}/{fishBehavior[rng.Next(0,5)]}/12/{rng.Next(15,45)}/1800 2600/spring summer fall winter/both/684 .35/1/.45/.1/0"},
-				{ (int) ObjectIndexes.LargemouthBass, $"Largemouth Bass/{rng.Next(30,65)}/{fishBehavior[rng.Next(0,5)]}/11/{rng.Next(20,40)}/600 1900/spring summer fall winter/both/685 .35/3/.4/.2/0"},
-				{ (int) ObjectIndexes.SmallmouthBass, $"Smallmouth Bass/{rng.Next(15,40)}/{fishBehavior[rng.Next(0,5)]}/12/{rng.Next(15,30)}/600 2600/spring fall/both/682 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.RainbowTrout, $"Rainbow Trout/{rng.Next(30,60)}/{fishBehavior[rng.Next(0,5)]}/10/{rng.Next(15,40)}/600 1900/summer/sunny/684 .35/2/.35/.3/0"},
-				{ (int) ObjectIndexes.Salmon, $"Salmon/{rng.Next(40,60)}/{fishBehavior[rng.Next(0,5)]}/24/{rng.Next(40,90)}/600 1900/fall/both/684 .35/3/.4/.2/0"},
-				{ (int) ObjectIndexes.Walleye, $"Walleye/{rng.Next(30,65)}/{fishBehavior[rng.Next(0,5)]}/10/{rng.Next(20,60)}/1200 2600/fall winter/rainy/680 .35/2/.4/.15/0"},
-				{ (int) ObjectIndexes.Perch, $"Perch/{rng.Next(20,60)}/{fishBehavior[rng.Next(0,5)]}/10/24/600 2600/winter/both/683 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.Carp, $"Carp/{rng.Next(5,30)}/{fishBehavior[rng.Next(0,5)]}/15/50/600 2600/spring summer fall/both/682 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.Catfish, $"Catfish/{rng.Next(55,80)}/{fishBehavior[rng.Next(0,5)]}/12/72/600 2400/spring fall winter/rainy/689 .4 680 .1/4/.4/.1/0"},
-				{ (int) ObjectIndexes.Pike, $"Pike/{rng.Next(40,80)}/{fishBehavior[rng.Next(0,5)]}/15/60/600 2600/summer winter/both/690 .3 681 .1/3/.4/.15/0"},
-				{ (int) ObjectIndexes.Sunfish, $"Sunfish/{rng.Next(15,45)}/{fishBehavior[rng.Next(0,5)]}/5/15/600 1900/spring summer/sunny/683 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.RedMullet, $"Red Mullet/{rng.Next(30,70)}/{fishBehavior[rng.Next(0,5)]}/8/22/600 1900/summer winter/both/680 .25/2/.4/.15/0"},
-				{ (int) ObjectIndexes.Herring, $"Herring/{rng.Next(15,35)}/{fishBehavior[rng.Next(0,5)]}/8/20/600 2600/spring winter/both/685 .2/1/.45/.1/0"},
-				{ (int) ObjectIndexes.Eel, $"Eel/{rng.Next(55,80)}/{fishBehavior[rng.Next(0,5)]}/12/80/1600 2600/spring fall/rainy/689 .35 680 .1/3/.55/.1/0"},
-				{ (int) ObjectIndexes.Octopus, $"Octopus/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/12/48/600 1300/summer/both/688 .6 684 .1/5/.1/.08/0"},
-				{ (int) ObjectIndexes.RedSnapper, $"Red Snapper/{rng.Next(30,50)}/{fishBehavior[rng.Next(0,5)]}/8/25/600 1900/summer fall winter/rainy/682 .25/2/.45/.1/0"},
-				{ (int) ObjectIndexes.Squid, $"Squid/{rng.Next(55,80)}/{fishBehavior[rng.Next(0,5)]}/12/48/1800 2600/winter/both/690 .35 680 .1/3/.35/.3/0"},
-				{ (int) ObjectIndexes.SeaCucumber, $"Sea Cucumber/{rng.Next(30,50)}/{fishBehavior[rng.Next(0,5)]}/3/20/600 1900/fall winter/both/683 .2 689 .4/3/.25/.25/0"},
-				{ (int) ObjectIndexes.SuperCucumber, $"Super Cucumber/{rng.Next(60,90)}/{fishBehavior[rng.Next(0,5)]}/12/36/1800 2600/summer winter/both/683 .2 689 .4/4/.1/.25/0"},
-				{ (int) ObjectIndexes.Ghostfish, $"Ghostfish/{rng.Next(40,60)}/{fishBehavior[rng.Next(0,5)]}/10/35/600 2600/spring summer fall winter/both/684 .35/2/.3/.3/0"},
-				{ (int) ObjectIndexes.Stonefish, $"Stonefish/{rng.Next(40,75)}/{fishBehavior[rng.Next(0,5)]}/15/15/600 2600/spring summer fall winter/both/689 .2/2/.1/.1/3"},
-				{ (int) ObjectIndexes.Crimsonfish, $"Crimsonfish/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/20/20/600 2000/winter/both/690 .15/4/.1/.1/5"},
-				{ (int) ObjectIndexes.Angler, $"Angler/{rng.Next(75,90)}/{fishBehavior[rng.Next(0,5)]}/18/18/600 2600/spring summer fall winter/both/690 .1/4/.05/.1/3"},
-				{ (int) ObjectIndexes.IcePip, $"Ice Pip/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/8/8/600 2600/spring summer fall winter/both/682 .1/2/.05/.1/5"},
-				{ (int) ObjectIndexes.LavaEel, $"Lava Eel/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/32/32/600 2600/spring summer fall winter/both/684 .1/2/.05/.1/7"},
-				{ (int) ObjectIndexes.Sandfish, $"Sandfish/{rng.Next(40,75)}/{fishBehavior[rng.Next(0,5)]}/8/24/600 2000/spring summer fall winter/both/682 .2/1/.65/.1/0"},
-				{ (int) ObjectIndexes.ScorpionCarp, $"Scorpion Carp/{rng.Next(70,95)}/{fishBehavior[rng.Next(0,5)]}/12/32/600 2000/spring summer fall winter/both/683 .4/2/.15/.1/4"},
-				{ (int) ObjectIndexes.Sturgeon, $"Sturgeon/{rng.Next(60,90)}/{fishBehavior[rng.Next(0,5)]}/12/60/600 1900/summer winter/both/689 .35 682 .1/3/.35/.2/0"},
-				{ (int) ObjectIndexes.Bullhead, $"Bullhead/{rng.Next(20,65)}/{fishBehavior[rng.Next(0,5)]}/12/30/600 2600/spring summer fall winter/both/681 .25/2/.35/.2/0"},
-				{ (int) ObjectIndexes.Chub, $"Chub/{rng.Next(20,60)}/{fishBehavior[rng.Next(0,5)]}/12/24/600 2600/spring summer fall winter/both/684 .35/1/.45/.1/0"},
-				{ (int) ObjectIndexes.Albacore, $"Albacore/{rng.Next(40,75)}/{fishBehavior[rng.Next(0,5)]}/20/40/600 1100 1800 2600/fall winter/both/685 .35/3/.3/.15/0"},
-				{ (int) ObjectIndexes.Shad, $"Shad/{rng.Next(20,65)}/{fishBehavior[rng.Next(0,5)]}/20/48/900 2600/spring summer fall/rainy/684 .35/2/.35/.2/0"},
-				{ (int) ObjectIndexes.Halibut, $"Halibut/{rng.Next(25,75)}/{fishBehavior[rng.Next(0,5)]}/10/33/600 1100 1900 2600/spring summer winter/both/681 .35/3/.4/.2/0"},
-				{ (int) ObjectIndexes.MidnightSquid, $"Midnight Squid/{rng.Next(20,70)}/{fishBehavior[rng.Next(0,5)]}/8/25/600 2600/spring summer fall winter/both/685 .35/3/.4/.1/0"},
-				{ (int) ObjectIndexes.SpookFish, $"Spook Fish/{rng.Next(40,80)}/{fishBehavior[rng.Next(0,5)]}/8/25/600 2600/spring summer fall winter/both/685 .35/3/.4/.1/0"},
-				{ (int) ObjectIndexes.Blobfish, $"Blobfish/{rng.Next(50,85)}/{fishBehavior[rng.Next(0,5)]}/8/25/600 2600/spring summer fall winter/both/685 .35/3/.4/.1/0"},
-
-			};
-
-			foreach (KeyValuePair<int, string> pair in FishEdits)
-			{
-				this._fishReplacements[pair.Key] = pair.Value;
-			}
-
-		}
-
 	}
 }

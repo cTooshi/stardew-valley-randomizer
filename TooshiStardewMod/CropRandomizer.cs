@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Randomizer
@@ -9,12 +8,11 @@ namespace Randomizer
 	/// </summary>
 	public class CropRandomizer
 	{
-		public static EditedObjectInformation Randomize()
+		public static void Randomize(EditedObjectInformation editedObjectInfo)
 		{
-			EditedObjectInformation editedObjectInfo = new EditedObjectInformation();
 			RandomizeCrops(editedObjectInfo);
 			RandomizeFruitTrees(editedObjectInfo);
-			return editedObjectInfo;
+			WriteToSpoilerLog();
 		}
 
 		/// <summary>
@@ -48,6 +46,9 @@ namespace Randomizer
 				tree6.GetPriceForObtainingDifficulty(0.2)
 			};
 
+			bool editFruitTrees = ModEntry.configDict.ContainsKey("fruit trees") ? ModEntry.configDict["fruit trees"] : true;
+			if (!editFruitTrees) { return; }
+
 			// Fruit tree asset replacements
 			var fruitTreeReplacements = new Dictionary<int, string>
 			{
@@ -65,7 +66,6 @@ namespace Randomizer
 			}
 
 			// Fruit tree item/shop info replacements
-			Random rng = Globals.RNG;
 			var objectReplacements = new Dictionary<int, string>
 			{
 				{ (int)ObjectIndexes.CherrySapling, $"{tree1.Name} Sapling/{prices[0] / 2}/-300/Basic -74/{tree1.Name} Sapling/Takes 28 days to produce a mature {tree1.Name} tree. Bears item in the {seasons[0]}. Only grows if the 8 surrounding \"tiles\" are empty."},
@@ -196,6 +196,9 @@ namespace Randomizer
 				seed.Price = GetRandomSeedPrice();
 				crop.Price = CalculateCropPrice(seed);
 
+				bool editCrops = ModEntry.configDict.ContainsKey("crops") ? ModEntry.configDict["crops"] : true;
+				if (!editCrops) { continue; }
+
 				editedObjectInfo.ObjectInformationReplacements[crop.Id] = crop.ToString();
 				editedObjectInfo.ObjectInformationReplacements[seed.Id] = seed.ToString();
 			}
@@ -208,6 +211,9 @@ namespace Randomizer
 		/// <param name="coffeeName">The name of the coffee item</param>
 		private static void SetUpCoffee(EditedObjectInformation editedObjectInfo, string coffeeName)
 		{
+			bool editCrops = ModEntry.configDict.ContainsKey("crops") ? ModEntry.configDict["crops"] : true;
+			if (!editCrops) { return; }
+
 			Item coffeeBean = ItemList.Items[(int)ObjectIndexes.CoffeeBean];
 			coffeeBean.OverrideName = $"{coffeeName} Bean";
 			editedObjectInfo.ObjectInformationReplacements[(int)ObjectIndexes.CoffeeBean] = coffeeBean.ToString();
@@ -223,6 +229,9 @@ namespace Randomizer
 		/// <param name="editedObjectInfo">The object info containing changes to apply</param>
 		private static void SetUpCookedFood(EditedObjectInformation editedObjectInfo)
 		{
+			bool editCrops = ModEntry.configDict.ContainsKey("crops") ? ModEntry.configDict["crops"] : true;
+			if (!editCrops) { return; }
+
 			string cauliflower = ItemList.Items[(int)ObjectIndexes.Cauliflower].Name;
 			string parsnip = ItemList.Items[(int)ObjectIndexes.Parsnip].Name;
 			string greenbean = ItemList.Items[(int)ObjectIndexes.GreenBean].Name;
@@ -355,6 +364,21 @@ namespace Randomizer
 			}
 
 			return (int)(seedPrice * multiplier * regrowthDaysMultiplier * amountPerHarvestMultiplier);
+		}
+
+		private static void WriteToSpoilerLog()
+		{
+			Globals.SpoilerWrite("==== CROPS AND SEEDS ====");
+			foreach (SeedItem seedItem in ItemList.GetSeeds())
+			{
+				if (seedItem.Id == (int)ObjectIndexes.CoffeeBean || seedItem.Id == (int)ObjectIndexes.AncientSeeds) { continue; }
+				CropItem cropItem = (CropItem)ItemList.Items[seedItem.CropGrowthInfo.CropId];
+				Globals.SpoilerWrite($"{cropItem.Name} - Seed Buy Price: {seedItem.Price * 2}G - Crop Sell Price: {cropItem.Price}G");
+				Globals.SpoilerWrite(seedItem.Description);
+				Globals.SpoilerWrite("---");
+
+				//Globals.SpoilerLog.WriteLine($"Crop string: {CropGrowthInformation.ParseString(cropItem).ToString()}");
+			}
 		}
 	}
 }

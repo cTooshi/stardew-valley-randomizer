@@ -8,7 +8,6 @@ namespace Randomizer
 	public class RoomInformation
 	{
 		public CommunityCenterRooms Room { get; set; }
-		public List<Bundle> Bundles { get; set; }
 		public int StartingIndex { get; set; }
 		public int EndingIndex { get; set; }
 
