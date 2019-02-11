@@ -66,7 +66,7 @@ namespace Randomizer
 		}
 
 		/// <summary>
-		/// Returns a string with tokens replaced with an item names and ids
+		/// Returns a string with tokens replaced with an item name and id
 		/// </summary>
 		/// <param name="questString"></param>
 		/// <param name="token"></param>
@@ -76,6 +76,8 @@ namespace Randomizer
 
 		private static string replaceToken(string questString, string token, int number, bool isItem = false)
 		{
+			if (!questString.Contains(token))
+				return questString;
 			if (isItem) // number is the itemID
 				return questString.Replace(token, ItemList.GetItemName(number)).Replace("[id]", number.ToString());
 			else
@@ -92,6 +94,8 @@ namespace Randomizer
 
 		private static string replaceToken(string questString, string token, string replacementString)
 		{
+			if (!questString.Contains(token))
+				return questString;
 			return questString.Replace(token, replacementString);
 		}
 
