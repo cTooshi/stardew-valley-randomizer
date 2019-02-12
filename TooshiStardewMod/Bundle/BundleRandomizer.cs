@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Randomizer
 {
@@ -53,8 +54,11 @@ namespace Randomizer
 		{
 			_randomizedBundles.Clear();
 			Bundle.InitializeAllBundleTypes(); // Must be done so that reloading the game is consistent
+
+			Globals.SpoilerWrite("==== BUNDLES ====");
 			foreach (RoomInformation room in Rooms)
 			{
+				Globals.SpoilerWrite(room.Room.ToString());
 				CreateBundlesForRoom(room);
 			}
 
@@ -78,7 +82,30 @@ namespace Randomizer
 			{
 				if (i == 18) { continue; } // That's just how this is set up
 				Bundle bundle = CreateBundleForRoom(room.Room, i);
+				WriteToSpoilerLog(bundle, i);
 			}
+		}
+
+		/// <summary>
+		/// Writes the given bundle to the spoiler log
+		/// </summary>
+		/// <param name="bundle">The bundle</param>
+		/// <param name="index">The bundle index</param>
+		private static void WriteToSpoilerLog(Bundle bundle, int index)
+		{
+			Globals.SpoilerWrite($"Bundle index: {index} - {bundle.Name} Bundle");
+
+			if (bundle.Room != CommunityCenterRooms.Vault)
+			{
+				Globals.SpoilerWrite($"Possible items: " +
+					$"{string.Join(", ", bundle.RequiredItems.Select(x => $"{x.Item.Name}: {x.NumberOfItems}").ToList())}"
+				);
+				int minimumRequiredItems = bundle.MinimumRequiredItems == null ?
+					bundle.RequiredItems.Count : bundle.MinimumRequiredItems.Value;
+				Globals.SpoilerWrite($"Required: {minimumRequiredItems}/{bundle.RequiredItems.Count}");
+			}
+			Globals.SpoilerWrite($"Reward: {bundle.Reward.Item.Name}: {bundle.Reward.NumberOfItems}");
+			Globals.SpoilerWrite($"---");
 		}
 
 		/// <summary>

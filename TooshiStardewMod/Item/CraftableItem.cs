@@ -5,7 +5,6 @@ namespace Randomizer
 {
 	public class CraftableItem : Item
 	{
-		public List<RequiredItem> RequiredItemsToCraft { get; } = new List<RequiredItem>();
 		public string Path { get; set; }
 		public string SkillString { get; set; }
 		public int BaseLevelLearnedAt { get; set; }
@@ -30,17 +29,6 @@ namespace Randomizer
 			SkillString = skillString;
 			BaseLevelLearnedAt = baseLevelLearnedAt;
 			DifficultyToObtain = ObtainingDifficulties.NonCraftingItem; // By default, craftable items won't be materials for other craftable items
-		}
-
-		/// <summary>
-		/// Adds the given crafting material information to the items required to craft this item
-		/// </summary>
-		/// <param name="item">The item required</param>
-		/// <param name="minValue">The minimum amount required</param>
-		/// <param name="maxValue">The maximum amount required</param>
-		public void AddCraftingMaterial(Item item, int minValue, int maxValue)
-		{
-			RequiredItemsToCraft.Add(new RequiredItem(item, minValue, maxValue));
 		}
 
 		/// <summary>
@@ -74,7 +62,18 @@ namespace Randomizer
 			string stringSuffix = IsLearnedOnLevelup ? $"{SkillString} {GetLevelLearnedAt()}" : "";
 			string craftingString = $"{itemsRequiredString}{Path}{stringSuffix}";
 
-			//Globals.ConsoleWrite($"{Name} crafting string: {craftingString}");
+			Globals.SpoilerWrite($"{Name} - {stringSuffix}");
+			string requiredItemsSpoilerString = "";
+			string[] requiredItemsTokens = itemsRequiredString.Split(' ');
+			for (int i = 0; i < requiredItemsTokens.Length; i += 2)
+			{
+				string itemName = ItemList.GetItemName(int.Parse(requiredItemsTokens[i]));
+				string amount = requiredItemsTokens[i + 1];
+				requiredItemsSpoilerString += $" - {itemName}: {amount}";
+			}
+			Globals.SpoilerWrite(requiredItemsSpoilerString);
+			Globals.SpoilerWrite("---");
+
 			return craftingString;
 		}
 

@@ -13,8 +13,6 @@ namespace Randomizer
 		private readonly Dictionary<string, string> _blueprintReplacements = new Dictionary<string, string>();
 		private Dictionary<string, string> _grandpaStringReplacements = new Dictionary<string, string>();
 		private Dictionary<string, string> _stringReplacements = new Dictionary<string, string>();
-		private readonly Dictionary<string, string> _farmEventReplacements = new Dictionary<string, string>();
-		private readonly Dictionary<string, string> _mailReplacements = new Dictionary<string, string>();
 		private Dictionary<int, string> _fishReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _questReplacements = new Dictionary<int, string>();
 		private Dictionary<string, string> _locationsReplacements = new Dictionary<string, string>();
@@ -35,8 +33,6 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Data/Blueprints")) { return ModEntry.configDict.ContainsKey("building prices/mats") ? ModEntry.configDict["building prices/mats"] : true; }
 			if (asset.AssetNameEquals("Strings/StringsFromCSFiles")) { return true; }
 			if (asset.AssetNameEquals("Data/ObjectInformation")) { return true; }
-			if (asset.AssetNameEquals("Data/Events/Farm")) { return true; }
-			if (asset.AssetNameEquals("Data/Mail")) { return true; }
 			if (asset.AssetNameEquals("Data/Fish")) { return ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true; }
 			if (asset.AssetNameEquals("Data/Quests")) { return true; }
 			if (asset.AssetNameEquals("Data/Locations")) { return ModEntry.configDict.ContainsKey("foragable and fish locations") ? ModEntry.configDict["foragable and fish locations"] : true; ; }
@@ -76,14 +72,6 @@ namespace Randomizer
 			else if (asset.AssetNameEquals("Data/ObjectInformation"))
 			{
 				this.ApplyEdits(asset, this._objectInformationReplacements);
-			}
-			else if (asset.AssetNameEquals("Data/Events/Farm"))
-			{
-				this.ApplyEdits(asset, this._farmEventReplacements);
-			}
-			else if (asset.AssetNameEquals("Data/Mail"))
-			{
-				this.ApplyEdits(asset, this._mailReplacements);
 			}
 			else if (asset.AssetNameEquals("Data/Fish"))
 			{
@@ -133,18 +121,16 @@ namespace Randomizer
 			ValidateItemList();
 
 			EditedObjectInformation editedObjectInfo = new EditedObjectInformation();
+			FishRandomizer.Randomize(editedObjectInfo);
+			_fishReplacements = editedObjectInfo.FishReplacements;
+
 			CropRandomizer.Randomize(editedObjectInfo);
 			_fruitTreeReplacements = editedObjectInfo.FruitTreeReplacements;
 			_cropReplacements = editedObjectInfo.CropsReplacements;
 
-			FishRandomizer.Randomize(editedObjectInfo);
-			_fishReplacements = editedObjectInfo.FishReplacements;
-
 			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
 
 			this.CalculateBlueprintEdits();
-			//this.CalculateFarmEventEdits();
-			//this.CalculateMailEdits();
 			_recipeReplacements = CraftingRecipeRandomizer.Randomize();
 			_stringReplacements = StringsRandomizer.Randomize();
 			_locationsReplacements = LocationRandomizer.Randomize();
@@ -288,18 +274,6 @@ namespace Randomizer
 			this._blueprintReplacements["Plank Cabin"] = $"{plankCabinValues[rng.Next(0, 4)]}/5/3/2/2/-1/-1/Cabin/Cabin/A home for a friend! Subsidized by the town agricultural fund./Buildings/none/96/96/20/null/Farm/100/false/0";
 			this._blueprintReplacements["Log Cabin"] = $"{logCabinValues[rng.Next(0, 4)]}/5/3/2/2/-1/-1/Cabin/Cabin/A home for a friend! Subsidized by the town agricultural fund./Buildings/none/96/96/20/null/Farm/100/false/0";
 			this._blueprintReplacements["Well"] = $"{wellValues[rng.Next(0, 4)]}/3/3/-1/-1/-1/-1/null/Well/Provides a place for you to refill your watering can. Market price of 1,000g/Buildings/none/32/32/-1/null/Farm/{rng.Next(2, 18) * 100}/false";
-		}
-
-		private void CalculateFarmEventEdits()
-		{
-			//TODO: replace this code
-			throw new NotImplementedException();
-		}
-
-		private void CalculateMailEdits()
-		{
-			//TODO: replace this code
-			throw new NotImplementedException();
 		}
 	}
 }

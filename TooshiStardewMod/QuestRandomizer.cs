@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Randomizer
 {
 	class QuestRandomizer
 	{
-		public static Dictionary<int,string> Randomize()
+		public static Dictionary<int, string> Randomize()
 		{
-			Dictionary<int, string> questList = new Dictionary<int, string>()
-			{ 		
+			Dictionary<int, string> QuestList = new Dictionary<int, string>()
+			{
 				{3, $"Basic/The Mysterious Qi/You've found another note written by 'Mr. Qi'. The request is even more unusual this time./Place 10 {ItemList.GetItemName((int)ObjectIndexes.Beet)}s inside Mayor Lewis' fridge./null/-1/0/-1/false" },
 				{22, $"Basic/Fish Casserole/Jodi swung by the farm to ask you to dinner at 7:00 PM. Her only request was that you bring one {ItemList.GetItemName((int)ObjectIndexes.LargemouthBass)} for her fish casserole./Enter Jodi's house with one {ItemList.GetItemName((int)ObjectIndexes.LargemouthBass)} at 7:00 PM./-1/-1/0/-1/true"},
 				{101, "ItemDelivery/[person]'s Request/[person] needs a fresh [crop] for a recipe and is asking you to grow one./Bring [person] a [crop]./[person] [id]/-1/[reward]/-1/true/Oh, that looks so delicious! Thank you, this is just what I wanted. It's going to be perfect for my yellow curry."},
@@ -44,23 +41,25 @@ namespace Randomizer
 			List<Item> fish = FishItem.Get();
 			List<Item> items = ItemList.GetItemsBelowDifficulty(ObtainingDifficulties.Impossible);
 
-			Dictionary<int, string>.KeyCollection questKeys = questList.Keys;
+			Dictionary<int, string>.KeyCollection questKeys = QuestList.Keys;
 			Dictionary<int, string> questReplacements = new Dictionary<int, string>();
 			foreach (int key in questKeys)
 			{
-				string currentQuestString = questList[key];
-				currentQuestString = replaceToken(currentQuestString, "[person]", Globals.RNGGetRandomValueFromList(people));
-				currentQuestString = replaceToken(currentQuestString, "[otherperson]", Globals.RNGGetRandomValueFromList(people));
-				currentQuestString = replaceToken(currentQuestString, "[crop]", Globals.RNGGetRandomValueFromList(crops).Id, true);
-				currentQuestString = replaceToken(currentQuestString, "[dish]", Globals.RNGGetRandomValueFromList(dishes).Id, true);
-				currentQuestString = replaceToken(currentQuestString, "[fish]", Globals.RNGGetRandomValueFromList(fish).Id, true);
-				currentQuestString = replaceToken(currentQuestString, "[item]", Globals.RNGGetRandomValueFromList(items).Id, true);
-				currentQuestString = replaceToken(currentQuestString, "[number]", Globals.RNG.Next(2, 10));
-				currentQuestString = replaceToken(currentQuestString, "[reward]", Globals.RNG.Next(300, 3000));
-				currentQuestString = replaceArticleTokens(currentQuestString);
+				string currentQuestString = QuestList[key];
+				currentQuestString = ReplaceToken(currentQuestString, "[person]", Globals.RNGGetRandomValueFromList(people));
+				currentQuestString = ReplaceToken(currentQuestString, "[otherperson]", Globals.RNGGetRandomValueFromList(people));
+				currentQuestString = ReplaceToken(currentQuestString, "[crop]", Globals.RNGGetRandomValueFromList(crops).Id, true);
+				currentQuestString = ReplaceToken(currentQuestString, "[dish]", Globals.RNGGetRandomValueFromList(dishes).Id, true);
+				currentQuestString = ReplaceToken(currentQuestString, "[fish]", Globals.RNGGetRandomValueFromList(fish).Id, true);
+				currentQuestString = ReplaceToken(currentQuestString, "[item]", Globals.RNGGetRandomValueFromList(items).Id, true);
+				currentQuestString = ReplaceToken(currentQuestString, "[number]", Globals.RNG.Next(2, 10));
+				currentQuestString = ReplaceToken(currentQuestString, "[reward]", Globals.RNG.Next(300, 3000));
+				currentQuestString = ReplaceArticleTokens(currentQuestString);
 				questReplacements[key] = currentQuestString;
 				Globals.ConsoleWrite(currentQuestString);
 			}
+
+			WriteToSpoilerLog(QuestList);
 
 			return questReplacements;
 		}
@@ -73,8 +72,7 @@ namespace Randomizer
 		/// <param name="replacements"></param>
 		/// <param name="replaceID"></param>
 		/// <returns></returns>
-
-		private static string replaceToken(string questString, string token, int number, bool isItem = false)
+		private static string ReplaceToken(string questString, string token, int number, bool isItem = false)
 		{
 			if (!questString.Contains(token))
 				return questString;
@@ -91,15 +89,14 @@ namespace Randomizer
 		/// <param name="token"></param>
 		/// <param name="replacements"></param>
 		/// <returns></returns>
-
-		private static string replaceToken(string questString, string token, string replacementString)
+		private static string ReplaceToken(string questString, string token, string replacementString)
 		{
 			if (!questString.Contains(token))
 				return questString;
 			return questString.Replace(token, replacementString);
 		}
 
-		private static string replaceArticleTokens(string questString)
+		private static string ReplaceArticleTokens(string questString)
 		{
 			if (!questString.Contains("[a]"))
 				return questString;
@@ -108,7 +105,7 @@ namespace Randomizer
 
 			foreach (int i in articleLocations)
 			{
-				if (substrings[i+1] != "")
+				if (substrings[i + 1] != "")
 					substrings[i] = Globals.GetArticle(substrings[i + 1]);
 			}
 
@@ -125,6 +122,20 @@ namespace Randomizer
 					allFoundIndices.Add(i);
 			}
 			return allFoundIndices;
+		}
+
+		/// <summary>
+		/// Writes the dictionary info to the spoiler log
+		/// </summary>
+		/// <param name="questList">The info to write out</param>
+		private static void WriteToSpoilerLog(Dictionary<int, string> questList)
+		{
+			Globals.SpoilerWrite("==== QUESTS ====");
+			foreach (KeyValuePair<int, string> pair in questList)
+			{
+				Globals.SpoilerWrite($"{pair.Key}: \"{pair.Value}\"");
+			}
+			Globals.SpoilerWrite("");
 		}
 	}
 }

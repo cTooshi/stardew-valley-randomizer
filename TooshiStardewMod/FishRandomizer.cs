@@ -49,6 +49,8 @@ namespace Randomizer
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));
 			}
+
+			WriteToSpoilerLog();
 		}
 
 		/// <summary>
@@ -112,6 +114,24 @@ namespace Randomizer
 			objectInfoParts[6] = fish.ObjectInformationSuffix;
 
 			return string.Join("/", objectInfoParts);
+		}
+
+		/// <summary>
+		/// Writes the relevant changes to the spoiler log
+		/// </summary>
+		public static void WriteToSpoilerLog()
+		{
+			List<FishItem> allRandomizedFish = FishItem.GetListAsFishItem();
+
+			Globals.SpoilerWrite("==== FISH ====");
+			foreach (FishItem fish in allRandomizedFish)
+			{
+				Globals.SpoilerWrite($"{fish.Name}");
+				Globals.SpoilerWrite($"Difficulty: {fish.DartChance} - Level Req: {fish.MinFishingLevel} - Water depth: {fish.MinWaterDepth}");
+				Globals.SpoilerWrite(fish.Description);
+				Globals.SpoilerWrite("---");
+			}
+			Globals.SpoilerWrite("");
 		}
 	}
 }

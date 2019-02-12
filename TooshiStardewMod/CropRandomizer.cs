@@ -65,6 +65,13 @@ namespace Randomizer
 				editedObjectInfo.FruitTreeReplacements[pair.Key] = pair.Value;
 			}
 
+			ItemList.Items[(int)ObjectIndexes.CherrySapling].OverrideName = $"{tree1.Name} Sapling";
+			ItemList.Items[(int)ObjectIndexes.ApricotSapling].OverrideName = $"{tree2.Name} Sapling";
+			ItemList.Items[(int)ObjectIndexes.OrangeSapling].OverrideName = $"{tree3.Name} Sapling";
+			ItemList.Items[(int)ObjectIndexes.PeachSapling].OverrideName = $"{tree4.Name} Sapling";
+			ItemList.Items[(int)ObjectIndexes.AppleSapling].OverrideName = $"{tree5.Name} Sapling";
+			ItemList.Items[(int)ObjectIndexes.PomegranateSapling].OverrideName = $"{tree6.Name} Sapling";
+
 			// Fruit tree item/shop info replacements
 			var objectReplacements = new Dictionary<int, string>
 			{
@@ -246,6 +253,23 @@ namespace Randomizer
 			string poppyseed = ItemList.Items[(int)ObjectIndexes.Poppy].Name;
 			string artichoke = ItemList.Items[(int)ObjectIndexes.Artichoke].Name;
 
+			ItemList.Items[(int)ObjectIndexes.CheeseCauliflower].OverrideName = $"Cheese {cauliflower}";
+			ItemList.Items[(int)ObjectIndexes.ParsnipSoup].OverrideName = $"{parsnip} Soup";
+			ItemList.Items[(int)ObjectIndexes.BeanHotpot].OverrideName = $"{greenbean} Hotpot";
+			ItemList.Items[(int)ObjectIndexes.GlazedYams].OverrideName = $"Glazed {yam} Platter";
+			ItemList.Items[(int)ObjectIndexes.PepperPoppers].OverrideName = $"{hotpepper} Poppers";
+			ItemList.Items[(int)ObjectIndexes.RhubarbPie].OverrideName = $"{rhubarb} Pie";
+			ItemList.Items[(int)ObjectIndexes.EggplantParmesan].OverrideName = $"{eggplant} Parmesan";
+			ItemList.Items[(int)ObjectIndexes.BlueberryTart].OverrideName = $"{blueberry} Tart";
+			ItemList.Items[(int)ObjectIndexes.PumpkinSoup].OverrideName = $"{pumpkin} Soup";
+			ItemList.Items[(int)ObjectIndexes.CranberrySauce].OverrideName = $"{cranberry} Sauce";
+			ItemList.Items[(int)ObjectIndexes.PumpkinPie].OverrideName = $"{pumpkin} Pie";
+			ItemList.Items[(int)ObjectIndexes.RadishSalad].OverrideName = $"{radish} Salad";
+			ItemList.Items[(int)ObjectIndexes.CranberryCandy].OverrideName = $"{cranberry} Candy";
+			ItemList.Items[(int)ObjectIndexes.PoppyseedMuffin].OverrideName = $"{poppyseed} Muffin";
+			ItemList.Items[(int)ObjectIndexes.ArtichokeDip].OverrideName = $"{artichoke} Dip";
+			ItemList.Items[(int)ObjectIndexes.FruitSalad].OverrideName = "Harvest Salad";
+
 			var objectReplacements = new Dictionary<int, string>
 			{
 				{ (int)ObjectIndexes.CheeseCauliflower, $"Cheese {cauliflower}/300/55/Cooking -7/Cheese {cauliflower}/It smells great!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
@@ -366,6 +390,9 @@ namespace Randomizer
 			return (int)(seedPrice * multiplier * regrowthDaysMultiplier * amountPerHarvestMultiplier);
 		}
 
+		/// <summary>
+		/// Writes relevant crop changes to the spoiler log
+		/// </summary>
 		private static void WriteToSpoilerLog()
 		{
 			Globals.SpoilerWrite("==== CROPS AND SEEDS ====");
@@ -376,9 +403,17 @@ namespace Randomizer
 				Globals.SpoilerWrite($"{cropItem.Name} - Seed Buy Price: {seedItem.Price * 2}G - Crop Sell Price: {cropItem.Price}G");
 				Globals.SpoilerWrite(seedItem.Description);
 				Globals.SpoilerWrite("---");
-
-				//Globals.SpoilerLog.WriteLine($"Crop string: {CropGrowthInformation.ParseString(cropItem).ToString()}");
 			}
+			Globals.SpoilerWrite("");
+
+			Globals.SpoilerWrite("==== FRUIT TREES ====");
+			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.CherrySapling)}");
+			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.AppleSapling)}");
+			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.OrangeSapling)}");
+			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.PeachSapling)}");
+			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.PomegranateSapling)}");
+			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.ApricotSapling)}");
+			Globals.SpoilerWrite("");
 		}
 	}
 }
