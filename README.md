@@ -50,6 +50,11 @@ Right now you have to build it yourself from the source code. You can find instr
   * New sprites for fish
 * Palette randomization (if possible)
   * Randomly shift the color of the in-game graphics towards a different hue
+* Randomize items that you dig up from the dirt
+* Randomize weapon stats/names
+* Randomize enemy stats
+* Foragable and fish locations are a single setting rather than separate
+* Crafting recipes and levels you learn them are in a single setting and can be separated
   
 ## Known Issues
 
