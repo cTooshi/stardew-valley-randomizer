@@ -55,4 +55,3 @@ Right now you have to build it yourself from the source code. You can find instr
 * There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue.
 * Parsnip seeds you get from Mayor Lewis at the beginning of the game are still called "Parsnip Seeds" (or the name of Parsnips on the last file you had open during your session), but otherwise behave correctly.
 * Fruit tree prices seem to be hard-coded, so they're vanilla.
-* Generating a spoiler log will signifcantly increase the time it takes to load the game.
