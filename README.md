@@ -32,8 +32,6 @@ Right now you have to build it yourself from the source code. You can find instr
 * Quest randomization
   * Quest givers, required items, and rewards are randomly selected.
   * Help Wanted quests are unaffected, but the randomized item names should appear as expected.
-* Rain randomization
-  * Every day (rather than every file), a graphical change to rain is selected and used. These are currently the same set of rain graphics that were in the original randomizer.
 * Spoiler log
   * A spoiler log can be generated to see info about what was randomized
   * You must turn on this option in the settings to generate the log
