@@ -14,9 +14,14 @@ namespace Randomizer
 			return Items.Values.Where(x => x.IsResource).ToList();
 		}
 
+		/// <summary>
+		/// Gets the name of the item with the given id
+		/// </summary>
+		/// <param name="id">The item's id</param>
+		/// <returns />
 		public static string GetItemName(int id)
 		{
-			return ItemList.Items[id].Name;
+			return Items[id].Name;
 		}
 
 		/// <summary>
@@ -208,9 +213,46 @@ namespace Randomizer
 			return Items.Values.Where(x => x.IsAnimalProduct).ToList();
 		}
 
-		public static List<Item> GetItemsBelowDifficulty(ObtainingDifficulties difficulty)
+		/// <summary>
+		/// Gets all the items below the given difficulty - exclusive
+		/// </summary>
+		/// <param name="difficulty">The difficulty</param>
+		/// <param name="idsToExclude">Any ids to exclude from the results</param>
+		/// <returns>The list of items</returns>
+		public static List<Item> GetItemsBelowDifficulty(ObtainingDifficulties difficulty, int[] idsToExclude = null)
 		{
-			return Items.Values.Where(x => x.DifficultyToObtain < difficulty).ToList();
+			return Items.Values.Where(x => x.DifficultyToObtain < difficulty &&
+				(idsToExclude == null || !idsToExclude.Contains(x.Id)))
+			.ToList();
+		}
+
+		/// <summary>
+		/// Gets one random items equal to the given difficulty
+		/// </summary>
+		/// <param name="difficulty">The difficulty</param>
+		/// /// <param name="idsToExclude">Any ids to exclude from the results</param>
+		/// <returns>The list of items</returns>
+		public static Item GetRandomItemAtDifficulty(ObtainingDifficulties difficulty, int[] idsToExclude = null)
+		{
+			return Globals.RNGGetRandomValueFromList(
+				Items.Values.Where(x =>
+					x.DifficultyToObtain == difficulty &&
+					(idsToExclude == null || !idsToExclude.Contains(x.Id))).ToList()
+				);
+		}
+
+		/// <summary>
+		/// Gets a random resource item
+		/// </summary>
+		/// <param name="idsToExclude">Any ids to exclude from the results</param>
+		/// <returns>The resource item</returns>
+		public static Item GetRandomResourceItem(int[] idsToExclude = null)
+		{
+			return Globals.RNGGetRandomValueFromList(
+				Items.Values.Where(x =>
+					x.IsResource &&
+					(idsToExclude == null || !idsToExclude.Contains(x.Id))).ToList()
+			);
 		}
 
 		/// <summary>

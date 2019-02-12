@@ -10,7 +10,7 @@ namespace Randomizer
 	{
 		public int Id { get; }
 		public string Name
-		{			
+		{
 			get { return GetName(); }
 		}
 		public string OverrideName { get; set; }
@@ -104,7 +104,7 @@ namespace Randomizer
 		/// Will always return a value of at least 1
 		/// </summary>
 		/// <returns />
-		private int GetAmountRequiredForCrafting()
+		public int GetAmountRequiredForCrafting()
 		{
 			int baseAmount = ItemsRequiredForRecipe.GetRandomValue();
 			return Math.Max((int)(baseAmount * RequiredItemMultiplier), 1);

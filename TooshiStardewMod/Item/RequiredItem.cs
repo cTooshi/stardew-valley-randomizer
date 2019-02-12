@@ -145,5 +145,15 @@ namespace Randomizer
 			int numberOfItems = !Item.CanStack ? 1 : NumberOfItems;
 			return $"{Item.Id} {numberOfItems} {(int)MinimumQuality}";
 		}
+
+		/// <summary>
+		/// Gets the string used for buildings
+		/// </summary>
+		/// <returns />
+		public string GetStringForBuildings()
+		{
+			int numberOfItems = !Item.CanStack ? 1 : NumberOfItems;
+			return $"{Item.Id} {numberOfItems}";
+		}
 	}
 }

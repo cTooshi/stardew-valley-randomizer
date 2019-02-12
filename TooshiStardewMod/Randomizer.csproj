@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
+    <Compile Include="BlueprintRandomizer.cs" />
+    <Compile Include="Building.cs" />
+    <Compile Include="Enums\Buildings.cs" />
     <Compile Include="QuestRandomizer.cs" />
     <Compile Include="CraftingRecipeRandomizer.cs" />
     <Compile Include="CropGrowthInformation.cs" />

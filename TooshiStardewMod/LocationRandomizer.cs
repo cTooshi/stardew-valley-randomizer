@@ -38,21 +38,20 @@ namespace Randomizer
 
 			List<LocationData> foragableLocationDataList = GetForagableLocationDataList();
 
-			//TODO: create a spoiler log instead of dumping everything to the console
-			//Globals.ConsoleWrite("======== Begin Foragable Replacements ========");
+			Globals.SpoilerWrite("==== Foragables ====");
 			foreach (LocationData foragableLocationData in foragableLocationDataList)
 			{
 				locationsReplacements.Add(foragableLocationData.LocationName, foragableLocationData.ToString());
 
-				//Globals.ConsoleWrite("");
-				//Globals.ConsoleWrite($">> {foragableLocationData.LocationName} <<");
+				Globals.SpoilerWrite("");
+				Globals.SpoilerWrite($">> {foragableLocationData.LocationName} <<");
 
 				WriteResultsForSeason(Seasons.Spring, foragableLocationData);
 				WriteResultsForSeason(Seasons.Summer, foragableLocationData);
 				WriteResultsForSeason(Seasons.Fall, foragableLocationData);
 				WriteResultsForSeason(Seasons.Winter, foragableLocationData);
 			}
-			//Globals.ConsoleWrite("======== End Foragable Replacements ========");
+			Globals.SpoilerWrite("");
 
 			return locationsReplacements;
 		}
@@ -83,15 +82,15 @@ namespace Randomizer
 
 			if (dataToWrite == null)
 			{
-				//Globals.ConsoleWrite($"ERROR: Could not find the foragable list for {season.ToString()}");
+				Globals.ConsoleWrite($"ERROR: Could not find the foragable list for {season.ToString()}");
 				return;
 			}
 
-			//Globals.ConsoleWrite("");
-			//Globals.ConsoleWrite(season.ToString());
+			Globals.SpoilerWrite("");
+			Globals.SpoilerWrite(season.ToString());
 			foreach (ForagableData foragableData in dataToWrite)
 			{
-				//Globals.ConsoleWrite($"{foragableData.ItemId}: {ItemList.Items[foragableData.ItemId].Name} | {foragableData.ItemRarity}");
+				Globals.SpoilerWrite($"{foragableData.ItemId}: {ItemList.Items[foragableData.ItemId].Name} | {foragableData.ItemRarity}");
 			}
 		}
 
