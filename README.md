@@ -8,9 +8,17 @@ Right now you have to build it yourself from the source code. You can find instr
 
 ## Changes from Original Randomizer
 
+* Bundle randomization
+  * New bundles for each room with random items selected from themed pools and random number of those items required
+  * Some bundles are completely random and select from most items in the game.
 * Crafting recipe randomization
   * Recipes are now created based on randomly selected items from a pool (not randomly selected premade recipes)
   * Crafting difficulty is balanced based on necessity of the item and difficulty of crafting the item in vanilla
+* Crop randomization
+  * Crops, including fruits, vegetables, and flowers, have randomized (made-up) names, descriptions, prices (for both seeds and crops), and attributes (trellises, scythe needed, etc.)
+* Fish randomization
+  * Fish have randomized (made-up) names, difficulty, and behavior. 
+  * Locations, time-of-day, weather, and seasons are swapped as well.
 * Forageable randomization
   * Forageables for every season and location are now randomly selected from all forageables + fruit (normally from trees)
   * Every forageable appears at least once per year, and some may appear more than once
@@ -18,26 +26,29 @@ Right now you have to build it yourself from the source code. You can find instr
   * Fruit tree saplings are now item saplings that grow a randomly selected item
 * Music randomization
   * Most in-game songs and ambience are now randomly swapped 1 to 1 with another in-game song or ambience
+* Quest randomization
+  * Quest givers, required items, and rewards are randomly selected.
+* Spoiler log
+  * A spoiler log can be generated to see info about what was randomized
+  * You must turn on this option in the settings to generate the log
+* Misc
+  * Bug fixes to prevent game crashing
+  * Different variants of randomized rain can now appear in one playthrough (previously only one type per playthrough)
 
 ## Planned Features
 
-* Fish randomization
-  * Randomize what fish appear in each season
-* Quest randomization
-  * Randomize what items the quests (in letters) require
-* Crop randomization
-  * Randomize what season crops can grow/be bought in and their planting time
-  * Randomize crop names
-* Bundle randomization
-  * Add more bundles that are semi-random; bundles will be themed and their requirements randomly selected from a pool of items that fit the theme
-  * Add some bundles made of completely random items
-* Villager trait randomization
-  * Randomize villagers' birthdays
-  * Randomize villagers' likes and dislikes
+* Crop seed packet redesigns
+* Building randomization
+
+## Possible Future Features
+* Graphics changes
+  * New sprites for crops (item and growing sprites)
+  * New sprites for fish
 * Palette randomization (if possible)
   * Randomly shift the color of the in-game graphics towards a different hue
   
 ## Known Issues
 
-* Settings file for choosing what to randomize is not completely implemented
+* Parsnip seeds you get from Mayor Lewis at the beginning of the game are still called "Parsnip Seeds", but otherwise behave correctly.
 * Fruit tree prices seem to be hard-coded, so they're vanilla
+* Generating a spoiler log will signifcantly increase the time it takes to load the game
