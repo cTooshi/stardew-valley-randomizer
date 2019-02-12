@@ -24,6 +24,9 @@ Right now you have to build it yourself from the source code. You can find instr
   * Every forageable appears at least once per year, and some may appear more than once
 * Fruit tree randomization
   * Fruit tree saplings are now item saplings that grow a randomly selected item
+* Blueprint randomization
+  * Farm buildings that you get from Robin now choose from a more random pool of resources/items instead of a set list
+  * This does not yet include anything you don't get from Robin (Obelisks, the Gold Clock, etc.)
 * Music randomization
   * Most in-game songs and ambience are now randomly swapped 1 to 1 with another in-game song or ambience
 * Quest randomization
