@@ -59,7 +59,7 @@ namespace Randomizer
 				Globals.ConsoleWrite(currentQuestString);
 			}
 
-			WriteToSpoilerLog(QuestList);
+			WriteToSpoilerLog(questReplacements);
 
 			return questReplacements;
 		}

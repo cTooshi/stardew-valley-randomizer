@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+
 namespace Randomizer
 {
 	/// <summary>
@@ -10,6 +12,12 @@ namespace Randomizer
 		/// The path to the spoiler log
 		/// </summary>
 		public string Path { get; set; }
+
+		/// <summary>
+		/// The text to write to the spoiler log - it's best to write a big block of text at once
+		/// rather than several small ones to avoid the overhead of opening and disposing the file
+		/// </summary>
+		public string TextToWrite { get; set; }
 
 		/// <summary>
 		/// Constructor
@@ -25,17 +33,30 @@ namespace Randomizer
 		}
 
 		/// <summary>
+		/// Adds a line to the buffer
+		/// </summary>
+		/// <param name="line">The line</param>
+		public void BufferLine(string line)
+		{
+			TextToWrite += $"{line}{Environment.NewLine}";
+		}
+
+		/// <summary>
 		/// Writes a line to the end of the file
 		/// </summary>
 		/// <param name="line">The line</param>
-		public void WriteLine(string line)
+		public void WriteFile()
 		{
 			bool canWrite = ModEntry.configDict.ContainsKey("create spoiler log") ? ModEntry.configDict["create spoiler log"] : true;
-			if (!canWrite) { return; }
+			if (!canWrite)
+			{
+				TextToWrite = "";
+				return;
+			}
 
 			using (StreamWriter file = new StreamWriter(Path, true))
 			{
-				file.WriteLine(line);
+				file.WriteLine(TextToWrite);
 			}
 		}
 	}

@@ -28,7 +28,7 @@ namespace Randomizer
 		/// <param name="input">The input</param>
 		public static void SpoilerWrite(string input)
 		{
-			SpoilerLog.WriteLine(input);
+			SpoilerLog.BufferLine(input);
 		}
 
 		/// <summary>
@@ -120,7 +120,7 @@ namespace Randomizer
 		/// </summary>
 
 		public static string GetArticle(string word)
-		{	
+		{
 			word = word.ToLower();
 			if (word.StartsWith("a") || word.StartsWith("e") || word.StartsWith("i") || word.StartsWith("o") || word.StartsWith("u"))
 				return "an";

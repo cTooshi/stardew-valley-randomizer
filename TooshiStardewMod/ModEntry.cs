@@ -67,7 +67,7 @@ namespace Randomizer
 			foreach (string line in config)
 			{
 				string[] tokens = line.Split('=');
-				if (tokens.Length != 2) continue;
+				if (tokens.Length != 2 || line.Trim().StartsWith("//")) continue;
 				configDict.Add(tokens[0].Trim().ToLower(), (tokens[1].Trim().ToLower() == "true"));
 			}
 
@@ -112,6 +112,7 @@ namespace Randomizer
 			// Make replacements and edits
 			this._modAssetLoader.CalculateReplacements();
 			this._modAssetEditor.CalculateEdits();
+			Globals.SpoilerLog.WriteFile();
 
 			// Invalidate all replaced and edited assets so they are reloaded
 			this._modAssetLoader.InvalidateCache();
