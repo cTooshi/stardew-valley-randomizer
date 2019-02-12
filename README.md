@@ -28,6 +28,9 @@ Right now you have to build it yourself from the source code. You can find instr
   * Most in-game songs and ambience are now randomly swapped 1 to 1 with another in-game song or ambience
 * Quest randomization
   * Quest givers, required items, and rewards are randomly selected.
+  * Help Wanted quests are unaffected, but the randomized item names should appear as expected.
+* Rain randomization
+  * Every day (rather than every file), a graphical change to rain is selected and used. These are currently the same set of rain graphics that were in the original randomizer.
 * Spoiler log
   * A spoiler log can be generated to see info about what was randomized
   * You must turn on this option in the settings to generate the log
@@ -49,6 +52,7 @@ Right now you have to build it yourself from the source code. You can find instr
   
 ## Known Issues
 
-* Parsnip seeds you get from Mayor Lewis at the beginning of the game are still called "Parsnip Seeds", but otherwise behave correctly.
-* Fruit tree prices seem to be hard-coded, so they're vanilla
-* Generating a spoiler log will signifcantly increase the time it takes to load the game
+* There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue.
+* Parsnip seeds you get from Mayor Lewis at the beginning of the game are still called "Parsnip Seeds" (or the name of Parsnips on the last file you had open during your session), but otherwise behave correctly.
+* Fruit tree prices seem to be hard-coded, so they're vanilla.
+* Generating a spoiler log will signifcantly increase the time it takes to load the game.
