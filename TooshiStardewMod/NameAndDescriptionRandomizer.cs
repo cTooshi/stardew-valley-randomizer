@@ -772,7 +772,6 @@ namespace Randomizer
 
 					if (Globals.RNGGetNextBoolean(10) && adjectives.Count > 0) newName = $"{Globals.RNGGetAndRemoveRandomValueFromList(adjectives)} {newName}";
 					createdNames.Add(newName);
-					Globals.ConsoleWrite(newName);
 				}
 				else
 				{

@@ -21,71 +21,54 @@ namespace Randomizer
 		/// <param name="editedObjectInfo">The edited object information</param>
 		private static void RandomizeFruitTrees(EditedObjectInformation editedObjectInfo)
 		{
-			List<Item> allPotentialTrees = ItemList.Items.Values.Where(x =>
-				x.DifficultyToObtain < ObtainingDifficulties.Impossible
+			List<Item> allPotentialTreesItems = ItemList.Items.Values.Where(x =>
+				x.Name.EndsWith("Sapling") || x.DifficultyToObtain < ObtainingDifficulties.Impossible
 			).ToList();
 
-			Item tree1 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
-			Item tree2 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
-			Item tree3 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
-			Item tree4 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
-			Item tree5 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
-			Item tree6 = Globals.RNGGetAndRemoveRandomValueFromList(allPotentialTrees);
-
+			List<Item> treeItems = Globals.RNGGetRandomValuesFromList(allPotentialTreesItems, 6);
+			int[] fruitTreesIds = new int[]
+			{
+				(int)ObjectIndexes.CherrySapling,
+				(int)ObjectIndexes.ApricotSapling,
+				(int)ObjectIndexes.OrangeSapling,
+				(int)ObjectIndexes.PeachSapling,
+				(int)ObjectIndexes.PomegranateSapling,
+				(int)ObjectIndexes.AppleSapling
+			};
 			string[] seasons = { "spring", "spring", "summer", "summer", "fall", "fall" };
 			seasons[Globals.RNG.Next(0, 6)] = "winter";
 
 			// TODO: These prices don't actually seem to work for fruit trees
-			int[] prices =
-			{
-				tree1.GetPriceForObtainingDifficulty(0.2),
-				tree2.GetPriceForObtainingDifficulty(0.2),
-				tree3.GetPriceForObtainingDifficulty(0.2),
-				tree4.GetPriceForObtainingDifficulty(0.2),
-				tree5.GetPriceForObtainingDifficulty(0.2),
-				tree6.GetPriceForObtainingDifficulty(0.2)
-			};
+			int[] prices = treeItems.Select(x => x.GetPriceForObtainingDifficulty(0.2)).ToArray();
+
+			ItemList.Items[(int)ObjectIndexes.CherrySapling].OverrideName = "Cherry Sapling";
+			ItemList.Items[(int)ObjectIndexes.ApricotSapling].OverrideName = "Apricot Sapling";
+			ItemList.Items[(int)ObjectIndexes.OrangeSapling].OverrideName = "Orange Sapling";
+			ItemList.Items[(int)ObjectIndexes.PeachSapling].OverrideName = "Peach Sapling";
+			ItemList.Items[(int)ObjectIndexes.PomegranateSapling].OverrideName = "Pomegranate Sapling";
+			ItemList.Items[(int)ObjectIndexes.AppleSapling].OverrideName = "Apple Sapling";
 
 			bool editFruitTrees = ModEntry.configDict.ContainsKey("fruit trees") ? ModEntry.configDict["fruit trees"] : true;
 			if (!editFruitTrees) { return; }
 
 			// Fruit tree asset replacements
-			var fruitTreeReplacements = new Dictionary<int, string>
-			{
-				{ (int)ObjectIndexes.CherrySapling, $"0/{seasons[0]}/{tree1.Id}/{prices[0]}" },
-				{ (int)ObjectIndexes.ApricotSapling, $"1/{seasons[1]}/{tree2.Id}/{prices[1]}"},
-				{ (int)ObjectIndexes.OrangeSapling, $"2/{seasons[2]}/{tree3.Id}/{prices[2]}"},
-				{ (int)ObjectIndexes.PeachSapling, $"3/{seasons[3]}/{tree4.Id}/{prices[3]}"},
-				{ (int)ObjectIndexes.PomegranateSapling, $"4/{seasons[4]}/{tree5.Id}/{prices[4]}"},
-				{ (int)ObjectIndexes.AppleSapling, $"5/{seasons[5]}/{tree6.Id}/{prices[5]}"},
-			};
+			var fruitTreeReplacements = new Dictionary<int, string>();
 
-			foreach (KeyValuePair<int, string> pair in fruitTreeReplacements)
+			// The Trees are incremented starting with cherry
+			for (int i = 0; i < treeItems.Count; i++)
 			{
-				editedObjectInfo.FruitTreeReplacements[pair.Key] = pair.Value;
-			}
+				int price = prices[i];
+				string season = seasons[i];
+				Item treeItem = treeItems[i];
+				string fruitTreeName = treeItem.Id == fruitTreesIds[i] ? "Recursion Sapling" : $"{treeItem.Name} Sapling";
+				int fruitTreeId = fruitTreesIds[i];
 
-			ItemList.Items[(int)ObjectIndexes.CherrySapling].OverrideName = $"{tree1.Name} Sapling";
-			ItemList.Items[(int)ObjectIndexes.ApricotSapling].OverrideName = $"{tree2.Name} Sapling";
-			ItemList.Items[(int)ObjectIndexes.OrangeSapling].OverrideName = $"{tree3.Name} Sapling";
-			ItemList.Items[(int)ObjectIndexes.PeachSapling].OverrideName = $"{tree4.Name} Sapling";
-			ItemList.Items[(int)ObjectIndexes.AppleSapling].OverrideName = $"{tree5.Name} Sapling";
-			ItemList.Items[(int)ObjectIndexes.PomegranateSapling].OverrideName = $"{tree6.Name} Sapling";
+				string fruitTreeValue = $"{i}/{season}/{treeItem.Id}/{price}";
+				editedObjectInfo.FruitTreeReplacements[fruitTreeId] = fruitTreeValue;
 
-			// Fruit tree item/shop info replacements
-			var objectReplacements = new Dictionary<int, string>
-			{
-				{ (int)ObjectIndexes.CherrySapling, $"{tree1.Name} Sapling/{prices[0] / 2}/-300/Basic -74/{tree1.Name} Sapling/Takes 28 days to produce a mature {tree1.Name} tree. Bears item in the {seasons[0]}. Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.ApricotSapling, $"{tree2.Name} Sapling/{prices[1] / 2}/-300/Basic -74/{tree2.Name} Sapling/Takes 28 days to produce a mature {tree2.Name} tree. Bears item in the {seasons[1]}. Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.OrangeSapling, $"{tree3.Name} Sapling/{prices[2] / 2}/-300/Basic -74/{tree3.Name} Sapling/Takes 28 days to produce a mature {tree3.Name} tree. Bears item in the {seasons[2]}. Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.PeachSapling, $"{tree4.Name} Sapling/{prices[3] / 2}/-300/Basic -74/{tree4.Name} Sapling/Takes 28 days to produce a mature {tree4.Name} tree. Bears item in the {seasons[3]}. Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.AppleSapling, $"{tree5.Name} Sapling/{prices[4] / 2}/-300/Basic -74/{tree5.Name} Sapling/Takes 28 days to produce a mature {tree5.Name} tree. Bears item in the {seasons[4]}. Only grows if the 8 surrounding \"tiles\" are empty."},
-				{ (int)ObjectIndexes.PomegranateSapling, $"{tree6.Name} Sapling/{prices[5] / 2}/-300/Basic -74/{tree6.Name} Sapling/Takes 28 days to produce a mature {tree6.Name} tree. Bears item in the {seasons[5]}. Only grows if the 8 surrounding \"tiles\" are empty."},
-			};
-
-			foreach (KeyValuePair<int, string> pair in objectReplacements)
-			{
-				editedObjectInfo.ObjectInformationReplacements[pair.Key] = pair.Value;
+				ItemList.Items[fruitTreeId].OverrideName = fruitTreeName;
+				string fruitTreeObjectValue = $"{fruitTreeName}/{price / 2}/-300/Basic -74/{fruitTreeName}/Takes 28 days to produce a mature {treeItem.Name} tree. Bears item in the {season}. Only grows if the 8 surrounding \"tiles\" are empty.";
+				editedObjectInfo.ObjectInformationReplacements[fruitTreeId] = fruitTreeObjectValue;
 			}
 		}
 

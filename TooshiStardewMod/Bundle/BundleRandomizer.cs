@@ -118,7 +118,6 @@ namespace Randomizer
 		{
 			Bundle bundle = Bundle.Create(room, roomId);
 			_randomizedBundles[bundle.Key] = bundle.ToString();
-			//Globals.ConsoleWrite(bundle.ToString());
 			return bundle;
 		}
 	}

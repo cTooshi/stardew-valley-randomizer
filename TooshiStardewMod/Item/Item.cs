@@ -157,6 +157,9 @@ namespace Randomizer
 				case ObtainingDifficulties.EndgameItem:
 					basePrice = 20000;
 					break;
+				case ObtainingDifficulties.NonCraftingItem:
+					basePrice = 5000;
+					break;
 				default:
 					Globals.ConsoleWrite($"ERROR: Tried to get a base price for an item with an unrecognized ObtainingDifficulty: {Name}");
 					return 100;

@@ -56,7 +56,6 @@ namespace Randomizer
 				currentQuestString = ReplaceToken(currentQuestString, "[reward]", Globals.RNG.Next(300, 3000));
 				currentQuestString = ReplaceArticleTokens(currentQuestString);
 				questReplacements[key] = currentQuestString;
-				Globals.ConsoleWrite(currentQuestString);
 			}
 
 			WriteToSpoilerLog(questReplacements);
