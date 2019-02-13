@@ -16,6 +16,7 @@ Right now you have to build it yourself from the source code. You can find instr
   * Crafting difficulty is balanced based on necessity of the item and difficulty of crafting the item in vanilla
 * Crop randomization
   * Crops, including fruits, vegetables, and flowers, have randomized (made-up) names, descriptions, prices (for both seeds and crops), and attributes (trellises, scythe needed, etc.)
+  * This also includes custom images for all seeds and saplings to reduce confusion
 * Fish randomization
   * Fish have randomized (made-up) names, difficulty, and behavior. 
   * Locations, time-of-day, weather, and seasons are swapped as well.
@@ -38,11 +39,6 @@ Right now you have to build it yourself from the source code. You can find instr
 * Misc
   * Bug fixes to prevent game crashing
   * Different variants of randomized rain can now appear in one playthrough (previously only one type per playthrough)
-
-## Planned Features
-
-* Crop seed packet redesigns
-* Building randomization
 
 ## Possible Future Features
 * Graphics changes
