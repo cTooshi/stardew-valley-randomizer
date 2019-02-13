@@ -79,7 +79,10 @@ namespace Randomizer
 			// Clear any previous replacements
 			this._replacements.Clear();
 
-			//AddReplacement("Maps/springobjects", "Assets/Maps/springobjects");
+			if (ModEntry.configDict.ContainsKey("crops") ? ModEntry.configDict["crops"] : true)
+			{
+				AddReplacement("Maps/springobjects", "Assets/Maps/springobjects");
+			}
 
 			if (ModEntry.configDict.ContainsKey("animal skins") ? ModEntry.configDict["animal skins"] : true)
 			{
