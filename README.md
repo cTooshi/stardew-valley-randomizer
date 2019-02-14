@@ -16,6 +16,7 @@ Right now you have to build it yourself from the source code. You can find instr
   * Crafting difficulty is balanced based on necessity of the item and difficulty of crafting the item in vanilla
 * Crop randomization
   * Crops, including fruits, vegetables, and flowers, have randomized (made-up) names, descriptions, prices (for both seeds and crops), and attributes (trellises, scythe needed, etc.)
+  * This also includes custom images for all seeds and saplings to reduce confusion
 * Fish randomization
   * Fish have randomized (made-up) names, difficulty, and behavior. 
   * Locations, time-of-day, weather, and seasons are swapped as well.
@@ -39,11 +40,6 @@ Right now you have to build it yourself from the source code. You can find instr
   * Bug fixes to prevent game crashing
   * Different variants of randomized rain can now appear in one playthrough (previously only one type per playthrough)
 
-## Planned Features
-
-* Crop seed packet redesigns
-* Building randomization
-
 ## Possible Future Features
 * Graphics changes
   * New sprites for crops (item and growing sprites)
@@ -57,7 +53,7 @@ Right now you have to build it yourself from the source code. You can find instr
 * Crafting recipes and levels you learn them are in a single setting and can be separated
   
 ## Known Issues
-
+* First day issues:
+  * The first day, if you created the works in multiplayer, or you skipped the intro in single player, you will have the normal set of foragables spawn. It will be correct after that.
 * There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue.
-* Parsnip seeds you get from Mayor Lewis at the beginning of the game are still called "Parsnip Seeds" (or the name of Parsnips on the last file you had open during your session), but otherwise behave correctly.
 * Fruit tree prices seem to be hard-coded, so they're vanilla.
