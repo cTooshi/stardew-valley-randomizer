@@ -4,7 +4,7 @@ An update for cTooshi's Stardew Valley Randomizer to fix errors, add new feature
 
 ## Installation
 
-Right now you have to build it yourself from the source code. You can find instructions on the Stardew Valley wiki on how to set up Visual Studio to do so: https://stardewvalleywiki.com/Modding:Modder_Guide/Get_Started
+Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Installing_SMAPI_on_Windows), then download the latest release of the Randomizer and unzip into your Stardew Valley Mods folder.
 
 ## Changes from Original Randomizer
 
