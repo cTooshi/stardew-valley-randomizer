@@ -118,6 +118,7 @@ namespace Randomizer
 
 		public void CalculateEdits()
 		{
+			ItemList.Initialize();
 			ValidateItemList();
 
 			EditedObjectInformation editedObjectInfo = new EditedObjectInformation();

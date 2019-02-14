@@ -105,12 +105,12 @@ namespace Randomizer
 
 				//Change an animal to bear 
 				int isPet = Globals.RNG.Next(1, 4);
-				String[] Animal = new string[4]; Animal[0] = "Pig"; Animal[1] = "Goat"; Animal[2] = "Brown Cow"; Animal[3] = "White Cow";
-				String[] Pet = new string[2]; Pet[0] = "cat"; Pet[1] = "dog";
+				string[] Animal = new string[4]; Animal[0] = "Pig"; Animal[1] = "Goat"; Animal[2] = "Brown Cow"; Animal[3] = "White Cow";
+				string[] Pet = new string[2]; Pet[0] = "cat"; Pet[1] = "dog";
 
 				if (isPet == 1)
 				{
-					int petRng = Globals.RNG.Next(0, 2);
+					int petRng = Globals.RNG.Next(0, Pet.Length - 1);
 					this.AddReplacement($"Animals/{Pet[petRng]}", "Assets/Characters/BearDog");
 					//this._mod.Monitor.Log($"Bear is {Pet[petRng]}");
 				}
@@ -121,7 +121,7 @@ namespace Randomizer
 				}
 				else
 				{
-					int animalRng = Globals.RNG.Next(0, 5);
+					int animalRng = Globals.RNG.Next(0, Animal.Length - 1);
 					this.AddReplacement($"Animals/{Animal[animalRng]}", "Assets/Characters/Bear");
 					this.AddReplacement($"Animals/Baby{Animal[animalRng]}", "Assets/Characters/BabyBear");
 					//this._mod.Monitor.Log($"Bear is {Animal[animalRng]}");
