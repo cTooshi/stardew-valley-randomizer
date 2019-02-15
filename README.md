@@ -53,5 +53,8 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Crafting recipes and levels you learn them are in a single setting and can be separated
   
 ## Known Issues
+* There are a few issues with parsnips
+  * If you start your file with a cabin, the gift box in it will contain "Parsnip Seeds" - they will behave in an identical way to the seeds they were replaced with, though
+  * The quest that wants you to plant and harvest parsnips actually requires you to plant and harvest whatever crop gives you the crop that looks like parsnips
 * There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue.
 * Fruit tree prices seem to be hard-coded, so they're vanilla.
