@@ -90,7 +90,7 @@ namespace Randomizer
 			if (canReplaceMusic) { GameEvents.UpdateTick += (sender, args) => this.TryReplaceSong(); }
 
 			bool canReplaceRain = configDict.ContainsKey("rain") ? configDict["rain"] : true;
-			if (!canReplaceRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
+			if (canReplaceRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
 		}
 
 		/// <summary>
