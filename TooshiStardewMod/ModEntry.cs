@@ -176,19 +176,26 @@ namespace Randomizer
 		public void FixParsnipSeedBox()
 		{
 			GameLocation farmHouse = Game1.locations.Where(x => x.Name == "FarmHouse").First();
-			List<StardewValley.Objects.Chest> chestsInRoom =
-				farmHouse.Objects.Values.Where(x =>
-					x.DisplayName == "Chest")
-					.Cast<StardewValley.Objects.Chest>()
-					.Where(x => x.giftbox)
-				.ToList();
 
-			if (chestsInRoom.Count > 0)
+			foreach (GameLocation location in Game1.locations)
 			{
-				string parsnipSeedsName = ItemList.GetItemName((int)ObjectIndexes.ParsnipSeeds);
-				StardewValley.Item itemInChest = chestsInRoom[0].items[0];
-				itemInChest.Name = parsnipSeedsName;
-				itemInChest.DisplayName = parsnipSeedsName;
+				List<StardewValley.Objects.Chest> chestsInRoom =
+					farmHouse.Objects.Values.Where(x =>
+						x.DisplayName == "Chest")
+						.Cast<StardewValley.Objects.Chest>()
+						.Where(x => x.giftbox)
+					.ToList();
+
+				if (chestsInRoom.Count > 0)
+				{
+					string parsnipSeedsName = ItemList.GetItemName((int)ObjectIndexes.ParsnipSeeds);
+					StardewValley.Item itemInChest = chestsInRoom[0].items[0];
+					if (itemInChest.Name == "Parsnip Seeds")
+					{
+						itemInChest.Name = parsnipSeedsName;
+						itemInChest.DisplayName = parsnipSeedsName;
+					}
+				}
 			}
 		}
 
