@@ -240,12 +240,12 @@ namespace Randomizer
 			if (!canReplaceRain) { return; }
 
 			if (Globals.RNG == null) { return; }
-			_mod.Helper.Content.InvalidateCache("TileSheets/rain");
 
 			RainTypes rainType = Globals.RNGGetRandomValueFromList(
 				Enum.GetValues(typeof(RainTypes)).Cast<RainTypes>().ToList());
 
 			AddReplacement("TileSheets/rain", $"Assets/TileSheets/{rainType.ToString()}Rain");
+			_mod.Helper.Content.InvalidateCache("TileSheets/rain");
 		}
 	}
 }
