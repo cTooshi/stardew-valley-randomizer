@@ -1,7 +1,7 @@
 {
   "Name": "Stardew Valley Randomizer",
   "Author": "Chikakoo; doomdonuts; Tooshi",
-  "Version": "0.1.2",
+  "Version": "0.1.3",
   "Description": "Randomizes many gameplay and visual aspects of the game, see the readme for more info.",
   "UniqueID": "Chikakoo.Randomizer",
   "EntryDll": "Randomizer.dll",

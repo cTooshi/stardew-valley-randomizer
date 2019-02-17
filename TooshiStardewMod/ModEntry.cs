@@ -85,6 +85,7 @@ namespace Randomizer
 
 			this.PreLoadReplacments();
 			SaveEvents.AfterLoad += (sender, args) => this.CalculateAllReplacements();
+			helper.Events.Multiplayer.PeerContextReceived += (sender, args) => FixParsnipSeedBox();
 
 			bool canReplaceMusic = configDict.ContainsKey("music") ? configDict["music"] : true;
 			if (canReplaceMusic) { GameEvents.UpdateTick += (sender, args) => this.TryReplaceSong(); }
@@ -177,24 +178,21 @@ namespace Randomizer
 		{
 			GameLocation farmHouse = Game1.locations.Where(x => x.Name == "FarmHouse").First();
 
-			foreach (GameLocation location in Game1.locations)
-			{
-				List<StardewValley.Objects.Chest> chestsInRoom =
-					farmHouse.Objects.Values.Where(x =>
-						x.DisplayName == "Chest")
-						.Cast<StardewValley.Objects.Chest>()
-						.Where(x => x.giftbox)
-					.ToList();
+			List<StardewValley.Objects.Chest> chestsInRoom =
+				farmHouse.Objects.Values.Where(x =>
+					x.DisplayName == "Chest")
+					.Cast<StardewValley.Objects.Chest>()
+					.Where(x => x.giftbox)
+				.ToList();
 
-				if (chestsInRoom.Count > 0)
+			if (chestsInRoom.Count > 0)
+			{
+				string parsnipSeedsName = ItemList.GetItemName((int)ObjectIndexes.ParsnipSeeds);
+				StardewValley.Item itemInChest = chestsInRoom[0].items[0];
+				if (itemInChest.Name == "Parsnip Seeds")
 				{
-					string parsnipSeedsName = ItemList.GetItemName((int)ObjectIndexes.ParsnipSeeds);
-					StardewValley.Item itemInChest = chestsInRoom[0].items[0];
-					if (itemInChest.Name == "Parsnip Seeds")
-					{
-						itemInChest.Name = parsnipSeedsName;
-						itemInChest.DisplayName = parsnipSeedsName;
-					}
+					itemInChest.Name = parsnipSeedsName;
+					itemInChest.DisplayName = parsnipSeedsName;
 				}
 			}
 		}
