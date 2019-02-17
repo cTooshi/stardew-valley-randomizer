@@ -63,6 +63,8 @@ namespace Randomizer
 			toFish.Times = new Range(fromFish.Times.MinValue, fromFish.Times.MaxValue);
 			toFish.ExcludedTimes = new Range(fromFish.ExcludedTimes.MinValue, fromFish.ExcludedTimes.MaxValue);
 			toFish.Weathers = new List<Weather>(fromFish.Weathers);
+			toFish.MinWaterDepth = fromFish.MinWaterDepth;
+			toFish.DepthMultiplier = fromFish.DepthMultiplier;
 			toFish.AvailableLocations = new List<Locations>(fromFish.AvailableLocations);
 			toFish.AvailableSeasons = new List<Seasons>(fromFish.AvailableSeasons);
 		}
@@ -126,7 +128,7 @@ namespace Randomizer
 			Globals.SpoilerWrite("==== FISH ====");
 			foreach (FishItem fish in allRandomizedFish)
 			{
-				Globals.SpoilerWrite($"{fish.Name}");
+				Globals.SpoilerWrite($"{fish.Id}: {fish.Name}");
 				Globals.SpoilerWrite($"Difficulty: {fish.DartChance} - Level Req: {fish.MinFishingLevel} - Water depth: {fish.MinWaterDepth}");
 				Globals.SpoilerWrite(fish.Description);
 				Globals.SpoilerWrite("---");
