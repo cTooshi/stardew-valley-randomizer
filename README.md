@@ -25,6 +25,7 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
   * Every forageable appears at least once per year, and some may appear more than once
 * Fruit tree randomization
   * Fruit tree saplings are now item saplings that grow a randomly selected item
+  * Prices will be randomized and are loosely balanced based on the item they give
 * Blueprint randomization
   * Farm buildings that you get from Robin now choose from a more random pool of resources/items instead of a set list
   * This does not yet include anything you don't get from Robin (Obelisks, the Gold Clock, etc.)
@@ -55,4 +56,5 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 ## Known Issues
 * If you start your file with cabins, the gift box in them will contain "Parsnip Seeds" - they will behave in an identical way to the seeds they were replaced with, though
 * There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue
-* Fruit tree prices seem to be hard-coded, so they're vanilla
+* All fish that appear in the mines will appear year-round, regardless of what the description says
+* The original mine floor randomization sometimes causes crashes when using the elevator - recommended to leave this setting off for now
