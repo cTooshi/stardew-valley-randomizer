@@ -30,8 +30,16 @@ namespace Randomizer
 					Enum.GetValues(typeof(FishBehaviorType)).Cast<FishBehaviorType>().ToList());
 				fish.OverrideName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
 
-				bool editCrops = ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true;
-				if (!editCrops) { continue; }
+				if (new int[] { 158, 161, 162 }.Contains(fish.Id)) // The three hard-coded mines fish
+				{
+					if (!fish.AvailableLocations.Contains(Locations.UndergroundMine))
+					{
+						fish.AvailableLocations.Add(Locations.UndergroundMine);
+					}
+				}
+
+				bool editFish = ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true;
+				if (!editFish) { continue; }
 
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));
@@ -43,8 +51,8 @@ namespace Randomizer
 					Enum.GetValues(typeof(FishBehaviorType)).Cast<FishBehaviorType>().ToList());
 				fish.OverrideName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
 
-				bool editCrops = ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true;
-				if (!editCrops) { continue; }
+				bool editFish = ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true;
+				if (!editFish) { continue; }
 
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));

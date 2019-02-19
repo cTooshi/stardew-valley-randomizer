@@ -76,7 +76,7 @@ namespace Randomizer
 					};
 					Locations location = Globals.RNGGetRandomValueFromList(locations);
 
-					Name = location.ToString();
+					Name = location == Locations.NightMarket ? "Night Market" : location.ToString();
 					RequiredItems = RequiredItem.CreateList(Globals.RNGGetRandomValuesFromList(FishItem.Get(location), 8));
 					MinimumRequiredItems = Math.Min(RequiredItems.Count, Range.GetRandomValue(2, 4));
 					Color = BundleColors.Blue;

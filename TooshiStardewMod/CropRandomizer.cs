@@ -38,9 +38,7 @@ namespace Randomizer
 			string[] seasons = { "spring", "spring", "summer", "summer", "fall", "fall" };
 			seasons[Globals.RNG.Next(0, 6)] = "winter";
 
-			// TODO: These prices don't actually seem to work for fruit trees
 			int[] prices = treeItems.Select(x => x.GetPriceForObtainingDifficulty(0.2)).ToArray();
-
 			ItemList.Items[(int)ObjectIndexes.CherrySapling].OverrideName = "Cherry Sapling";
 			ItemList.Items[(int)ObjectIndexes.ApricotSapling].OverrideName = "Apricot Sapling";
 			ItemList.Items[(int)ObjectIndexes.OrangeSapling].OverrideName = "Orange Sapling";

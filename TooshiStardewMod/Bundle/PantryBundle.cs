@@ -66,6 +66,7 @@ namespace Randomizer
 					break;
 				case BundleTypes.PantryWinterCrops:
 					GenerateBundleForSeasonCrops(Seasons.Winter, BundleColors.Cyan);
+					MinimumRequiredItems = 1; //TODO: just remove this type
 					break;
 				case BundleTypes.PantryEgg:
 					Name = "Egg";

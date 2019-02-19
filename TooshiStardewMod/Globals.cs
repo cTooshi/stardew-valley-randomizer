@@ -1,6 +1,7 @@
 ﻿using StardewModdingAPI;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Randomizer
 {
@@ -118,7 +119,6 @@ namespace Randomizer
 		/// <summary>
 		/// Returns "a" or "an" based on if word begins with vowel
 		/// </summary>
-
 		public static string GetArticle(string word)
 		{
 			word = word.ToLower();
@@ -126,6 +126,37 @@ namespace Randomizer
 				return "an";
 			else
 				return "a";
+		}
+
+		/// <summary>
+		/// Replace one method with another
+		/// Credit goes here: https://stackoverflow.com/questions/7299097/dynamically-replace-the-contents-of-a-c-sharp-method
+		/// NOTE: THIS CODE IS UNSAFE, USE WITH CAUTION
+		/// </summary>
+		/// <param name="methodToReplace">The method to replace</param>
+		/// <param name="methodToInject">The method to replace it with</param>
+		public static void RepointMethod(MethodInfo methodToReplace, MethodInfo methodToInject)
+		{
+			if (methodToReplace == null || methodToInject == null)
+			{
+				return;
+			}
+
+			unsafe
+			{
+				if (IntPtr.Size == 4) // Checks whether we're running on a 32-bit or 64-bit architecture
+				{
+					int* addressToUse = (int*)methodToInject.MethodHandle.Value.ToPointer() + 2;
+					int* addressToReplace = (int*)methodToReplace.MethodHandle.Value.ToPointer() + 2;
+					*addressToReplace = *addressToUse;
+				}
+				else
+				{
+					long* addressTouse = (long*)methodToInject.MethodHandle.Value.ToPointer() + 1;
+					long* addressToReplace = (long*)methodToReplace.MethodHandle.Value.ToPointer() + 1;
+					*addressToReplace = *addressTouse;
+				}
+			}
 		}
 	}
 }

@@ -45,15 +45,24 @@ namespace Randomizer
 		{
 			get
 			{
-				string timesString = $"Available from {GetStringForTime(Times.MinValue)} to {GetStringForTime(Times.MaxValue)}";
+				string timesString = "Available ";
+				if (Times.MinValue == 600 && Times.MaxValue == 2600)
+				{
+					timesString += "all day";
+				}
+
+				else
+				{
+					timesString += $"from {GetStringForTime(Times.MinValue)} to {GetStringForTime(Times.MaxValue)}";
+				}
 				if (ExcludedTimes.MinValue > 0 && ExcludedTimes.MaxValue > 0)
 				{
-					timesString += $", but not from  {GetStringForTime(ExcludedTimes.MinValue)} to {GetStringForTime(ExcludedTimes.MaxValue)}";
+					timesString += $", but not from {GetStringForTime(ExcludedTimes.MinValue)} to {GetStringForTime(ExcludedTimes.MaxValue)}";
 				}
 				string seasonsString = GetStringForSeasons();
 				string locationString = GetStringForLocations();
 				string weatherString = Weathers.Count != 1 ? "" : $"It can only be found when it is {Weathers[0].ToString().ToLower()}.";
-				return $"{timesString} {seasonsString} {locationString} {weatherString}";
+				return $"{timesString}{seasonsString} {locationString} {weatherString}";
 			}
 		}
 
@@ -137,7 +146,7 @@ namespace Randomizer
 		private string GetStringForSeasons()
 		{
 			if (AvailableSeasons.Count == 0) { return ""; }
-			if (AvailableSeasons.Count == 4) { return "all year."; }
+			if (AvailableSeasons.Count == 4) { return ", all year."; }
 
 			string[] seasonStrings = AvailableSeasons.Select(x => x.ToString().ToLower()).ToArray();
 			string output = string.Join(", ", seasonStrings, 0, seasonStrings.Length - 1) + ", and " + seasonStrings.LastOrDefault();
@@ -151,7 +160,7 @@ namespace Randomizer
 				output = output.Replace(",", "");
 			}
 
-			return $"during {output}.";
+			return $" during {output}.";
 		}
 
 		/// <summary>

@@ -95,6 +95,35 @@ namespace Randomizer
 		}
 
 		/// <summary>
+		/// Deals with location replacements - currently does the following:
+		/// > Replaces the submarine fish with the fish that are actually meant to show up there
+		/// > Replaces the seed shop menu with fruit trees that don't have hard-coded prices
+		/// </summary>
+		public void ReplaceLocations()
+		{
+			// Submarine - replace the fish
+			GameLocation newSubmarineLocation = null;
+			int submarineIndex = 0;
+
+			foreach (GameLocation location in Game1.locations)
+			{
+				if (location.Name == "Submarine")
+				{
+					newSubmarineLocation = new OverriddenSubmarine();
+					submarineIndex = Game1.locations.IndexOf(location);
+				}
+			}
+
+			if (newSubmarineLocation != null)
+			{
+				Game1.locations[submarineIndex] = newSubmarineLocation;
+			}
+
+			// Seed shop - make fruit tree prices NOT hard coded
+			OverriddenSeedShop.ReplaceShopStockMethod();
+		}
+
+		/// <summary>
 		/// Loads the replacements that can be loaded before a game is selected
 		/// </summary>
 		public void PreLoadReplacments()
@@ -128,6 +157,7 @@ namespace Randomizer
 
 			ChangeDayOneForagables();
 			FixParsnipSeedBox();
+			ReplaceLocations();
 		}
 
 		/// <summary>

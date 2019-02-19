@@ -67,26 +67,28 @@ namespace Randomizer
 		/// <returns></returns>
 		private string GetDefaultFishAndDiggingLocationString()
 		{
-			switch (LocationName)
+			switch (Location)
 			{
-				case "Desert":
+				case Locations.Desert:
 					return $"{GetFishLocationData()}/390 .25 330 1";
-				case "BusStop":
+				case Locations.BusStop:
 					return $"{GetFishLocationData()}/584 .08 378 .15 102 .15 390 .25 330 1";
-				case "Forest":
+				case Locations.Forest:
 					return $"{GetFishLocationData()}/378 .08 579 .1 588 .1 102 .15 390 .25 330 1";
-				case "Town":
+				case Locations.Town:
 					return $"{GetFishLocationData()}/378 .2 110 .2 583 .1 102 .2 390 .25 330 1";
-				case "Mountain":
+				case Locations.Mountain:
 					return $"{GetFishLocationData()}/382 .06 581 .1 378 .1 102 .15 390 .25 330 1";
-				case "Backwoods":
+				case Locations.Backwoods:
 					return $"{GetFishLocationData()}/382 .06 582 .1 378 .1 102 .15 390 .25 330 1";
-				case "Railroad":
+				case Locations.Railroad:
 					return $"{GetFishLocationData()}/580 .1 378 .15 102 .19 390 .25 330 1";
-				case "Beach":
+				case Locations.Beach:
 					return $"{GetFishLocationData()}/384 .08 589 .09 102 .15 390 .25 330 1";
-				case "Woods":
+				case Locations.Woods:
 					return $"{GetFishLocationData()}/390 .25 330 1";
+				case Locations.UndergroundMine:
+					return $"{GetFishLocationData()}/107 .01";
 				default:
 					Globals.ModRef.Monitor.Log($"ERROR: No location data found for {LocationName}!");
 					return "-1/-1/-1/-1/-1";
@@ -147,6 +149,14 @@ namespace Randomizer
 					string woodsFallData = GetFishLocationDataForSeason(Seasons.Fall, woodsDefaultString);
 					string woodsWinterData = GetFishLocationDataForSeason(Seasons.Winter, "734 -1 157 -1 143 -1");
 					return $"{woodsSpringData}/{woodsSummerData}/{woodsFallData}/{woodsWinterData}";
+				case Locations.UndergroundMine:
+					string fishString = "153 -1 157 -1 ";
+					List<int> undergroundFish = FishItem.Get(Locations.UndergroundMine)
+						.Where(x => !new int[] { 158, 161, 162 }.Contains(x.Id)) // The three mines fish that are not ghost fish
+						.Select(x => x.Id)
+						.ToList();
+					fishString += $"{string.Join(" -1 ", undergroundFish)} -1";
+					return $"{fishString}/{fishString}/{fishString}/{fishString}";
 				default:
 					Globals.ModRef.Monitor.Log($"ERROR: No location data found for {LocationName}!");
 					return "-1/-1/-1/-1/-1";

@@ -201,7 +201,7 @@ namespace Randomizer
 				Locations.Woods
 			};
 
-			var forgabableLocationDataList = new List<LocationData>();
+			var forgableLocationDataList = new List<LocationData>();
 			foreach (Locations location in foragableLocations)
 			{
 				// Add any item to the desert
@@ -220,10 +220,10 @@ namespace Randomizer
 				PopulateLocationBySeason(foragableLocationData, Seasons.Fall);
 				PopulateLocationBySeason(foragableLocationData, Seasons.Winter);
 
-				forgabableLocationDataList.Add(foragableLocationData);
+				forgableLocationDataList.Add(foragableLocationData);
 			}
-
-			return forgabableLocationDataList;
+			forgableLocationDataList.Add(new LocationData() { Location = Locations.UndergroundMine });
+			return forgableLocationDataList;
 		}
 
 		/// <summary>

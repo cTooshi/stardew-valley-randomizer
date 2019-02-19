@@ -142,7 +142,6 @@ namespace Randomizer
 				int mineLevel1_29;
 				int mineLevel31_39;
 
-
 				while (mineSwapsRemaining > 0)
 				{
 					mineLevel1_29 = Globals.RNG.Next(1, 30);
