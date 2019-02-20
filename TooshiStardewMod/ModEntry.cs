@@ -92,35 +92,55 @@ namespace Randomizer
 
 			bool canReplaceRain = configDict.ContainsKey("rain") ? configDict["rain"] : true;
 			if (canReplaceRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
+
+			helper.Events.GameLoop.DayStarted += (sender, args) => UseOverriddenSubmarine();
+			helper.Events.GameLoop.DayEnding += (sender, args) => RestoreSubmarineLocation();
 		}
 
 		/// <summary>
-		/// Deals with location replacements - currently does the following:
-		/// > Replaces the submarine fish with the fish that are actually meant to show up there
-		/// > Replaces the seed shop menu with fruit trees that don't have hard-coded prices
+		/// The old submarine location
 		/// </summary>
-		public void ReplaceLocations()
-		{
-			// Submarine - replace the fish
-			GameLocation newSubmarineLocation = null;
-			int submarineIndex = 0;
+		private Submarine NormalSubmarineLocation { get; set; }
 
+		/// <summary>
+		/// Replaces the submarine location with an overridden one so that the fish that
+		/// appear there are correct
+		/// </summary>
+		public void UseOverriddenSubmarine()
+		{
+			int submarineIndex;
 			foreach (GameLocation location in Game1.locations)
 			{
 				if (location.Name == "Submarine")
 				{
-					newSubmarineLocation = new OverriddenSubmarine();
+					if (location.GetType() != typeof(OverriddenSubmarine))
+					{
+						NormalSubmarineLocation = (Submarine)location;
+					}
+
 					submarineIndex = Game1.locations.IndexOf(location);
+					Game1.locations[submarineIndex] = new OverriddenSubmarine();
+					break;
 				}
 			}
+		}
 
-			if (newSubmarineLocation != null)
+		/// <summary>
+		/// Restores the submarine location - this should be done before saving the game
+		/// to avoid a crash
+		/// </summary>
+		public void RestoreSubmarineLocation()
+		{
+			int submarineIndex;
+			foreach (GameLocation location in Game1.locations)
 			{
-				Game1.locations[submarineIndex] = newSubmarineLocation;
+				if (location.Name == "Submarine")
+				{
+					submarineIndex = Game1.locations.IndexOf(location);
+					Game1.locations[submarineIndex] = NormalSubmarineLocation;
+					break;
+				}
 			}
-
-			// Seed shop - make fruit tree prices NOT hard coded
-			OverriddenSeedShop.ReplaceShopStockMethod();
 		}
 
 		/// <summary>
@@ -157,7 +177,7 @@ namespace Randomizer
 
 			ChangeDayOneForagables();
 			FixParsnipSeedBox();
-			ReplaceLocations();
+			OverriddenSeedShop.ReplaceShopStockMethod();
 		}
 
 		/// <summary>
