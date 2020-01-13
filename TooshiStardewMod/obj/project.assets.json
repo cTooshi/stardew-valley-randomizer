@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.5": {
-      "Pathoschild.Stardew.ModBuildConfig/2.2.0": {
+      "Pathoschild.Stardew.ModBuildConfig/3.0.0": {
         "type": "package",
         "build": {
           "build/Pathoschild.Stardew.ModBuildConfig.targets": {}
@@ -10,7 +10,7 @@
       }
     },
     ".NETFramework,Version=v4.5/win": {
-      "Pathoschild.Stardew.ModBuildConfig/2.2.0": {
+      "Pathoschild.Stardew.ModBuildConfig/3.0.0": {
         "type": "package",
         "build": {
           "build/Pathoschild.Stardew.ModBuildConfig.targets": {}
@@ -18,7 +18,7 @@
       }
     },
     ".NETFramework,Version=v4.5/win-x64": {
-      "Pathoschild.Stardew.ModBuildConfig/2.2.0": {
+      "Pathoschild.Stardew.ModBuildConfig/3.0.0": {
         "type": "package",
         "build": {
           "build/Pathoschild.Stardew.ModBuildConfig.targets": {}
@@ -26,7 +26,7 @@
       }
     },
     ".NETFramework,Version=v4.5/win-x86": {
-      "Pathoschild.Stardew.ModBuildConfig/2.2.0": {
+      "Pathoschild.Stardew.ModBuildConfig/3.0.0": {
         "type": "package",
         "build": {
           "build/Pathoschild.Stardew.ModBuildConfig.targets": {}
@@ -35,28 +35,29 @@
     }
   },
   "libraries": {
-    "Pathoschild.Stardew.ModBuildConfig/2.2.0": {
-      "sha512": "vpE8IE8t1YJEQBaOQubTGPnc7SsZvnmjgcdNALLJXIG2b8y5vFsU6cE1wSxA4apcAfxtoyBSmriJT3bn30kXYQ==",
+    "Pathoschild.Stardew.ModBuildConfig/3.0.0": {
+      "sha512": "uitfPZ2v2Yo8xmNjKGs1b/ju58nac2bQ1B6b/DBZ3/FTMdjgJSdVFDRraA/VecZW2utFPoljmaboKCoWdIZZBQ==",
       "type": "package",
-      "path": "pathoschild.stardew.modbuildconfig/2.2.0",
+      "path": "pathoschild.stardew.modbuildconfig/3.0.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
-        "analyzers/dotnet/cs/StardewModdingAPI.ModBuildConfig.Analyzer.dll",
+        "analyzers/dotnet/cs/SMAPI.ModBuildConfig.Analyzer.dll",
         "build/Newtonsoft.Json.dll",
         "build/Pathoschild.Stardew.ModBuildConfig.targets",
-        "build/StardewModdingAPI.ModBuildConfig.dll",
-        "build/StardewModdingAPI.Toolkit.CoreInterfaces.dll",
-        "build/StardewModdingAPI.Toolkit.dll",
-        "pathoschild.stardew.modbuildconfig.2.2.0.nupkg.sha512",
-        "pathoschild.stardew.modbuildconfig.nuspec",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
+        "build/SMAPI.ModBuildConfig.dll",
+        "build/SMAPI.Toolkit.CoreInterfaces.dll",
+        "build/SMAPI.Toolkit.dll",
+        "build/find-game-folder.targets",
+        "images/icon.png",
+        "pathoschild.stardew.modbuildconfig.3.0.0.nupkg.sha512",
+        "pathoschild.stardew.modbuildconfig.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.5": [
-      "Pathoschild.Stardew.ModBuildConfig >= 2.2.0"
+      "Pathoschild.Stardew.ModBuildConfig >= 3.0.0"
     ]
   },
   "packageFolders": {
@@ -94,7 +95,7 @@
         "dependencies": {
           "Pathoschild.Stardew.ModBuildConfig": {
             "target": "Package",
-            "version": "[2.2.0, )"
+            "version": "[3.0.0, )"
           }
         }
       }

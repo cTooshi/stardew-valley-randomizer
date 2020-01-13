@@ -63,14 +63,14 @@ namespace Randomizer {
             this.PreLoadReplacments();
 
             // Calculate on creation replacements
-            SaveEvents.AfterCreate += (sender, args) => this.CalculateOneTimeReplacements();
+            Helper.Events.GameLoop.SaveCreated += (sender, args) => this.CalculateOneTimeReplacements();
 
             // Calculate all replacements when the save is loaded
-            SaveEvents.AfterLoad += (sender, args) => this.CalculateAllReplacements();
+            Helper.Events.GameLoop.SaveLoaded += (sender, args) => this.CalculateAllReplacements();
 
             //PlayerEvents.Warped += (sender, args) => this.PlayerChangedLocations();
 
-            GameEvents.UpdateTick += (sender, args) => this.CheckSong();
+            Helper.Events.GameLoop.UpdateTicked += (sender, args) => this.CheckSong();
  
         }
 
@@ -138,13 +138,13 @@ namespace Randomizer {
         /// <summary>The method invoked when the player presses a controller, keyboard, or mouse button.</summary>
         /// <param name="sender">The event sender.</param>
         /// <param name="e">The event data.</param>
-        private void InputEvents_ButtonPressed(object sender, EventArgsInput e) {
-            if (Context.IsWorldReady) // save is loaded
-            {
+        //private void InputEvents_ButtonPressed(object sender, EventArgsInput e) {
+        //    if (Context.IsWorldReady) // save is loaded
+        //    {
                 // this.Monitor.Log($"Save ID: {Game1.uniqueIDForThisGame}");
                 // this.Monitor.Log($"Seed: {seed}");
-            }
-        }
+        //    }
+        //}
 
     }
 }
