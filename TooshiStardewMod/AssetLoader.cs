@@ -145,7 +145,7 @@ namespace Randomizer {
 
                 if (isPet == 1)
                 {
-                    int petRng = rng.Next(0, 2);
+                    int petRng = rng.Next(0, Pet.Length);
                     this.AddReplacement($"Animals/{Pet[petRng]}", "Assets/Characters/BearDog");
                     //this._mod.Monitor.Log($"Bear is {Pet[petRng]}");
                 }
@@ -156,7 +156,7 @@ namespace Randomizer {
                 }
                 else
                 {
-                    int animalRng = rng.Next(0, 5);
+                    int animalRng = rng.Next(0, Animal.Length);
                     this.AddReplacement($"Animals/{Animal[animalRng]}", "Assets/Characters/Bear");
                     this.AddReplacement($"Animals/Baby{Animal[animalRng]}", "Assets/Characters/BabyBear");
                     //this._mod.Monitor.Log($"Bear is {Animal[animalRng]}");
