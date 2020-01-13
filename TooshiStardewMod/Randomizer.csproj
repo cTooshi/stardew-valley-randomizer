@@ -402,5 +402,10 @@
     </None>
     <None Include="manifest.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RandomizerSettings.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

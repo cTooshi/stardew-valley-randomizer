@@ -1,16 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Security.Cryptography;
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
-using StardewModdingAPI;
-using StardewModdingAPI.Events;
-using StardewModdingAPI.Utilities;
+﻿using StardewModdingAPI;
 using StardewValley;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 
-namespace Randomizer {
+namespace Randomizer
+{
     /// <summary>The mod entry point.</summary>
     public class ModEntry : Mod {
 
@@ -44,7 +40,7 @@ namespace Randomizer {
             {
                 string[] tokens = line.Split('=');
                 if (tokens.Length != 2) continue;
-                configDict.Add(tokens[0].Trim().ToLower(), (tokens[1].Trim().ToLower() == "true"));
+                configDict.Add(tokens[0].Trim().ToLower(), string.Equals(tokens[1].Trim(), "true", StringComparison.OrdinalIgnoreCase));
             }
 
 
@@ -85,7 +81,7 @@ namespace Randomizer {
 
         public void CalculateOneTimeReplacements()
         {
-            byte[] seedvar2 = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(Game1.player.farmName));
+            byte[] seedvar2 = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(Game1.player.farmName.Value));
             int seed2 = BitConverter.ToInt32(seedvar2, 0);
             Random rng2 = new Random(seed2);
 
@@ -97,7 +93,7 @@ namespace Randomizer {
             //int seed = ((int) ((uint) ((int) Game1.uniqueIDForThisGame / 2)));
 
             //Seed is pulled from farm name
-            byte[] seedvar = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(Game1.player.farmName));
+            byte[] seedvar = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(Game1.player.farmName.Value));
             int seed = BitConverter.ToInt32(seedvar, 0);
 
             this.Monitor.Log($"Seed Set: {seed}");
@@ -141,8 +137,8 @@ namespace Randomizer {
         //private void InputEvents_ButtonPressed(object sender, EventArgsInput e) {
         //    if (Context.IsWorldReady) // save is loaded
         //    {
-                // this.Monitor.Log($"Save ID: {Game1.uniqueIDForThisGame}");
-                // this.Monitor.Log($"Seed: {seed}");
+        //        // this.Monitor.Log($"Save ID: {Game1.uniqueIDForThisGame}");
+        //        // this.Monitor.Log($"Seed: {seed}");
         //    }
         //}
 
