@@ -465,7 +465,7 @@ namespace Randomizer {
             TapperValues[6] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 4) * 5} {ObjectIndexes.Quartz:D} 1";
             TapperValues[7] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.Hay:D} {rng.Next(1, 11)} {ObjectIndexes.Coal:D} 4";
             TapperValues[8] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 9) * 5} {ObjectIndexes.FireQuartz:D} 1 {ObjectIndexes.Coal:D} {rng.Next(1, 4)}";
-            TapperValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 11)} {ObjectIndexes.Sprinkler:D}";
+            TapperValues[9] = $"{ObjectIndexes.Wood:D} {rng.Next(1, 11)} {ObjectIndexes.Sprinkler:D} 1";
             TapperValues[10] = $"{ObjectIndexes.Stone:D} {rng.Next(1, 9) * 5} {ObjectIndexes.CopperBar:D} 1 {ObjectIndexes.AnyFish:D} 1";
 
             string[] LightningRodValues = new string[6];
@@ -882,6 +882,12 @@ namespace Randomizer {
             VaultValues[13] = $"35,000g/BO 21 1/-1 35000 35000/1";
             VaultValues[13] = $"37,500g/BO 165 1/-1 37500 37500/1";
 
+            string[] AbandonedJojaMartValues = new string[5];
+            AbandonedJojaMartValues[0] = $"The Missing//{ObjectIndexes.Wine:D} 1 1 {ObjectIndexes.DinosaurMayonnaise:D} 1 0 {ObjectIndexes.SeafoamPudding:D} 1 0 {ObjectIndexes.AncientFruit:D} 5 2 795 1 2 {ObjectIndexes.Caviar:D} 1 0/1/5";
+            AbandonedJojaMartValues[1] = $"The Missing//{ObjectIndexes.GreenTea:D} {rng.Next(5, 11)} 0 {ObjectIndexes.Wine:D} {rng.Next(1, 4)} 0 {ObjectIndexes.SquidInk:D} {rng.Next(1, 4)} 0 {ObjectIndexes.OilOfGarlic:D} 1 0 {ObjectIndexes.VoidSalmon:D} 1 0 {ObjectIndexes.AncientFruit:D} {rng.Next(1, 5)} 0/1/5";
+            AbandonedJojaMartValues[2] = $"The Missing//{ObjectIndexes.PrismaticShard:D} {rng.Next(1, 4)} 0 {ObjectIndexes.IridiumSprinkler:D} {rng.Next(1, 4)} 0 {ObjectIndexes.SquidInk:D} {rng.Next(1, 5)} 0 {ObjectIndexes.OilOfGarlic:D} 1 0 {ObjectIndexes.VoidSalmon:D} 1 0 {ObjectIndexes.AncientFruit:D} {rng.Next(1, 5)} 0/1/5";
+            AbandonedJojaMartValues[3] = $"The Missing//{ObjectIndexes.AgedRoe:D} 10 0 {ObjectIndexes.Wine:D} 1 2 {ObjectIndexes.VoidMayonnaise:D} 1 0 {ObjectIndexes.DinosaurEgg:D} 1 0 {ObjectIndexes.FiddleHeadFern:D} 5 0 {ObjectIndexes.TruffleOil:D} 3 0/1/5";
+            AbandonedJojaMartValues[4] = $"The Missing//{ObjectIndexes.Roe:D} 15 0 {ObjectIndexes.UnmilledRice:D} 30 0 {ObjectIndexes.TeaLeaves:D} 20 0 {ObjectIndexes.RabbitsFoot:D} 1 2 {ObjectIndexes.Slimejack:D} 1 0 {ObjectIndexes.ArtichokeDip:D} 1 0/1/5";
 
             this._bundleReplacements["Pantry/0"] = Pantry0Values[rng.Next(0, 6)];
             this._bundleReplacements["Pantry/1"] = Pantry1Values[rng.Next(0, 6)];
@@ -918,6 +924,8 @@ namespace Randomizer {
             this._bundleReplacements["Bulletin Board/33"] = BulletinBoard33Values[rng.Next(0, 7)];
             this._bundleReplacements["Bulletin Board/34"] = BulletinBoard34Values[rng.Next(0, 6)];
             this._bundleReplacements["Bulletin Board/35"] = BulletinBoard35Values[rng.Next(0, 7)];
+
+            this._bundleReplacements["Abandoned Joja Mart/36"] = AbandonedJojaMartValues[rng.Next(0, 5)];
 
         }
 
