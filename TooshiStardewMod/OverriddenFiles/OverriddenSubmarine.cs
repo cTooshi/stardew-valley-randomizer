@@ -1,4 +1,5 @@
-﻿using StardewValley;
+﻿using Microsoft.Xna.Framework;
+using StardewValley;
 using StardewValley.Locations;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,9 @@ namespace Randomizer
 			int bait,
 			int waterDepth,
 			Farmer who,
-			double baitPotency)
+			double baitPotency,
+			Vector2 bobberTile,
+			string locationName)
 		{
 			List<int> nightMarketFish = FishItem.Get(Locations.NightMarket).Select(x => x.Id).ToList();
 

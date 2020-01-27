@@ -33,7 +33,7 @@ namespace Randomizer
 
 		public T Load<T>(IAssetInfo asset)
 		{
-			string normalizedAssetName = this._mod.Helper.Content.NormaliseAssetName(asset.AssetName);
+			string normalizedAssetName = this._mod.Helper.Content.NormalizeAssetName(asset.AssetName);
 
 			// Try to get the replacement asset from the replacements dictionary
 			if (this._replacements.TryGetValue(normalizedAssetName, out string replacementAsset))
@@ -48,7 +48,7 @@ namespace Randomizer
 		private void AddReplacement(string originalAsset, string replacementAsset)
 		{
 			// Normalize the asset name so the keys are consistent
-			string normalizedAssetName = this._mod.Helper.Content.NormaliseAssetName(originalAsset);
+			string normalizedAssetName = this._mod.Helper.Content.NormalizeAssetName(originalAsset);
 
 			// Add the replacement to the dictionary
 			this._replacements[normalizedAssetName] = replacementAsset;

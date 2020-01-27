@@ -46,7 +46,7 @@ namespace Randomizer
 			IAssetDataForDictionary<TKey, TValue> assetDict = asset.AsDictionary<TKey, TValue>();
 			foreach (KeyValuePair<TKey, TValue> edit in edits)
 			{
-				assetDict.Set(edit.Key, edit.Value);
+				assetDict.Data[edit.Key] = edit.Value;
 			}
 		}
 
