@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using StardewModdingAPI;
-using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Locations;
@@ -84,11 +83,11 @@ namespace Randomizer
 			helper.Content.AssetEditors.Add(this._modAssetEditor);
 
 			this.PreLoadReplacments();
-			SaveEvents.AfterLoad += (sender, args) => this.CalculateAllReplacements();
+			helper.Events.GameLoop.SaveLoaded += (sender, args) => this.CalculateAllReplacements();
 			helper.Events.Multiplayer.PeerContextReceived += (sender, args) => FixParsnipSeedBox();
 
 			bool canReplaceMusic = configDict.ContainsKey("music") ? configDict["music"] : true;
-			if (canReplaceMusic) { GameEvents.UpdateTick += (sender, args) => this.TryReplaceSong(); }
+			if (canReplaceMusic) { helper.Events.GameLoop.UpdateTicked += (sender, args) => this.TryReplaceSong(); }
 
 			bool canReplaceRain = configDict.ContainsKey("rain") ? configDict["rain"] : true;
 			if (canReplaceRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
