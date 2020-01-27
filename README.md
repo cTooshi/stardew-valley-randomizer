@@ -56,5 +56,5 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 ## Known Issues
 * If you start your file with cabins, the gift box in them will contain "Parsnip Seeds" - they will behave in an identical way to the seeds they were replaced with, though
 * There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue
-* All fish that appear in the mines will appear year-round, regardless of what the description says
 * The original mine floor randomization sometimes causes crashes when using the elevator - recommended to leave this setting off for now
+* The graphics for non-aged roe are all blank
