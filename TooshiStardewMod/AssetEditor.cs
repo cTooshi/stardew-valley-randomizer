@@ -29,18 +29,18 @@ namespace Randomizer
 
 		public bool CanEdit<T>(IAssetInfo asset)
 		{
-			if (asset.AssetNameEquals("Data/CraftingRecipes")) { return ModEntry.configDict.ContainsKey("crafting recipes") ? ModEntry.configDict["crafting recipes"] : true; }
-			if (asset.AssetNameEquals("Data/Bundles")) { return ModEntry.configDict.ContainsKey("bundles") ? ModEntry.configDict["bundles"] : true; }
-			if (asset.AssetNameEquals("Data/Blueprints")) { return ModEntry.configDict.ContainsKey("building prices/mats") ? ModEntry.configDict["building prices/mats"] : true; }
+			if (asset.AssetNameEquals("Data/CraftingRecipes")) { return Globals.Config.RandomizeCraftingRecipes; }
+			if (asset.AssetNameEquals("Data/Bundles")) { return Globals.Config.RandomizeBundles; }
+			if (asset.AssetNameEquals("Data/Blueprints")) { return Globals.Config.RandomizeBuildingCosts; }
 			if (asset.AssetNameEquals("Strings/StringsFromCSFiles")) { return true; }
 			if (asset.AssetNameEquals("Data/ObjectInformation")) { return true; }
-			if (asset.AssetNameEquals("Data/Fish")) { return ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true; }
-			if (asset.AssetNameEquals("Data/Quests")) { return true; }
-			if (asset.AssetNameEquals("Data/Locations")) { return ModEntry.configDict.ContainsKey("foragable and fish locations") ? ModEntry.configDict["foragable and fish locations"] : true; ; }
-			if (asset.AssetNameEquals("Data/fruitTrees")) { return ModEntry.configDict.ContainsKey("fruit trees") ? ModEntry.configDict["fruit trees"] : true; }
-			if (asset.AssetNameEquals("Data/Crops")) { return ModEntry.configDict.ContainsKey("crops prices") ? ModEntry.configDict["crop prices"] : true; }
+			if (asset.AssetNameEquals("Data/Fish")) { return Globals.Config.RandomizeFish; }
+			if (asset.AssetNameEquals("Data/Quests")) { return Globals.Config.RandomizeQuests; }
+			if (asset.AssetNameEquals("Data/Locations")) { return Globals.Config.RandomizeFish || Globals.Config.RandomizeForagables || Globals.Config.AddRandomArtifactItem; }
+			if (asset.AssetNameEquals("Data/fruitTrees")) { return Globals.Config.RandomizeFruitTrees; }
+			if (asset.AssetNameEquals("Data/Crops")) { return Globals.Config.RandomizeCrops; }
 
-			if (asset.AssetNameEquals("Data/weapons")) { return true; } //TODO: add an entry for this
+			if (asset.AssetNameEquals("Data/weapons")) { return Globals.Config.RandomizeWeapons; }
 			return false;
 		}
 

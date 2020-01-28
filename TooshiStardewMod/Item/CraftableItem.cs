@@ -62,7 +62,6 @@ namespace Randomizer
 			string stringSuffix = IsLearnedOnLevelup ? $"{SkillString} {GetLevelLearnedAt()}" : "";
 			string craftingString = $"{itemsRequiredString}{Path}{stringSuffix}";
 
-			Globals.SpoilerWrite($"{Name} - {stringSuffix}");
 			string requiredItemsSpoilerString = "";
 			string[] requiredItemsTokens = itemsRequiredString.Split(' ');
 			for (int i = 0; i < requiredItemsTokens.Length; i += 2)
@@ -71,8 +70,13 @@ namespace Randomizer
 				string amount = requiredItemsTokens[i + 1];
 				requiredItemsSpoilerString += $" - {itemName}: {amount}";
 			}
-			Globals.SpoilerWrite(requiredItemsSpoilerString);
-			Globals.SpoilerWrite("---");
+
+			if (Globals.Config.RandomizeCraftingRecipes)
+			{
+				Globals.SpoilerWrite($"{Name} - {stringSuffix}");
+				Globals.SpoilerWrite(requiredItemsSpoilerString);
+				Globals.SpoilerWrite("---");
+			}
 
 			return craftingString;
 		}

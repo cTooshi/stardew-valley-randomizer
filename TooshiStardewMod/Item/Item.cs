@@ -116,11 +116,17 @@ namespace Randomizer
 		/// </summary>
 		/// <returns>
 		/// Splits apart the name from the ObjectIndexes name - WildHorseradish -> Wild Horseradish
-		/// Uses the override name if there is one
+		/// Uses the override name if there is one and the item type in question actually has a new name
 		/// </returns>
 		private string GetName()
 		{
-			if (!string.IsNullOrEmpty(OverrideName)) { return OverrideName; }
+			bool ignoreOverrideName =
+				(!Globals.Config.RandomizeCrops && (IsCrop || IsSeed)) ||
+				(!Globals.Config.RandomizeFish && IsFish);
+			if (!ignoreOverrideName && !string.IsNullOrEmpty(OverrideName))
+			{
+				return OverrideName;
+			}
 
 			string enumName = ((ObjectIndexes)Id).ToString();
 			return Regex.Replace(enumName, @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1").Trim();

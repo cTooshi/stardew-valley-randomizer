@@ -55,10 +55,10 @@ namespace Randomizer
 			_randomizedBundles.Clear();
 			Bundle.InitializeAllBundleTypes(); // Must be done so that reloading the game is consistent
 
-			Globals.SpoilerWrite("==== BUNDLES ====");
+			if (Globals.Config.RandomizeBundles) { Globals.SpoilerWrite("==== BUNDLES ===="); }
 			foreach (RoomInformation room in Rooms)
 			{
-				Globals.SpoilerWrite(room.Room.ToString());
+				if (Globals.Config.RandomizeBundles) { Globals.SpoilerWrite(room.Room.ToString()); }
 				CreateBundlesForRoom(room);
 			}
 
@@ -93,6 +93,8 @@ namespace Randomizer
 		/// <param name="index">The bundle index</param>
 		private static void WriteToSpoilerLog(Bundle bundle, int index)
 		{
+			if (!Globals.Config.RandomizeBundles) { return; }
+
 			Globals.SpoilerWrite($"Bundle index: {index} - {bundle.Name} Bundle");
 
 			if (bundle.Room != CommunityCenterRooms.Vault)

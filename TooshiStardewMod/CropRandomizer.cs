@@ -46,8 +46,7 @@ namespace Randomizer
 			ItemList.Items[(int)ObjectIndexes.PomegranateSapling].OverrideName = "Pomegranate Sapling";
 			ItemList.Items[(int)ObjectIndexes.AppleSapling].OverrideName = "Apple Sapling";
 
-			bool editFruitTrees = ModEntry.configDict.ContainsKey("fruit trees") ? ModEntry.configDict["fruit trees"] : true;
-			if (!editFruitTrees) { return; }
+			if (!Globals.Config.RandomizeFruitTrees) { return; }
 
 			// Fruit tree asset replacements
 			var fruitTreeReplacements = new Dictionary<int, string>();
@@ -180,6 +179,7 @@ namespace Randomizer
 			List<string> randomNames,
 			List<string> randomDescriptions)
 		{
+
 			for (int i = 0; i < crops.Count; i++)
 			{
 				CropItem crop = crops[i];
@@ -194,8 +194,7 @@ namespace Randomizer
 				seed.Price = GetRandomSeedPrice();
 				crop.Price = CalculateCropPrice(seed);
 
-				bool editCrops = ModEntry.configDict.ContainsKey("crops") ? ModEntry.configDict["crops"] : true;
-				if (!editCrops) { continue; }
+				if (!Globals.Config.RandomizeCrops) { continue; }
 
 				editedObjectInfo.ObjectInformationReplacements[crop.Id] = crop.ToString();
 				editedObjectInfo.ObjectInformationReplacements[seed.Id] = seed.ToString();
@@ -209,8 +208,7 @@ namespace Randomizer
 		/// <param name="coffeeName">The name of the coffee item</param>
 		private static void SetUpCoffee(EditedObjectInformation editedObjectInfo, string coffeeName)
 		{
-			bool editCrops = ModEntry.configDict.ContainsKey("crops") ? ModEntry.configDict["crops"] : true;
-			if (!editCrops) { return; }
+			if (!Globals.Config.RandomizeCrops) { return; }
 
 			Item coffeeBean = ItemList.Items[(int)ObjectIndexes.CoffeeBean];
 			coffeeBean.OverrideName = $"{coffeeName} Bean";
@@ -227,8 +225,7 @@ namespace Randomizer
 		/// <param name="editedObjectInfo">The object info containing changes to apply</param>
 		private static void SetUpCookedFood(EditedObjectInformation editedObjectInfo)
 		{
-			bool editCrops = ModEntry.configDict.ContainsKey("crops") ? ModEntry.configDict["crops"] : true;
-			if (!editCrops) { return; }
+			if (!Globals.Config.RandomizeCrops) { return; }
 
 			string cauliflower = ItemList.Items[(int)ObjectIndexes.Cauliflower].Name;
 			string parsnip = ItemList.Items[(int)ObjectIndexes.Parsnip].Name;
@@ -386,25 +383,32 @@ namespace Randomizer
 		/// </summary>
 		private static void WriteToSpoilerLog()
 		{
-			Globals.SpoilerWrite("==== CROPS AND SEEDS ====");
-			foreach (SeedItem seedItem in ItemList.GetSeeds())
-			{
-				if (seedItem.Id == (int)ObjectIndexes.CoffeeBean || seedItem.Id == (int)ObjectIndexes.AncientSeeds) { continue; }
-				CropItem cropItem = (CropItem)ItemList.Items[seedItem.CropGrowthInfo.CropId];
-				Globals.SpoilerWrite($"{cropItem.Id}: {cropItem.Name} - Seed Buy Price: {seedItem.Price * 2}G - Crop Sell Price: {cropItem.Price}G");
-				Globals.SpoilerWrite($"{seedItem.Id}: {seedItem.Description}");
-				Globals.SpoilerWrite("---");
-			}
-			Globals.SpoilerWrite("");
 
-			Globals.SpoilerWrite("==== FRUIT TREES ====");
-			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.CherrySapling)}");
-			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.AppleSapling)}");
-			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.OrangeSapling)}");
-			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.PeachSapling)}");
-			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.PomegranateSapling)}");
-			Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.ApricotSapling)}");
-			Globals.SpoilerWrite("");
+			if (Globals.Config.RandomizeCrops)
+			{
+				Globals.SpoilerWrite("==== CROPS AND SEEDS ====");
+				foreach (SeedItem seedItem in ItemList.GetSeeds())
+				{
+					if (seedItem.Id == (int)ObjectIndexes.CoffeeBean || seedItem.Id == (int)ObjectIndexes.AncientSeeds) { continue; }
+					CropItem cropItem = (CropItem)ItemList.Items[seedItem.CropGrowthInfo.CropId];
+					Globals.SpoilerWrite($"{cropItem.Id}: {cropItem.Name} - Seed Buy Price: {seedItem.Price * 2}G - Crop Sell Price: {cropItem.Price}G");
+					Globals.SpoilerWrite($"{seedItem.Id}: {seedItem.Description}");
+					Globals.SpoilerWrite("---");
+				}
+				Globals.SpoilerWrite("");
+			}
+
+			if (Globals.Config.RandomizeFruitTrees)
+			{
+				Globals.SpoilerWrite("==== FRUIT TREES ====");
+				Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.CherrySapling)}");
+				Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.AppleSapling)}");
+				Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.OrangeSapling)}");
+				Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.PeachSapling)}");
+				Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.PomegranateSapling)}");
+				Globals.SpoilerWrite($"{ItemList.GetItemName((int)ObjectIndexes.ApricotSapling)}");
+				Globals.SpoilerWrite("");
+			}
 		}
 	}
 }

@@ -14,8 +14,6 @@ namespace Randomizer
 	/// <summary>The mod entry point</summary>
 	public class ModEntry : Mod
 	{
-		public static Dictionary<string, bool> configDict;
-
 		public PossibleSwap[] PossibleSwaps = {
 			new PossibleSwap("Pierre", "Lewis"),
 			new PossibleSwap("Wizard", "Sandy"),
@@ -65,17 +63,7 @@ namespace Randomizer
 		{
 			_helper = helper;
 			Globals.ModRef = this;
-
-			//config file read in
-			string[] config = System.IO.File.ReadAllLines("Mods/Randomizer/RandomizerSettings.txt");
-			configDict = new Dictionary<string, bool>();
-
-			foreach (string line in config)
-			{
-				string[] tokens = line.Split('=');
-				if (tokens.Length != 2 || line.Trim().StartsWith("//")) continue;
-				configDict.Add(tokens[0].Trim().ToLower(), (tokens[1].Trim().ToLower() == "true"));
-			}
+			Globals.Config = Helper.ReadConfig<ModConfig>();
 
 			this._modAssetLoader = new AssetLoader(this);
 			this._modAssetEditor = new AssetEditor(this);
@@ -86,11 +74,8 @@ namespace Randomizer
 			helper.Events.GameLoop.SaveLoaded += (sender, args) => this.CalculateAllReplacements();
 			helper.Events.Multiplayer.PeerContextReceived += (sender, args) => FixParsnipSeedBox();
 
-			bool canReplaceMusic = configDict.ContainsKey("music") ? configDict["music"] : true;
-			if (canReplaceMusic) { helper.Events.GameLoop.UpdateTicked += (sender, args) => this.TryReplaceSong(); }
-
-			bool canReplaceRain = configDict.ContainsKey("rain") ? configDict["rain"] : true;
-			if (canReplaceRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
+			if (Globals.Config.RandomizeMusic) { helper.Events.GameLoop.UpdateTicked += (sender, args) => this.TryReplaceSong(); }
+			if (Globals.Config.RandomizeRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
 
 			helper.Events.GameLoop.DayStarted += (sender, args) => UseOverriddenSubmarine();
 			helper.Events.GameLoop.DayEnding += (sender, args) => RestoreSubmarineLocation();

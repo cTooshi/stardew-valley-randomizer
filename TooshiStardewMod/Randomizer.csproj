@@ -55,6 +55,7 @@
     <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="Item\WeaponData.cs" />
     <Compile Include="Item\WeaponItem.cs" />
+    <Compile Include="ModConfig.cs" />
     <Compile Include="OverriddenFiles\OverriddenSeedShop.cs" />
     <Compile Include="OverriddenFiles\OverriddenSubmarine.cs" />
     <Compile Include="QuestRandomizer.cs" />

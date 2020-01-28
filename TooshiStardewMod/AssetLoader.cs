@@ -79,12 +79,12 @@ namespace Randomizer
 			// Clear any previous replacements
 			this._replacements.Clear();
 
-			if (ModEntry.configDict.ContainsKey("crops") ? ModEntry.configDict["crops"] : true)
+			if (Globals.Config.RandomizeCrops)
 			{
 				AddReplacement("Maps/springobjects", "Assets/Maps/springobjects");
 			}
 
-			if (ModEntry.configDict.ContainsKey("animal skins") ? ModEntry.configDict["animal skins"] : true)
+			if (Globals.Config.RandomizeAnimalSkins)
 			{
 				// Replace critters
 				switch (Globals.RNG.Next(0, 4))
@@ -135,7 +135,7 @@ namespace Randomizer
 			this.AddReplacement("Characters/schedules/Caroline", "Assets/Characters/schedules/CarolineToEastTown");
 
 			//Randomize Mines
-			if (ModEntry.configDict.ContainsKey("mine layouts") ? ModEntry.configDict["mine layouts"] : true)
+			if (Globals.Config.RandomizeMineLayouts_May_Cause_Crashes)
 			{
 				int mineSwapsRemaining = Globals.RNG.Next(20, 61);
 				int mineLevel = Globals.RNG.Next(1, 41);
@@ -184,7 +184,7 @@ namespace Randomizer
 			}
 
 			// Character swaps
-			if (ModEntry.configDict.ContainsKey("npc skins") ? ModEntry.configDict["npc skins"] : true)
+			if (Globals.Config.RandomizeNPCSkins)
 			{
 				// Keep track of all swaps made
 				Dictionary<string, string> currentSwaps = new Dictionary<string, string>();
@@ -235,9 +235,7 @@ namespace Randomizer
 		/// </summary>
 		public void ReplaceRain(object sender = null, DayEndingEventArgs e = null)
 		{
-			bool canReplaceRain = ModEntry.configDict.ContainsKey("rain") ? ModEntry.configDict["rain"] : true;
-			if (!canReplaceRain) { return; }
-
+			if (!Globals.Config.RandomizeRain) { return; }
 			if (Globals.RNG == null) { return; }
 
 			RainTypes rainType = Globals.RNGGetRandomValueFromList(
