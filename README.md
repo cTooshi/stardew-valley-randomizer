@@ -26,6 +26,9 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Fruit tree randomization
   * Fruit tree saplings are now item saplings that grow a randomly selected item
   * Prices will be randomized and are loosely balanced based on the item they give
+* Weapon randomization
+ * Weapon stats, types, etc. are randomized
+ * Many weapons can now appear in mines containers
 * Blueprint randomization
   * Farm buildings that you get from Robin now choose from a more random pool of resources/items instead of a set list
   * This does not yet include anything you don't get from Robin (Obelisks, the Gold Clock, etc.)
@@ -48,7 +51,6 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Palette randomization (if possible)
   * Randomly shift the color of the in-game graphics towards a different hue
 * Randomize items that you dig up from the dirt
-* Randomize weapon stats/names
 * Randomize enemy stats
 * Foragable and fish locations are a single setting rather than separate
 * Crafting recipes and levels you learn them are in a single setting and can be separated
@@ -57,4 +59,5 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * If you start your file with cabins, the gift box in them will contain "Parsnip Seeds" - they will behave in an identical way to the seeds they were replaced with, though
 * There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue
 * The original mine floor randomization sometimes causes crashes when using the elevator - recommended to leave this setting off for now
-* The graphics for non-aged roe are all blank
+* Weapons don't yet have random names
+* The new Fish Pond building isn't yet randomized
