@@ -44,12 +44,25 @@ namespace Randomizer
 		/// <summary>
 		/// Gets a random boolean value
 		/// </summary>
-		/// <param name="percentage">The percentage of the boolena being true - 10 would be 10%, etc.</param>
+		/// <param name="percentage">The percentage of the boolean being true - 10 would be 10%, etc.</param>
 		/// <returns />
 		public static bool RNGGetNextBoolean(int percentage)
 		{
 			if (percentage < 0 || percentage > 100) Globals.ConsoleWrite("WARNING: Percentage is invalid (less than 0 or greater than 100)");
 			return RNG.Next(0, 100) < percentage;
+		}
+
+		/// <summary>
+		/// Gets a random integer value + or - the given percentage (rounds up)
+		/// ex) value of 10 with percentage of 50 returns a value between 5 and 15
+		/// </summary>
+		/// <param name="value">The base value</param>
+		/// <param name="percentage">The percentage of the base value to use</param>
+		/// <returns>The random value retrieved</returns>
+		public static int RNGGetIntWithinPercentage(int value, int percentage)
+		{
+			int difference = (int)Math.Ceiling(value * ((double)percentage / 100));
+			return new Range(value - difference, value + difference).GetRandomValue();
 		}
 
 		/// <summary>

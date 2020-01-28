@@ -25,6 +25,22 @@
 			ShouldBeForagable = false;
 		}
 
+		/// <summary>
+		/// Whether to randomize drop info - currently based on whether it is a galaxy weapon
+		/// </summary>
+		/// <returns />
+		public bool ShouldRandomizeDropInfo()
+		{
+			return Id != (int)WeaponIndexes.GalaxyDagger &&
+				Id != (int)WeaponIndexes.GalaxyHammer &&
+				Id != (int)WeaponIndexes.GalaxySlingshot &&
+				Id != (int)WeaponIndexes.GalaxySword;
+		}
+
+		/// <summary>
+		/// The string to use for asset replacement
+		/// </summary>
+		/// <returns />
 		public override string ToString()
 		{
 			return $"{Name}/{Description}/{Damage.MinValue}/{Damage.MaxValue}/{Knockback}/{Speed}/{AddedPrecision}/{AddedDefense}/{(int)Type}/{BaseMineLevelDrop}/{MinMineLevelDrop}/{AddedAOE}/{CritChance}/{CritMultiplier}";
