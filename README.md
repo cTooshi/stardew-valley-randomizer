@@ -43,6 +43,7 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Misc
   * Bug fixes to prevent game crashing
   * Different variants of randomized rain can now appear in one playthrough (previously only one type per playthrough)
+  * A random item is added to each location's artifact spot pool
 
 ## Possible Future Features
 * Graphics changes
