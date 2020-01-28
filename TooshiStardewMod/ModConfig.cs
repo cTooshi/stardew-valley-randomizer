@@ -9,6 +9,8 @@
 		public bool AddRandomArtifactItem { get; set; } = true;
 
 		public bool RandomizeCraftingRecipes { get; set; } = true;
+		public bool RandomizeCraftingRecipeLevels_Needs_Above_Setting_On { get; set; } = true;
+
 		public bool RandomizeWeapons { get; set; } = true;
 		public bool RandomizeBundles { get; set; } = true;
 		public bool RandomizeBuildingCosts { get; set; } = true;

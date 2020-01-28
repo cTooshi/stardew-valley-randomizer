@@ -40,6 +40,8 @@ namespace Randomizer
 		/// </returns>
 		public int GetLevelLearnedAt()
 		{
+			if (!Globals.Config.RandomizeCraftingRecipeLevels_Needs_Above_Setting_On) { return BaseLevelLearnedAt; }
+
 			Range levelRange = new Range(BaseLevelLearnedAt - 3, BaseLevelLearnedAt + 3);
 			int generatedLevel = levelRange.GetRandomValue();
 			if (generatedLevel > 8) { return 9; }
