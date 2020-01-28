@@ -350,6 +350,7 @@ namespace Randomizer
 				{ (int)ObjectIndexes.SlimeIncubator, new CraftableItem((int)ObjectIndexes.SlimeIncubator, "/Home/156/true/", CraftableCategories.Difficult, "Combat", 8) },
 				{ (int)ObjectIndexes.SlimeEggPress, new CraftableItem((int)ObjectIndexes.SlimeEggPress, "/Home/158/true/", CraftableCategories.DifficultAndNeedMany, "Combat", 6) { OverrideName = "Slime Egg-Press" } },
 				{ (int)ObjectIndexes.Crystalarium, new CraftableItem((int)ObjectIndexes.Crystalarium, "/Home/21/true/", CraftableCategories.Moderate, "Mining", 9) },
+				{ (int)ObjectIndexes.MiniJukebox, new CraftableItem((int)ObjectIndexes.MiniJukebox, "/Home/209/true/null", CraftableCategories.Moderate) { OverrideName = "Mini-Jukebox" } },
 				{ (int)ObjectIndexes.Sprinkler, new CraftableItem((int)ObjectIndexes.Sprinkler, "/Home/599/false/", CraftableCategories.ModerateAndNeedMany, "Farming", 2) },
 				{ (int)ObjectIndexes.QualitySprinkler, new CraftableItem((int)ObjectIndexes.QualitySprinkler, "/Home/621/false/", CraftableCategories.Moderate, "Farming", 6) },
 				{ (int)ObjectIndexes.IridiumSprinkler, new CraftableItem((int)ObjectIndexes.IridiumSprinkler, "/Home/645/false/", CraftableCategories.DifficultAndNeedMany, "Farming", 9) },

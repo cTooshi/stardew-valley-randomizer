@@ -101,6 +101,7 @@
 		PinkyLemon = -148,
 		Foroguemon = -149,
 		SolidGoldLewis = -150,
-		StardewHeroTrophy = -151
+		StardewHeroTrophy = -151,
+		MiniJukebox = -152
 	};
 }
