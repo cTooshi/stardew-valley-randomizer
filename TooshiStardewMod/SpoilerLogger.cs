@@ -25,8 +25,7 @@ namespace Randomizer
 		/// <param name="farmName">The name of the farm - used to easily identify the log</param>
 		public SpoilerLogger(string farmName)
 		{
-			bool canWrite = ModEntry.configDict.ContainsKey("create spoiler log") ? ModEntry.configDict["create spoiler log"] : true;
-			if (!canWrite) { return; }
+			if (!Globals.Config.CreateSpoilerLog) { return; }
 
 			Path = $"Mods/Randomizer/SpoilerLog-{farmName}.txt";
 			File.Create(Path).Close();
@@ -47,8 +46,7 @@ namespace Randomizer
 		/// <param name="line">The line</param>
 		public void WriteFile()
 		{
-			bool canWrite = ModEntry.configDict.ContainsKey("create spoiler log") ? ModEntry.configDict["create spoiler log"] : true;
-			if (!canWrite)
+			if (!Globals.Config.CreateSpoilerLog)
 			{
 				TextToWrite = "";
 				return;

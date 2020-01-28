@@ -132,6 +132,8 @@ namespace Randomizer
 		/// <param name="questList">The info to write out</param>
 		private static void WriteToSpoilerLog(Dictionary<int, string> questList)
 		{
+			if (!Globals.Config.RandomizeQuests) { return; }
+
 			Globals.SpoilerWrite("==== QUESTS ====");
 			foreach (KeyValuePair<int, string> pair in questList)
 			{

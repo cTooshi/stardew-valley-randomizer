@@ -288,17 +288,12 @@ namespace Randomizer
 				buildingsToAdd.Add(currentBuilding);
 			}
 
-			Globals.SpoilerWrite("==== BLUEPRINTS ====");
 			foreach (Building building in buildingsToAdd)
 			{
 				blueprintChanges.Add(building.Name, building.ToString());
-
-				Globals.SpoilerWrite($"{building.Name} - {building.Price}G");
-				Globals.SpoilerWrite(GetRequiredItemsSpoilerString(building));
-				Globals.SpoilerWrite("===");
 			}
-			Globals.SpoilerWrite("");
 
+			WriteToSpoilerLog(buildingsToAdd);
 			return blueprintChanges;
 		}
 
@@ -336,6 +331,24 @@ namespace Randomizer
 				requiredItemsSpoilerString += $" - {item.Item.Name}: {item.NumberOfItems}";
 			}
 			return requiredItemsSpoilerString;
+		}
+
+		/// <summary>
+		/// Writes the buildings to the spoiler log
+		/// </summary>
+		/// <param name="buildingsToAdd">Info about the changes buildings</param>
+		private static void WriteToSpoilerLog(List<Building> buildingsToAdd)
+		{
+			if (!Globals.Config.RandomizeBuildingCosts) { return; }
+
+			Globals.SpoilerWrite("==== BUILDINGS ====");
+			foreach (Building building in buildingsToAdd)
+			{
+				Globals.SpoilerWrite($"{building.Name} - {building.Price}G");
+				Globals.SpoilerWrite(GetRequiredItemsSpoilerString(building));
+				Globals.SpoilerWrite("===");
+			}
+			Globals.SpoilerWrite("");
 		}
 	}
 }

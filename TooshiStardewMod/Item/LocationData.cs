@@ -36,11 +36,55 @@ namespace Randomizer
 		/// </returns>
 		public override string ToString()
 		{
-			string springForagables = GetStringForSeason(SpringForagables);
-			string summerForagables = GetStringForSeason(SummerForagables);
-			string fallForagables = GetStringForSeason(FallForagables);
-			string winterForagables = GetStringForSeason(WinterForagables);
-			string foragableString = $"{springForagables}/{summerForagables}/{fallForagables}/{winterForagables}";
+			string foragableString = "";
+			if (Globals.Config.RandomizeForagables)
+			{
+				string springForagables = GetStringForSeason(SpringForagables);
+				string summerForagables = GetStringForSeason(SummerForagables);
+				string fallForagables = GetStringForSeason(FallForagables);
+				string winterForagables = GetStringForSeason(WinterForagables);
+				foragableString = $"{springForagables}/{summerForagables}/{fallForagables}/{winterForagables}";
+			}
+
+			else
+			{
+				// These are the default values
+				switch (Location)
+				{
+					case Locations.Desert:
+						foragableString = "88 .5 90 .5/88 .5 90 .5/88 .5 90 .5/88 .5 90 .5";
+						break;
+					case Locations.BusStop:
+						foragableString = "18 .9 20 .4 22 .7/396 .4 398 .4 402 .7/406 .6 408 .4/414 .33 418 .6 283 .5";
+						break;
+					case Locations.Forest:
+						foragableString = "16 .9 22 .9/396 .6 402 .9/404 .9 410 .9/418 .9 414 .9 283 .5";
+						break;
+					case Locations.Town:
+						foragableString = "18 .9/402 .9/410 .6/418 .7 414 .1 283 .5";
+						break;
+					case Locations.Mountain:
+						foragableString = "20 .7 16 .5/396 .5 398 .8/404 .4 406 .4 408 .9/414 .85 418 .9 283 .5";
+						break;
+					case Locations.Backwoods:
+						foragableString = "20 .7 16 .5/396 .5 398 .8/404 .4 406 .4 408 .9/414 .25 418 .4 283 .5";
+						break;
+					case Locations.Railroad:
+						foragableString = "18 .9 20 .4 22 .7/396 .4 398 .4 402 .7/406 .6 408 .4 410 .6/414 .8 418 .8";
+						break;
+					case Locations.Beach:
+						foragableString = "372 .9 718 .1 719 .3 723 .3/372 .9 394 .5 718 .1 719 .3 723 .3/372 .9 718 .1 719 .3 723 .3/372 .4 392 .8 718 .05 719 .2 723 .2";
+						break;
+					case Locations.Woods:
+						foragableString = "257 .5 404 .25 16 .8/259 .9 420 .25/281 .5 404 .6 420 .2/283 .9";
+						break;
+					default:
+						foragableString = "-1/-1/-1/-1";
+						break;
+				}
+			}
+
+
 			return $"{foragableString}/{GetDefaultFishAndDiggingLocationString()}";
 		}
 
@@ -201,6 +245,8 @@ namespace Randomizer
 			// This location thing is just how the game did it... probably don't need fish locations
 			// in the backwoods, but doing this just to be safe
 			Locations location = (Location == Locations.Backwoods) ? Locations.Mountain : Location;
+
+			if (!Globals.Config.RandomizeFish) { return defaultString; }
 
 			List<int> allFishIds = FishItem.Get().Select(x => x.Id).ToList();
 			List<int> fishIds = FishItem.Get(location, season).Select(x => x.Id).ToList();

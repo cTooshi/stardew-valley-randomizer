@@ -37,26 +37,44 @@ namespace Randomizer
 			GroupForagablesBySeason();
 
 			List<LocationData> foragableLocationDataList = GetForagableLocationDataList();
-
-			Globals.SpoilerWrite("==== Foragables ====");
 			foreach (LocationData foragableLocationData in foragableLocationDataList)
 			{
 				locationsReplacements.Add(foragableLocationData.LocationName, foragableLocationData.ToString());
+			}
 
+			WriteToSpoilerLog(foragableLocationDataList);
+			return locationsReplacements;
+		}
+
+		/// <summary>
+		/// Writes the results to the spoiler log - only writes the data that we'll end up changing
+		/// </summary>
+		/// <param name="foragableLocationDataList">The list of location data that was randomized</param>
+		public static void WriteToSpoilerLog(List<LocationData> foragableLocationDataList)
+		{
+			if (!Globals.Config.RandomizeForagables && !Globals.Config.AddRandomArtifactItem) { return; }
+
+			Globals.SpoilerWrite("==== Foragables and Artifact Spots ====");
+			foreach (LocationData foragableLocationData in foragableLocationDataList)
+			{
 				Globals.SpoilerWrite("");
 				Globals.SpoilerWrite($">> {foragableLocationData.LocationName} <<");
 
-				WriteResultsForSeason(Seasons.Spring, foragableLocationData);
-				WriteResultsForSeason(Seasons.Summer, foragableLocationData);
-				WriteResultsForSeason(Seasons.Fall, foragableLocationData);
-				WriteResultsForSeason(Seasons.Winter, foragableLocationData);
+				if (Globals.Config.RandomizeForagables)
+				{
+					WriteResultsForSeason(Seasons.Spring, foragableLocationData);
+					WriteResultsForSeason(Seasons.Summer, foragableLocationData);
+					WriteResultsForSeason(Seasons.Fall, foragableLocationData);
+					WriteResultsForSeason(Seasons.Winter, foragableLocationData);
+				}
 
-				Globals.SpoilerWrite("");
-				Globals.SpoilerWrite($"Extra digging item and rarity: {foragableLocationData.ExtraDiggingItem.Name} | {foragableLocationData.ExtraDiggingItemRarity}");
+				if (Globals.Config.AddRandomArtifactItem)
+				{
+					Globals.SpoilerWrite("");
+					Globals.SpoilerWrite($"Extra digging item and rarity: {foragableLocationData.ExtraDiggingItem.Name} | {foragableLocationData.ExtraDiggingItemRarity}");
+				}
 			}
 			Globals.SpoilerWrite("");
-
-			return locationsReplacements;
 		}
 
 		/// <summary>

@@ -38,8 +38,7 @@ namespace Randomizer
 					}
 				}
 
-				bool editFish = ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true;
-				if (!editFish) { continue; }
+				if (!Globals.Config.RandomizeFish) { continue; }
 
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));
@@ -51,8 +50,7 @@ namespace Randomizer
 					Enum.GetValues(typeof(FishBehaviorType)).Cast<FishBehaviorType>().ToList());
 				fish.OverrideName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
 
-				bool editFish = ModEntry.configDict.ContainsKey("fish") ? ModEntry.configDict["fish"] : true;
-				if (!editFish) { continue; }
+				if (!Globals.Config.RandomizeFish) { continue; }
 
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));
@@ -131,6 +129,8 @@ namespace Randomizer
 		/// </summary>
 		public static void WriteToSpoilerLog()
 		{
+			if (!Globals.Config.RandomizeFish) { return; }
+
 			List<FishItem> allRandomizedFish = FishItem.GetListAsFishItem();
 
 			Globals.SpoilerWrite("==== FISH ====");

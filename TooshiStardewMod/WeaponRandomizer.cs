@@ -107,14 +107,14 @@ namespace Randomizer
 
 			else if (Globals.RNGGetNextBoolean(4))
 			{
-				weapon.CritChance = Range.GetRandomValue(8, 12) / 100;
-				weapon.CritMultiplier = Range.GetRandomValue(15, 25) / 1000; // This should be 1.5% - 2.5%
+				weapon.CritChance = Range.GetRandomValue(8, 12) / 100d;
+				weapon.CritMultiplier = Range.GetRandomValue(15, 25) / 10d;
 			}
 
 			else
 			{
-				weapon.CritChance = Range.GetRandomValue(15, 30) / 1000;
-				weapon.CritMultiplier = Range.GetRandomValue(20, 35) / 1000;
+				weapon.CritChance = Range.GetRandomValue(15, 30) / 1000d;
+				weapon.CritMultiplier = Range.GetRandomValue(20, 35) / 10d;
 			}
 		}
 
@@ -128,12 +128,12 @@ namespace Randomizer
 		{
 			if (Globals.RNGGetNextBoolean(5))
 			{
-				weapon.Knockback = Range.GetRandomValue(16, 20) / 10;
+				weapon.Knockback = Range.GetRandomValue(16, 20) / 10d;
 			}
 
 			else
 			{
-				weapon.Knockback = Range.GetRandomValue(5, 16) / 10;
+				weapon.Knockback = Range.GetRandomValue(5, 16) / 10d;
 			}
 		}
 
@@ -171,7 +171,7 @@ namespace Randomizer
 		/// <summary>
 		/// Assigns a random AOE value to the weapon
 		/// - 80% chance of 0
-		/// - Else, value from 0.1 - 3.5
+		/// - Else, value from 1 - 4
 		/// </summary>
 		/// <param name="weapon">The weapon to assign the AOE to</param>
 		private static void RandomizeWeaponAOE(WeaponItem weapon)
@@ -183,7 +183,7 @@ namespace Randomizer
 
 			else
 			{
-				weapon.AddedAOE = Range.GetRandomValue(1, 35) / 10;
+				weapon.AddedAOE = Range.GetRandomValue(1, 4);
 			}
 		}
 
@@ -247,8 +247,8 @@ namespace Randomizer
 			{
 				int maxDamage = weapon.Damage.MaxValue;
 				if (maxDamage < 10) { baseMineLevel = Range.GetRandomValue(1, 20); }
-				if (maxDamage < 30) { baseMineLevel = Range.GetRandomValue(21, 60); }
-				if (maxDamage < 50) { baseMineLevel = Range.GetRandomValue(61, 100); }
+				else if (maxDamage < 30) { baseMineLevel = Range.GetRandomValue(21, 60); }
+				else if (maxDamage < 50) { baseMineLevel = Range.GetRandomValue(61, 100); }
 				else { baseMineLevel = Range.GetRandomValue(101, 110); }
 			}
 
@@ -321,6 +321,11 @@ namespace Randomizer
 				description += " Fires as fast as you can pull the trigger.";
 			}
 
+			if (weapon.AddedAOE > 0)
+			{
+				description += " Inflicts splash damage.";
+			}
+
 			if (weapon.AddedPrecision > 4)
 			{
 				description += " Very accurate.";
@@ -345,6 +350,8 @@ namespace Randomizer
 		/// <param name="modifiedWeaponDictionary">The dictionary with changed info</param>
 		private static void WriteToSpoilerLog(Dictionary<int, WeaponItem> modifiedWeaponDictionary)
 		{
+			if (!Globals.Config.RandomizeWeapons) { return; }
+
 			Globals.SpoilerWrite("==== WEAPONS ====");
 			foreach (int id in modifiedWeaponDictionary.Keys)
 			{

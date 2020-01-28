@@ -131,18 +131,32 @@ namespace Randomizer
 			List<string> musicReplacementPool = new List<string>(musicList);
 			Dictionary<string, string> musicReplacements = new Dictionary<string, string>();
 
-			Globals.SpoilerWrite("==== MUSIC ====");
 			foreach (string song in musicList)
 			{
 				string replacementSong = Globals.RNGGetAndRemoveRandomValueFromList(musicReplacementPool);
 				musicReplacements.Add(song.ToLower(), replacementSong);
-				Globals.SpoilerWrite($"{song} is now {replacementSong}");
+			}
+
+			WriteToSpoilerLog(musicReplacements);
+			return musicReplacements;
+		}
+
+		/// <summary>
+		/// Writes the music info to the spoiler log
+		/// </summary>
+		/// <param name="musicList">The music replacement list</param>
+		private static void WriteToSpoilerLog(Dictionary<string, string> replacementList)
+		{
+			if (!Globals.Config.RandomizeMusic) { return; }
+
+			Globals.SpoilerWrite("==== MUSIC ====");
+			foreach (string song in replacementList.Keys)
+			{
+				Globals.SpoilerWrite($"{song} is now {replacementList[song]}");
 			}
 
 			Globals.SpoilerWrite("---");
 			Globals.SpoilerWrite("");
-
-			return musicReplacements;
 		}
 	}
 }
