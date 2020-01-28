@@ -10,8 +10,6 @@ namespace Randomizer
 	/// </summary>
 	public class FishItem : Item
 	{
-		// TODO when this is better randomized: fish behaviors
-
 		public List<Seasons> AvailableSeasons { get; set; } = new List<Seasons>();
 		public List<Seasons> WoodsOnlySeasons { get; set; } = new List<Seasons>();
 		public List<Weather> Weathers { get; set; } = new List<Weather>();
