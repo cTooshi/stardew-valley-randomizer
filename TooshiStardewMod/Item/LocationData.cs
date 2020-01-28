@@ -4,7 +4,7 @@ using System.Linq;
 namespace Randomizer
 {
 	/// <summary>
-	/// Contains information about foragable items per season
+	/// Contains information about foragable items and fish per season, as well as diggable items
 	/// </summary>
 	public class LocationData
 	{
@@ -14,6 +14,9 @@ namespace Randomizer
 		public List<ForagableData> SummerForagables { get; } = new List<ForagableData>();
 		public List<ForagableData> FallForagables { get; } = new List<ForagableData>();
 		public List<ForagableData> WinterForagables { get; } = new List<ForagableData>();
+
+		public Item ExtraDiggingItem { get; set; }
+		public double ExtraDiggingItemRarity { get; set; }
 
 		/// <summary>
 		/// Returns whether there's any foragable location data
@@ -64,35 +67,60 @@ namespace Randomizer
 		/// <summary>
 		/// Gets the hard-coded string of location data for the current location name
 		/// </summary>
-		/// <returns></returns>
+		/// <returns />
 		private string GetDefaultFishAndDiggingLocationString()
 		{
+			string locationString;
 			switch (Location)
 			{
 				case Locations.Desert:
-					return $"{GetFishLocationData()}/390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/390 .25";
+					break;
 				case Locations.BusStop:
-					return $"{GetFishLocationData()}/584 .08 378 .15 102 .15 390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/584 .08 378 .15 102 .15 390 .25";
+					break;
 				case Locations.Forest:
-					return $"{GetFishLocationData()}/378 .08 579 .1 588 .1 102 .15 390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/378 .08 579 .1 588 .1 102 .15 390 .25";
+					break;
 				case Locations.Town:
-					return $"{GetFishLocationData()}/378 .2 110 .2 583 .1 102 .2 390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/378 .2 110 .2 583 .1 102 .2 390 .25";
+					break;
 				case Locations.Mountain:
-					return $"{GetFishLocationData()}/382 .06 581 .1 378 .1 102 .15 390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/382 .06 581 .1 378 .1 102 .15 390 .25";
+					break;
 				case Locations.Backwoods:
-					return $"{GetFishLocationData()}/382 .06 582 .1 378 .1 102 .15 390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/382 .06 582 .1 378 .1 102 .15 390 .25";
+					break;
 				case Locations.Railroad:
-					return $"{GetFishLocationData()}/580 .1 378 .15 102 .19 390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/580 .1 378 .15 102 .19 390 .25";
+					break;
 				case Locations.Beach:
-					return $"{GetFishLocationData()}/384 .08 589 .09 102 .15 390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/384 .08 589 .09 102 .15 390 .25";
+					break;
 				case Locations.Woods:
-					return $"{GetFishLocationData()}/390 .25 330 1";
+					locationString = $"{GetFishLocationData()}/390 .25";
+					break;
 				case Locations.UndergroundMine:
-					return $"{GetFishLocationData()}/107 .01";
+					locationString = $"{GetFishLocationData()}/107 .01";
+					break;
 				default:
 					Globals.ModRef.Monitor.Log($"ERROR: No location data found for {LocationName}!");
 					return "-1/-1/-1/-1/-1";
 			}
+
+			if (ExtraDiggingItem != null)
+			{
+				locationString += $" {ExtraDiggingItem.Id} {ExtraDiggingItemRarity}";
+			}
+
+			// Put the clay at the end, since having a probability of 1 will block the possibly of getting 
+			// an item listed off of it
+			if (Location != Locations.UndergroundMine)
+			{
+				locationString += $" {(int)ObjectIndexes.Clay} 1";
+			}
+
+			return locationString;
 		}
 
 		/// <summary>

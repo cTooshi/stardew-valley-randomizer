@@ -50,6 +50,9 @@ namespace Randomizer
 				WriteResultsForSeason(Seasons.Summer, foragableLocationData);
 				WriteResultsForSeason(Seasons.Fall, foragableLocationData);
 				WriteResultsForSeason(Seasons.Winter, foragableLocationData);
+
+				Globals.SpoilerWrite("");
+				Globals.SpoilerWrite($"Extra digging item and rarity: {foragableLocationData.ExtraDiggingItem.Name} | {foragableLocationData.ExtraDiggingItemRarity}");
 			}
 			Globals.SpoilerWrite("");
 
@@ -219,10 +222,14 @@ namespace Randomizer
 				PopulateLocationBySeason(foragableLocationData, Seasons.Summer);
 				PopulateLocationBySeason(foragableLocationData, Seasons.Fall);
 				PopulateLocationBySeason(foragableLocationData, Seasons.Winter);
+				SetExtraDiggableItemInfo(foragableLocationData);
 
 				forgableLocationDataList.Add(foragableLocationData);
 			}
-			forgableLocationDataList.Add(new LocationData() { Location = Locations.UndergroundMine });
+
+			LocationData mineLocationData = new LocationData() { Location = Locations.UndergroundMine };
+			SetExtraDiggableItemInfo(mineLocationData);
+			forgableLocationDataList.Add(mineLocationData);
 			return forgableLocationDataList;
 		}
 
@@ -320,6 +327,88 @@ namespace Randomizer
 			} while (listToPopulate.Contains(_allForagables[itemIndex]));
 
 			listToPopulate.Add(_allForagables[itemIndex]);
+		}
+
+		/// <summary>
+		/// Sets the diggable item info on the given data
+		/// </summary>
+		/// <param name="locationData">The location data</param>
+		private static void SetExtraDiggableItemInfo(LocationData locationData)
+		{
+			ObtainingDifficulties difficulty = GetRandomItemDifficulty();
+			double probability = 0;
+			switch (difficulty)
+			{
+				case ObtainingDifficulties.NoRequirements:
+					probability = (double)Range.GetRandomValue(30, 60) / 100;
+					break;
+				case ObtainingDifficulties.SmallTimeRequirements:
+					probability = (double)Range.GetRandomValue(30, 40) / 100;
+					break;
+				case ObtainingDifficulties.MediumTimeRequirements:
+					probability = (double)Range.GetRandomValue(20, 30) / 100;
+					break;
+				case ObtainingDifficulties.LargeTimeRequirements:
+					probability = (double)Range.GetRandomValue(10, 20) / 100;
+					break;
+				case ObtainingDifficulties.UncommonItem:
+					probability = (double)Range.GetRandomValue(5, 15) / 100;
+					break;
+				case ObtainingDifficulties.RareItem:
+					probability = (double)Range.GetRandomValue(1, 5) / 100;
+					break;
+				default:
+					Globals.ConsoleWrite($"ERROR: Attempting to get a diggable item with invalid difficulty: {difficulty}");
+					difficulty = ObtainingDifficulties.NoRequirements;
+					probability = (double)Range.GetRandomValue(30, 60) / 100;
+					break;
+			}
+
+			locationData.ExtraDiggingItem = ItemList.GetRandomItemAtDifficulty(difficulty);
+			locationData.ExtraDiggingItemRarity = probability;
+		}
+
+		/// <summary>
+		/// Gets a random item difficulty
+		/// - 1/2 = no req
+		/// - 1/4 = small time req
+		/// - 1/8 = medium time req
+		/// - 1/16 = large time req
+		/// - 1/32 = uncommon
+		/// - 1/64 = rare
+		/// </summary>
+		/// <returns></returns>
+		private static ObtainingDifficulties GetRandomItemDifficulty()
+		{
+			if (Globals.RNGGetNextBoolean())
+			{
+				return ObtainingDifficulties.NoRequirements;
+			}
+
+			else if (Globals.RNGGetNextBoolean())
+			{
+				return ObtainingDifficulties.SmallTimeRequirements;
+			}
+
+			else if (Globals.RNGGetNextBoolean())
+			{
+				return ObtainingDifficulties.MediumTimeRequirements;
+			}
+
+			else if (Globals.RNGGetNextBoolean())
+			{
+				return ObtainingDifficulties.LargeTimeRequirements;
+			}
+
+			else if (Globals.RNGGetNextBoolean())
+			{
+				return ObtainingDifficulties.UncommonItem;
+			}
+
+			else
+			{
+				return ObtainingDifficulties.RareItem;
+			}
 		}
 	}
 }
