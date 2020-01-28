@@ -51,6 +51,10 @@
     <Compile Include="BlueprintRandomizer.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Enums\Buildings.cs" />
+    <Compile Include="Enums\WeaponIndexes.cs" />
+    <Compile Include="Enums\WeaponType.cs" />
+    <Compile Include="Item\WeaponData.cs" />
+    <Compile Include="Item\WeaponItem.cs" />
     <Compile Include="OverriddenFiles\OverriddenSeedShop.cs" />
     <Compile Include="OverriddenFiles\OverriddenSubmarine.cs" />
     <Compile Include="QuestRandomizer.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="Range.cs" />
     <Compile Include="SpoilerLogger.cs" />
     <Compile Include="StringsRandomizer.cs" />
+    <Compile Include="WeaponRandomizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Characters\Abigail.xnb">

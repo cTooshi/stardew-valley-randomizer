@@ -19,6 +19,7 @@ namespace Randomizer
 		private Dictionary<int, string> _objectInformationReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _fruitTreeReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _cropReplacements = new Dictionary<int, string>();
+		private Dictionary<int, string> _weaponReplacements = new Dictionary<int, string>();
 		public Dictionary<string, string> MusicReplacements = new Dictionary<string, string>();
 
 		public AssetEditor(ModEntry mod)
@@ -38,6 +39,8 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Data/Locations")) { return ModEntry.configDict.ContainsKey("foragable and fish locations") ? ModEntry.configDict["foragable and fish locations"] : true; ; }
 			if (asset.AssetNameEquals("Data/fruitTrees")) { return ModEntry.configDict.ContainsKey("fruit trees") ? ModEntry.configDict["fruit trees"] : true; }
 			if (asset.AssetNameEquals("Data/Crops")) { return ModEntry.configDict.ContainsKey("crops prices") ? ModEntry.configDict["crop prices"] : true; }
+
+			if (asset.AssetNameEquals("Data/weapons")) { return true; } //TODO: add an entry for this
 			return false;
 		}
 
@@ -93,6 +96,10 @@ namespace Randomizer
 			{
 				this.ApplyEdits(asset, this._cropReplacements);
 			}
+			else if (asset.AssetNameEquals("Data/weapons"))
+			{
+				this.ApplyEdits(asset, this._weaponReplacements);
+			}
 		}
 
 		public void InvalidateCache()
@@ -109,6 +116,7 @@ namespace Randomizer
 			this._mod.Helper.Content.InvalidateCache("Data/Locations");
 			this._mod.Helper.Content.InvalidateCache("Data/fruitTrees");
 			this._mod.Helper.Content.InvalidateCache("Data/Crops");
+			this._mod.Helper.Content.InvalidateCache("Data/weapons");
 		}
 
 		public void CalculateEditsBeforeLoad()
@@ -138,6 +146,7 @@ namespace Randomizer
 			_bundleReplacements = BundleRandomizer.Randomize();
 			MusicReplacements = MusicRandomizer.Randomize();
 			_questReplacements = QuestRandomizer.Randomize();
+			_weaponReplacements = WeaponRandomizer.Randomize();
 		}
 
 		/// <summary>
