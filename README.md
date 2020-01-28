@@ -14,6 +14,7 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Crafting recipe randomization
   * Recipes are now created based on randomly selected items from a pool (not randomly selected premade recipes)
   * Crafting difficulty is balanced based on necessity of the item and difficulty of crafting the item in vanilla
+  * Setting to choose to randomize levels you unlock crafting recipes at - must also randomize the crafting recipes themselves to have it do anything
 * Crop randomization
   * Crops, including fruits, vegetables, and flowers, have randomized (made-up) names, descriptions, prices (for both seeds and crops), and attributes (trellises, scythe needed, etc.)
   * This also includes custom images for all seeds and saplings to reduce confusion
@@ -53,8 +54,6 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
   * Randomly shift the color of the in-game graphics towards a different hue
 * Randomize items that you dig up from the dirt
 * Randomize enemy stats
-* Foragable and fish locations are a single setting rather than separate
-* Crafting recipes and levels you learn them are in a single setting and can be separated
   
 ## Known Issues
 * If you start your file with cabins, the gift box in them will contain "Parsnip Seeds" - they will behave in an identical way to the seeds they were replaced with, though
