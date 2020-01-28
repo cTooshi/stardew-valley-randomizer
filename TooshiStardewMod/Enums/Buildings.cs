@@ -19,6 +19,7 @@
 		StoneCabin,
 		PlankCabin,
 		LogCabin,
-		Well
+		Well,
+		FishPond
 	}
 }

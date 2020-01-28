@@ -267,6 +267,20 @@ namespace Randomizer
 							"3/3/-1/-1/-1/-1/null/Well/Provides a place for you to refill your watering can./Buildings/none/32/32/-1/null/Farm"
 						);
 						break;
+					case Buildings.FishPond:
+						currentBuilding = new Building(
+							"Fish Pond",
+							new List<ItemAndMultiplier>
+							{
+								new ItemAndMultiplier(resource1, 2),
+								new ItemAndMultiplier(ItemList.GetRandomItemAtDifficulty(ObtainingDifficulties.SmallTimeRequirements), 2),
+								new ItemAndMultiplier(ItemList.GetRandomItemAtDifficulty(ObtainingDifficulties.SmallTimeRequirements), 2)
+							},
+							5000,
+							"5/5/-1/-1/-2/-1/null/Fish Pond/Raise fish and harvest their produce. Fish multiply over time./Buildings/none/76/78/10/null/Farm",
+							"false/2"
+						);
+						break;
 					default:
 						Globals.ConsoleWrite($"ERROR: Unhandled building: {buildingType.ToString()}");
 						continue;
