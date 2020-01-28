@@ -27,8 +27,8 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
   * Fruit tree saplings are now item saplings that grow a randomly selected item
   * Prices will be randomized and are loosely balanced based on the item they give
 * Weapon randomization
- * Weapon stats, types, etc. are randomized
- * Many weapons can now appear in mines containers
+  * Weapon stats, types, etc. are randomized
+  * Many weapons can now appear in mines containers
 * Blueprint randomization
   * Farm buildings that you get from Robin now choose from a more random pool of resources/items instead of a set list
   * This does not yet include anything you don't get from Robin (Obelisks, the Gold Clock, etc.)
