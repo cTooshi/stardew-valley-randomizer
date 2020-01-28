@@ -112,27 +112,18 @@ namespace Randomizer
 				{
 					int petRng = Globals.RNG.Next(0, Pet.Length - 1);
 					this.AddReplacement($"Animals/{Pet[petRng]}", "Assets/Characters/BearDog");
-					//this._mod.Monitor.Log($"Bear is {Pet[petRng]}");
 				}
 				if (isPet == 2)
 				{
 					this.AddReplacement($"Animals/horse", "Assets/Characters/BearHorse");
-					//this._mod.Monitor.Log($"Bear is Horse");
 				}
 				else
 				{
 					int animalRng = Globals.RNG.Next(0, Animal.Length - 1);
 					this.AddReplacement($"Animals/{Animal[animalRng]}", "Assets/Characters/Bear");
 					this.AddReplacement($"Animals/Baby{Animal[animalRng]}", "Assets/Characters/BabyBear");
-					//this._mod.Monitor.Log($"Bear is {Animal[animalRng]}");
-
 				}
-
 			}
-
-			//Randomize Schedules needs work
-			this.AddReplacement("Characters/schedules/Linus", "Assets/Characters/schedules/LinusToSaloonSpring");
-			this.AddReplacement("Characters/schedules/Caroline", "Assets/Characters/schedules/CarolineToEastTown");
 
 			//Randomize Mines
 			if (Globals.Config.RandomizeMineLayouts_May_Cause_Crashes)
