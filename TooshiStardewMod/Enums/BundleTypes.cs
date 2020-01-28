@@ -34,7 +34,6 @@
 		PantrySpringCrops,
 		PantrySummerCrops,
 		PantryFallCrops,
-		PantryWinterCrops,
 		PantryEgg,
 		PantryRareFoods,
 		PantryDesert,

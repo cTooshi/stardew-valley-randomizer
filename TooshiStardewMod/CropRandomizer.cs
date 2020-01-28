@@ -114,6 +114,7 @@ namespace Randomizer
 				cropInfoToAdd.CanScythe = Globals.RNGGetNextBoolean(10);
 				cropInfoToAdd.DaysToRegrow = cropInfoToAdd.RegrowsAfterHarvest ? Range.GetRandomValue(1, 7) : -1;
 
+				if (!Globals.Config.RandomizeCrops) { continue; } // Preserve the original seasons/etc
 				CropGrowthInformation.CropIdsToInfo[originalValue] = cropInfoToAdd;
 			}
 

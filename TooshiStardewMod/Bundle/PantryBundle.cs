@@ -64,10 +64,6 @@ namespace Randomizer
 				case BundleTypes.PantryFallCrops:
 					GenerateBundleForSeasonCrops(Seasons.Fall, BundleColors.Orange);
 					break;
-				case BundleTypes.PantryWinterCrops:
-					GenerateBundleForSeasonCrops(Seasons.Winter, BundleColors.Cyan);
-					MinimumRequiredItems = 1; //TODO: just remove this type
-					break;
 				case BundleTypes.PantryEgg:
 					Name = "Egg";
 					potentialItems = RequiredItem.CreateList(
@@ -96,7 +92,7 @@ namespace Randomizer
 							new RequiredItem((int)ObjectIndexes.GoldenMask),
 							new RequiredItem((int)ObjectIndexes.GoldenRelic),
 						}),
-						new RequiredItem((int)ObjectIndexes.Sandfish), //TODO: change for the fish shuffle
+						Globals.RNGGetRandomValueFromList(RequiredItem.CreateList(FishItem.Get(Locations.Desert))),
 						Globals.RNGGetRandomValueFromList(RequiredItem.CreateList(ItemList.GetUniqueDesertForagables(), 1, 3)),
 						new RequiredItem((int)ObjectIndexes.StarfruitSeeds, 5)
 					};

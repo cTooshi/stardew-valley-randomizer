@@ -24,11 +24,18 @@ namespace Randomizer
 			List<string> fishNames = NameAndDescriptionRandomizer.GenerateFishNames(normalFish.Count + legendaryFish.Count);
 			foreach (FishItem fish in normalFish)
 			{
-				CopyFishInfo(Globals.RNGGetAndRemoveRandomValueFromList(normalFishCopy), fish);
-				fish.DartChance = GenerateRandomFishDifficulty();
-				fish.BehaviorType = Globals.RNGGetRandomValueFromList(
+				FishItem fishToReplace = Globals.RNGGetAndRemoveRandomValueFromList(normalFishCopy);
+				int newDartChance = GenerateRandomFishDifficulty();
+				FishBehaviorType newBehaviorType = Globals.RNGGetRandomValueFromList(
 					Enum.GetValues(typeof(FishBehaviorType)).Cast<FishBehaviorType>().ToList());
-				fish.OverrideName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
+				string newName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
+
+				if (!Globals.Config.RandomizeFish) { continue; }
+
+				CopyFishInfo(fishToReplace, fish);
+				fish.DartChance = newDartChance;
+				fish.BehaviorType = newBehaviorType;
+				fish.OverrideName = newName;
 
 				if (new int[] { 158, 161, 162 }.Contains(fish.Id)) // The three hard-coded mines fish
 				{
@@ -38,19 +45,21 @@ namespace Randomizer
 					}
 				}
 
-				if (!Globals.Config.RandomizeFish) { continue; }
-
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));
 			}
 
 			foreach (FishItem fish in legendaryFish)
 			{
-				fish.BehaviorType = Globals.RNGGetRandomValueFromList(
+				FishBehaviorType newBehaviorType = Globals.RNGGetRandomValueFromList(
 					Enum.GetValues(typeof(FishBehaviorType)).Cast<FishBehaviorType>().ToList());
-				fish.OverrideName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
+
+				string newName = Globals.RNGGetAndRemoveRandomValueFromList(fishNames);
 
 				if (!Globals.Config.RandomizeFish) { continue; }
+
+				fish.BehaviorType = newBehaviorType;
+				fish.OverrideName = newName;
 
 				editedObjectInfo.FishReplacements.Add(fish.Id, fish.ToString());
 				editedObjectInfo.ObjectInformationReplacements.Add(fish.Id, GetFishObjectInformation(fish));
