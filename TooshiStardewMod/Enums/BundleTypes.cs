@@ -118,6 +118,9 @@
 		BulletinWilly,
 		BulletinWizard,
 		BulletinColorPink,
-		BulletinColorWhite
+		BulletinColorWhite,
+
+		// Joja
+		JojaMissing
 	}
 }

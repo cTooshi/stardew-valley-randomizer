@@ -16,7 +16,18 @@ namespace Randomizer
 		{
 			get
 			{
-				string roomName = Regex.Replace(Room.ToString(), @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
+				string roomName = "";
+
+				if (Room == CommunityCenterRooms.Joja)
+				{
+					roomName = "Abandoned Joja Mart";
+				}
+
+				else
+				{
+					roomName = Regex.Replace(Room.ToString(), @"(\B[A-Z]+?(?=[A-Z][^A-Z])|\B[A-Z]+?(?=[^A-Z]))", " $1");
+				}
+
 				return $"{roomName}/{Id}";
 			}
 		}
@@ -42,6 +53,7 @@ namespace Randomizer
 			BulletinBoardBundle.RoomBundleTypes = GetBundleTypeList("Bulletin");
 			BoilerRoomBundle.RoomBundleTypes = GetBundleTypeList("Boiler");
 			VaultBundle.RoomBundleTypes = GetBundleTypeList("Vault");
+			JojaBundle.RoomBundleTypes = GetBundleTypeList("Joja");
 		}
 
 		/// <summary>
@@ -60,7 +72,7 @@ namespace Randomizer
 		/// <summary>
 		/// The factory call for this bundle - creates one of the appropriate type
 		/// If there's no bundle types left, will default to a random bundle
-		/// Has a 10% chance of generating a random bundle, and a 10% chance of a random reward
+		/// Has a 10% chance of generating a random bundle, and a 10% chance of a random reward if not the Joja room
 		/// </summary>
 		/// <param name="room">The room the bundle is in</param>
 		/// <param name="id">The id of the bundle</param>
@@ -86,6 +98,9 @@ namespace Randomizer
 					break;
 				case CommunityCenterRooms.BulletinBoard:
 					createdBundle = new BulletinBoardBundle();
+					break;
+				case CommunityCenterRooms.Joja:
+					createdBundle = new JojaBundle();
 					break;
 				default:
 					Globals.ConsoleWrite($"ERROR: Cannot create bundle for room: {room.ToString()}");
@@ -124,13 +139,18 @@ namespace Randomizer
 		/// </returns>
 		public override string ToString()
 		{
-			string rewardStringPrefix = GetRewardStringPrefix();
-			int itemId = Reward.Item.Id;
-			if (rewardStringPrefix == "BO")
+			string rewardString = "";
+			if (Room != CommunityCenterRooms.Joja) // Joja doesn't actually have an item reward
 			{
-				itemId = ItemList.BigCraftableItems[itemId];
+				string rewardStringPrefix = GetRewardStringPrefix();
+				int itemId = Reward.Item.Id;
+				if (rewardStringPrefix == "BO")
+				{
+					itemId = ItemList.BigCraftableItems[itemId];
+				}
+				rewardString = $"{rewardStringPrefix} {itemId} {Reward.NumberOfItems}";
 			}
-			string rewardString = $"{rewardStringPrefix} {itemId} {Reward.NumberOfItems}";
+
 			string minRequiredItemsString = "";
 			if (Room != CommunityCenterRooms.Vault && MinimumRequiredItems != null && MinimumRequiredItems > 0)
 			{
@@ -196,7 +216,7 @@ namespace Randomizer
 		/// <returns>True if successful, false otherwise</returns>
 		protected bool TryGenerateRandomBundle()
 		{
-			if (Room != CommunityCenterRooms.Vault && Globals.RNGGetNextBoolean(10))
+			if (Room != CommunityCenterRooms.Vault && Room != CommunityCenterRooms.Joja && Globals.RNGGetNextBoolean(10))
 			{
 				PopulateRandomBundle();
 				return true;
@@ -211,7 +231,7 @@ namespace Randomizer
 		/// /// <returns>True if successful, false otherwise</returns>
 		protected bool TryGenerateRandomReward()
 		{
-			if (Globals.RNGGetNextBoolean(10))
+			if (Room != CommunityCenterRooms.Joja && Globals.RNGGetNextBoolean(10))
 			{
 				GenerateRandomReward();
 				return true;

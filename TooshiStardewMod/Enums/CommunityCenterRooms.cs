@@ -10,6 +10,7 @@
 		FishTank,
 		BoilerRoom,
 		Vault,
-		BulletinBoard
+		BulletinBoard,
+		Joja
 	}
 }
