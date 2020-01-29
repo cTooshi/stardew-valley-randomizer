@@ -42,6 +42,7 @@ namespace Randomizer
 			new RoomInformation(CommunityCenterRooms.BoilerRoom, 20, 22),
 			new RoomInformation(CommunityCenterRooms.BulletinBoard, 31, 35),
 			new RoomInformation(CommunityCenterRooms.Vault, 23, 26),
+			new RoomInformation(CommunityCenterRooms.Joja, 36, 36)
 		};
 
 		private readonly static Dictionary<string, string> _randomizedBundles = new Dictionary<string, string>();
@@ -106,7 +107,11 @@ namespace Randomizer
 					bundle.RequiredItems.Count : bundle.MinimumRequiredItems.Value;
 				Globals.SpoilerWrite($"Required: {minimumRequiredItems}/{bundle.RequiredItems.Count}");
 			}
-			Globals.SpoilerWrite($"Reward: {bundle.Reward.Item.Name}: {bundle.Reward.NumberOfItems}");
+
+			if (bundle.Room != CommunityCenterRooms.Joja)
+			{
+				Globals.SpoilerWrite($"Reward: {bundle.Reward.Item.Name}: {bundle.Reward.NumberOfItems}");
+			}
 			Globals.SpoilerWrite($"---");
 		}
 

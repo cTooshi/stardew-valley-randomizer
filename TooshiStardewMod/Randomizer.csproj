@@ -50,6 +50,7 @@
     <Compile Include="AssetLoader.cs" />
     <Compile Include="BlueprintRandomizer.cs" />
     <Compile Include="Building.cs" />
+    <Compile Include="Bundle\JojaBundle.cs" />
     <Compile Include="Enums\Buildings.cs" />
     <Compile Include="Enums\WeaponIndexes.cs" />
     <Compile Include="Enums\WeaponType.cs" />
