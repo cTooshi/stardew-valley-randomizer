@@ -219,7 +219,7 @@ namespace Randomizer
 		/// <param name="difficulty">The difficulty</param>
 		/// <param name="idsToExclude">Any ids to exclude from the results</param>
 		/// <returns>The list of items</returns>
-		public static List<Item> GetItemsBelowDifficulty(ObtainingDifficulties difficulty, int[] idsToExclude = null)
+		public static List<Item> GetItemsBelowDifficulty(ObtainingDifficulties difficulty, List<int> idsToExclude = null)
 		{
 			return Items.Values.Where(x => x.DifficultyToObtain < difficulty &&
 				(idsToExclude == null || !idsToExclude.Contains(x.Id)))

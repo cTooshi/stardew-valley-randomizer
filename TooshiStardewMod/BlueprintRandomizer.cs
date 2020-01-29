@@ -305,7 +305,7 @@ namespace Randomizer
 		{
 			Item resource = ItemList.GetRandomResourceItem();
 			Item easyItem = Globals.RNGGetRandomValueFromList(
-				ItemList.GetItemsBelowDifficulty(ObtainingDifficulties.MediumTimeRequirements, new int[resource.Id])
+				ItemList.GetItemsBelowDifficulty(ObtainingDifficulties.MediumTimeRequirements, new List<int> { resource.Id })
 			);
 
 			return Globals.RNGGetRandomValueFromList(new List<List<ItemAndMultiplier>> {

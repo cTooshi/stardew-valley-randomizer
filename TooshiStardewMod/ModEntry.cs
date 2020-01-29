@@ -142,13 +142,13 @@ namespace Randomizer
 		public void CalculateAllReplacements()
 		{
 			//Seed is pulled from farm name
-			byte[] seedvar = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(Game1.player.farmName));
+			byte[] seedvar = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(Game1.player.farmName.Value));
 			int seed = BitConverter.ToInt32(seedvar, 0);
 
 			this.Monitor.Log($"Seed Set: {seed}");
 
 			Globals.RNG = new Random(seed);
-			Globals.SpoilerLog = new SpoilerLogger(Game1.player.farmName);
+			Globals.SpoilerLog = new SpoilerLogger(Game1.player.farmName.Value);
 
 			// Make replacements and edits
 			this._modAssetLoader.CalculateReplacements();
@@ -216,7 +216,7 @@ namespace Randomizer
 				farmHouse.Objects.Values.Where(x =>
 					x.DisplayName == "Chest")
 					.Cast<StardewValley.Objects.Chest>()
-					.Where(x => x.giftbox)
+					.Where(x => x.giftbox.Value)
 				.ToList();
 
 			if (chestsInRoom.Count > 0)

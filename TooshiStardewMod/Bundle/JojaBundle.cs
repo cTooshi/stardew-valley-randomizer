@@ -26,7 +26,7 @@ namespace Randomizer
 						new RequiredItem(ItemList.GetRandomItemAtDifficulty(ObtainingDifficulties.LargeTimeRequirements)),
 						new RequiredItem(ItemList.GetRandomItemAtDifficulty(ObtainingDifficulties.MediumTimeRequirements)),
 						new RequiredItem(
-							Globals.RNGGetRandomValueFromList(ItemList.GetItemsBelowDifficulty(ObtainingDifficulties.Impossible))
+							Globals.RNGGetRandomValueFromList(ItemList.GetItemsBelowDifficulty(ObtainingDifficulties.Impossible, new List<int> { (int)ObjectIndexes.AnyFish }))
 						)
 					};
 					MinimumRequiredItems = 5;
