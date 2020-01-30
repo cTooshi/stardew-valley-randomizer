@@ -57,9 +57,13 @@
     <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="Item\BootData.cs" />
     <Compile Include="Item\BootItem.cs" />
+    <Compile Include="Item\ItemDrop.cs" />
     <Compile Include="Item\WeaponData.cs" />
     <Compile Include="Item\WeaponItem.cs" />
     <Compile Include="ModConfig.cs" />
+    <Compile Include="Monsters\Monster.cs" />
+    <Compile Include="Monsters\MonsterData.cs" />
+    <Compile Include="Monsters\MonsterRandomizer.cs" />
     <Compile Include="OverriddenFiles\OverriddenSeedShop.cs" />
     <Compile Include="OverriddenFiles\OverriddenSubmarine.cs" />
     <Compile Include="QuestRandomizer.cs" />
