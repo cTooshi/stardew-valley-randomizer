@@ -20,6 +20,7 @@ namespace Randomizer
 		private Dictionary<int, string> _fruitTreeReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _cropReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _weaponReplacements = new Dictionary<int, string>();
+		private Dictionary<int, string> _bootReplacements = new Dictionary<int, string>();
 		public Dictionary<string, string> MusicReplacements = new Dictionary<string, string>();
 
 		public AssetEditor(ModEntry mod)
@@ -39,8 +40,8 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Data/Locations")) { return Globals.Config.RandomizeFish || Globals.Config.RandomizeForagables || Globals.Config.AddRandomArtifactItem; }
 			if (asset.AssetNameEquals("Data/fruitTrees")) { return Globals.Config.RandomizeFruitTrees; }
 			if (asset.AssetNameEquals("Data/Crops")) { return Globals.Config.RandomizeCrops; }
-
 			if (asset.AssetNameEquals("Data/weapons")) { return Globals.Config.RandomizeWeapons; }
+			if (asset.AssetNameEquals("Data/Boots")) { return Globals.Config.RandomizeBoots; }
 			return false;
 		}
 
@@ -100,6 +101,10 @@ namespace Randomizer
 			{
 				this.ApplyEdits(asset, this._weaponReplacements);
 			}
+			else if (asset.AssetNameEquals("Data/Boots"))
+			{
+				this.ApplyEdits(asset, this._bootReplacements);
+			}
 		}
 
 		public void InvalidateCache()
@@ -147,6 +152,7 @@ namespace Randomizer
 			MusicReplacements = MusicRandomizer.Randomize();
 			_questReplacements = QuestRandomizer.Randomize();
 			_weaponReplacements = WeaponRandomizer.Randomize();
+			_bootReplacements = BootRandomizer.Randomize();
 		}
 
 		/// <summary>
