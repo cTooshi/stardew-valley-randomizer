@@ -193,6 +193,7 @@ namespace Randomizer
 			}
 			weapon.CritMultiplier = critMultiplier;
 		}
+
 		/// <summary>
 		/// The weapon items in dictionary form - data taken from weapons.xnb
 		/// </summary>

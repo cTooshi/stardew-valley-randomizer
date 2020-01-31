@@ -25,6 +25,7 @@ namespace Randomizer
 		public bool IsCraftable { get; set; }
 		public bool IsSmelted { get; set; }
 		public bool IsAnimalProduct { get; set; }
+		public bool IsMonsterItem { get; set; }
 		public bool IsFish { get; set; }
 		public bool IsArtifact { get; set; }
 		public bool IsMayonaisse { get; set; }

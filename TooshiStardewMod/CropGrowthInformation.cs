@@ -28,6 +28,7 @@ namespace Randomizer
 
 		public static Dictionary<int, string> DefaultStringData { get; set; } = new Dictionary<int, string>
 		{
+			{273, "1 2 2 3/spring/34/271/-1/1/true 1 1 10 .1/false/false" },
 			{299,  "1 2 2 2/fall/39/300/-1/1/false/false/false" },
 			{301,  "1 1 2 3 3/fall/38/398/3/0/true 1 2 6 0/true/false" },
 			{302,  "1 1 2 3 4/summer/37/304/1/0/true 1 2 6 0/true/false" },

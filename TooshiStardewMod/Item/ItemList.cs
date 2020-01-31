@@ -380,6 +380,7 @@ namespace Randomizer
 				{ (int)ObjectIndexes.JackOLantern, new CraftableItem((int)ObjectIndexes.JackOLantern, "/Home/746/false/null", CraftableCategories.DifficultAndNeedMany) { OverrideName = "Jack-O-Lantern" } },
 				{ (int)ObjectIndexes.WoodFloor, new CraftableItem((int)ObjectIndexes.WoodFloor, "/Field/328/false/l 0", CraftableCategories.EasyAndNeedMany) },
 				{ (int)ObjectIndexes.StrawFloor, new CraftableItem((int)ObjectIndexes.StrawFloor, "/Field/401/false/1 0", CraftableCategories.EasyAndNeedMany) },
+				{ (int)ObjectIndexes.BrickFloor, new CraftableItem((int)ObjectIndexes.BrickFloor, "/Field/293 5/false/l 0", CraftableCategories.EasyAndNeedMany) },
 				{ (int)ObjectIndexes.WeatheredFloor, new CraftableItem((int)ObjectIndexes.WeatheredFloor, "/Field/331/false/l 0", CraftableCategories.EasyAndNeedMany) },
 				{ (int)ObjectIndexes.CrystalFloor, new CraftableItem((int)ObjectIndexes.CrystalFloor, "/Field/333 5/false/l 0", CraftableCategories.ModerateAndNeedMany) },
 				{ (int)ObjectIndexes.StoneFloor, new CraftableItem((int)ObjectIndexes.StoneFloor, "/Field/329/false/l 0", CraftableCategories.EasyAndNeedMany) },
@@ -626,11 +627,12 @@ namespace Randomizer
 
 				// Items you can find in the mines
 				{ (int)ObjectIndexes.CaveCarrot, new Item((int)ObjectIndexes.CaveCarrot, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 3) } },
-				{ (int)ObjectIndexes.BugMeat, new Item((int)ObjectIndexes.BugMeat, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
-				{ (int)ObjectIndexes.Slime, new Item((int)ObjectIndexes.Slime, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 10) } },
-				{ (int)ObjectIndexes.BatWing, new Item((int)ObjectIndexes.BatWing, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
-				{ (int)ObjectIndexes.VoidEssence, new Item((int)ObjectIndexes.VoidEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
-				{ (int)ObjectIndexes.SolarEssence, new Item((int)ObjectIndexes.SolarEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+				{ (int)ObjectIndexes.BugMeat, new MonsterItem((int)ObjectIndexes.BugMeat, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+				{ (int)ObjectIndexes.Slime, new MonsterItem((int)ObjectIndexes.Slime, ObtainingDifficulties.SmallTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 10) } },
+				{ (int)ObjectIndexes.BatWing, new MonsterItem((int)ObjectIndexes.BatWing, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+				{ (int)ObjectIndexes.VoidEssence, new MonsterItem((int)ObjectIndexes.VoidEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+				{ (int)ObjectIndexes.SolarEssence, new MonsterItem((int)ObjectIndexes.SolarEssence, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
+				{ (int)ObjectIndexes.SquidInk, new MonsterItem((int)ObjectIndexes.SquidInk, ObtainingDifficulties.MediumTimeRequirements) { ItemsRequiredForRecipe = new Range(1, 5) } },
 				{ (int)ObjectIndexes.GreenSlimeEgg, new Item((int)ObjectIndexes.GreenSlimeEgg, ObtainingDifficulties.LargeTimeRequirements) },
 				{ (int)ObjectIndexes.BlueSlimeEgg, new Item((int)ObjectIndexes.BlueSlimeEgg, ObtainingDifficulties.LargeTimeRequirements) },
 				{ (int)ObjectIndexes.RedSlimeEgg, new Item((int)ObjectIndexes.RedSlimeEgg, ObtainingDifficulties.EndgameItem) },
@@ -991,6 +993,7 @@ namespace Randomizer
 				{ (int)ObjectIndexes.RhubarbSeeds, new SeedItem((int)ObjectIndexes.RhubarbSeeds, new List<Seasons> { Seasons.Spring }) },
 				{ (int)ObjectIndexes.StrawberrySeeds, new SeedItem((int)ObjectIndexes.StrawberrySeeds, new List<Seasons> { Seasons.Spring }) },
 				{ (int)ObjectIndexes.TulipBulb, new SeedItem((int)ObjectIndexes.TulipBulb, new List<Seasons> { Seasons.Spring }) },
+				{ (int)ObjectIndexes.RiceShoot, new SeedItem((int)ObjectIndexes.RiceShoot, new List<Seasons> { Seasons.Spring }) },
 				{ (int)ObjectIndexes.BlueberrySeeds, new SeedItem((int)ObjectIndexes.BlueberrySeeds, new List<Seasons> { Seasons.Summer }) },
 				{ (int)ObjectIndexes.CornSeeds, new SeedItem((int)ObjectIndexes.CornSeeds, new List<Seasons> { Seasons.Summer,Seasons.Fall }) },
 				{ (int)ObjectIndexes.HopsStarter, new SeedItem((int)ObjectIndexes.HopsStarter, new List<Seasons> { Seasons.Summer }) },
@@ -1053,6 +1056,7 @@ namespace Randomizer
 				{ (int)ObjectIndexes.Yam, new CropItem((int)ObjectIndexes.Yam, "18/Basic -75") },
 				{ (int)ObjectIndexes.AncientFruit, new CropItem((int)ObjectIndexes.AncientFruit, "-300/Basic -79") },
 				{ (int)ObjectIndexes.SweetGemBerry, new CropItem((int)ObjectIndexes.SweetGemBerry, "-300/Basic -17") },
+				{ (int)ObjectIndexes.UnmilledRice, new CropItem((int)ObjectIndexes.UnmilledRice, "1/Basic -75") },
 			};
 		}
 

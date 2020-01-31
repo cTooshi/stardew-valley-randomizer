@@ -134,6 +134,7 @@ namespace Randomizer
 				cropDescriptions); // Note: It removes the descriptions it uses from the list after assigning them- may want to edit later
 
 			SetUpCoffee(editedObjectInfo, vegetableNames[vegetableNames.Count - 1]);
+			SetUpRice(editedObjectInfo);
 
 			SetCropAndSeedInformation(
 				editedObjectInfo,
@@ -221,6 +222,23 @@ namespace Randomizer
 		}
 
 		/// <summary>
+		/// Sets up the rice objects
+		/// </summary>
+		/// <param name="editedObjectInfo">The object info containing changes to apply</param>
+		public static void SetUpRice(EditedObjectInformation editedObjectInfo)
+		{
+			CropItem unmilledRice = (CropItem)ItemList.Items[(int)ObjectIndexes.UnmilledRice];
+			string riceName = unmilledRice.OverrideName; //ItemList.GetSeedFromCrop(unmilledRice).OverrideName;
+			unmilledRice.OverrideName = $"Unmilled {riceName}";
+			editedObjectInfo.ObjectInformationReplacements[(int)ObjectIndexes.UnmilledRice] = unmilledRice.ToString();
+
+			Item rice = ItemList.Items[(int)ObjectIndexes.Rice];
+			rice.OverrideName = riceName;
+			editedObjectInfo.ObjectInformationReplacements[(int)ObjectIndexes.Rice] =
+				$"{riceName}/100/5/Basic/{riceName}/A basic grain often served under vegetables.";
+		}
+
+		/// <summary>
 		/// Changes the names of the cooked food to match those of the objects themselves
 		/// </summary>
 		/// <param name="editedObjectInfo">The object info containing changes to apply</param>
@@ -241,6 +259,7 @@ namespace Randomizer
 			string radish = ItemList.Items[(int)ObjectIndexes.Radish].Name;
 			string poppyseed = ItemList.Items[(int)ObjectIndexes.Poppy].Name;
 			string artichoke = ItemList.Items[(int)ObjectIndexes.Artichoke].Name;
+			string rice = ItemList.Items[(int)ObjectIndexes.Rice].Name;
 
 			ItemList.Items[(int)ObjectIndexes.CheeseCauliflower].OverrideName = $"Cheese {cauliflower}";
 			ItemList.Items[(int)ObjectIndexes.ParsnipSoup].OverrideName = $"{parsnip} Soup";
@@ -258,6 +277,7 @@ namespace Randomizer
 			ItemList.Items[(int)ObjectIndexes.PoppyseedMuffin].OverrideName = $"{poppyseed} Muffin";
 			ItemList.Items[(int)ObjectIndexes.ArtichokeDip].OverrideName = $"{artichoke} Dip";
 			ItemList.Items[(int)ObjectIndexes.FruitSalad].OverrideName = "Harvest Salad";
+			ItemList.Items[(int)ObjectIndexes.RicePudding].OverrideName = $"{rice} Pudding";
 
 			var objectReplacements = new Dictionary<int, string>
 			{
@@ -276,7 +296,8 @@ namespace Randomizer
 				{ (int)ObjectIndexes.CranberryCandy, $"{cranberry} Candy/175/50/Cooking -7/{cranberry} Candy/It's sweet enough to mask the {cranberry}'s bitterness./drink/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.PoppyseedMuffin, $"{poppyseed} Muffin/250/60/Cooking -7/{poppyseed} Muffin/It has a soothing effect./food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.ArtichokeDip, $"{artichoke} Dip/210/40/Cooking -7/{artichoke} Dip/It's cool and refreshing./food/0 0 0 0 0 0 0 0 0 0 0/0" },
-				{ (int)ObjectIndexes.FruitSalad, $"Harvest Salad/450/105/Cooking -7/Harvest Salad/A delicious combination of local plants./food/0 0 0 0 0 0 0 0 0 0 0/0" }
+				{ (int)ObjectIndexes.FruitSalad, $"Harvest Salad/450/105/Cooking -7/Harvest Salad/A delicious combination of local plants./food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.RicePudding, $"{rice} Pudding/260/46/Cooking -7/{rice} Pudding/It's creamy, sweet, and fun to eat./food/0 0 0 0 0 0 0 0 0 0 0/0"}
 			};
 
 			foreach (KeyValuePair<int, string> pair in objectReplacements)
