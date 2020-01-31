@@ -13,7 +13,7 @@ namespace Randomizer
 		public List<ItemDrop> ItemDrops { get; set; }
 		public int Resilience { get; set; }
 		public double Jitteriness { get; set; }
-		public int MovesTowardPlayer { get; set; }
+		public int MovesTowardPlayerThreshold { get; set; }
 		public int Speed { get; set; }
 		public double MissChance { get; set; }
 		public bool IsMinesMonster { get; set; }
@@ -48,7 +48,7 @@ namespace Randomizer
 			ItemDrops = ItemDrop.ParseString(itemDropString);
 			Resilience = resilience;
 			Jitteriness = jitteriness;
-			MovesTowardPlayer = moveTowardPlayer;
+			MovesTowardPlayerThreshold = moveTowardPlayer;
 			Speed = speed;
 			MissChance = missChance;
 			IsMinesMonster = isMinesMonster;
@@ -66,7 +66,7 @@ namespace Randomizer
 			string gliderString = IsGlider ? "true" : "false";
 			string mineMonsterString = IsMinesMonster ? "true" : "false";
 
-			return $"{HP}/{Damage}/{Coins.MinValue}/{Coins.MaxValue}/{gliderString}/{RandomMovementDuration}/{itemString}/{Resilience}/{Jitteriness}/{MovesTowardPlayer}/{Speed}/{MissChance}/{mineMonsterString}/{Experience}/{Name}";
+			return $"{HP}/{Damage}/{Coins.MinValue}/{Coins.MaxValue}/{gliderString}/{RandomMovementDuration}/{itemString}/{Resilience}/{Jitteriness}/{MovesTowardPlayerThreshold}/{Speed}/{MissChance}/{mineMonsterString}/{Experience}/{Name}";
 		}
 	}
 }

@@ -19,8 +19,8 @@
 		SpicyEel = 226, Sashimi = 227, MakiRoll = 228, Tortilla = 229, RedPlate = 230, EggplantParmesan = 231, RicePudding = 232, IceCream = 233, BlueberryTart = 234, AutumnsBounty = 235, PumpkinSoup = 236,
 		SuperMeal = 237, CranberrySauce = 238, Stuffing = 239, FarmersLunch = 240, SurvivalBurger = 241, DishOTheSea = 242, MinersTreat = 243, RootsPlatter = 244, Sugar = 245, WheatFlour = 246, Oil = 247,
 		Garlic = 248, Kale = 250, Rhubarb = 252, Melon = 254, Tomato = 256, Morel = 257, Blueberry = 258, FiddleheadFern = 259, HotPepper = 260, Wheat = 262, Radish = 264, RedCabbage = 266, Starfruit = 268,
-		Corn = 270, Eggplant = 272, Artichoke = 274, Pumpkin = 276, BokChoy = 278, Yam = 280, Chanterelle = 281, Cranberries = 282, Holly = 283, Beet = 284, CherryBomb = 286, Bomb = 287, MegaBomb = 288,
-		Salmonberry = 296, GrassStarter = 297, HardwoodFence = 298, AmaranthSeeds = 299, Amaranth = 300, GrapeStarter = 301, HopsStarter = 302, PaleAle = 303, Hops = 304, VoidEgg = 305, Mayonnaise = 306,
+		Corn = 270, UnmilledRice = 271, Eggplant = 272, RiceShoot = 273, Artichoke = 274, Pumpkin = 276, BokChoy = 278, Yam = 280, Chanterelle = 281, Cranberries = 282, Holly = 283, Beet = 284, CherryBomb = 286, Bomb = 287, MegaBomb = 288,
+		BrickFloor = 293, Salmonberry = 296, GrassStarter = 297, HardwoodFence = 298, AmaranthSeeds = 299, Amaranth = 300, GrapeStarter = 301, HopsStarter = 302, PaleAle = 303, Hops = 304, VoidEgg = 305, Mayonnaise = 306,
 		DuckMayonnaise = 307, VoidMayonnaise = 308, Acorn = 309, MapleSeed = 310, PineCone = 311, WoodFence = 322, StoneFence = 323, IronFence = 324, Gate = 325,
 		WoodFloor = 328, StoneFloor = 329, Clay = 330, WeatheredFloor = 331, CrystalFloor = 333, CopperBar = 334, IronBar = 335, GoldBar = 336, IridiumBar = 337, RefinedQuartz = 338, Honey = 340,
 		TeaSet = 341, Pickles = 342, Jelly = 344, Beer = 346, RareSeed = 347, Wine = 348, EnergyTonic = 349, Juice = 350, MuscleRemedy = 351, BasicFertilizer = 368, QualityFertilizer = 369,
@@ -50,7 +50,7 @@
 		Shrimp = 720, Snail = 721, Periwinkle = 722, Oyster = 723, MapleSyrup = 724, OakResin = 725, PineTar = 726, Chowder = 727, FishStew = 728, Escargot = 729, LobsterBisque = 730, MapleBar = 731,
 		CrabCakes = 732, Woodskip = 734, StrawberrySeeds = 745, JackOLantern = 746, OmniGeode = 749, Slime = 766, BatWing = 767, SolarEssence = 768, VoidEssence = 769, MixedSeeds = 770, Fiber = 771,
 		OilOfGarlic = 772, LifeElixir = 773, WildBait = 774, Glacierfish = 775, Battery = 787, LostAxe = 788, LuckyPurpleShorts = 789, BerryBasket = 790, VoidSalmon = 795, Slimejack = 796, Pearl = 797,
-		MidnightSquid = 798, SpookFish = 799, Blobfish = 800, WeddingRing = 801, CactusSeeds = 802, IridiumMilk = 803,
+		MidnightSquid = 798, SpookFish = 799, Blobfish = 800, WeddingRing = 801, CactusSeeds = 802, IridiumMilk = 803, SquidInk = 814,
 
 
 		// UNOFFICIAL ITEM IDS - A LOT OF THESE ARE THE "BigCraftables"

@@ -44,6 +44,7 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Data/weapons")) { return Globals.Config.RandomizeWeapons; }
 			if (asset.AssetNameEquals("Data/Boots")) { return Globals.Config.RandomizeBoots; }
 			if (asset.AssetNameEquals("Data/Monsters")) { return Globals.Config.RandomizeMonsters; }
+
 			return false;
 		}
 
@@ -128,6 +129,7 @@ namespace Randomizer
 			this._mod.Helper.Content.InvalidateCache("Data/fruitTrees");
 			this._mod.Helper.Content.InvalidateCache("Data/Crops");
 			this._mod.Helper.Content.InvalidateCache("Data/weapons");
+			this._mod.Helper.Content.InvalidateCache("Data/Monsters");
 		}
 
 		public void CalculateEditsBeforeLoad()
@@ -151,6 +153,7 @@ namespace Randomizer
 			_objectInformationReplacements = editedObjectInfo.ObjectInformationReplacements;
 
 			_blueprintReplacements = BlueprintRandomizer.Randomize();
+			_monsterReplacements = MonsterRandomizer.Randomize(); // Must be done before recipes since rarities of drops change
 			_recipeReplacements = CraftingRecipeRandomizer.Randomize();
 			_stringReplacements = StringsRandomizer.Randomize();
 			_locationsReplacements = LocationRandomizer.Randomize();
@@ -159,7 +162,6 @@ namespace Randomizer
 			_questReplacements = QuestRandomizer.Randomize();
 			_weaponReplacements = WeaponRandomizer.Randomize();
 			_bootReplacements = BootRandomizer.Randomize();
-			_monsterReplacements = MonsterRandomizer.Randomize();
 		}
 
 		/// <summary>

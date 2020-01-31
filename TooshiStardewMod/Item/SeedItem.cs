@@ -25,9 +25,10 @@ namespace Randomizer
 					$"Takes {CropGrowthInfo.TimeToGrow} days to grow but keeps producing after that. " :
 					$"Takes {CropGrowthInfo.TimeToGrow} days to mature. ";
 				string seasonsString = $"Plant during: {CropGrowthInfo.GetSeasonsString(true)}. ";
-				string indoorsString = growsCrop.Id == (int)ObjectIndexes.CactusFruit ? "Can only be grown indoors." : "";
+				string indoorsString = growsCrop.Id == (int)ObjectIndexes.CactusFruit ? "Can only be grown indoors. " : "";
+				string waterString = growsCrop.Id == (int)ObjectIndexes.UnmilledRice ? "Grows faster near water." : "";
 
-				return $"{flowerString}{scytheString}{trellisString}{growthString}{seasonsString}{indoorsString}";
+				return $"{flowerString}{scytheString}{trellisString}{growthString}{seasonsString}{indoorsString}{waterString}";
 			}
 		}
 		public CropGrowthInformation CropGrowthInfo { get { return CropGrowthInformation.CropIdsToInfo[Id]; } }

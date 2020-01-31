@@ -58,6 +58,7 @@
     <Compile Include="Item\BootData.cs" />
     <Compile Include="Item\BootItem.cs" />
     <Compile Include="Item\ItemDrop.cs" />
+    <Compile Include="Item\MonsterItem.cs" />
     <Compile Include="Item\WeaponData.cs" />
     <Compile Include="Item\WeaponItem.cs" />
     <Compile Include="ModConfig.cs" />
