@@ -36,7 +36,7 @@ namespace Randomizer
 				monster.Jitteriness = Range.GetRandomValue(0, 2) / 100d;
 				RandomizeMoveTowardPlayerThreshold(monster);
 				monster.Speed = Range.GetRandomValue(1, 4);
-				monster.MissChance = Range.GetRandomValue(0, 10) / 100d;
+				monster.MissChance = Range.GetRandomValue(0, 5) / 100d;
 				monster.Experience = Math.Max(Globals.RNGGetIntWithinPercentage(monster.Experience, ExperienceVariance), 1);
 
 				replacements.Add(monster.Name, monster.ToString());
