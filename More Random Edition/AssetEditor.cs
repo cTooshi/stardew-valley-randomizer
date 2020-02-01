@@ -22,6 +22,7 @@ namespace Randomizer
 		private Dictionary<int, string> _weaponReplacements = new Dictionary<int, string>();
 		private Dictionary<int, string> _bootReplacements = new Dictionary<int, string>();
 		private Dictionary<string, string> _monsterReplacements = new Dictionary<string, string>();
+		private Dictionary<string, string> _birthdayReplacements = new Dictionary<string, string>();
 		public Dictionary<string, string> MusicReplacements = new Dictionary<string, string>();
 
 		public AssetEditor(ModEntry mod)
@@ -44,6 +45,7 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Data/weapons")) { return Globals.Config.RandomizeWeapons; }
 			if (asset.AssetNameEquals("Data/Boots")) { return Globals.Config.RandomizeBoots; }
 			if (asset.AssetNameEquals("Data/Monsters")) { return Globals.Config.RandomizeMonsters; }
+			if (asset.AssetNameEquals("Data/NPCDispositions")) { return Globals.Config.RandomizeNPCBirthdays; }
 
 			return false;
 		}
@@ -112,6 +114,10 @@ namespace Randomizer
 			{
 				this.ApplyEdits(asset, this._monsterReplacements);
 			}
+			else if (asset.AssetNameEquals("Data/NPCDispositions"))
+			{
+				this.ApplyEdits(asset, this._birthdayReplacements);
+			}
 		}
 
 		public void InvalidateCache()
@@ -130,6 +136,7 @@ namespace Randomizer
 			this._mod.Helper.Content.InvalidateCache("Data/Crops");
 			this._mod.Helper.Content.InvalidateCache("Data/weapons");
 			this._mod.Helper.Content.InvalidateCache("Data/Monsters");
+			this._mod.Helper.Content.InvalidateCache("Data/NPCDispositions");
 		}
 
 		public void CalculateEditsBeforeLoad()
@@ -162,6 +169,7 @@ namespace Randomizer
 			_questReplacements = QuestRandomizer.Randomize();
 			_weaponReplacements = WeaponRandomizer.Randomize();
 			_bootReplacements = BootRandomizer.Randomize();
+			_birthdayReplacements = BirthdayRandomizer.Randomize();
 		}
 
 		/// <summary>
