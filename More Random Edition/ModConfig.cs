@@ -26,6 +26,7 @@
 
 		public bool RandomizeAnimalSkins { get; set; } = true;
 		public bool RandomizeNPCSkins { get; set; } = false;
+		public bool RandomizeNPCBirthdays { get; set; } = true;
 
 		public bool RandomizeIntroStory { get; set; } = true;
 		public bool RandomizeQuests { get; set; } = true;
