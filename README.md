@@ -68,7 +68,11 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Palette randomization (if possible)
   * Randomly shift the color of the in-game graphics towards a different hue
 * NPC schedule shuffle and/or randomization
+* Cooking recipe randomization
+* Tea trees and the new items associated with it need to be randomized
+* Stables need to be randomized still
   
 ## Known Issues
-* There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue
+* There are issues with the randomization not being consistent if you load more than one farm in your play session
+  * Restart the game before you load each farm, even if it's the same farm
 * The original mine floor randomization sometimes causes crashes when using the elevator - recommended to leave this setting off for now
