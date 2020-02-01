@@ -67,7 +67,6 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
   * New sprites for fish
 * Palette randomization (if possible)
   * Randomly shift the color of the in-game graphics towards a different hue
-* NPC birthday randomization
 * NPC schedule shuffle and/or randomization
   
 ## Known Issues
