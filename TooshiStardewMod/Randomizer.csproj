@@ -65,6 +65,7 @@
     <Compile Include="Monsters\Monster.cs" />
     <Compile Include="Monsters\MonsterData.cs" />
     <Compile Include="Monsters\MonsterRandomizer.cs" />
+    <Compile Include="NameRandomizers\WeaponAndArmorNameRandomizer.cs" />
     <Compile Include="OverriddenFiles\OverriddenSeedShop.cs" />
     <Compile Include="OverriddenFiles\OverriddenSubmarine.cs" />
     <Compile Include="QuestRandomizer.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Enums\RainTypes.cs" />
     <Compile Include="FishRandomizer.cs" />
     <Compile Include="Item\FishData.cs" />
-    <Compile Include="NameAndDescriptionRandomizer.cs" />
+    <Compile Include="NameRandomizers\NameAndDescriptionRandomizer.cs" />
     <Compile Include="CropRandomizer.cs" />
     <Compile Include="Bundle\BoilerRoomBundle.cs" />
     <Compile Include="Bundle\BulletinBoardBundle.cs" />
