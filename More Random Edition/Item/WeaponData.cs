@@ -53,7 +53,6 @@ namespace Randomizer
 			{44, "Cutlass/A finely crafted blade./9/17/1/4/0/0/0/-1/-1/0/.02/3" },
 			{45, "Wicked Kris/The blade is made of an iridium alloy./24/30/.5/0/8/0/1/-1/-1/2/.06/3" },
 			{46, "Kudgel/A brute's companion./27/40/1.6/-10/0/0/2/107/100/0/.02/3.1" },
-			{47, "Scythe/It can cut grass into hay, if you've built a silo./1/3/1/0/0/0/0/-1/-1/0/.02/3" },
 			{48, "Yeti Tooth/It's icy cold to the touch./26/42/1/0/0/4/0/-1/-1/0/.02/3.2" },
 			{49, "Rapier/An elegant blade./15/25/1/4/0/0/0/100/95/2/.02/3" },
 			{50, "Steel Falchion/Light and powerful./28/46/1/8/5/0/0/142/100/0/.02/3.4" },
