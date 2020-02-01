@@ -10,6 +10,8 @@ namespace Randomizer
 		/// <returns />
 		public static Dictionary<int, string> Randomize()
 		{
+			WeaponAndArmorNameRandomizer nameRandomizer = new WeaponAndArmorNameRandomizer();
+
 			Dictionary<int, string> bootReplacements = new Dictionary<int, string>();
 			List<BootItem> bootsToUse = new List<BootItem>();
 			foreach (BootItem originalBoot in BootData.AllBoots)
@@ -21,7 +23,7 @@ namespace Randomizer
 				bootsToUse.Add(
 					new BootItem(
 						originalBoot.Id,
-						originalBoot.Name,
+						nameRandomizer.GenerateRandomBootName(),
 						originalBoot.Description,
 						originalBoot.NotActuallyPrice,
 						defense,

@@ -14,11 +14,13 @@ namespace Randomizer
 		/// <returns />
 		public static Dictionary<int, string> Randomize()
 		{
+			WeaponAndArmorNameRandomizer nameRandomizer = new WeaponAndArmorNameRandomizer();
+
 			Dictionary<int, WeaponItem> weaponDictionary = WeaponData.Items();
 			Dictionary<int, string> stringReplacements = new Dictionary<int, string>();
 			foreach (WeaponItem weapon in weaponDictionary.Values)
 			{
-				RandomizeWeapon(weapon);
+				RandomizeWeapon(weapon, nameRandomizer);
 				stringReplacements.Add(weapon.Id, weapon.ToString());
 			}
 
@@ -30,12 +32,12 @@ namespace Randomizer
 		/// Randomizes the values on the given weapon
 		/// </summary>
 		/// <param name="weapon">The weapon to randomize</param>
-		private static void RandomizeWeapon(WeaponItem weapon)
+		/// <param name="nameRandomizer">The name randomizer</param>
+		private static void RandomizeWeapon(WeaponItem weapon, WeaponAndArmorNameRandomizer nameRandomizer)
 		{
 			if (weapon.Type == WeaponType.Slingshot)
 			{
-				// The ONLY thing that matters for slingshots is where you get them, so
-				// randomizing them won't really do anything...
+				weapon.OverrideName = nameRandomizer.GenerateRandomWeaponName(weapon.Type, (WeaponIndexes)weapon.Id);
 				return;
 			}
 
@@ -50,7 +52,10 @@ namespace Randomizer
 			RandomizeWeaponDropInfo(weapon);
 			SetWeaponDescription(weapon);
 
-			//TODO: Randomize weapon name
+			if (weapon.Name != "Galaxy Sword") // The Galaxy Sword has some hard-coded check in game unfortunately
+			{
+				weapon.OverrideName = nameRandomizer.GenerateRandomWeaponName(weapon.Type);
+			}
 		}
 
 		/// <summary>
