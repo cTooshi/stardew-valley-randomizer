@@ -115,6 +115,8 @@ namespace Randomizer
 		/// </summary>
 		public void RestoreSubmarineLocation()
 		{
+			if (NormalSubmarineLocation == null) { return; }
+
 			int submarineIndex;
 			foreach (GameLocation location in Game1.locations)
 			{
