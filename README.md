@@ -71,6 +71,7 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Cooking recipe randomization
 * Tea trees and the new items associated with it need to be randomized
 * Stables need to be randomized still
+* Randomize tailoring recipes
   
 ## Known Issues
 * There are issues with the randomization not being consistent if you load more than one farm in your play session
