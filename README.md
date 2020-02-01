@@ -49,6 +49,10 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Quest randomization
   * Quest givers, required items, and rewards are randomly selected.
   * Help Wanted quests are unaffected, but the randomized item names should appear as expected.
+* NPC birthdy randomization
+  * Randomizes the season and day of each NPC's birthday
+  * Does not assign birthdays to the same day
+  * Does not assign birthdays on the same day of most festivals (excludes night market and the moonlight jellies)
 * Spoiler log
   * A spoiler log can be generated to see info about what was randomized
   * You must turn on this option in the settings to generate the log
