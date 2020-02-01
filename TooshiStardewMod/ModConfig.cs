@@ -12,11 +12,11 @@
 		public bool RandomizeCraftingRecipeLevels_Needs_Above_Setting_On { get; set; } = true;
 
 		public bool RandomizeWeapons { get; set; } = true;
+		public bool RandomizeGalaxySwordName_Needs_Above_Setting_On { get; set; } = true;
 		public bool RandomizeBoots { get; set; } = true;
 
 		public bool RandomizeMonsters { get; set; } = true;
 		public bool SwapUniqueMonsterDrops_Needs_Above_Setting_On { get; set; } = true;
-		
 
 		public bool RandomizeBundles { get; set; } = true;
 		public bool RandomizeBuildingCosts { get; set; } = true;

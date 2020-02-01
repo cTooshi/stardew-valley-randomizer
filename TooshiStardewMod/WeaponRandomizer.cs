@@ -52,9 +52,10 @@ namespace Randomizer
 			RandomizeWeaponDropInfo(weapon);
 			SetWeaponDescription(weapon);
 
-			if (weapon.Name != "Galaxy Sword") // The Galaxy Sword has some hard-coded check in game unfortunately
+			string weaponName = nameRandomizer.GenerateRandomWeaponName(weapon.Type);
+			if (Globals.Config.RandomizeGalaxySwordName_Needs_Above_Setting_On || weapon.Name != "Galaxy Sword")
 			{
-				weapon.OverrideName = nameRandomizer.GenerateRandomWeaponName(weapon.Type);
+				weapon.OverrideName = weaponName;
 			}
 		}
 
