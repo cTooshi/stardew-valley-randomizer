@@ -63,6 +63,8 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
   * New sprites for fish
 * Palette randomization (if possible)
   * Randomly shift the color of the in-game graphics towards a different hue
+* NPC birthday randomization
+* NPC schedule shuffle and/or randomization
   
 ## Known Issues
 * If you start your file with cabins, the gift box in them will contain "Parsnip Seeds" - they will behave in an identical way to the seeds they were replaced with, though
