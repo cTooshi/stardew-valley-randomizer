@@ -30,6 +30,17 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Weapon randomization
   * Weapon stats, types, etc. are randomized
   * Many weapons can now appear in mines containers
+  * Setting to rename the Galaxy Sword, since there's a hard-coded check on wilderness farms to spawn a high-level bat if you have an item named "Galaxy Sword" in your inventory
+* Boot randomization
+  * Stats are randomized
+  * Names are randomized
+* Monster randomization
+  * Stats are randomized: HP / Resilience / Speed / Experience
+  * The threshold before a monster moves toward you is randomized
+  * The time a monster moves randomly is randomized
+  * Up to a 5% chance to be able to miss an attack on a monster
+  * Setting to shuffle unique monster drops among all monsters (Slime, Bat Wing, Solar Essence, Bug Meat, Void Essence, and Squid Ink)
+  * Each monster can now drop a new random item
 * Blueprint randomization
   * Farm buildings that you get from Robin now choose from a more random pool of resources/items instead of a set list
   * This does not yet include anything you don't get from Robin (Obelisks, the Gold Clock, etc.)
@@ -52,11 +63,8 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
   * New sprites for fish
 * Palette randomization (if possible)
   * Randomly shift the color of the in-game graphics towards a different hue
-* Randomize items that you dig up from the dirt
-* Randomize enemy stats
   
 ## Known Issues
 * If you start your file with cabins, the gift box in them will contain "Parsnip Seeds" - they will behave in an identical way to the seeds they were replaced with, though
 * There are issues with bundles sometimes - when generating a new file, make sure you do so without first loading another file. If you have issues viewing a bundle due to this, it's fixable by editing the save file and putting more slots for the particiular bundle having the issue
 * The original mine floor randomization sometimes causes crashes when using the elevator - recommended to leave this setting off for now
-* Weapons don't yet have random names
