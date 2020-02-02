@@ -72,11 +72,13 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * Tea trees and the new items associated with it need to be randomized
 * Stables need to be randomized still
 * Randomize tailoring recipes
+* Add settings for more things, such as stats that can be modified on weapons, possible random names, etc.
   
 ## Known Issues
 * There are issues with the randomization not being consistent if you load more than one farm in your play session
   * Restart the game before you load each farm, even if it's the same farm
 * The original mine floor randomization sometimes causes crashes when using the elevator - recommended to leave this setting off for now
+* The text in mail you recieve does not match the actual quest
 * This mod does not fully support other languages
   * The title screen will use the English title buttons when the game is first loaded
   * Randomly generated names and descriptions are all in English
