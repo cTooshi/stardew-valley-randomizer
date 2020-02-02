@@ -338,14 +338,6 @@ namespace Randomizer
 					editedObjectInfo.ObjectInformationReplacements[pair.Key] = pair.Value;
 				}
 			}
-
-
-			Dictionary<string, string> recipeReplacements = CookingRecipeData.DefaultData;
-			string carpValue = recipeReplacements["Carp Surprise"];
-			recipeReplacements.Remove("Carp Surprise");
-			recipeReplacements.Add($"{carp} Surprise", carpValue);
-
-			editedObjectInfo.CookingRecipeReplacements = recipeReplacements;
 		}
 
 		/// <summary>
