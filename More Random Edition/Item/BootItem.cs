@@ -50,7 +50,7 @@ namespace Randomizer
 		/// <returns />
 		public override string ToString()
 		{
-			return $"{Name}/{Description}/{NotActuallyPrice}/{Defense}/{Immunity}/{ColorSheetIndex}";
+			return $"{Name}/{Description}/{NotActuallyPrice}/{Defense}/{Immunity}/{ColorSheetIndex}/{Name}";
 		}
 	}
 }

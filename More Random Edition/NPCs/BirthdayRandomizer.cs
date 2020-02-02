@@ -61,13 +61,19 @@ namespace Randomizer
 			new SDate(16, "fall", 1),
 			new SDate(27, "fall", 1),
 			new SDate(8, "winter", 1),
-			new SDate(25, "winter", 1)
+			new SDate(25, "winter", 1),
+			new SDate(15, "winter", 1),
+			new SDate(16, "winter", 1),
+			new SDate(17, "winter", 1)
 		};
 
 		/// <summary>
 		/// The string to use for holidays in the birthdays in use list
 		/// </summary>
 		private const string HolidayString = "HOLIDAY";
+
+		private const int BirthdayIndex = 8;
+		private const int RelationshipsIndex = 9;
 
 		/// <summary>
 		/// Does the birthday randomization
@@ -81,10 +87,13 @@ namespace Randomizer
 			foreach (string npcDisposition in DefaultNPCDispositionData)
 			{
 				string[] tokens = npcDisposition.Split('/');
-				string name = tokens[tokens.Length - 1];
+				int nameIndex = tokens.Length - 1;
+				string name = tokens[nameIndex];
 
 				SDate addedDate = AddRandomBirthdayToNPC(birthdaysInUse, name);
-				tokens[8] = $"{addedDate.Season} {addedDate.Day}";
+				tokens[BirthdayIndex] = $"{addedDate.Season} {addedDate.Day}";
+				tokens[RelationshipsIndex] = Globals.ModRef.Helper.Translation.Get($"{name}-relationships");
+				tokens[nameIndex] = Globals.ModRef.Helper.Translation.Get($"{name}-name");
 
 				replacements.Add(name, string.Join("/", tokens));
 			}
@@ -115,6 +124,11 @@ namespace Randomizer
 		/// <returns>The date added</returns>
 		private static SDate AddRandomBirthdayToNPC(Dictionary<SDate, string> birthdaysInUse, string npcName)
 		{
+			if (npcName == "Wizard")
+			{
+				return GetWizardBirthday(birthdaysInUse);
+			}
+
 			List<string> seasonStrings = new List<string> { "spring", "summer", "fall", "winter" };
 			string season = Globals.RNGGetRandomValueFromList(seasonStrings);
 			bool dateRetrieved = false;
@@ -131,6 +145,22 @@ namespace Randomizer
 			} while (!dateRetrieved);
 
 			return date;
+		}
+
+		/// <summary>
+		/// Gets the wizard's birthday - must be from the 15-17, as the game hard-codes the "Night Market" text
+		/// to the billboard
+		/// </summary>
+		/// <param name="birthdaysInUse">The birthdays in use - this function adds the date to it</param>
+		/// <returns />
+		private static SDate GetWizardBirthday(Dictionary<SDate, string> birthdaysInUse)
+		{
+			int day = Range.GetRandomValue(15, 17);
+			SDate wizardBirthday = new SDate(day, "winter", 1);
+
+			birthdaysInUse.Remove(wizardBirthday);
+			birthdaysInUse.Add(wizardBirthday, "Wizard");
+			return wizardBirthday;
 		}
 
 		/// <summary>
