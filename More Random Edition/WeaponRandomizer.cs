@@ -8,12 +8,15 @@ namespace Randomizer
 	/// </summary>
 	public class WeaponRandomizer
 	{
+		public static Dictionary<int, WeaponItem> Weapons = new Dictionary<int, WeaponItem>();
+
 		/// <summary>
 		/// Returns the object use to modify the weapons
 		/// </summary>
 		/// <returns />
 		public static Dictionary<int, string> Randomize()
 		{
+			Weapons.Clear();
 			WeaponAndArmorNameRandomizer nameRandomizer = new WeaponAndArmorNameRandomizer();
 
 			Dictionary<int, WeaponItem> weaponDictionary = WeaponData.Items();
@@ -22,6 +25,8 @@ namespace Randomizer
 			{
 				RandomizeWeapon(weapon, nameRandomizer);
 				stringReplacements.Add(weapon.Id, weapon.ToString());
+
+				Weapons.Add(weapon.Id, weapon);
 			}
 
 			WriteToSpoilerLog(weaponDictionary);
@@ -99,8 +104,8 @@ namespace Randomizer
 		/// <summary>
 		/// Randomize the weapon crit stats
 		/// - 1% chance of a 0.1% crit with a multiplier of 100
-		/// - 4% chance of 8-12% crit with a multiplier of 1.5-2.5
-		/// - Else, 1.5-3% crit with a multiplier of 2-3.5%
+		/// - 4% chance of 8-12% crit with a multiplier of 3 - 3.1x
+		/// - Else, 2-3% crit with a multiplier of 3 - 4x
 		/// </summary>
 		/// <param name="weapon">The weapon to randomize</param>
 		private static void RandomizeWeaponCrits(WeaponItem weapon)
@@ -114,13 +119,13 @@ namespace Randomizer
 			else if (Globals.RNGGetNextBoolean(4))
 			{
 				weapon.CritChance = Range.GetRandomValue(8, 12) / 100d;
-				weapon.CritMultiplier = Range.GetRandomValue(15, 25) / 10d;
+				weapon.CritMultiplier = Range.GetRandomValue(30, 31) / 10d;
 			}
 
 			else
 			{
-				weapon.CritChance = Range.GetRandomValue(15, 30) / 1000d;
-				weapon.CritMultiplier = Range.GetRandomValue(20, 35) / 10d;
+				weapon.CritChance = Range.GetRandomValue(20, 30) / 1000d;
+				weapon.CritMultiplier = Range.GetRandomValue(30, 40) / 10d;
 			}
 		}
 

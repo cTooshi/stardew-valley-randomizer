@@ -1,4 +1,6 @@
-﻿namespace Randomizer
+﻿using System;
+
+namespace Randomizer
 {
 	/// <summary>
 	/// Represents a boot - doesn't use the same IDs as normal items, but we'll treat it like an item
@@ -30,6 +32,16 @@
 			Defense = defense;
 			Immunity = immunity;
 			ColorSheetIndex = colorSheetIndex;
+		}
+
+		/// <summary>
+		/// Gets the sale price of the boot
+		/// Equal to the sell price * 8
+		/// </summary>
+		/// <returns />
+		public int GetBuyPrice()
+		{
+			return Math.Max(50 * 8 * (Defense + Immunity), 100);
 		}
 
 		/// <summary>

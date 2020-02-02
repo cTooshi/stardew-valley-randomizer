@@ -164,6 +164,7 @@ namespace Randomizer
 			ChangeDayOneForagables();
 			FixParsnipSeedBox();
 			OverriddenSeedShop.ReplaceShopStockMethod();
+			OverriddenAdventureShop.FixAdventureShopBuyAndSellPrices();
 		}
 
 		/// <summary>
