@@ -77,3 +77,8 @@ Make sure you have SMAPI installed (https://stardewvalleywiki.com/Modding:Instal
 * There are issues with the randomization not being consistent if you load more than one farm in your play session
   * Restart the game before you load each farm, even if it's the same farm
 * The original mine floor randomization sometimes causes crashes when using the elevator - recommended to leave this setting off for now
+* This mod does not fully support other languages
+  * The title screen will use the English title buttons when the game is first loaded
+  * Randomly generated names and descriptions are all in English
+  * Randomizing crops will result in crop and seed names/descriptions to all be English; additionally, recipes that use these crops will have thier names/descriptions switched to English
+  * Randomizing fruit trees will result in their names/descriptions to all be English
