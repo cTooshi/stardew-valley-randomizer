@@ -135,6 +135,7 @@ namespace Randomizer
 			this._mod.Helper.Content.InvalidateCache("Data/fruitTrees");
 			this._mod.Helper.Content.InvalidateCache("Data/Crops");
 			this._mod.Helper.Content.InvalidateCache("Data/weapons");
+			this._mod.Helper.Content.InvalidateCache("Data/Boots");
 			this._mod.Helper.Content.InvalidateCache("Data/Monsters");
 			this._mod.Helper.Content.InvalidateCache("Data/NPCDispositions");
 		}

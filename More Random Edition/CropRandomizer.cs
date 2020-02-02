@@ -261,6 +261,12 @@ namespace Randomizer
 			string artichoke = ItemList.Items[(int)ObjectIndexes.Artichoke].Name;
 			string rice = ItemList.Items[(int)ObjectIndexes.Rice].Name;
 
+			string carp = ItemList.Items[(int)ObjectIndexes.Carp].Name;
+			string salmon = ItemList.Items[(int)ObjectIndexes.Salmon].Name;
+			string bass = ItemList.Items[(int)ObjectIndexes.LargemouthBass].Name.Split(' ').Last();
+			string trout = ItemList.Items[(int)ObjectIndexes.RainbowTrout].Name;
+			string eel = ItemList.Items[(int)ObjectIndexes.Eel].Name;
+
 			ItemList.Items[(int)ObjectIndexes.CheeseCauliflower].OverrideName = $"Cheese {cauliflower}";
 			ItemList.Items[(int)ObjectIndexes.ParsnipSoup].OverrideName = $"{parsnip} Soup";
 			ItemList.Items[(int)ObjectIndexes.BeanHotpot].OverrideName = $"{greenbean} Hotpot";
@@ -279,6 +285,13 @@ namespace Randomizer
 			ItemList.Items[(int)ObjectIndexes.FruitSalad].OverrideName = "Harvest Salad";
 			ItemList.Items[(int)ObjectIndexes.RicePudding].OverrideName = $"{rice} Pudding";
 
+			ItemList.Items[(int)ObjectIndexes.CarpSurprise].OverrideName = $"{carp} Surprise";
+			ItemList.Items[(int)ObjectIndexes.SalmonDinner].OverrideName = $"{salmon} Dinner";
+			ItemList.Items[(int)ObjectIndexes.CrispyBass].OverrideName = $"Crispy {bass}";
+			ItemList.Items[(int)ObjectIndexes.TroutSoup].OverrideName = $"{trout} Soup";
+			ItemList.Items[(int)ObjectIndexes.FriedEel].OverrideName = $"Fried {eel}";
+			ItemList.Items[(int)ObjectIndexes.SpicyEel].OverrideName = $"Spicy {eel}";
+
 			var objectReplacements = new Dictionary<int, string>
 			{
 				{ (int)ObjectIndexes.CheeseCauliflower, $"Cheese {cauliflower}/300/55/Cooking -7/Cheese {cauliflower}/It smells great!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
@@ -288,16 +301,23 @@ namespace Randomizer
 				{ (int)ObjectIndexes.PepperPoppers, $"{hotpepper} Poppers/200/52/Cooking -7/{hotpepper} Poppers/Spicy, breaded, and filled with cheese./food/2 0 0 0 0 0 0 0 0 1 0/600" },
 				{ (int)ObjectIndexes.RhubarbPie, $"{rhubarb} Pie/400/86/Cooking -7/{rhubarb} Pie/Mmm, tangy and sweet!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.EggplantParmesan, $"{eggplant} Parmesan/200/70/Cooking -7/{eggplant} Parmesan/Tangy, cheesy, and wonderful./food/0 0 1 0 0 0 0 0 0 0 3/400" },
+				{ (int)ObjectIndexes.RicePudding, $"{rice} Pudding/260/46/Cooking -7/{rice} Pudding/It's creamy, sweet, and fun to eat./food/0 0 0 0 0 0 0 0 0 0 0/0"},
 				{ (int)ObjectIndexes.BlueberryTart, $"{blueberry} Tart/150/50/Cooking -7/{blueberry} Tart/It's subtle and refreshing./food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.PumpkinSoup, $"{pumpkin} Soup/300/80/Cooking -7/{pumpkin} Soup/A seasonal favorite./food/0 0 0 0 2 0 0 0 0 0 2/660" },
 				{ (int)ObjectIndexes.CranberrySauce, $"{cranberry} Sauce/120/50/Cooking -7/{cranberry} Sauce/A festive treat./food/0 0 2 0 0 0 0 0 0 0 0/300" },
+				{ (int)ObjectIndexes.ArtichokeDip, $"{artichoke} Dip/210/40/Cooking -7/{artichoke} Dip/It's cool and refreshing./food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.PumpkinPie, $"{pumpkin} Pie/385/90/Cooking -7/{pumpkin} Pie/Silky {pumpkin} cream in a flakey crust./food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.RadishSalad, $"{radish} Salad/300/80/Cooking -7/{radish} Salad/The {radish} is so crisp!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.CranberryCandy, $"{cranberry} Candy/175/50/Cooking -7/{cranberry} Candy/It's sweet enough to mask the {cranberry}'s bitterness./drink/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.PoppyseedMuffin, $"{poppyseed} Muffin/250/60/Cooking -7/{poppyseed} Muffin/It has a soothing effect./food/0 0 0 0 0 0 0 0 0 0 0/0" },
-				{ (int)ObjectIndexes.ArtichokeDip, $"{artichoke} Dip/210/40/Cooking -7/{artichoke} Dip/It's cool and refreshing./food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.FruitSalad, $"Harvest Salad/450/105/Cooking -7/Harvest Salad/A delicious combination of local plants./food/0 0 0 0 0 0 0 0 0 0 0/0" },
-				{ (int)ObjectIndexes.RicePudding, $"{rice} Pudding/260/46/Cooking -7/{rice} Pudding/It's creamy, sweet, and fun to eat./food/0 0 0 0 0 0 0 0 0 0 0/0"}
+
+				{ (int)ObjectIndexes.CarpSurprise, $"{carp} Surprise/150/36/Cooking -7/{carp} Surprise/It's bland and oily./food/0 0 0 0 0 0 0 0 0 0 0/0"},
+				{ (int)ObjectIndexes.SalmonDinner, $"{salmon} Dinner/300/50/Cooking -7/{salmon} Dinner/The lemon spritz makes it special./food/0 0 0 0 0 0 0 0 0 0 0/0"},
+				{ (int)ObjectIndexes.CrispyBass, $"Crispy {bass}/150/36/Cooking -7/Crispy {bass}/Wow, the breading is perfect./food/0 0 0 0 0 0 0 0 64 0 0/600"},
+				{ (int)ObjectIndexes.TroutSoup, $"{trout} Soup/100/40/Cooking -7/{trout} Soup/Pretty salty./food/0 1 0 0 0 0 0 0 0 0 0/400"},
+				{ (int)ObjectIndexes.FriedEel, $"Fried {eel}/120/30/Cooking -7/Fried {eel}/Greasy but flavorful./food/0 0 0 0 1 0 0 0 0 0 0/600"},
+				{ (int)ObjectIndexes.SpicyEel, $"Spicy {eel}/175/46/Cooking -7/Spicy {eel}/It's really spicy! Be careful./food/0 0 0 0 1 0 0 0 0 1 0/600"}
 			};
 
 			foreach (KeyValuePair<int, string> pair in objectReplacements)
