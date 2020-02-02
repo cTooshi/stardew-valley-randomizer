@@ -4,12 +4,15 @@ namespace Randomizer
 {
 	public class BootRandomizer
 	{
+		public static Dictionary<int, BootItem> Boots = new Dictionary<int, BootItem>();
+
 		/// <summary>
 		/// Randomizes boots - currently only changes defense and immunity
 		/// </summary>
 		/// <returns />
 		public static Dictionary<int, string> Randomize()
 		{
+			Boots.Clear();
 			WeaponAndArmorNameRandomizer nameRandomizer = new WeaponAndArmorNameRandomizer();
 
 			Dictionary<int, string> bootReplacements = new Dictionary<int, string>();
@@ -20,17 +23,18 @@ namespace Randomizer
 				int defense = Range.GetRandomValue(0, statPool);
 				int immunity = statPool - defense;
 
-				bootsToUse.Add(
-					new BootItem(
-						originalBoot.Id,
-						nameRandomizer.GenerateRandomBootName(),
-						originalBoot.Description,
-						originalBoot.NotActuallyPrice,
-						defense,
-						immunity,
-						originalBoot.ColorSheetIndex
-					)
+				BootItem newBootItem = new BootItem(
+					originalBoot.Id,
+					nameRandomizer.GenerateRandomBootName(),
+					originalBoot.Description,
+					originalBoot.NotActuallyPrice,
+					defense,
+					immunity,
+					originalBoot.ColorSheetIndex
 				);
+
+				bootsToUse.Add(newBootItem);
+				Boots.Add(newBootItem.Id, newBootItem);
 			}
 
 			foreach (BootItem bootToAdd in bootsToUse)

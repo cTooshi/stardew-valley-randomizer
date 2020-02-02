@@ -67,6 +67,7 @@
     <Compile Include="Monsters\MonsterData.cs" />
     <Compile Include="Monsters\MonsterRandomizer.cs" />
     <Compile Include="NameRandomizers\WeaponAndArmorNameRandomizer.cs" />
+    <Compile Include="OverriddenFiles\OverriddenAdventureShop.cs" />
     <Compile Include="OverriddenFiles\OverriddenSeedShop.cs" />
     <Compile Include="OverriddenFiles\OverriddenSubmarine.cs" />
     <Compile Include="QuestRandomizer.cs" />

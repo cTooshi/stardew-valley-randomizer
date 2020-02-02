@@ -159,9 +159,12 @@ namespace Randomizer
 		/// </summary>
 		public static void ReplaceShopStockMethod()
 		{
-			MethodInfo methodToReplace = typeof(SeedShop).GetMethod("shopStock");
-			MethodInfo methodToInject = typeof(OverriddenSeedShop).GetMethod("NewShopStock");
-			Globals.RepointMethod(methodToReplace, methodToInject);
+			if (Globals.Config.RandomizeFruitTrees)
+			{
+				MethodInfo methodToReplace = typeof(SeedShop).GetMethod("shopStock");
+				MethodInfo methodToInject = typeof(OverriddenSeedShop).GetMethod("NewShopStock");
+				Globals.RepointMethod(methodToReplace, methodToInject);
+			}
 		}
 	}
 }
