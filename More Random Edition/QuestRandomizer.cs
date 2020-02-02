@@ -36,7 +36,7 @@ namespace Randomizer
 				{122, "ItemDelivery/[person] Needs Juice/[person]'s TV Remote is dead. For some reason [a] [item] is needed to fix it./Bring [person] [a] [item]./[person] [id]/-1/[reward]/-1/true/Hey, you pulled through with the [item]! Thanks, kid... You're a life-saver!$h"},
 				{123, "ItemDelivery/Staff Of Power/[person] is creating a staff of phenomenal power. Who knows what it's for? The power of [a] [item] is needed to finish it./Bring [person] [a] [item]./[person] [id]/-1/[reward]/-1/true/Ah, precious [item]. You've done well, @. You have my gratitude. Now, leave."},
 				{124, "ItemDelivery/Catch [a] [fish]/[person] is challenging you to catch [a] [fish]./Bring [person] [a] [fish]./[person] [id]/-1/[reward]/-1/true/Hey, that's a real lunker! You've certainly got the angler's blood in you.$h"},
-				{125, "ItemDelivery/Exotic Spirits/[person] wants to make [a] [crop]-no-no, but the main ingredient's missing./Bring [person] [a] [crop]./[person] [id]/-1/[reward]/-1/true/[crop]! Now there's a soothing sight for my eyes.$h#$b#It's going to be perfect for my [crop]-no-no. Thanks!"}
+				{125, "ItemDelivery/Exotic Spirits/[person] wants to make [a] [cropstart]-no-no, but the main ingredient's missing./Bring [person] [a] [crop]./[person] [id]/-1/[reward]/-1/true/[crop]! Now there's a soothing sight for my eyes.$h#$b#It's going to be perfect for my [cropstart]-no-no. Thanks!"}
 			};
 			List<string> people = NPC.QuestableNPCsList;
 			List<Item> crops = ItemList.GetCrops(true);
@@ -51,7 +51,10 @@ namespace Randomizer
 				string currentQuestString = QuestList[key];
 				currentQuestString = ReplaceToken(currentQuestString, "[person]", Globals.RNGGetRandomValueFromList(people));
 				currentQuestString = ReplaceToken(currentQuestString, "[otherperson]", Globals.RNGGetRandomValueFromList(people));
-				currentQuestString = ReplaceToken(currentQuestString, "[crop]", Globals.RNGGetRandomValueFromList(crops).Id, true);
+
+				int cropId = Globals.RNGGetRandomValueFromList(crops).Id;
+				currentQuestString = ReplaceToken(currentQuestString, "[crop]", cropId, true);
+				currentQuestString = ReplaceToken(currentQuestString, "[cropstart]", cropId, true, true);
 				currentQuestString = ReplaceToken(currentQuestString, "[dish]", Globals.RNGGetRandomValueFromList(dishes).Id, true);
 				currentQuestString = ReplaceToken(currentQuestString, "[fish]", Globals.RNGGetRandomValueFromList(fish).Id, true);
 				currentQuestString = ReplaceToken(currentQuestString, "[item]", Globals.RNGGetRandomValueFromList(items).Id, true);
@@ -74,12 +77,19 @@ namespace Randomizer
 		/// <param name="replacements"></param>
 		/// <param name="replaceID"></param>
 		/// <returns></returns>
-		private static string ReplaceToken(string questString, string token, int number, bool isItem = false)
+		private static string ReplaceToken(string questString, string token, int number, bool isItem = false, bool shortenName = false)
 		{
 			if (!questString.Contains(token))
 				return questString;
 			if (isItem) // number is the itemID
-				return questString.Replace(token, ItemList.GetItemName(number)).Replace("[id]", number.ToString());
+			{
+				string itemName = ItemList.GetItemName(number);
+				if (shortenName)
+				{
+					itemName = Globals.GetStringStart(itemName, 4);
+				}
+				return questString.Replace(token, itemName).Replace("[id]", number.ToString());
+			}
 			else
 				return questString.Replace(token, number.ToString());
 		}

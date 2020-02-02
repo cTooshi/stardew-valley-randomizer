@@ -143,6 +143,17 @@ namespace Randomizer
 		}
 
 		/// <summary>
+		/// Returns the start of the given string, up to the given length
+		/// </summary>
+		/// <param name="input">The string</param>
+		/// <param name="length">The length</param>
+		/// <returns>The requested length, truncated appropriately</returns>
+		public static string GetStringStart(string input, int length)
+		{
+			return input.Length < length ? input : input.Substring(0, length);
+		}
+
+		/// <summary>
 		/// Replace one method with another
 		/// Credit goes here: https://stackoverflow.com/questions/7299097/dynamically-replace-the-contents-of-a-c-sharp-method
 		/// NOTE: THIS CODE IS UNSAFE, USE WITH CAUTION
