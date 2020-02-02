@@ -292,7 +292,7 @@ namespace Randomizer
 			ItemList.Items[(int)ObjectIndexes.FriedEel].OverrideName = $"Fried {eel}";
 			ItemList.Items[(int)ObjectIndexes.SpicyEel].OverrideName = $"Spicy {eel}";
 
-			var objectReplacements = new Dictionary<int, string>
+			var cropItemReplacements = new Dictionary<int, string>
 			{
 				{ (int)ObjectIndexes.CheeseCauliflower, $"Cheese {cauliflower}/300/55/Cooking -7/Cheese {cauliflower}/It smells great!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.ParsnipSoup, $"{parsnip} Soup/120/34/Cooking -7/{parsnip} Soup/It's fresh and hearty./food/0 0 0 0 0 0 0 0 0 0 0/0" },
@@ -310,8 +310,11 @@ namespace Randomizer
 				{ (int)ObjectIndexes.RadishSalad, $"{radish} Salad/300/80/Cooking -7/{radish} Salad/The {radish} is so crisp!/food/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.CranberryCandy, $"{cranberry} Candy/175/50/Cooking -7/{cranberry} Candy/It's sweet enough to mask the {cranberry}'s bitterness./drink/0 0 0 0 0 0 0 0 0 0 0/0" },
 				{ (int)ObjectIndexes.PoppyseedMuffin, $"{poppyseed} Muffin/250/60/Cooking -7/{poppyseed} Muffin/It has a soothing effect./food/0 0 0 0 0 0 0 0 0 0 0/0" },
-				{ (int)ObjectIndexes.FruitSalad, $"Harvest Salad/450/105/Cooking -7/Harvest Salad/A delicious combination of local plants./food/0 0 0 0 0 0 0 0 0 0 0/0" },
+				{ (int)ObjectIndexes.FruitSalad, $"Harvest Salad/450/105/Cooking -7/Harvest Salad/A delicious combination of local plants./food/0 0 0 0 0 0 0 0 0 0 0/0" }
+			};
 
+			var fishItemReplacements = new Dictionary<int, string>
+			{
 				{ (int)ObjectIndexes.CarpSurprise, $"{carp} Surprise/150/36/Cooking -7/{carp} Surprise/It's bland and oily./food/0 0 0 0 0 0 0 0 0 0 0/0"},
 				{ (int)ObjectIndexes.SalmonDinner, $"{salmon} Dinner/300/50/Cooking -7/{salmon} Dinner/The lemon spritz makes it special./food/0 0 0 0 0 0 0 0 0 0 0/0"},
 				{ (int)ObjectIndexes.CrispyBass, $"Crispy {bass}/150/36/Cooking -7/Crispy {bass}/Wow, the breading is perfect./food/0 0 0 0 0 0 0 0 64 0 0/600"},
@@ -320,10 +323,29 @@ namespace Randomizer
 				{ (int)ObjectIndexes.SpicyEel, $"Spicy {eel}/175/46/Cooking -7/Spicy {eel}/It's really spicy! Be careful./food/0 0 0 0 1 0 0 0 0 1 0/600"}
 			};
 
-			foreach (KeyValuePair<int, string> pair in objectReplacements)
+			if (Globals.Config.RandomizeCrops)
 			{
-				editedObjectInfo.ObjectInformationReplacements[pair.Key] = pair.Value;
+				foreach (KeyValuePair<int, string> pair in cropItemReplacements)
+				{
+					editedObjectInfo.ObjectInformationReplacements[pair.Key] = pair.Value;
+				}
 			}
+
+			if (Globals.Config.RandomizeFish)
+			{
+				foreach (KeyValuePair<int, string> pair in fishItemReplacements)
+				{
+					editedObjectInfo.ObjectInformationReplacements[pair.Key] = pair.Value;
+				}
+			}
+
+
+			Dictionary<string, string> recipeReplacements = CookingRecipeData.DefaultData;
+			string carpValue = recipeReplacements["Carp Surprise"];
+			recipeReplacements.Remove("Carp Surprise");
+			recipeReplacements.Add($"{carp} Surprise", carpValue);
+
+			editedObjectInfo.CookingRecipeReplacements = recipeReplacements;
 		}
 
 		/// <summary>
