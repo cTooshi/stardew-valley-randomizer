@@ -114,7 +114,7 @@ namespace Randomizer
 		/// <returns />
 		public override string ToString()
 		{
-			return $"{Name}/{Description}/{Damage.MinValue}/{Damage.MaxValue}/{Knockback}/{Speed}/{AddedPrecision}/{AddedDefense}/{(int)Type}/{BaseMineLevelDrop}/{MinMineLevelDrop}/{AddedAOE}/{CritChance}/{CritMultiplier}";
+			return $"{Name}/{Description}/{Damage.MinValue}/{Damage.MaxValue}/{Knockback}/{Speed}/{AddedPrecision}/{AddedDefense}/{(int)Type}/{BaseMineLevelDrop}/{MinMineLevelDrop}/{AddedAOE}/{CritChance}/{CritMultiplier}/{Name}";
 		}
 	}
 }
