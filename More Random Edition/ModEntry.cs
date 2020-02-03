@@ -76,10 +76,15 @@ namespace Randomizer
 
 			if (Globals.Config.RandomizeMusic) { helper.Events.GameLoop.UpdateTicked += (sender, args) => this.TryReplaceSong(); }
 			if (Globals.Config.RandomizeRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
+			if (Globals.Config.RandomizeCrops || Globals.Config.RandomizeFish)
+			{
+				helper.Events.GameLoop.UpdateTicking += (sender, args) => CookingRecipeChanges.FixCookingRecipeHoverText();
+			}
 
 			helper.Events.GameLoop.DayStarted += (sender, args) => UseOverriddenSubmarine();
 			helper.Events.GameLoop.DayEnding += (sender, args) => RestoreSubmarineLocation();
 		}
+
 
 		/// <summary>
 		/// The old submarine location
