@@ -13,6 +13,7 @@ namespace Randomizer
 			get { return SkillString.Length > 0; }
 		}
 		public CraftableCategories Category { get; set; }
+		public Dictionary<int, int> LastRecipeGenerated { get; set; } = new Dictionary<int, int>(); // item id to amount needed
 
 		/// <summary>
 		/// Constructor
@@ -93,35 +94,66 @@ namespace Randomizer
 		/// </returns>
 		private string GetItemsRequired()
 		{
+			string craftingString = "";
 			switch (Category)
 			{
 				case CraftableCategories.EasyAndNeedMany:
-					return GetStringForEasyAndNeedMany();
-
+					craftingString = GetStringForEasyAndNeedMany();
+					break;
 				case CraftableCategories.Easy:
-					return GetStringForEasy();
-
+					craftingString = GetStringForEasy();
+					break;
 				case CraftableCategories.ModerateAndNeedMany:
-					return GetStringForModerateAndNeedMany();
-
+					craftingString = GetStringForModerateAndNeedMany();
+					break;
 				case CraftableCategories.Moderate:
-					return GetStringForModerate();
-
+					craftingString = GetStringForModerate();
+					break;
 				case CraftableCategories.DifficultAndNeedMany:
-					return GetStringForDifficultAndNeedMany();
-
+					craftingString = GetStringForDifficultAndNeedMany();
+					break;
 				case CraftableCategories.Difficult:
-					return GetStringForDifficult();
-
+					craftingString = GetStringForDifficult();
+					break;
 				case CraftableCategories.Endgame:
-					return GetStringForEndgame();
-
+					craftingString = GetStringForEndgame();
+					break;
 				default:
 					Globals.ConsoleWrite($"ERROR: invalid category when generating recipe for {Name}!");
-					return "18 9"; // just a random value for now
+					craftingString = "18 9"; // just a random value for now
+					break;
+			}
+
+			PopulateLastRecipeGenerated(craftingString);
+			return craftingString;
+		}
+
+		/// <summary>
+		/// Fills the LastRecipeGenerated dictionary with the new recipe
+		/// This is a dictionary with item ids mapped to amounts
+		/// </summary>
+		/// <param name="craftingString">The crafting string to parse</param>
+		private void PopulateLastRecipeGenerated(string craftingString)
+		{
+			LastRecipeGenerated.Clear();
+			string[] tokens = craftingString.Split(' ');
+			for (int i = 0; i + 1 < tokens.Length; i += 2)
+			{
+				int id = int.Parse(tokens[i]);
+				int amount = int.Parse(tokens[i + 1]);
+
+				if (!LastRecipeGenerated.ContainsKey(id))
+				{
+					LastRecipeGenerated.Add(id, amount);
+				}
 			}
 		}
 
+		/// <summary>
+		/// Gets the crafting string for an item that is easy to get and that you need to craft many of
+		/// Consists of 1 or 2 items that have no reqiurements to obtain
+		/// </summary>
+		/// <returns></returns>
 		private string GetStringForEasyAndNeedMany()
 		{
 			Item item = ItemList.GetRandomCraftableItem(

@@ -39,7 +39,7 @@ namespace Randomizer
 			if (asset.AssetNameEquals("Strings/StringsFromCSFiles")) { return true; }
 			if (asset.AssetNameEquals("Data/ObjectInformation")) { return true; }
 			if (asset.AssetNameEquals("Data/Fish")) { return Globals.Config.RandomizeFish; }
-			if (asset.AssetNameEquals("Data/Quests") || asset.AssetNameEquals("Data/Mail")) { return Globals.Config.RandomizeQuests; }
+			if (asset.AssetNameEquals("Data/Quests") || asset.AssetNameEquals("Data/mail")) { return Globals.Config.RandomizeQuests; }
 			if (asset.AssetNameEquals("Data/Locations")) { return Globals.Config.RandomizeFish || Globals.Config.RandomizeForagables || Globals.Config.AddRandomArtifactItem; }
 			if (asset.AssetNameEquals("Data/fruitTrees")) { return Globals.Config.RandomizeFruitTrees; }
 			if (asset.AssetNameEquals("Data/Crops")) { return Globals.Config.RandomizeCrops; }
@@ -91,7 +91,7 @@ namespace Randomizer
 			{
 				this.ApplyEdits(asset, this._questReplacements);
 			}
-			if (asset.AssetNameEquals("Data/Mail"))
+			if (asset.AssetNameEquals("Data/mail"))
 			{
 				this.ApplyEdits(asset, this._mailReplacements);
 			}
@@ -135,7 +135,7 @@ namespace Randomizer
 			this._mod.Helper.Content.InvalidateCache("Data/Events/Farm");
 			this._mod.Helper.Content.InvalidateCache("Data/Fish");
 			this._mod.Helper.Content.InvalidateCache("Data/Quests");
-			this._mod.Helper.Content.InvalidateCache("Data/Mail");
+			this._mod.Helper.Content.InvalidateCache("Data/mail");
 			this._mod.Helper.Content.InvalidateCache("Data/Locations");
 			this._mod.Helper.Content.InvalidateCache("Data/fruitTrees");
 			this._mod.Helper.Content.InvalidateCache("Data/Crops");

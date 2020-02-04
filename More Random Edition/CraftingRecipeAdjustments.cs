@@ -1,12 +1,16 @@
 ﻿using StardewValley;
 using StardewValley.Menus;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Randomizer
 {
-	public class CookingRecipeChanges
+	public class CraftingRecipeAdjustments
 	{
+		private const int TapperProfession = 7;
+
 		/// <summary>
 		/// A mapping of cooking recipes that include crop names to the id of that crop
 		/// </summary>
@@ -45,15 +49,94 @@ namespace Randomizer
 		};
 
 		/// <summary>
-		/// Fixes the cooking recipe values if they were changed
-		/// Called during the RenderingActiveMenu event if fish or crops are randomized
+		/// Fixes the cooking recipe names and the crab pot recipe for the tapper profession if the
+		/// appropriate things are randomized
 		/// </summary>
-		public static void FixCookingRecipeHoverText()
+		public static void HandleCraftingMenus()
 		{
 			IClickableMenu genericMenu = Game1.activeClickableMenu;
-			if (genericMenu == null || !(genericMenu is CraftingPage)) { return; }
+			if (genericMenu is null) { return; }
 
-			CraftingPage craftingMenu = (CraftingPage)genericMenu;
+			if (genericMenu is CraftingPage)
+			{
+				if (!Globals.Config.RandomizeFish && !Globals.Config.RandomizeCrops) { return; }
+				FixCookingRecipeHoverText((CraftingPage)genericMenu);
+			}
+
+			else if (genericMenu is GameMenu && Game1.player.professions.Contains(TapperProfession))
+			{
+				if (!Globals.Config.RandomizeCraftingRecipes) { return; }
+				ReduceCrabPotCost((GameMenu)genericMenu);
+			}
+		}
+
+		/// <summary>
+		/// Reduces the cost of the crab pot - intended to be used if the player has the Tapper profession
+		/// </summary>
+		/// <param name="gameMenu">The game menu that needs its cost adjusted</param>
+		private static void ReduceCrabPotCost(GameMenu gameMenu)
+		{
+			CraftingPage craftingPage = (CraftingPage)gameMenu.pages[GameMenu.craftingTab];
+
+			List<Dictionary<ClickableTextureComponent, CraftingRecipe>> pagesOfCraftingRecipes =
+				(List<Dictionary<ClickableTextureComponent, CraftingRecipe>>)GetInstanceField(craftingPage, "pagesOfCraftingRecipes");
+
+			foreach (Dictionary<ClickableTextureComponent, CraftingRecipe> page in pagesOfCraftingRecipes)
+			{
+				foreach (ClickableTextureComponent key in page.Keys)
+				{
+					CraftingRecipe recipe = page[key];
+					if (recipe.name == "Crab Pot")
+					{
+						CraftableItem crabPot = (CraftableItem)ItemList.Items[(int)ObjectIndexes.CrabPot];
+						Dictionary<int, int> randomizedRecipe = crabPot.LastRecipeGenerated;
+						ReduceRecipeCost(page[key], randomizedRecipe);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Reduces a recipe's cost
+		/// - if everything only needs one of each item, remove the cheapest item
+		/// - otherwise - halve the amounts of all items, rounding down (with a min of 1 required)
+		/// </summary>
+		/// <param name="inGameRecipe">The recipe as stored by Stardew Valley</param>
+		/// <param name="randomizedRecipe">The recipe as stored by this mod</param>
+		private static void ReduceRecipeCost(CraftingRecipe inGameRecipe, Dictionary<int, int> randomizedRecipe)
+		{
+			Dictionary<int, int> recipeList = (Dictionary<int, int>)GetInstanceField(inGameRecipe, "recipeList");
+			recipeList.Clear();
+
+			List<int> itemIds = randomizedRecipe.Keys.ToList();
+			if (randomizedRecipe.Values.All(x => x < 2))
+			{
+				int firstKeyOfEasiestItem = randomizedRecipe.Keys
+					.Select(x => ItemList.Items[x])
+					.OrderBy(x => x.DifficultyToObtain)
+					.Select(x => x.Id)
+					.First();
+
+				foreach (int id in randomizedRecipe.Keys.Where(x => x != firstKeyOfEasiestItem))
+				{
+					recipeList.Add(id, 1);
+				}
+			}
+			else
+			{
+				foreach (int id in randomizedRecipe.Keys)
+				{
+					int value = randomizedRecipe[id];
+					recipeList.Add(id, Math.Max(value / 2, 1));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Fixes the cooking recipe values if they were changed
+		/// </summary>
+		private static void FixCookingRecipeHoverText(CraftingPage craftingMenu)
+		{
 			if (!(bool)GetInstanceField(craftingMenu, "cooking")) { return; }
 
 			List<Dictionary<ClickableTextureComponent, CraftingRecipe>> pagesOfCraftingRecipes =

@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="AssetEditor.cs" />
     <Compile Include="AssetLoader.cs" />
-    <Compile Include="CookingRecipeChanges.cs" />
+    <Compile Include="CraftingRecipeAdjustments.cs" />
     <Compile Include="NPCs\BirthdayRandomizer.cs" />
     <Compile Include="BlueprintRandomizer.cs" />
     <Compile Include="BootRandomizer.cs" />

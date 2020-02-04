@@ -78,7 +78,7 @@ namespace Randomizer
 			if (Globals.Config.RandomizeRain) { helper.Events.GameLoop.DayEnding += _modAssetLoader.ReplaceRain; }
 			if (Globals.Config.RandomizeCrops || Globals.Config.RandomizeFish)
 			{
-				helper.Events.Display.RenderingActiveMenu += (sender, args) => CookingRecipeChanges.FixCookingRecipeHoverText();
+				helper.Events.Display.RenderingActiveMenu += (sender, args) => CraftingRecipeAdjustments.HandleCraftingMenus();
 			}
 
 			helper.Events.GameLoop.DayStarted += (sender, args) => UseOverriddenSubmarine();
