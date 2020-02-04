@@ -71,7 +71,8 @@
     <Compile Include="OverriddenFiles\OverriddenAdventureShop.cs" />
     <Compile Include="OverriddenFiles\OverriddenSeedShop.cs" />
     <Compile Include="OverriddenFiles\OverriddenSubmarine.cs" />
-    <Compile Include="QuestRandomizer.cs" />
+    <Compile Include="Quests\QuestInformation.cs" />
+    <Compile Include="Quests\QuestRandomizer.cs" />
     <Compile Include="CraftingRecipeRandomizer.cs" />
     <Compile Include="CropGrowthInformation.cs" />
     <Compile Include="Enums\FishBehaviorType.cs" />
