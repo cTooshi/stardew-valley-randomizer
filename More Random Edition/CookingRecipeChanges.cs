@@ -27,7 +27,8 @@ namespace Randomizer
 			{ "Cranberry Candy", (int)ObjectIndexes.CranberryCandy },
 			{ "Artichoke Dip", (int)ObjectIndexes.ArtichokeDip },
 			{ "Rice Pudding", (int)ObjectIndexes.RicePudding },
-			{ "Fruit Salad", (int)ObjectIndexes.FruitSalad }
+			{ "Fruit Salad", (int)ObjectIndexes.FruitSalad },
+			{ "Poppyseed Muffin", (int)ObjectIndexes.PoppyseedMuffin }
 		};
 
 		/// <summary>
